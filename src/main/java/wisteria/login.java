@@ -7,6 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import posizione.PosizioneDAO;
 import user.User;
 import user.UserDAO;
 import utils.DatabaseConnection;
@@ -25,8 +27,9 @@ public class login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
- 
-		response.sendRedirect("index.html");
+
+		//response.sendRedirect("index.html");
+		response.sendRedirect("login.html");
  
 	}
  
@@ -40,7 +43,11 @@ public class login extends HttpServlet {
 		System.out.println(email);
 		String password = request.getParameter("password");
 		System.out.println(password);
- 
+		
+		
+		PosizioneDAO dao=new PosizioneDAO();
+		dao.getAllPosizioni();
+
 		/*UserDAO dao=new UserDAO();
 		User user=dao.login(email, password);*/
 		
