@@ -29,7 +29,7 @@ public class login extends HttpServlet {
 		//request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 
 		//response.sendRedirect("index.html");
-		response.sendRedirect("login.html");
+		response.sendRedirect("index.html?c=2");
  
 	}
  
