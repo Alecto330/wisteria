@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offerte di Lavoro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone (senz doverle scaricare) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> <!-- Per importare il font Poppins -->
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/style_nav.css">
+</head>
+
+
+<body>
+
+    <section>   <!--############################ BARRA DI NAVIGAZIONE ####################################-->
+
+        <nav class="navbar custom-navbar justify-content-between fixed-top">
+
+            <div class="hamburger" id="hamburger">
+                &#9776; <!-- This is the hamburger icon -->
+            </div>
+
+            <nav class="menu" id="menu">
+                <ul>
+                    <li><a href="index.html?c=1">Home</a></li>
+                    <li><a href="index.html?c=2">About</a></li>
+                    <li><a href="index.html?c=2">Services</a></li>
+                    <li><a href="index.html?c=2">Contact</a></li>
+                </ul>
+            </nav>
+            <script>
+                const hamburger = document.getElementById("hamburger");
+                const menu = document.getElementById("menu");
+            
+                hamburger.addEventListener("click", () => {
+                    if (menu.classList.contains("slide-in")) {
+                        // Se il menu è aperto, aggiunge la classe per lo slide-out
+                        menu.classList.remove("slide-in");
+                        menu.classList.add("slide-out");
+                    } else {
+                        // Se il menu è chiuso, lo apre
+                        menu.classList.remove("slide-out");
+                        menu.classList.add("slide-in");
+                    }
+                });
+            </script>
+            <a href="index.html?c=1">
+                    <div class="logo-container">
+                        <img src="assets/WISTERIA - NO SFONDO.png" alt="Logo Wisteria" class="logo-img">
+                    </div>
+                
+            </a>
+            <a class="btn btn-primary" href="index.html?c=2">
+                Accedi
+            </a>
+
+        </nav>
+        </section>
+    </section>  <!--######################## FINE BARRA DI NAVIGAZIONE #####################################-->
+
+    <div id="myElement" class="scroll-wrapper">    <!--################################ CARICA PAGINA #####################################-->
+        <iframe id="iframeContent" class="scroll-content" src="home.html"></iframe> <!-- Iframe iniziale -->
+    </div>  <!--################################ FINE CARICA PAGINA #####################################-->
+
+
+    <script> // ######################### SWITCH CHE IMPLEMENTA LE VARIE PAGINE ###########################
+         
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+
+        function loadContent() {
+            const c = getQueryParameter('c');
+            const iframe = document.getElementById('iframeContent');
+            
+            switch (c) {
+                case '1':   //  HOME
+                    iframe.src = 'home.html';
+                    break;
+                case '2':   //  LOGIN
+                    iframe.src = 'login.html';
+                    break;
+                case '3':   //  OFFERTA
+                    iframe.src = 'offerta.html';
+                    break;
+                case '4':   // PROFILO
+                    iframe.src = 'profilo.html';
+                    break;
+                case '5':   // CERCA DOMANDA
+                    iframe.src = 'cercaDomanda.html';
+                    break;
+                case '6':   //   CREA DOMANDA
+                    iframe.src = 'creaDomanda.html';
+                    break;
+                case '7':   // CERCA UTENTE
+                    iframe.src = 'cercaUtente.html';
+                    break;
+                case '8':   // REGISTRAZIONE
+                    iframe.src = 'registrazione.html';
+                    break;
+                case '9':
+                    iframe.src = 'offerta.html';
+                    break;
+                default:
+                    iframe.src = 'home.html'; // Carica una pagina di default se non ci sono parametri
+                    break;
+            }
+        }
+
+        loadContent();  // Carica il contenuto inizialmente
+
+        history.replaceState(null, '', 'index.html?c=1');
+
+        window.addEventListener('popstate', loadContent);  // Aggiungi un listener per il cambiamento di stato dell'URL
+
+    </script> <!-- ######################### FINE SWITCH CHE IMPLEMENTA LE VARIE PAGINE ###########################-->
+    
+
+    <script> // ########################## FUNZIONI IN JAVASCRIPT ######################################
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = 'auto';
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show'); // Toggle the 'show' class
+        });
+    </script> <!-- ########################## FINE FUNZIONI IN JAVASCRIPT ###############################-->
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

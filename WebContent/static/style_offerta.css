@@ -1,0 +1,72 @@
+html, body {
+    height: 100%; /* Occupa tutta l'altezza disponibile */
+    width: 100%;
+    margin: 0; /* Rimuove eventuali margini del browser */
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra orizzontalmente */
+}
+
+
+
+.logo-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company-logo {
+    width: 70px;
+    height: 70px;
+    background-color: #D7A9E3;
+    border-radius: 50px;
+}
+
+.login-button {
+    background-color: #D7A9E3;
+    color: #4a235a;
+    border: 2px solid #4a235a;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+
+.offer-card {
+    width: 100%; /* Imposta una larghezza massima per la card */
+    height: 100%;
+    padding: 2vw;
+    background-color: #D6B5FF;
+    border-radius: 20px;
+    color: #4a235a;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Aggiungi ombreggiatura per dare un po' di profondità */
+}
+
+
+.offer-card h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.offer-card .btn-apply {
+    background-color: #db4bff;
+    border: 1px solid #c300ff;
+    color: #4a235a;
+    border-radius: 15px;
+    padding: 10px 20px;
+    border: none;
+}
+
+.offer-card .btn-apply:hover {
+    background-color: #A970C4;
+    color: #fff;
+}
+
+.details-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.btn-apply {
+    float: right;
+}
+
