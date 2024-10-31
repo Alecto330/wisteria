@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posizione e Classifica</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .content-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 80%;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        .card {
+            background-color: #e0c0ff;
+            border-radius: 25px;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-wrapper {
+            position: absolute;
+            top: 50px;
+            bottom: 50px;
+            left: 20px;
+            right: 20px;
+            overflow-y: scroll;
+            padding-right: 10px;
+        }
+
+        .scroll-wrapper::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .scroll-wrapper::-webkit-scrollbar-track {
+            background: rgba(110, 65, 226, 0.05);
+            border-radius: 6px;
+        }
+
+        .scroll-wrapper::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6e41e2, #a274ff);
+            border-radius: 6px;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .scroll-wrapper::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #a274ff, #6e41e2);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .scroll-wrapper {
+            scrollbar-width: thin;
+            scrollbar-color: #a274ff rgba(110, 65, 226, 0.05);
+        }
+
+        .scroll-wrapper:hover {
+            scrollbar-color: #6e41e2 rgba(110, 65, 226, 0.05);
+        }
+
+        .card::before,
+        .card::after {
+            content: '';
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            height: 30px;
+            background: linear-gradient(to bottom, #e0c0ff, rgba(224, 192, 255, 0));
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .card::after {
+            bottom: 0;
+            top: auto;
+            background: linear-gradient(to top, #e0c0ff, rgba(224, 192, 255, 0));
+        }
+
+        .job-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-icon {
+            color: #6e41e2;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .job-description {
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .company-location {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .website-link {
+            color: #6e41e2;
+            text-decoration: none;
+        }
+
+        .job-position {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(110, 65, 226, 0.2);
+        }
+
+        .ranking-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ranking-item {
+            background-color: rgba(110, 65, 226, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .ranking-item:hover {
+            background-color: rgba(110, 65, 226, 0.25);
+        }
+
+        .candidate-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .rank-number {
+            font-size: 1.1rem;
+            color: #6e41e2;
+            font-weight: 500;
+        }
+
+        .medal-icon {
+            color: #ffd700;
+            font-size: 1.2rem;
+        }
+
+        .candidate-name {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .candidate-score {
+            font-size: 1.1rem;
+            color: #6e41e2;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-container">
+        <div class="card">
+            <div class="scroll-wrapper">
+                <h1 class="job-title">Sviluppatore Full Stack</h1>
+                <div class="job-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">📍</span>
+                        <span>Parma - Italia</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🏢</span>
+                        <span>Amministrazione</span>
+                    </div>
+                </div>
+
+                <h2 class="section-title">Descrizione azienda</h2>
+                <div class="job-description">
+                    Lantech Longwave, società del Gruppo Zucchetti, prima software house in Europa con più di 8000 addetti, si occupa 
+                    della progettazione e dell'implementazione di soluzioni e servizi tecnologici innovativi, sicuri e performanti negli ambiti 
+                    Security, Networking, Datacenter & Cloud, Collaboration & AVI e Sviluppo Software.
+                </div>
+
+                <div class="company-location">
+                    È presente in tredici sedi dislocate in nove città italiane e una in Svizzera: Reggio Emilia, Bologna, Padova, Verona, Milano, 
+                    Besana Brianza, Roma, Modena, Parma e Chiasso.
+                </div>
+
+                <div class="job-description">
+                    Il Team di oltre 300 collaboratori opera con l'obiettivo di rendere la tecnologia alla portata di tutti. Ogni soluzione ICT 
+                    viene pensata e progettata partendo dalle persone e, attraverso uno studio di fattibilità, viene definita la 
+                    tecnologia più adeguata alla specifica esigenza, in termini di performance, affidabilità e sicurezza.
+                </div>
+
+                <div class="job-description">
+                    Ha ingegnerizzato una suite di servizi gestiti - LION® - erogati h24 7*7 per garantire un monitoraggio real-time e una 
+                    gestione continua in massima sicurezza dell'intera infrastruttura ICT delle aziende.
+                    <br><br>
+                    <a href="http://www.lantechlongwave.it" class="website-link">www.lantechlongwave.it</a>
+                </div>
+
+                <div class="job-position">
+                    <h2 class="section-title">Posizione</h2>
+                    <div class="job-description">
+                        Il/La candidato/a, che risponderà alla Direzione aziendale sarà inserito/a nell'organizzazione per gestire e monitorare i 
+                        budget aziendali occupandosi del monitoraggio e analisi delle performance...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="scroll-wrapper">
+                <h2 class="ranking-title">Classifica</h2>
+                <div class="ranking-list">
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">1°</span>
+                            <span class="medal-icon">🏆</span>
+                            <span class="candidate-name">Anterio Lavanda</span>
+                        </div>
+                        <span class="candidate-score">10/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">2°</span>
+                            <span class="medal-icon">🥈</span>
+                            <span class="candidate-name">Nevrei Ettern</span>
+                        </div>
+                        <span class="candidate-score">10/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">3°</span>
+                            <span class="medal-icon">🥉</span>
+                            <span class="candidate-name">Helmut Neik</span>
+                        </div>
+                        <span class="candidate-score">9/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">4°</span>
+                            <span class="candidate-name">Eulero Ottomano</span>
+                        </div>
+                        <span class="candidate-score">8/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">5°</span>
+                            <span class="candidate-name">Fabrizio Verna</span>
+                        </div>
+                        <span class="candidate-score">7/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">6°</span>
+                            <span class="candidate-name">Sofia Galliani</span>
+                        </div>
+                        <span class="candidate-score">6/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">7°</span>
+                            <span class="candidate-name">Leonardo Brasi</span>
+                        </div>
+                        <span class="candidate-score">6/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">8°</span>
+                            <span class="candidate-name">Giulia Marani</span>
+                        </div>
+                        <span class="candidate-score">5/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">9°</span>
+                            <span class="candidate-name">Tommaso Ricci</span>
+                        </div>
+                        <span class="candidate-score">5/10</span>
+                    </div>
+        
+                    <div class="ranking-item">
+                        <div class="candidate-info">
+                            <span class="rank-number">10°</span>
+                            <span class="candidate-name">Martina Gallo</span>
+                        </div>
+                        <span class="candidate-score">4/10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

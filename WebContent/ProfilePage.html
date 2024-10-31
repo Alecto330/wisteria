@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilo e personalizzazione</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            flex-direction: column;
+        }
+
+
+
+        .main-container {
+            width: 65%;
+            margin: 0.5rem auto;
+            padding: 1.5rem 2rem;
+            background-color: #e0c0ff;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            height: calc(94vh - 1rem);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-profile {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image {
+            width: 5vw;
+            height: 5vw;
+            background-color: #ccc;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            background-color: #bbb;
+        }
+
+        .profile-icon {
+            width: 2vw;
+            height: 2vw;
+            background-color: #6e41e2;
+            border-radius: 8px;
+        }
+
+        .camera-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #6e41e2;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .user-icon {
+            font-size: 1.2rem;
+            color: #6e41e2;
+        }
+
+        .form-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: #333;
+            margin-bottom: 0.3rem;
+            font-size: 0.8rem;
+            text-decoration: underline;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #6e41e2;
+            box-shadow: 0 0 0 2px rgba(110, 65, 226, 0.1);
+        }
+
+        .form-input:hover {
+            border-color: #6e41e2;
+        }
+
+        .edit-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6e41e2;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            width: 16px;
+            height: 16px;
+        }
+
+        .form-input-wrapper {
+            position: relative;
+        }
+
+        .edit-icon:hover {
+            opacity: 1;
+        }
+
+        .bottom-section {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .cv-upload {
+            background-color: #f5f5f5;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cv-upload:hover {
+            background-color: #eee;
+        }
+
+        .cv-icon {
+            font-size: 1.5rem;
+            color: #6e41e2;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-section {
+            background-color: rgba(110, 65, 226, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-title {
+            font-size: 1rem;
+            color: #6e41e2;
+        }
+
+        select.form-input {
+            appearance: none;
+            padding-right: 2rem; background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.2em;
+        }
+
+        .textarea-input {
+            resize: none;
+            min-height: 80px;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 1rem;
+            bottom: 1rem;
+            background: none;
+            border: none;
+            color: #6e41e2;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .add-experience-btn {
+            background-color: #6e41e2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .edit-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .experience-list {
+            margin-top: 1rem;
+        }
+
+        .experience-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .experience-item h4 {
+            font-size: 1rem;
+            color: #6e41e2;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .experience-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .experience-section::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 10px;
+        }
+
+        .experience-section::-webkit-scrollbar-thumb {
+            background: #6e41e2; 
+            border-radius: 10px;
+        }
+
+        .experience-section::-webkit-scrollbar-thumb:hover {
+            background: #4c2bb0; 
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="main-container">
+        <div class="user-profile">
+            <div class="profile-image">
+                <div class="profile-icon"></div>
+                <div class="camera-icon">+</div>
+            </div>
+        </div>
+
+        <h2 class="form-title">Informazioni di contatto:</h2>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Nome:</label>
+                <div class="form-input-wrapper">
+                    <input type="text" class="form-input" value="Alessandro">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Username:</label>
+                <div class="form-input-wrapper">
+                    <input type="text" class="form-input" value="CA_AlessandroRossi">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Cognome:</label>
+                <div class="form-input-wrapper">
+                    <input type="text" class="form-input" value="Rossi">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Data di nascita:</label>
+                <div class="form-input-wrapper">
+                    <input type="text" class="form-input" value="14/05/2001">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email:</label>
+                <div class="form-input-wrapper">
+                    <input type="email" class="form-input" value="alessandrorossi@gmail.com">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Codice Fiscale:</label>
+                <div class="form-input-wrapper">
+                    <input type="text" class="form-input" value="ROSALE80A01H501Z">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Telefono:</label>
+                <div class="form-input-wrapper">
+                    <input type="tel" class="form-input" value="+39 345 1234123">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Titolo:</label>
+                <div class="form-input-wrapper">
+                    <input type="text" class="form-input" value="Diploma perito informatico">
+                    <span class="edit-icon" title="Modifica">
+                        <!-- SVG icona matita -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 20h9" />
+                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="cv-upload">
+                <div class="cv-icon">📁</div>
+                <div>Carica il tuo CV</div>
+            </div>
+
+            <div class="experience-section">
+                <div class="experience-header">
+                    <h3 class="experience-title">Aggiungi esperienza</h3>
+                </div>
+                
+                <div class="form-group">
+                    <select class="form-input">
+                        <option value="" disabled selected>Titolo</option>
+                        <option>Sviluppatore Frontend</option>
+                        <option>Sviluppatore Backend</option>
+                        <option>Full Stack Developer</option>
+                        <option>UI Designer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-input textarea-input" placeholder="Descrizione..."></textarea>
+                </div>
+
+                <button class="add-experience-btn">+</button>
+
+                <!-- Lista delle esperienze predefinite -->
+                <div class="experience-list">
+                    <div class="experience-item">
+                        <h4>Sviluppatore Frontend per ...</h4>
+                        <p>Responsabile della progettazione e implementazione di interfacce</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Sviluppatore Backend presso...</h4>
+                        <p>Sviluppo e manutenzione di API RESTful.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h4>Full Stack Developer presso Zucchetti</h4>
+                        <p>Gestione completa del ciclo di vita del software, dallo sviluppo frontend al backend.</p>
+                    </div>
+                </div>
+                <!-- Fine della lista delle esperienze -->
+            </div>
+        </div>
+
+        <button class="back-button">←</button>
+    </div>
+
+    <script>
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.edit-icon').style.opacity = '1';
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.edit-icon').style.opacity = '0.7';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggiungi Nuova Domanda</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            height: 100%;
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            flex-direction: column;
+        }
+
+
+        .logo-container {
+            padding: 0.5rem;
+            background-color: #666;
+        }
+
+        .logo {
+            background-color: #e0c0ff;
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .main-container {
+            max-width: 65%;
+            max-height: 80%;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background-color: #e0c0ff;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 90%;
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .question-label {
+            display: inline-block;
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #6e41e2;
+            padding-bottom: 2px;
+        }
+
+        .question-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            font-size: 1rem;
+            background: white;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .question-input:focus {
+            outline: none;
+            border-color: #6e41e2;
+            box-shadow: 0 0 0 3px rgba(110, 65, 226, 0.1);
+        }
+
+        .question-input::placeholder {
+            color: #aaa;
+        }
+
+        .answers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .answer-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .radio-container {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .radio-input {
+            display: none;
+        }
+
+        .radio-mark {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #6e41e2;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .radio-input:checked + .radio-mark:after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #6e41e2;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .answer-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: #6e41e2;
+            box-shadow: 0 0 0 3px rgba(110, 65, 226, 0.1);
+        }
+
+        .create-btn {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto;
+            padding: 1rem;
+            background-color: #6e41e2;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .create-btn:hover {
+            background-color: #5a35c8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(110, 65, 226, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="form-title">Aggiungi Domanda</h1>
+
+        <label class="question-label">Testo della domanda :</label>
+        <input type="text" class="question-input" placeholder="Inserisci la domanda">
+
+        <div class="answers-container">
+            <div class="answer-group">
+                <label class="radio-container">
+                    <input type="radio" name="answer" class="radio-input" checked>
+                    <span class="radio-mark"></span>
+                </label>
+                <input type="text" class="answer-input" placeholder="Inserisci la risposta">
+            </div>
+
+            <div class="answer-group">
+                <label class="radio-container">
+                    <input type="radio" name="answer" class="radio-input">
+                    <span class="radio-mark"></span>
+                </label>
+                <input type="text" class="answer-input" placeholder="Inserisci la risposta">
+            </div>
+
+            <div class="answer-group">
+                <label class="radio-container">
+                    <input type="radio" name="answer" class="radio-input">
+                    <span class="radio-mark"></span>
+                </label>
+                <input type="text" class="answer-input" placeholder="Inserisci la risposta">
+            </div>
+
+            <div class="answer-group">
+                <label class="radio-container">
+                    <input type="radio" name="answer" class="radio-input">
+                    <span class="radio-mark"></span>
+                </label>
+                <input type="text" class="answer-input" placeholder="Inserisci la risposta">
+            </div>
+        </div>
+
+        <button class="create-btn">Crea</button>
+    </div>
+
+    <script>
+        document.querySelectorAll('.answer-input').forEach(input => {
+            input.addEventListener('focus', () => {
+                const radioInput = input.previousElementSibling.querySelector('input[type="radio"]');
+                radioInput.checked = true;
+            });
+        });
+    </script>
+</body>
+</html>
