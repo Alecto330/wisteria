@@ -5,7 +5,7 @@ body {
     overflow-x: hidden;
     position: relative;
     margin: 0;
-    background-image: url("assets/bg.png");
+    background-image: url("../assets/bg.png");
     background-size: cover; /* Adatta l'immagine per coprire tutto lo schermo */
     background-position: center; /* Centra l'immagine */
     background-repeat: no-repeat; /* Evita di ripetere l'immagine */
@@ -171,7 +171,10 @@ input[type="search"] {
     overflow-y: scroll;
     padding-right: 1vw;
     box-sizing: content-box;
-    
+    border-color: #8328FF;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
 }
 .custom-scrollbar {
     position: absolute;
@@ -217,7 +220,7 @@ input[type="search"] {
     font-size: 30px;
     padding: 15px;
     background: none;
-    color: #535353;;
+    color: #8328FF;
     Z-INDEX: 101;
 }
  
@@ -281,7 +284,7 @@ input[type="search"] {
 /*####################################   PARAGRAFO INTRODUZIONE */
 @font-face {
     font-family: "HelveticaWorld-Regular";
-    src: url("fonts/HelveticaWorld-Regular.ttf");
+    src: url("../assets/fonts/HelveticaWorld-Regular.ttf");
 }
 @keyframes glowing {
     0% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff; }
@@ -343,14 +346,81 @@ input[type="search"] {
 
 
 /* stile footer ##################################*/
-.footer{
-    background-color: #333; 
-    color: #fff; 
-    padding: 20px 0;
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0; /* Aumentato il padding per più spazio */
 }
-.logo-footer{
-    width: 150px; 
+
+.div-footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: flex-start;
+    text-align: center;
+}
+
+.div-logo-footer, .col-footer {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Aumenta il margine superiore per distanziare le sezioni */
+}
+
+.col-footer h3 {
+    color: #c446ff;
+    text-shadow: 0 0 5px rgba(131, 40, 255, 0.8), 0 0 10px rgba(131, 40, 255, 0.6);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.logo-footer {
+    width: 70px;
     margin-bottom: 10px;
     background-color: #e6e6e6;
     border-radius: 50%;
 }
+
+.desc {
+    font-size: 12px;
+    text-align: center;
+}
+
+.cont-utili {
+    list-style-type: none;
+    padding: 0;
+    font-size: 12px;
+}
+.col-footer{
+    font-size: 12px;
+}
+.cont-utili li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 10px;
+}
+
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.div-footer > .col-footer:last-child {
+    align-self: flex-start; /* Allinea la sezione "Seguici" alla stessa altezza degli altri paragrafi */
+}
+
+
