@@ -16,7 +16,7 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT id, titolo, descrizione, settore FROM posizione";
+			String query = "SELECT id, titolo, descrizione, settore, FK_Localita FROM posizione";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
@@ -25,8 +25,9 @@ public class PosizioneDAO {
 				String titolo=resultSet.getString("titolo");
 				String descrizione=resultSet.getString("descrizione").substring(0, 200).concat("...");
 				String settore=resultSet.getString("settore");
+				String localita=resultSet.getString("FK_Localita");
 				
-				Posizione posizione=new Posizione(id, titolo, descrizione, settore);
+				Posizione posizione=new Posizione(id, titolo, descrizione, settore, localita);
 				posizioni.put(id, posizione);
 		 
 			}

@@ -1,14 +1,14 @@
 body {
-    background-color: #b0b0b0;
+    /*background-color: #b0b0b0;*/
     font-family: 'Poppins', sans-serif;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
     margin: 0;
-    background-image: url("../assets/bg.png");
-    background-size: cover; /* Adatta l'immagine per coprire tutto lo schermo */
-    background-position: center; /* Centra l'immagine */
-    background-repeat: no-repeat; /* Evita di ripetere l'immagine */
+    /*background-image: url("../assets/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;*/
 }
 .btn-primary{
     color:#000000;
@@ -171,7 +171,7 @@ input[type="search"] {
     overflow-y: scroll;
     padding-right: 1vw;
     box-sizing: content-box;
-    border-color: #8328FF;
+    border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: none;

@@ -6,15 +6,16 @@ public class Posizione {
 	private String titolo;
 	private String descrizione;
 	private String settore;
-
-	public Posizione(int id, String titolo, String descrizione, String settore) {
+	private String localita;
+	
+	public Posizione(int id, String titolo, String descrizione, String settore, String localita) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
 		this.settore = settore;
+		this.localita = localita;
 	}
-
 	public int getId() {
 		return id;
 	}
@@ -39,7 +40,12 @@ public class Posizione {
 	public void setSettore(String settore) {
 		this.settore = settore;
 	}
-
+	public String getLocalita() {
+		return localita;
+	}
+	public void setLocalita(String localita) {
+		this.localita = localita;
+	}
 
 
 }

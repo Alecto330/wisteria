@@ -31,3 +31,7 @@
 .show>.btn-primary.dropdown-toggle:focus{
     box-shadow:0 0 0 .2rem #720effa5
 }
+
+.home-main{
+	margin-top:150px
+}
