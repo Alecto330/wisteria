@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,10 +38,10 @@ public class home extends HttpServlet {
 		
 		ArrayList<Posizione> jobOffers = new ArrayList<>();
 		
-		Posizione posizione1=new Posizione(0, "ciao", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione2=new Posizione(0, "ciao", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione3=new Posizione(0, "ciao", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione4=new Posizione(0, "ciao", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
+		Posizione posizione1=new Posizione(0, "ciao1", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
+		Posizione posizione2=new Posizione(0, "ciao2", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
+		Posizione posizione3=new Posizione(0, "ciao3", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
+		Posizione posizione4=new Posizione(0, "ciao4", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
 		
 		jobOffers.add(posizione1);
 		jobOffers.add(posizione2);

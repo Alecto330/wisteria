@@ -1,4 +1,5 @@
 <!-- header.jsp -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <head>
@@ -48,8 +49,25 @@
 
 			</a> <a class="btn btn-primary" href="${pageContext.request.contextPath}/login"> Accedi </a>
 
+
+	 <!--
+	  <c:choose>
+        <c:when test="${not empty user}">
+
+            <div class="user-info">
+
+                <p>Hello, ${user.username}!</p>
+            </div>
+        </c:when>
+        <c:otherwise>
+         
+            <p>Hello, Guest! <a href="login.jsp">Log in</a> to see more features.</p>
+        </c:otherwise>
+    </c:choose>-->
+
 		</nav>
 	</section>
+
 </header>
 
 

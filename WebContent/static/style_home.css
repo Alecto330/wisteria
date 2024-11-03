@@ -33,5 +33,12 @@
 }
 
 .home-main{
-	margin-top:150px
+	margin-top:150px;
+}
+
+body {
+    background-image: url("../assets/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
