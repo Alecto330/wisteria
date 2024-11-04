@@ -60,6 +60,55 @@
 	</div>
 
     </div>
+    
+    
+    
+    <!--<body>
+
+    <div class="offerta-container">
+
+       
+        <div class="offer-card container-custom mt-5">
+            <h1>${job.titolo}</h1> 
+            <div class="row mb-3">
+                <div class="col-sm-8">
+                    <p><strong><i class="fas fa-industry"></i> ${job.azienda}</strong></p> 
+                    <p><i class="fas fa-map-marker-alt"></i> ${job.localita} - ${job.pais}</p>
+                    <p><i class="fas fa-briefcase"></i> ${job.settore}</p>
+                </div>
+                <div class="col-sm-4 text-end">
+                    <button class="btn btn-apply">Candidati per questo annuncio</button>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="details-section">
+                <h5>Descrizione azienda</h5>
+                <p>${job.descrizioneAzienda}</p> 
+
+                <h5>Posizione</h5>
+                <p>${job.posizione}</p>
+                <h5>La risorsa si occuperà delle seguenti attività:</h5>
+                <ul>
+                    <li>${job.attivita1}</li>
+                    <li>${job.attivita2}</li>
+                    <li>${job.attivita3}</li>
+                    <li>${job.attivita4}</li>
+                    <li>${job.attivita5}</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="btn-container">
+            <button class="btn btn-back" onclick="history.back()">← Torna Indietro</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>-->
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
