@@ -1,4 +1,6 @@
 <!-- header.jsp -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8"%>
 
@@ -41,13 +43,23 @@
                     }
                 });
             </script>
-			<a href="${pageContext.request.contextPath}/home">
-				<div class="logo-container">
-					<img src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png" alt="Logo Wisteria"
-						class="logo-img">
-				</div>
+			<a href="${pageContext.request.contextPath}/home" class="logo-container">
+    <span>
+        <img src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png" alt="Logo Wisteria" class="logo-img">
+    </span>
+</a>
+<!--<a class="btn btn-primary" href="${pageContext.request.contextPath}/login"> Accedi </a>-->
 
-			</a> <a class="btn btn-primary" href="${pageContext.request.contextPath}/login"> Accedi </a>
+<c:choose>
+    <c:when test="${pageContext.request.servletPath == '/templates/login.jsp'}">
+        <span class="transparent-button">Accedi</span>
+    </c:when>
+    <c:otherwise>
+        <a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
+    </c:otherwise>
+</c:choose>
+
+
 
 
 	 <!--
