@@ -30,3 +30,38 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.transparent-button {
+    background-color: transparent; /* No background */
+    color: #e6e6e6;
+    text-decoration: none;
+    user-select: none; /* Prevent text selection */
+    pointer-events: none; 
+
+}
+
+
+.menu ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+.menu ul li {
+    display: inline; /* Displays items in a row */
+    margin-right: 20px; /* Adds space between menu items */
+}
+
+.menu ul li a {
+    text-decoration: none; /* Removes underline from links */
+    color: #fff; /* Text color */
+}
+
+.menu ul li a i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.menu ul li a:hover {
+    color: #D6B5FF; /* Change color on hover */
+}
+
+

@@ -222,6 +222,7 @@ input[type="search"] {
     background: none;
     color: #8328FF;
     Z-INDEX: 101;
+    user-select: none; /* Prevent text selection */
 }
  
 .menu {
