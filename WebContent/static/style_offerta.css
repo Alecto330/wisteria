@@ -5,6 +5,7 @@ html, body {
     display: flex;
     align-items: center; /* Centra verticalmente */
     justify-content: center; /* Centra orizzontalmente */
+    background-image: url("../assets/bg-blurrato.png");
 }
 
 
@@ -35,7 +36,7 @@ html, body {
     width: 100%; /* Imposta una larghezza massima per la card */
     height: 100%;
     padding: 2vw;
-    background-color: #D6B5FF;
+    background-color: #d8aef7;
     border-radius: 20px;
     color: #4a235a;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Aggiungi ombreggiatura per dare un po' di profondità */
@@ -48,16 +49,17 @@ html, body {
 }
 
 .offer-card .btn-apply {
-    background-color: #db4bff;
+    background-color: #a560e5;
     border: 1px solid #c300ff;
-    color: #4a235a;
+    color: white;
     border-radius: 15px;
     padding: 10px 20px;
     border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .offer-card .btn-apply:hover {
-    background-color: #A970C4;
+    background-color: #6b38d1;
     color: #fff;
 }
 
@@ -70,3 +72,24 @@ html, body {
     float: right;
 }
 
+
+/* Stile personalizzato per il pulsante Indietro */
+.btn-back {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: background-color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.btn-back:hover {
+    color: rgb(123, 31, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vw; /* Spazio per farlo apparire sotto la navbar */
+}

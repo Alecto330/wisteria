@@ -113,7 +113,7 @@ body {
 }
 
 .btn-back:hover {
-    color: #b700ff;
+    color: rgb(123, 31, 255);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
 }
 
