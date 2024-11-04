@@ -1,4 +1,4 @@
-html, body {
+ body {
     height: 100%; /* Occupa tutta l'altezza disponibile */
     width: 100%;
     /*display: flex;*/
@@ -97,5 +97,14 @@ html, body {
     display: flex;
     justify-content: center;
     /*margin-top: 2vw;*/
+    margin-bottom: 50px;
     
+}
+
+
+.offerta-container{
+    margin-top: 150px;
+   	max-width: 60%;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
 }

@@ -19,7 +19,7 @@
 <body>
 	<%@ include file="header.jsp"%>
 
-   <div class="container">
+   <div class="offerta-container">
         <!-- Pulsante Indietro stilizzato e centrato -->
        
         <div class="offer-card container-custom mt-5">
@@ -55,10 +55,9 @@
             </div>
         </div>
         <div class="btn-container">
-            <a href="home.html?c=1">
-                <button class="btn btn-back">← Torna Indietro</button>
-            </a>
-        </div>
+		<button class="btn btn-back" onclick="history.back()">← Torna
+			Indietro</button>
+	</div>
 
     </div>
 
