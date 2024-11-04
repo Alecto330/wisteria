@@ -42,3 +42,15 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+
+#regioni {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='gray' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 30px center;
+    background-size: 10px;
+    padding-right: 30px; /* Distanza per evitare che il testo copra la freccia */
+}
