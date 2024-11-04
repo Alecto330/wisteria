@@ -40,16 +40,16 @@ public class login extends HttpServlet {
 		String password = request.getParameter("password");
 		System.out.println(password);
 		
-		/*UserDAO dao=new UserDAO();
-		User user=dao.login(email, password);*/
+		UserDAO dao=new UserDAO();
+		User user=dao.login(email, password);
 		
-		Candidate user=new Candidate(email, email, email, email);
+		//Candidate user=new Candidate(email, email, email, email);
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("user", user);
 		session.setMaxInactiveInterval(30 * 60); // Set session timeout (optional)
 		
-		response.sendRedirect("templates/home.jsp");
+		response.sendRedirect("home");
 	}
 }
  
