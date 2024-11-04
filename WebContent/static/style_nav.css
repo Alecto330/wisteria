@@ -3,7 +3,7 @@
     height: 9.5vh; /* Altezza fissa per la navbar */
     width: 100%;
     vertical-align: middle;
-    border-bottom: solid 3px #8328FF;
+    border-bottom: solid 2px #8328FF;
 }
 .custom-navbar .navbar-brand,
 .custom-navbar .btn {
@@ -15,6 +15,7 @@
     border: none;
     border-radius: 2vw;
     color:black;
+    box-shadow: 0 0 5px rgba(131, 40, 255, 0.8), 0 0 10px rgba(131, 40, 255, 0.6);
 }
 .btn-primary:hover{
     color:#fff;
