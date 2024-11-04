@@ -14,7 +14,7 @@ public class UserDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT password FROM Utente WHERE email = ?";
+			String query = "SELECT pw FROM Utente WHERE email = ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, email);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -29,7 +29,7 @@ public class UserDAO {
 				if (resultSet.next()) {
 
 					String username = resultSet.getString("username");
-					String role = resultSet.getString("role");
+					String role = resultSet.getString("ruolo");
 
 					Class <? > userClass = Class.forName(role);
 					user= (User)userClass.getDeclaredConstructor(String. class, String. class, String.class, String.class)
