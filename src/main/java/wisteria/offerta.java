@@ -1,18 +1,14 @@
 package wisteria;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.gson.Gson;
-
 import posizione.Posizione;
-
+import posizione.PosizioneDAO;
 
 @WebServlet("/offerta")
 public class offerta extends HttpServlet{
@@ -20,25 +16,30 @@ public class offerta extends HttpServlet{
 	public offerta() {
 	}
 	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Read JSON data from the request body.
-        BufferedReader reader = request.getReader();
-        StringBuilder jsonBuilder = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            jsonBuilder.append(line);
-        }
-        String jobJson = jsonBuilder.toString();
 
-        // Convert JSON to a Job object (using a library like Gson or Jackson).
-        Gson gson = new Gson();
-        Posizione job = gson.fromJson(jobJson, Posizione.class);
-
-        // Store the job object in the session.
-        request.getSession().setAttribute("selectedJob", job);
-
-        response.setStatus(HttpServletResponse.SC_OK);
-    }
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String id=request.getParameter("id");
+		
+		System.out.println(id);
+		
+		/*if(id != null) {
+			
+			PosizioneDAO dao=new PosizioneDAO();
+			Posizione posizione=dao.getPosizione(id);
+			
+			request.setAttribute("posizione", posizione);
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
+		    dispatcher.forward(request, response); 
+		}*/
+		
+		Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		
+		request.setAttribute("posizione", posizione1);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
+	    dispatcher.forward(request, response); 
+	}
 
 }

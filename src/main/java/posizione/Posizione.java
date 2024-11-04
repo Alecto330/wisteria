@@ -6,16 +6,19 @@ public class Posizione {
 	private String titolo;
 	private String descrizione;
 	private String settore;
-	private String localita;
+	private String provincia;
+	private String regione;
 	
-	public Posizione(int id, String titolo, String descrizione, String settore, String localita) {
+	public Posizione(int id, String titolo, String descrizione, String settore, String provincia, String regione) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
 		this.descrizione = descrizione;
 		this.settore = settore;
-		this.localita = localita;
+		this.provincia = provincia;
+		this.regione = regione;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -40,12 +43,16 @@ public class Posizione {
 	public void setSettore(String settore) {
 		this.settore = settore;
 	}
-	public String getLocalita() {
-		return localita;
+	public String getProvincia() {
+		return provincia;
 	}
-	public void setLocalita(String localita) {
-		this.localita = localita;
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
-
-
+	public String getRegione() {
+		return regione;
+	}
+	public void setRegione(String regione) {
+		this.regione = regione;
+	}
 }

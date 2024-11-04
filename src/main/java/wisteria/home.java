@@ -24,22 +24,16 @@ public class home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		PosizioneDAO dao=new PosizioneDAO();
-		HashMap<Integer, Posizione> posizioni=dao.getAllPosizioni();
-		ArrayList<Posizione> jobOffers= new ArrayList<>(posizioni.values());
+		/*PosizioneDAO dao=new PosizioneDAO();
+		ArrayList<Posizione> jobOffers=dao.getAllPosizioni();*/
+
 		
-		/*for(Entry<Integer, Posizione> posizione: posizioni.entrySet()) {
-			
-			System.out.println(posizione.getValue().getTitolo());
-			
-		}*/
+		ArrayList<Posizione> jobOffers = new ArrayList<>();
 		
-		/*ArrayList<Posizione> jobOffers = new ArrayList<>();
-		
-		Posizione posizione1=new Posizione(0, "ciao1", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione2=new Posizione(0, "ciao2", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione3=new Posizione(0, "ciao3", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione4=new Posizione(0, "ciao4", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
+		Posizione posizione1=new Posizione(0, "ciao1", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		Posizione posizione2=new Posizione(1, "ciao2", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		Posizione posizione3=new Posizione(2, "ciao3", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		Posizione posizione4=new Posizione(3, "ciao4", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
 		
 		jobOffers.add(posizione1);
 		jobOffers.add(posizione2);
@@ -52,7 +46,7 @@ public class home extends HttpServlet {
 		jobOffers.add(posizione1);
 		jobOffers.add(posizione2);
 		jobOffers.add(posizione3);
-		jobOffers.add(posizione4);*/
+		jobOffers.add(posizione4);
 		
 	    request.setAttribute("jobOffers", jobOffers);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/home.jsp");
