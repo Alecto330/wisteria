@@ -15,10 +15,7 @@ import posizione.Posizione;
 import posizione.PosizioneDAO;
 
 @WebServlet("/home")
-public class home extends HttpServlet {
-	
-	private static final long serialVersionUID = 2L;
- 
+public class home extends HttpServlet { 
  
 	public home() {
 	}

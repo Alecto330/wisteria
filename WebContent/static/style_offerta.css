@@ -1,11 +1,16 @@
 html, body {
     height: 100%; /* Occupa tutta l'altezza disponibile */
     width: 100%;
-    margin: 0; /* Rimuove eventuali margini del browser */
-    display: flex;
+    /*display: flex;*/
+    /*margin: 0; */
     align-items: center; /* Centra verticalmente */
     justify-content: center; /* Centra orizzontalmente */
+    /*ackground-image: url("../assets/bg-blurrato.png");*/
     background-image: url("../assets/bg-blurrato.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
 
@@ -91,5 +96,6 @@ html, body {
 .btn-container {
     display: flex;
     justify-content: center;
-    margin-top: 2vw; /* Spazio per farlo apparire sotto la navbar */
+    /*margin-top: 2vw;*/
+    
 }
