@@ -7,6 +7,9 @@
 <head>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_nav.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Font Awesome CDN -->
 </head>
 
 <header>
@@ -31,17 +34,19 @@
 				</c:otherwise>
 			</c:choose> -->
 
-			<div class="hamburger" id="hamburger">
-				&#9776;
-			</div>
+			<div class="hamburger" id="hamburger">&#9776;</div>
 
 
 			<nav class="menu" id="menu">
 				<ul>
-					<li><a href="${pageContext.request.contextPath}/home">Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/about">About</a></li>
-					<li><a href="${pageContext.request.contextPath}/services">Services</a></li>
-					<li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+					<li><a href="${pageContext.request.contextPath}/home"><i
+							class="fas fa-home"></i> Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/about"><i
+							class="fa-solid fa-question"></i> About</a></li>
+					<li><a href="${pageContext.request.contextPath}/services"><i
+							class="fas fa-cogs"></i> Services</a></li>
+					<li><a href="${pageContext.request.contextPath}/contact"><i
+							class="fas fa-envelope"></i> Contact</a></li>
 				</ul>
 			</nav>
 			<script>
