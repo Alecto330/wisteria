@@ -26,6 +26,8 @@ public class home extends HttpServlet {
 
 		PosizioneDAO dao=new PosizioneDAO();
 		ArrayList<Posizione> jobOffers=dao.getAllPosizioni();
+		ArrayList<String> professionList=dao.getAllProfessioni();
+		ArrayList<String> regionList=dao.getAllRegioni();
 
 		
 		/*ArrayList<Posizione> jobOffers = new ArrayList<>();
@@ -49,6 +51,8 @@ public class home extends HttpServlet {
 		jobOffers.add(posizione4);*/
 		
 	    request.setAttribute("jobOffers", jobOffers);
+	    request.setAttribute("professionList", professionList);
+	    request.setAttribute("regionList", regionList);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/home.jsp");
 	    dispatcher.forward(request, response); 
 	}

@@ -1,13 +1,9 @@
-/*###################  Generale Nav Settings ####################### */
-
-
-
 .custom-navbar {
     background-color: #e6e6e6 !important;
     height: 9.5vh; /* Altezza fissa per la navbar */
     width: 100%;
     vertical-align: middle;
-    border-bottom: solid 3px #8328FF;
+    border-bottom: solid 2px #8328FF;
 }
 .custom-navbar .navbar-brand,
 .custom-navbar .btn {
@@ -35,147 +31,37 @@
     padding-right: 20px;
 }
 
-.navbar {
-    background-color: #9a9a9a;
-    position: fixed;
-    
-}
-
-.navbar-brand{
-    display: flex;
-    justify-content: center; /* Centra orizzontalmente il contenuto */
-    align-items: center; /* Centra verticalmente il contenuto */
-    width: auto; /* Rimuovi il 100% per evitare che prenda tutto lo spazio */
-    position: absolute;
-    z-index: 9999;
-}
-.logo-container{
-    height: 6.5vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.logo-img{
-    height: 25vh;
-    width: auto;
-    margin: 0; /* Elimina margini extra */
-    padding: 0;
-}
-.navbar-items{
-    margin-left: auto;
-    margin-right: 18px;
-}
-
-
-
-
-/*################### HAMBURGER MENU ####################### */
-
-
- 
-.hamburger {
-    cursor: pointer;
-    font-size: 30px;
-    padding: 15px;
-    background: none;
-    color: #8328FF;
-    Z-INDEX: 101;
-}
- 
-.menu {
-    background-color: #686868;
-    color: white;
-    position: absolute;
-    top: 9.5vh; /* Adjust based on your layout */
-    left: -30vh;
-    width: 30vh;
-    height: 100vh;
-    transition: left 0.3s ease, opacity 0.3s ease;
-    opacity: 0;
-    pointer-events: none;
-}
- 
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
- 
-.menu li {
-    padding: 15px;
-    width: 20vh;
-    border-bottom: 1px solid rgb(184, 78, 255);
-    text-align: center;
-    color: white;
-}
- 
-.menu a {
-    color: white;
+.transparent-button {
+    background-color: transparent; /* No background */
+    color: #e6e6e6;
     text-decoration: none;
-    display: block;
-    text-align: center;
-}
-.menu.slide-in{
-    left: 0; /* Porta il menu visibile a sinistra */
-    opacity: 1; /* Rende il menu visibile */
-    pointer-events: auto; /* Permette l'interazione */
-    transition: left 0.3s ease, opacity 0.3s ease;
-}
-.menu.slide-out {
-    left: -30vh; /* Nasconde il menu fuori dalla schermata a sinistra */
-    opacity: 0; /* Rende il menu trasparente */
-    pointer-events: none; /* Evita l'interazione */
-}
-.menu.show {
-    display: block; /* Show menu when toggled */
+    user-select: none; /* Prevent text selection */
+    pointer-events: none; 
+
 }
 
 
-.logo {
-    left: 90px;
+.menu ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+.menu ul li {
+    display: inline; /* Displays items in a row */
+    margin-right: 20px; /* Adds space between menu items */
+}
+
+.menu ul li a {
+    text-decoration: none; /* Removes underline from links */
+    color: #fff; /* Text color */
+}
+
+.menu ul li a i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.menu ul li a:hover {
+    color: #D6B5FF; /* Change color on hover */
 }
 
 
-
-
-
-
-/*################### BTN Custom ####################### */
-
-
-.btn-primary{
-    color:#000000;
-    background-color:#D6B5FF;
-    border-color:#8228ffa5;
-}
-.btn-primary:hover
-{
-    color:#fff;
-    background-color:#8228ffa5;
-    border-color:#8228ffa5
-}
-.btn-primary.focus,
-.btn-primary:focus{
-    color:#fff;
-    background-color:#720effa5;
-    border-color:#720effa5;
-}.btn-primary.disabled,
-.btn-primary:disabled{
-    color:#fff;
-    background-color:#720effa5;
-    border-color: #720effa5
-}
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle
-{color:#fff;background-color:#720effa5;
-    border-color:#720effa5
-}
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus{
-    box-shadow:0 0 0 .2rem #720effa5
-}
