@@ -59,7 +59,7 @@
 	</div>
 	<!-- Cointanier delle posizioni aperte -->
 	<div class="container">
-		<div class="row mt-4">
+		<!--<div class="row mt-4">
 			<div class="col-md-12">
 				<div class="custom-container">
 					<div class="d-flex justify-content-start search-container">
@@ -129,7 +129,34 @@
 				</div>
 
 			</div>
-		</div>
+		</div>-->
+		
+		<div class="row mt-4">
+            <div class="col-md-12">
+                <div class="custom-container">
+                    <div class="d-flex justify-content-start search-container">
+                        <div class="select-wrapper">
+                            <select class="form-control mr-2" id="regioni">
+                                <c:forEach var="region" items="${regionList}">
+                                    <option value="${region}">${region}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
+                        <div class="select-wrapper">
+                            <select class="form-control mr-2" id="professioni">
+                                <c:forEach var="profession" items="${professionList}">
+                                    <option value="${profession}">${profession}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+
+                        <input style="background-color: #e3e3e3;" class="form-control mr-2" type="search" placeholder="Cerca offerte di lavoro">
+                        <button class="btn btn-primary">Cerca</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 		<div class="row mt-4">
