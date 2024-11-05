@@ -1,0 +1,10 @@
+http://localhost:8081/wisteria/home
+http://localhost:8081/wisteria/login
+ 
+http://localhost:8081/wisteria/templates/classifica.jsp
+http://localhost:8081/wisteria/templates/creadomanda.jsp
+http://localhost:8081/wisteria/templates/creaposizione.jsp
+http://localhost:8081/wisteria/templates/offerta.jsp
+http://localhost:8081/wisteria/templates/profilepage.jsp
+http://localhost:8081/wisteria/templates/testcandidato.jsp
+http://localhost:8081/wisteria/templates/visualizzacandidato.jsp
