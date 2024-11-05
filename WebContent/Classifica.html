@@ -3,11 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone (senz doverle scaricare) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/style_classifica.css">
+    <link rel="stylesheet" href="static/style_nav.css">
     <title>Posizione e Classifica</title>
 </head>
 <body>
+    <section>   <!--############################ BARRA DI NAVIGAZIONE ####################################-->
 
+        <nav class="navbar custom-navbar justify-content-between fixed-top">
+
+            <div class="hamburger" id="hamburger">
+                &#9776; <!-- This is the hamburger icon -->
+            </div>
+
+            <nav class="menu" id="menu">
+                <ul>
+                    <li><a href="index.html?c=1">Home</a></li>
+                    <li><a href="index.html?c=2">About</a></li>
+                    <li><a href="index.html?c=2">Services</a></li>
+                    <li><a href="index.html?c=2">Contact</a></li>
+                </ul>
+            </nav>
+            <script>
+                const hamburger = document.getElementById("hamburger");
+                const menu = document.getElementById("menu");
+            
+                hamburger.addEventListener("click", () => {
+                    if (menu.classList.contains("slide-in")) {
+                        // Se il menu è aperto, aggiunge la classe per lo slide-out
+                        menu.classList.remove("slide-in");
+                        menu.classList.add("slide-out");
+                    } else {
+                        // Se il menu è chiuso, lo apre
+                        menu.classList.remove("slide-out");
+                        menu.classList.add("slide-in");
+                    }
+                });
+            </script>
+            <a href="index.html?c=1">
+                    <div class="logo-container">
+                        <img src="assets/WISTERIA - NO SFONDO.png" alt="Logo Wisteria" class="logo-img">
+                    </div>
+                
+            </a>
+            <a class="btn btn-primary" href="index.html?c=2">
+                Accedi
+            </a>
+
+        </nav>
+    </section>
     <div class="content-container">
         <div class="card">
             <div class="scroll-wrapper">
