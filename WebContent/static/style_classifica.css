@@ -1,14 +1,19 @@
-        body {
-            /*background-color: #b0b0b0;*/
-            font-family: 'Poppins', sans-serif;
-            overflow-y: auto;
-            overflow-x: hidden;
-            position: relative;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
             margin: 0;
-            /*background-image: url("../assets/bg.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;*/
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
         .content-container {
@@ -16,10 +21,9 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             max-width: 80%;
-            margin: 20vh auto 2rem auto; /* Aggiunto il margine in alto */
+            margin: 2rem auto;
             padding: 0 2rem;
             width: 100%;
-            
         }
 
         .card {
