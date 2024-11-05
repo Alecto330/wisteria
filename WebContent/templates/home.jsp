@@ -135,12 +135,12 @@
 		<div class="row mt-4">
 			<c:forEach var="job" items="${jobOffers}">
 				<div class="col-md-6">
-					<div class="card job-card" onclick="location.href='offerta.html';">
+					<div class="card job-card" onclick="location.href='offerta?id=${job.id}';">
 						<div class="card-body">
 							<h5 class="card-title">${job.titolo}</h5>
 							<p class="card-text">${job.descrizione}</p>
 							<p class="card-location">
-								<i class="fas fa-map-marker-alt"></i> ${job.localita}
+								<i class="fas fa-map-marker-alt"></i> ${job.provincia} - ${job.regione}
 							</p>
 							<p class="card-category">
 								<i class="fas fa-briefcase"></i> ${job.settore}
@@ -157,3 +157,5 @@
 	<!--############## FINE VISUALIZZA E CERCA POSIZIONI ################-->
 </body>
 </html>
+
+

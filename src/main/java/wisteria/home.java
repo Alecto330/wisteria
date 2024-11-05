@@ -15,10 +15,7 @@ import posizione.Posizione;
 import posizione.PosizioneDAO;
 
 @WebServlet("/home")
-public class home extends HttpServlet {
-	
-	private static final long serialVersionUID = 2L;
- 
+public class home extends HttpServlet { 
  
 	public home() {
 	}
@@ -28,21 +25,15 @@ public class home extends HttpServlet {
 			throws ServletException, IOException {
 
 		PosizioneDAO dao=new PosizioneDAO();
-		HashMap<Integer, Posizione> posizioni=dao.getAllPosizioni();
-		ArrayList<Posizione> jobOffers= new ArrayList<>(posizioni.values());
-		
-		/*for(Entry<Integer, Posizione> posizione: posizioni.entrySet()) {
-			
-			System.out.println(posizione.getValue().getTitolo());
-			
-		}*/
+		ArrayList<Posizione> jobOffers=dao.getAllPosizioni();
+
 		
 		/*ArrayList<Posizione> jobOffers = new ArrayList<>();
 		
-		Posizione posizione1=new Posizione(0, "ciao1", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione2=new Posizione(0, "ciao2", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione3=new Posizione(0, "ciao3", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
-		Posizione posizione4=new Posizione(0, "ciao4", "ciao!!!", "ciaooooooooooooooooooooooooo", "cia");
+		Posizione posizione1=new Posizione(0, "ciao1", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		Posizione posizione2=new Posizione(1, "ciao2", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		Posizione posizione3=new Posizione(2, "ciao3", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		Posizione posizione4=new Posizione(3, "ciao4", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
 		
 		jobOffers.add(posizione1);
 		jobOffers.add(posizione2);

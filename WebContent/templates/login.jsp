@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <!DOCTYPE html>
 
 <html>
@@ -22,7 +22,7 @@
 
 <body>
 
-<%@ include file="header.jsp"%>
+	<%@ include file="header.jsp"%>
 
 	<div class="login-container">
 		<h2>Bentornato!</h2>
@@ -39,11 +39,18 @@
 		<a href="#" class="register-link">Registrati</a>
 	</div>
 
-	<div class="btn-container">
+	<!--<div class="btn-container">
 		<a href="login.jsp">
 			<button class="btn btn-back">← Torna Indietro</button>
 		</a>
+	</div>-->
+
+
+	<div class="btn-container">
+		<button class="btn btn-back" onclick="history.back()">← Torna
+			Indietro</button>
 	</div>
+
 
 </body>
 
