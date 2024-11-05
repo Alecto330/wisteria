@@ -8,17 +8,25 @@
         }
 
         body {
-            background-color: #f0f0f0;
+            /*background-color: #f0f0f0;
             min-height: 100vh;
             height: 100%;
             display: flex;
             justify-content: center; 
             align-items: center;     
-            flex-direction: column;
+            flex-direction: column;*/
+            	height: 100%; /* Occupa tutta l'altezza disponibile */
+	width: 100%;
+	align-items: center; /* Centra verticalmente */
+	justify-content: center; /* Centra orizzontalmente */
+	background-image: url("../assets/bg-blurrato.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
         }
 
 
-        .logo-container {
+        /*.logo-container {
             padding: 0.5rem;
             background-color: #666;
         }
@@ -31,12 +39,13 @@
             display: inline-block;
             font-weight: 500;
             font-size: 0.9rem;
-        }
+        }*/
 
-        .main-container {
+        .main-container-creadomanda {
             max-width: 65%;
             max-height: 80%;
-            margin: 2rem auto;
+            /*margin: 2rem auto;*/
+            margin: 150px auto;
             padding: 2.5rem;
             background-color: #e0c0ff;
             border-radius: 25px;
