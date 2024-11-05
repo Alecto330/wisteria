@@ -13,35 +13,35 @@ body {
 .btn-primary{
     color:#000000;
     background-color:#D6B5FF;
-    border-color:#8228ffa5;
+    border-color:#8228ff;
 }
 .btn-primary:hover
 {
     color:#fff;
-    background-color:#8228ffa5;
-    border-color:#8228ffa5
+    background-color:#8228ff;
+    border-color:#8228ff
 }
 .btn-primary.focus,
 .btn-primary:focus{
     color:#fff;
-    background-color:#720effa5;
-    border-color:#720effa5;
+    background-color:#720eff;
+    border-color:#720eff;
 }.btn-primary.disabled,
 .btn-primary:disabled{
     color:#fff;
-    background-color:#720effa5;
-    border-color: #720effa5
+    background-color:#720eff;
+    border-color: #720eff
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-primary.dropdown-toggle
-{color:#fff;background-color:#720effa5;
-    border-color:#720effa5
+{color:#fff;background-color:#720eff;
+    border-color:#720eff
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .show>.btn-primary.dropdown-toggle:focus{
-    box-shadow:0 0 0 .2rem #720effa5
+    box-shadow:0 0 0 .2rem #720eff
 }
 
 
@@ -67,7 +67,7 @@ body {
 .job-card {
     margin-bottom: 1vw;
     background-color: #d8aef7;
-    border: solid 2px #8228ffa5;
+    border: solid 2px #8228ff;
     border-radius: 1vw;
     padding: 1vw 1.5vw;
     width: 100%;
@@ -375,7 +375,7 @@ input[type="search"] {
 
 .col-footer h3 {
     color: #c446ff;
-    text-shadow: 0 0 5px rgba(131, 40, 255, 0.8), 0 0 10px rgba(131, 40, 255, 0.6);
+    text-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
     margin-bottom: 10px;
     font-size: 18px;
 }

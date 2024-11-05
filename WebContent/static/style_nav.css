@@ -11,16 +11,16 @@
 }
 .btn-primary {
     background-color: #D6B5FF;
-    border: solid 2px #8228ffa5;
+    border: solid 2px #8228ff;
     border: none;
     border-radius: 2vw;
     color:black;
-    box-shadow: 0 0 5px rgba(131, 40, 255, 0.8), 0 0 10px rgba(131, 40, 255, 0.6);
+    box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
 }
 .btn-primary:hover{
     color:#fff;
-    background-color:#8228ffa5;
-    border-color:#8228ffa5
+    background-color:#8228ff;
+    border-color:#8228ff
 }
 #logo-btn, .btn-outline-secondary {
     background-color: #D6B5FF;
