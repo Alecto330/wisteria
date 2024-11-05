@@ -15,8 +15,8 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT id, titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione"
-					+ "join Localita on posizione.FK_Localita=Localita.provincia";
+				String query = "SELECT id, titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione"
+						+ " join Localita on posizione.FK_Localita=Localita.provincia";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
@@ -50,7 +50,7 @@ public Posizione getPosizione(String id) {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
 			String query = "SELECT titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione"
-					+ "join Localita on posizione.FK_Localita=Localita.provincia where id=?";
+					+ " join Localita on posizione.FK_Localita=Localita.provincia where id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(id));
 			ResultSet resultSet = preparedStatement.executeQuery();

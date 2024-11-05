@@ -24,11 +24,11 @@ public class home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		/*PosizioneDAO dao=new PosizioneDAO();
-		ArrayList<Posizione> jobOffers=dao.getAllPosizioni();*/
+		PosizioneDAO dao=new PosizioneDAO();
+		ArrayList<Posizione> jobOffers=dao.getAllPosizioni();
 
 		
-		ArrayList<Posizione> jobOffers = new ArrayList<>();
+		/*ArrayList<Posizione> jobOffers = new ArrayList<>();
 		
 		Posizione posizione1=new Posizione(0, "ciao1", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
 		Posizione posizione2=new Posizione(1, "ciao2", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
@@ -46,7 +46,7 @@ public class home extends HttpServlet {
 		jobOffers.add(posizione1);
 		jobOffers.add(posizione2);
 		jobOffers.add(posizione3);
-		jobOffers.add(posizione4);
+		jobOffers.add(posizione4);*/
 		
 	    request.setAttribute("jobOffers", jobOffers);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/home.jsp");

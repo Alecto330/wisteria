@@ -25,7 +25,7 @@ public class offerta extends HttpServlet{
 		
 		System.out.println(id);
 		
-		/*if(id != null) {
+		if(id != null) {
 			
 			PosizioneDAO dao=new PosizioneDAO();
 			Posizione posizione=dao.getPosizione(id);
@@ -33,13 +33,13 @@ public class offerta extends HttpServlet{
 			request.setAttribute("posizione", posizione);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
 		    dispatcher.forward(request, response); 
-		}*/
+		}
 		
-		Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
+		/*Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
 		
 		request.setAttribute("posizione", posizione1);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
-	    dispatcher.forward(request, response); 
+	    dispatcher.forward(request, response); */
 	}
 
 }
