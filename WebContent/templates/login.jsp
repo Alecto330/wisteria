@@ -50,7 +50,8 @@
 		<button class="btn btn-back" onclick="history.back()">← Torna
 			Indietro</button>
 	</div>
-	<%@ include file="footer.jsp"%>
+
+
 </body>
 
 
