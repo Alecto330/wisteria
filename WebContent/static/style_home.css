@@ -23,8 +23,9 @@
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle
-{color:#fff;background-color:#720eff;
+.show>.btn-primary.dropdown-toggle{
+    color:#fff;
+    background-color:#720eff;
     border-color:#720eff
 }
 .btn-primary:not(:disabled):not(.disabled).active:focus,
