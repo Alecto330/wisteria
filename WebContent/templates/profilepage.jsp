@@ -163,10 +163,10 @@
 		</div>
 
 		<div class="bottom-section">
-			<div class="cv-upload">
-				<div class="cv-icon">📁</div>
-				<div>Carica il tuo CV</div>
-			</div>
+<div class="cv-upload">
+    <div class="cv-icon"><i class="fas fa-folder"></i></div>
+    <div>Carica il tuo CV</div>
+</div>
 
 			<div class="experience-section">
 				<div class="experience-header">
@@ -214,7 +214,9 @@
 			</div>
 		</div>
 
-		<button class="back-button">←</button>
+		<a class="back-button">
+			<i class="fas fa-arrow-left"></i>
+		</a>
 	</div>
 
 	<script>
