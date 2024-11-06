@@ -3,8 +3,7 @@
     background-color:#D6B5FF;
     border-color:#8228ff;
 }
-.btn-primary:hover
-{
+.btn-primary:hover{
     color:#fff;
     background-color:#8228ff;
     border-color:#8228ff;
@@ -33,11 +32,9 @@
 .show>.btn-primary.dropdown-toggle:focus{
     box-shadow:0 0 0 .2rem #720eff
 }
-
 .home-main{
 	margin-top:150px;
 }
-
 body {
     background-image: url("../assets/bg.png");
     background-size: cover;
@@ -45,8 +42,6 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed; 
 }
-
-
 #regioni {
     appearance: none;
     -webkit-appearance: none;
