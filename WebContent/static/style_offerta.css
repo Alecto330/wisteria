@@ -1,4 +1,4 @@
- body {
+body {
     height: 100%; /* Occupa tutta l'altezza disponibile */
     width: 100%;
     /*display: flex;*/
@@ -9,8 +9,7 @@
     background-image: url("../assets/bg-blurrato.png");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat; 
 }
 .logo-button-wrapper {
     display: flex;
@@ -26,7 +25,7 @@
 .login-button {
     background-color: #D7A9E3;
     color: black;
-    border: 2px solid #4a235a;
+    border: 2px solid black;
     padding: 10px 30px;
     border-radius: 10px;
 }
@@ -45,22 +44,42 @@
 }
 .offer-card .btn-apply {
     background-color: #D6B5FF;
-    color: black;
-    border-radius: 2vh;
-    padding: 10px 20px;
+    border: solid 2px #8228ff;
     border: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 2vw;
+    color:black;
+    box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
 }
 .offer-card .btn-apply:hover {
-    background-color: #6b38d1;
-    color: #fff;
+    color:#fff;
+    background-color:#8228ff;
+    border-color:#8228ff
 }
+.offer-card .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offer-card h1 {
+    margin-bottom: 0; /* Rimuovi il margine per allineare meglio */
+}
+
 .details-section p {
     font-size: 1rem;
     line-height: 1.6;
 }
 .btn-apply {
     float: right;
+    margin-top: 9px;
+}
+.p-azienda{
+    margin-top: 13px;
+    margin-bottom: 0;
+}
+.p-posizione, .p-settore{
+    margin: 0%;
+    font-weight: bold;
 }
 /* Stile personalizzato per il pulsante Indietro */
 .btn-back {
@@ -69,6 +88,7 @@
     font-weight: bold;
     transition: background-color 0.3s ease, text-shadow 0.3s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 25px;
 }
 .btn-back:hover {
     color: rgb(123, 31, 255);
@@ -83,8 +103,11 @@
     
 }
 .offerta-container{
-    margin-top: 150px;
+    margin-top: 185px;
    	max-width: 60%;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
+}
+.footer{
+    margin-top: 200px;
 }
