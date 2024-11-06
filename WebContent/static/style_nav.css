@@ -33,7 +33,6 @@
 
 .transparent-button {
     background-color: transparent; /* No background */
-    color: #e6e6e6;
     text-decoration: none;
     user-select: none; /* Prevent text selection */
     pointer-events: none; 
