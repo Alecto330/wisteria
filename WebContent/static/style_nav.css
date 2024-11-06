@@ -31,14 +31,14 @@
     padding-right: 20px;
 }
 
-.transparent-button {
-    background-color: transparent; /* No background */
-    color: #e6e6e6;
-    text-decoration: none;
-    user-select: none; /* Prevent text selection */
-    pointer-events: none; 
+.hidden { 
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 
 }
+
+
 
 
 .menu ul {

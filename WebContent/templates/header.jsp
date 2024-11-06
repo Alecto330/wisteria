@@ -76,7 +76,7 @@
 			<c:choose>
 				<c:when
 					test="${pageContext.request.servletPath == '/templates/login.jsp'}">
-					<span class="transparent-button">Accedi</span>
+					<span class="hidden"><p>Accedi</p></span>
 				</c:when>
 				<c:otherwise>
 					<a class="btn btn-primary"
