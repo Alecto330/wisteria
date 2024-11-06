@@ -164,7 +164,7 @@
 
 		<div class="bottom-section">
 <div class="cv-upload">
-    <div class="cv-icon"><i class="fas fa-folder"></i></div>
+    <div class="cv-icon">📁</div>
     <div>Carica il tuo CV</div>
 </div>
 

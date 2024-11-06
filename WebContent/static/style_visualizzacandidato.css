@@ -27,64 +27,80 @@ body {
 }
 
 .main-container-visualizzacandidator {
-	max-width: 65%;
+	width: 65%;
+
 	/*margin: 0.5rem auto;*/
-	margin: 150px auto;
-	padding: 1.5rem 2rem;
+	margin: 150px auto; /* Center the container horizontally */
+	/*padding: 1.5rem 2rem;*/
+
 	background-color: #e0c0ff;
 	border-radius: 25px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	position: relative;
-	height: calc(94vh - 1rem);
+	/*height: calc(94vh - 1rem);*/
+	padding: 2vh 2vw 2vh 2vw;
 	display: flex;
 	flex-direction: column;
 }
 
-.profile-header {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
-	align-items: center;
-	gap: 2rem;
-	margin-bottom: 2rem;
+
+.user-profile {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	padding-left: 4vw;
+	padding-top: 5vh;
 }
 
 .profile-image {
-	width: 120px;
-	height: 120px;
+	width: 5vw;
+	height: 5vw;
+	background-color: #e8e8e8;
 	border-radius: 50%;
-	background-color: #ccc;
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	overflow: hidden;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+	background-color: #ccc;
 }
 
 .profile-icon {
-	width: 40px;
-	height: 40px;
-	background-color: #6e41e2;
-	border-radius: 8px;
-	position: relative;
-	 overflow: hidden
+    width: 2vw;
+    height: 2vw;
+    background-color: #6e41e2;
+   	color: white; /* Makes the icon white */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the icon both horizontally and vertically */
 }
 
 .camera-icon {
-    position: absolute; /* Keeps it positioned relative to .profile-image */
-    bottom: 5px; /* Adjust this value for vertical spacing */
-    right: 5px; /* Adjust this value for horizontal spacing */
-    background-color: #6e41e2; /* Color of the icon */
-    width: 30px; /* Icon size */
-    height: 30px; /* Icon size */
-    border-radius: 50%; /* Circular shape */
-    display: flex; /* Center the icon */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
-    color: white; /* Icon color */
-    cursor: pointer; /* Pointer cursor on hover */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for depth */
-    z-index: 10; /* Ensures it is above other elements */
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: #6e41e2;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+ 	font-size: 0.8rem;
+	z-index:10000;
 }
+
+.user-icon {
+	font-size: 1.2rem;
+	color: #6e41e2;
+}
+
 .profile-name {
 	font-size: 1.8rem;
 	text-decoration: underline;
@@ -99,8 +115,10 @@ body {
 .content-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 3rem;
-	margin-bottom: 2rem;
+	padding-bottom: 4vh;
+	padding-top: 4vh;
+	padding-left: 4vw;
+	padding-right: 4vw
 }
 
 .info-section {
@@ -132,27 +150,40 @@ body {
 }
 
 .cv-section {
-	background-color: #ccc;
+	background-color: #e8e8e8;
 	border-radius: 15px;
-	height: 200px;
+	height: 20vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 2rem 0;
-	max-width: 20%;
+	max-width: 80%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-align: center;
+	font-size: 0.9rem;
+	flex-direction: column;
+}
+
+.cv-section:hover {
+	/*background-color: #eee;*/
+	background-color: #ccc;
 }
 
 .folder-icon {
 	font-size: 3rem;
-	color: #6e41e2;
 }
 
 .experiences-section {
 	background-color: rgba(110, 65, 226, 0.1);
 	border-radius: 15px;
 	padding: 1.5rem;
-	height: 300px;
+	height: 80vh;
 	overflow-y: auto;
+}
+
+.experience-list {
+	margin-top: 1rem;
 }
 
 .experience-item {
@@ -196,16 +227,20 @@ body {
 	transform: translateX(-5px);
 }
 
-::-webkit-scrollbar {
+.experience-section::-webkit-scrollbar {
 	width: 8px;
 }
 
-::-webkit-scrollbar-track {
-	background: rgba(110, 65, 226, 0.1);
-	border-radius: 4px;
+.experience-section::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb {
+.experience-section::-webkit-scrollbar-thumb {
 	background: #6e41e2;
-	border-radius: 4px;
+	border-radius: 10px;
+}
+
+.experience-section::-webkit-scrollbar-thumb:hover {
+	background: #4c2bb0;
 }

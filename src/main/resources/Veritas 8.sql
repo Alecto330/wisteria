@@ -9,7 +9,7 @@ drop table if exists Utente;
 
 create table Utente (
 	username varchar (30) primary key,
-	pw varchar (30) not null,
+	pw varchar (100) not null,
 	email varchar (50) not null unique,
 	ruolo varchar(15) not null
 );
@@ -101,7 +101,7 @@ create table Risposta (
 
 
 insert into Utente values
-('Amm01', 'Amm01pw?', 'amm01email@veritas.com', 'Amministratore'),
+('Amm01', '$2a$10$j2mex2WKgAzkr9a2yniN4ePQN2gZPzGFXEH72bt5uAhf93kYhc7ku', 'amm01email@veritas.com', 'user.Admin'),
 ('Amm02', 'Amm02pw?', 'amm02email@veritas.com', 'Amministratore'),
 ('Can01', 'Can01pw!', 'can01email@veritas.com', 'Candidato'),
 ('Can02', 'Can02pw!', 'can02email@veritas.com', 'Candidato'),
