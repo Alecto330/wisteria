@@ -50,9 +50,12 @@
 		<button class="btn btn-back" onclick="history.back()">← Torna
 			Indietro</button>
 	</div>
-
+	<div>
+		<%@ include file="footer.jsp"%>
+	</div>
 
 </body>
+
 
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
