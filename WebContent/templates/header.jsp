@@ -41,11 +41,11 @@
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/home"><i
 							class="fas fa-home"></i> Home</a></li>
+					<li><a href="${pageContext.request.contextPath}/profilepage"><i
+							class="fas fa-envelope"></i> Profilo</a></li>
 					<li><a href="${pageContext.request.contextPath}/about"><i
 							class="fa-solid fa-question"></i> About</a></li>
-					<li><a href="${pageContext.request.contextPath}/services"><i
-							class="fas fa-cogs"></i> Services</a></li>
-					<li><a href="${pageContext.request.contextPath}/contact"><i
+					<li><a onclick="scrollToBottom()" style="cursor: pointer"><i
 							class="fas fa-envelope"></i> Contact</a></li>
 				</ul>
 			</nav>
@@ -113,6 +113,15 @@
             const menu = document.getElementById('menu');
             menu.classList.toggle('show'); // Toggle the 'show' class
         });
+
+		function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+			menu.classList.remove("slide-in");
+			menu.classList.add("slide-out");
+		}
     </script>
 <!-- ########################## FINE FUNZIONI IN JAVASCRIPT ###############################-->
 
