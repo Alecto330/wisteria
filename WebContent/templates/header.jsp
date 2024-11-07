@@ -10,6 +10,12 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <!-- Font Awesome CDN -->
+
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 
 <header>
@@ -74,16 +80,29 @@
 			<!--<a class="btn btn-primary" href="${pageContext.request.contextPath}/login"> Accedi </a>-->
 
 			<c:choose>
-				<c:when
-					test="${pageContext.request.servletPath == '/templates/login.jsp'}">
+				
+				<c:when test="${pageContext.request.servletPath == '/templates/login.jsp'}"> <!-- Condizione: se siamo sulla pagina di login -->
 					<span class="hidden"><p>Accedi</p></span>
 				</c:when>
 				<c:otherwise>
-					<a class="btn btn-primary"
-						href="${pageContext.request.contextPath}/login">Accedi</a>
+					
+					<c:if test="${not empty user}"> <!-- Se l'utente è autenticato, mostra l'icona -->
+						<div class="dropdown">
+							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="fa-solid fa-user" style="font-size: 3vh; width: 3vw;"></i>
+							</a>
+						
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
+							</div>
+						</div>
+					</c:if>
+					
+					<c:if test="${empty user}"> <!-- Se l'utente non è autenticato, mostra il link per il login -->
+						<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
+					</c:if>
 				</c:otherwise>
 			</c:choose>
-
 
 
 
