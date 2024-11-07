@@ -36,12 +36,13 @@ body {
 	/* This ensures it doesn’t take more than 80% of the parent */
 	margin: 150px auto; /* Center the container horizontally */
 	width: 100%;
+	margin-top: 20vh;
 }
 
 .card {
 	background-color: #e0c0ff;
 	border-radius: 25px;
-	height: 600px;
+	height: 70vh;
 	position: relative;
 	overflow: hidden;
 	padding: 20px;
@@ -216,4 +217,16 @@ body {
 	font-size: 1.1rem;
 	color: #6e41e2;
 	font-weight: 500;
+}
+
+.job-header {
+	display: flex;
+	align-items: center; /* Centra verticalmente gli elementi */
+	gap: 10px; /* Spaziatura tra gli elementi */
+}
+
+.job-title {
+	margin: 0; /* Rimuove il margine di default dell'h1 */
+	
+	width: auto;
 }

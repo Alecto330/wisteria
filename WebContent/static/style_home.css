@@ -60,3 +60,15 @@ body {
     background-position: right 10px center;
     background-size: 25px;
 }
+
+.barra {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spaziatura tra gli elementi */
+}
+
+.cerca {
+    margin-left: 19vw;
+}
