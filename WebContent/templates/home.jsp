@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	
+
+
 <!DOCTYPE html>
 
 <html lang="it">
@@ -130,44 +130,48 @@
 
 			</div>
 		</div>-->
-		
+
 		<div class="row mt-4">
-            <div class="col-md-12">
-                <div class="custom-container">
-                    <div class="d-flex justify-content-start search-container">
-                        <div class="select-wrapper">
-                            <select class="form-control mr-2" id="regioni">
-                                <c:forEach var="region" items="${regionList}">
-                                    <option value="${region}">${region}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
+			<div class="col-md-12">
+				<div class="custom-container">
+					<div class="d-flex justify-content-start search-container">
+						<div class="select-wrapper">
+							<select class="form-control mr-2" id="regioni">
+								<c:forEach var="region" items="${regionList}">
+									<option value="${region}">${region}</option>
+								</c:forEach>
+							</select>
+						</div>
 
-                        <div class="select-wrapper">
-                            <select class="form-control mr-2" id="professioni">
-                                <c:forEach var="profession" items="${professionList}">
-                                    <option value="${profession}">${profession}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
+						<div class="select-wrapper">
+							<select class="form-control mr-2" id="professioni">
+								<c:forEach var="profession" items="${professionList}">
+									<option value="${profession}">${profession}</option>
+								</c:forEach>
+							</select>
+						</div>
 
-                        <input style="background-color: #e3e3e3;" class="form-control mr-2" type="search" placeholder="Cerca offerte di lavoro">
-                        <button class="btn btn-primary">Cerca</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+						<input style="background-color: #e3e3e3;"
+							class="form-control mr-2" type="search" id="job-search"
+							placeholder="Cerca offerte di lavoro">
+						<button class="btn btn-primary" onclick="performSearch()">Cerca</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 		<div class="row mt-4">
 			<c:forEach var="job" items="${jobOffers}">
 				<div class="col-md-6">
-					<div class="card job-card" onclick="location.href='offerta?id=${job.id}';">
+					<div class="card job-card"
+						onclick="location.href='offerta?id=${job.id}';">
 						<div class="card-body">
 							<h5 class="card-title">${job.titolo}</h5>
 							<p class="card-text">${job.descrizione}</p>
 							<p class="card-location">
-								<i class="fas fa-map-marker-alt"></i> ${job.provincia} - ${job.regione}
+								<i class="fas fa-map-marker-alt"></i> ${job.provincia} -
+								${job.regione}
 							</p>
 							<p class="card-category">
 								<i class="fas fa-briefcase"></i> ${job.settore}
@@ -180,6 +184,38 @@
 	</div>
 
 	<%@ include file="footer.jsp"%>
+
+	<script>
+	function performSearch() {
+	    const regionElem = document.getElementById("regioni");
+	    const professionElem = document.getElementById("professioni");
+	    const searchElem = document.getElementById("job-search");
+
+	    if (!regionElem) {
+	        console.error("Element with id 'regioni' not found");
+	        return;
+	    }
+	    if (!professionElem) {
+	        console.error("Element with id 'professioni' not found");
+	        return;
+	    }
+	    if (!searchElem) {
+	        console.error("Element with id 'job-search' not found");
+	        return;
+	    }
+
+	    const selectedRegion = regionElem.value;
+	    const selectedProfession = professionElem.value;
+	    const searchQuery = searchElem.value;
+
+	    console.log("Selected Region:", selectedRegion);
+	    console.log("Selected Profession:", selectedProfession);
+	    console.log("Search Query:", searchQuery);
+
+	    alert(`Searching for jobs in ${selectedRegion}, profession: ${selectedProfession}, with query: "${searchQuery}"`);
+	}
+
+</script>
 
 	<!--############## FINE VISUALIZZA E CERCA POSIZIONI ################-->
 </body>
