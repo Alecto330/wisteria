@@ -55,17 +55,18 @@
     margin-right: 20px; /* Adds space between menu items */
 }
 
-.menu ul li a {
+.menu ul li  {
     text-decoration: none; /* Removes underline from links */
     color: #fff; /* Text color */
 }
 
-.menu ul li a i {
+.menu ul li  i {
     margin-right: 8px; /* Space between icon and text */
 }
 
-.menu ul li a:hover {
+.menu ul :hover {
     color: #D6B5FF; /* Change color on hover */
 }
-
-
+.contact{
+    cursor: pointer;
+}

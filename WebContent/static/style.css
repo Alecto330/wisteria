@@ -288,28 +288,7 @@ input[type="search"] {
     50% { text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff; }
     100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff; }
 }
-.introduction-title{
-    font-family: 'HelveticaWorld-Regular', sans-serif;
-    font-weight: bolder;
-    font-size: 45px;
-    text-align: left;
-    margin-top: 8vh;
-    margin-left: 13vh;
-    color: rgb(123, 31, 255);
-    text-shadow: 0 0 8px rgba(123, 31, 255, 0.8),
-    0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 15px rgba(255, 255, 255, 0.5),
-    0 0 20px rgba(0, 0, 0, 0.4);
-    animation: glowing infinite;
-}
 
-.introduction{
-    font-size: 18px;
-    text-align: left;
-    margin-top: 4vh;
-    margin-left: 13vh;
-    margin-right: 1000px;
-}
 
 
 

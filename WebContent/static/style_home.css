@@ -63,7 +63,6 @@ body {
 
 .barra {
     width: 100%;
-
     display: flex;
     align-items: center;
     gap: 10px; /* Spaziatura tra gli elementi */
@@ -71,4 +70,31 @@ body {
 
 .cerca {
     margin-left: 19vw;
+}
+.footer{
+
+    margin-top: 250px;
+}
+
+.introduction-title{
+    font-family: 'HelveticaWorld-Regular', sans-serif;
+    font-weight: bolder;
+    font-size: 45px;
+    text-align: left;
+    margin-top: 8vh;
+    margin-left: 12.5vh;
+    color: rgb(123, 31, 255);
+    text-shadow: 0 0 8px rgba(123, 31, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(0, 0, 0, 0.4);
+    animation: glowing infinite;
+}
+
+.introduction{
+    font-size: 18px;
+    text-align: left;
+    margin-top: 4vh;
+    margin-left: 12.5vh;
+    margin-right: 1000px;
 }

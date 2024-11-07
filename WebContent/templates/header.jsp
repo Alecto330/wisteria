@@ -42,11 +42,11 @@
 					<li><a href="${pageContext.request.contextPath}/home"><i
 							class="fas fa-home"></i> Home</a></li>
 					<li><a href="${pageContext.request.contextPath}/profilepage"><i
-							class="fas fa-envelope"></i> Profilo</a></li>
+							class="fas fa-user"></i> Profilo</a></li>
 					<li><a href="${pageContext.request.contextPath}/about"><i
 							class="fa-solid fa-question"></i> About</a></li>
-					<li><a onclick="scrollToBottom()" style="cursor: pointer"><i
-							class="fas fa-envelope"></i> Contact</a></li>
+					<li><a onclick="scrollToBottom() " class="contact"><i
+							class="fas fa-envelope" ></i> Contact</a></li>
 				</ul>
 			</nav>
 			<script>
