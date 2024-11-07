@@ -138,7 +138,7 @@ from Esperienza;
 
 insert into Localita values
 ('Chieti', 'Abruzzo'),
-('L#Aquila', 'Abruzzo'),
+('L''Aquila', 'Abruzzo'),
 ('Pescara', 'Abruzzo'),
 ('Teramo', 'Abruzzo'),
 ('Potenza', 'Basilicata'),
@@ -236,7 +236,7 @@ insert into Localita values
 ('Trento', 'Trentino-Alto Adige'),
 ('Perugia ', 'Umbria'),
 ('Terni', 'Umbria'),
-('Aosta ', 'Valle d#Aosta'),
+('Aosta ', 'Valle d''Aosta'),
 ('Belluno ', 'Veneto'),
 ('Padova ', 'Veneto'),
 ('Rovigo ', 'Veneto'),
@@ -245,7 +245,8 @@ insert into Localita values
 ('Verona ', 'Veneto'),
 ('Vicenza ', 'Veneto');
  
- 
+ select *
+from Localita;
 
 insert into Posizione (titolo, descrizione, settore, FK_Utente, FK_Localita) values
 ('Sviluppatore Full Stack', 'Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team. Il candidato ideale avrà esperienza nella creazione di applicazioni web e competenze in linguaggi come JavaScript, Python e SQL. Collaborerai con designer e analisti per sviluppare soluzioni innovative e Utente-friendly.', 'Web developer', 'Amm01', 'Alessandria'),
