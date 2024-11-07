@@ -56,7 +56,7 @@ public class PosizioneDAO {
 	        ArrayList<String> whereConditions = new ArrayList<>();
 
 	        if (descrizione != null && !descrizione.isEmpty()) {
-	            whereConditions.add("descrizione LIKE ?");
+	            whereConditions.add("descrizione LIKE ? or titolo LIKE ?");
 	        }
 	        if (regione != null && !regione.isEmpty()) {
 	            whereConditions.add("Localita.regione = ?");
@@ -73,8 +73,11 @@ public class PosizioneDAO {
 	        int parameterIndex = 1;
 
 	        if (descrizione != null && !descrizione.isEmpty()) {
-	            preparedStatement.setString(parameterIndex++, "%" + descrizione + "%");
+	            String likePattern = "%" + descrizione + "%";
+	            preparedStatement.setString(parameterIndex++, likePattern); // for descrizione LIKE ?
+	            preparedStatement.setString(parameterIndex++, likePattern); // for titolo LIKE ?
 	        }
+
 	        if (regione != null && !regione.isEmpty()) {
 	            preparedStatement.setString(parameterIndex++, regione);
 	        }
