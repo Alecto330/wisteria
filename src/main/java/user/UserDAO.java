@@ -11,6 +11,7 @@ public class UserDAO {
 	public User login(String email, String password) {
 		String hashedPassword = null;
 		User user=null;
+		
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
@@ -47,7 +48,6 @@ public class UserDAO {
 		}
 		return null;
 	}
-	
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
 		System.out.println(Admin.class.getName()); //user.Admin
@@ -55,5 +55,4 @@ public class UserDAO {
 		System.out.println(BCrypt.hashpw("admin", BCrypt.gensalt())); //$2a$10$j2mex2WKgAzkr9a2yniN4ePQN2gZPzGFXEH72bt5uAhf93kYhc7ku
 		
 	}*/
-
 }
