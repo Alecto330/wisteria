@@ -19,56 +19,41 @@ import user.User;
 import user.UserDAO;
 
 @WebServlet("/home")
-public class home extends HttpServlet { 
- 
+public class home extends HttpServlet {
+
 	public home() {
 	}
- 
+
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PosizioneDAO dao=new PosizioneDAO();
-		ArrayList<Posizione> jobOffers=dao.getAllPosizioni();
+
 		ArrayList<String> professionList=dao.getAllProfessioni();
 		ArrayList<String> regionList=dao.getAllRegioni();
+		ArrayList<Posizione> jobOffers=null;
+		String profession = request.getParameter("profession");
+		String region = request.getParameter("region");
+		String search = request.getParameter("search");
 
+		if(profession!=null || region!=null || search !=null) {
+			jobOffers=dao.getFilteredPosizioni(search, region, profession);
+			request.setAttribute("profession", profession);
+			request.setAttribute("region", region);
+			request.setAttribute("search", search);
+		}else {
+			jobOffers=dao.getAllPosizioni();
+		}
 		
-		/*ArrayList<Posizione> jobOffers = new ArrayList<>();
-		
-		Posizione posizione1=new Posizione(0, "ciao1", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
-		Posizione posizione2=new Posizione(1, "ciao2", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
-		Posizione posizione3=new Posizione(2, "ciao3", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
-		Posizione posizione4=new Posizione(3, "ciao4", "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
-		
-		jobOffers.add(posizione1);
-		jobOffers.add(posizione2);
-		jobOffers.add(posizione3);
-		jobOffers.add(posizione4);
-		jobOffers.add(posizione1);
-		jobOffers.add(posizione2);
-		jobOffers.add(posizione3);
-		jobOffers.add(posizione4);
-		jobOffers.add(posizione1);
-		jobOffers.add(posizione2);
-		jobOffers.add(posizione3);
-		jobOffers.add(posizione4);*/
-		
-	    request.setAttribute("jobOffers", jobOffers);
-	    request.setAttribute("professionList", professionList);
-	    request.setAttribute("regionList", regionList);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/home.jsp");
-	    dispatcher.forward(request, response); 
-	}
-	
-	
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// location.href = `/search?region=${selectedRegion}&profession=${selectedProfession}&query=${encodeURIComponent(searchQuery)}`;
+		request.setAttribute("jobOffers", jobOffers);
+		request.setAttribute("professionList", professionList);
+		request.setAttribute("regionList", regionList);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/home.jsp");
+		dispatcher.forward(request, response);
 
 	}
+
+
+
 }
- 
- 
+

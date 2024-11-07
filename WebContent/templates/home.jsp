@@ -59,77 +59,6 @@
 	</div>
 	<!-- Cointanier delle posizioni aperte -->
 	<div class="container">
-		<!--<div class="row mt-4">
-			<div class="col-md-12">
-				<div class="custom-container">
-					<div class="d-flex justify-content-start search-container">
-						<div class="select-wrapper">
-							<select class="form-control mr-2" id="regioni">
-								<option value="Tutte">Tutte le regioni</option>
-								<option value="Abruzzo">Abruzzo</option>
-								<option value="Basilicata">Basilicata</option>
-								<option value="Calabria">Calabria</option>
-								<option value="Campania">Campania</option>
-								<option value="Emilia-Romagna">Emilia-Romagna</option>
-								<option value="Friuli-Venezia Giulia">Friuli-Venezia
-									Giulia</option>
-								<option value="Lazio">Lazio</option>
-								<option value="Liguria">Liguria</option>
-								<option value="Lombardia">Lombardia</option>
-								<option value="Marche">Marche</option>
-								<option value="Molise">Molise</option>
-								<option value="Piemonte">Piemonte</option>
-								<option value="Puglia">Puglia</option>
-								<option value="Sardegna">Sardegna</option>
-								<option value="Sicilia">Sicilia</option>
-								<option value="Toscana">Toscana</option>
-								<option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
-								<option value="Umbria">Umbria</option>
-								<option value="Valle d'Aosta">Valle d'Aosta</option>
-								<option value="Veneto">Veneto</option>
-							</select>
-						</div>
-
-						<div class="select-wrapper">
-							<select class="form-control mr-2" id="professioni">
-								<option value="Tutte">Tutte le professioni</option>
-								<option value="sviluppatore-backend">Sviluppatore
-									Backend</option>
-								<option value="sviluppatore-frontend">Sviluppatore
-									Frontend</option>
-								<option value="sviluppatore-full-stack">Sviluppatore
-									Full Stack</option>
-								<option value="ingegnere-devops">Ingegnere DevOps</option>
-								<option value="data-scientist">Data Scientist</option>
-								<option value="data-engineer">Data Engineer</option>
-								<option value="analista-dati">Analista Dati</option>
-								<option value="specialista-cybersecurity">Specialista
-									Cybersecurity</option>
-								<option value="ingegnere-software">Ingegnere Software</option>
-								<option value="architetto-software">Architetto Software</option>
-								<option value="product-manager">Product Manager</option>
-								<option value="project-manager">Project Manager</option>
-								<option value="qa-engineer">QA Engineer</option>
-								<option value="tecnico-it">Tecnico IT</option>
-								<option value="consulente-it">Consulente IT</option>
-								<option value="esperto-cloud">Esperto Cloud</option>
-								<option value="ux-designer">UX Designer</option>
-								<option value="ui-designer">UI Designer</option>
-								<option value="specialista-machine-learning">Specialista
-									Machine Learning</option>
-								<option value="specialista-ai">Specialista AI</option>
-							</select>
-						</div>
-
-						<input style="background-color: #e3e3e3;"
-							class="form-control mr-2" type="search"
-							placeholder="Cerca offerte di lavoro">
-						<button class="btn btn-primary">Cerca</button>
-					</div>
-				</div>
-
-			</div>
-		</div>-->
 
 		<div class="row mt-4">
 			<div class="col-md-12">
@@ -137,19 +66,23 @@
 					<div class="d-flex justify-content-start search-container">
 						<div class="select-wrapper">
 							<select class="form-control mr-2" id="regioni">
+								<option value="" selected id="regionOption">Tutte le Regioni</option>
 								<c:forEach var="region" items="${regionList}">
-									<option value="${region}">${region}</option>
+									<option value="${region}" id="${region}">${region}</option>
 								</c:forEach>
 							</select>
 						</div>
 
 						<div class="select-wrapper">
 							<select class="form-control mr-2" id="professioni">
+								<option value="" selected id="professionOption">Tutte le Professioni</option>
+								<!-- Default option -->
 								<c:forEach var="profession" items="${professionList}">
-									<option value="${profession}">${profession}</option>
+									<option value="${profession}" id="${profession}">${profession}</option>
 								</c:forEach>
 							</select>
 						</div>
+
 
 						<input style="background-color: #e3e3e3;"
 							class="form-control mr-2" type="search" id="job-search"
@@ -186,38 +119,76 @@
 	<%@ include file="footer.jsp"%>
 
 	<script>
-	function performSearch() {
-	    const regionElem = document.getElementById("regioni");
-	    const professionElem = document.getElementById("professioni");
-	    const searchElem = document.getElementById("job-search");
+		function performSearch() {
+			const regionElem = document.getElementById("regioni");
+			const professionElem = document.getElementById("professioni");
+			const searchElem = document.getElementById("job-search");
 
-	    if (!regionElem) {
-	        console.error("Element with id 'regioni' not found");
-	        return;
-	    }
-	    if (!professionElem) {
-	        console.error("Element with id 'professioni' not found");
-	        return;
-	    }
-	    if (!searchElem) {
-	        console.error("Element with id 'job-search' not found");
-	        return;
-	    }
+			if (!regionElem) {
+				console.error("Element with id 'regioni' not found");
+				return;
+			}
+			if (!professionElem) {
+				console.error("Element with id 'professioni' not found");
+				return;
+			}
+			if (!searchElem) {
+				console.error("Element with id 'job-search' not found");
+				return;
+			}
 
-	    const selectedRegion = regionElem.value;
-	    const selectedProfession = professionElem.value;
-	    const searchQuery = searchElem.value;
+			const selectedRegion = regionElem.value;
+			const selectedProfession = professionElem.value;
+			const searchQuery = searchElem.value;
 
-	    console.log("Selected Region:", selectedRegion);
-	    console.log("Selected Profession:", selectedProfession);
-	    console.log("Search Query:", searchQuery);
+			console.log("Selected Region:", selectedRegion);
+			console.log("Selected Profession:", selectedProfession);
+			console.log("Search Query:", searchQuery);
 
-	    alert(`Searching for jobs in ${selectedRegion}, profession: ${selectedProfession}, with query: "${searchQuery}"`);
-	}
+			let searchUrl = '/wisteria/home?region='
+					+ encodeURIComponent(selectedRegion) + '&profession='
+					+ encodeURIComponent(selectedProfession) + '&search='
+					+ encodeURIComponent(searchQuery);
 
-</script>
+			console.log(searchUrl);
 
-	<!--############## FINE VISUALIZZA E CERCA POSIZIONI ################-->
+			window.location.href = searchUrl;
+
+		}
+
+		function setOptions() {
+		    const urlParams = new URLSearchParams(window.location.search);
+		    const region = urlParams.get('region');
+		    const profession = urlParams.get('profession');
+
+		    const regionSelect = document.getElementById('regioni');
+
+		    if (region) {
+		        const regionOption = regionSelect.querySelector(`option[value="${region}"]`);
+		        if (regionOption) {
+		            regionOption.selected = true;
+		        }
+		    } else {
+		        regionSelect.selectedIndex = 0;
+		    }
+		    
+		    const professionSelect = document.getElementById('professioni');
+
+		    if (profession) {
+		        const professionOption = professionSelect.querySelector(`option[value="${profession}"]`);
+		        if (professionOption) {
+		        	professionOption.selected = true;
+		        }
+		    } else {
+		        professionSelect.selectedIndex = 0;
+		    }
+		    
+		}
+
+		window.addEventListener('popstate', setOptions());
+		window.addEventListener('load', setOptions());  // Run when the page loads
+	</script>
+
 </body>
 </html>
 

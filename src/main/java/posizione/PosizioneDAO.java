@@ -42,7 +42,67 @@ public class PosizioneDAO {
 		}
 		return null;
 	}
+	
+	
+	
+	public ArrayList<Posizione> getFilteredPosizioni(String descrizione, String regione, String professione) {
+	    ArrayList<Posizione> posizioni = new ArrayList<>();
 
+	    try {
+	        DatabaseConnection database = new DatabaseConnection();
+	        Connection connection = database.getConnection();
+
+	        StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
+	        ArrayList<String> whereConditions = new ArrayList<>();
+
+	        if (descrizione != null && !descrizione.isEmpty()) {
+	            whereConditions.add("descrizione LIKE ?");
+	        }
+	        if (regione != null && !regione.isEmpty()) {
+	            whereConditions.add("Localita.regione = ?");
+	        }
+	        if (professione != null && !professione.isEmpty()) {
+	            whereConditions.add("titolo = ?");
+	        }
+
+	        if (!whereConditions.isEmpty()) {
+	            queryBuilder.append(" WHERE ").append(String.join(" AND ", whereConditions));
+	        }
+
+	        PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.toString());
+	        int parameterIndex = 1;
+
+	        if (descrizione != null && !descrizione.isEmpty()) {
+	            preparedStatement.setString(parameterIndex++, "%" + descrizione + "%");
+	        }
+	        if (regione != null && !regione.isEmpty()) {
+	            preparedStatement.setString(parameterIndex++, regione);
+	        }
+	        if (professione != null && !professione.isEmpty()) {
+	            preparedStatement.setString(parameterIndex++, professione);
+	        }
+
+	        ResultSet resultSet = preparedStatement.executeQuery();
+
+	        while (resultSet.next()) {
+	            int id = resultSet.getInt("id");
+	            String titolo = resultSet.getString("titolo");
+	            String descrizioneVal = resultSet.getString("descrizione").substring(0, 200).concat("...");
+	            String settore = resultSet.getString("settore");
+	            String provinciaVal = resultSet.getString("provincia");
+	            String regioneVal = resultSet.getString("regione");
+	            Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal);
+	            posizioni.add(posizione);
+	        }
+
+	        connection.close();
+	        return posizioni;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return null;
+	}
 
 	public Posizione getPosizione(String id) {
 
