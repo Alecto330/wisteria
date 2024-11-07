@@ -26,7 +26,10 @@ body {
     width: 100%;
     margin-bottom: 20px; /* Aggiungi spazio sotto la navbar */
 }
-
+.navbar .logo-img{
+    margin: 0;
+    padding-left: 0px;
+}
 /* Contenitore principale del form di login */
 .login-container {
     background-color: #d8aef7;
@@ -116,6 +119,8 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     border: none;
     cursor: pointer;
+    padding-left: 0px;
+    margin: auto;
 }
 
 .btn-back:hover {
@@ -128,4 +133,7 @@ body {
     justify-content: center;
     width: 100%;
     margin-bottom: 15vh;
+}
+.footer{
+    margin-top: 200px;
 }

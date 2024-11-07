@@ -88,7 +88,8 @@ body {
     font-weight: bold;
     transition: background-color 0.3s ease, text-shadow 0.3s ease;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    margin-top: 25px;
+    margin-top: 30px;
+    padding-left: 0px;
 }
 .btn-back:hover {
     color: rgb(123, 31, 255);
