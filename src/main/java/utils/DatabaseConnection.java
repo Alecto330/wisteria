@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Properties;
  
 public class DatabaseConnection {
+	
 	private Connection connection;
  
 	public DatabaseConnection() {
@@ -18,7 +19,7 @@ public class DatabaseConnection {
 			String dbUrl = properties.getProperty("DB_URL");
 			String dbUser = properties.getProperty("DB_USER");
 			String dbPassword = properties.getProperty("DB_PASSWORD");
-			System.out.println(dbUrl+ dbUser+dbPassword);
+			//System.out.println(dbUrl+ dbUser+dbPassword);
  
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);

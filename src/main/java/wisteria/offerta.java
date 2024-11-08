@@ -18,12 +18,9 @@ public class offerta extends HttpServlet{
 	
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id=request.getParameter("id");
-		
-		System.out.println(id);
 		
 		if(id != null) {
 			
@@ -33,13 +30,10 @@ public class offerta extends HttpServlet{
 			request.setAttribute("posizione", posizione);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
 		    dispatcher.forward(request, response); 
-		}
-		
-		/*Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");
-		
+		}		
+		/*Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");		
 		request.setAttribute("posizione", posizione1);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
 	    dispatcher.forward(request, response); */
 	}
-
 }

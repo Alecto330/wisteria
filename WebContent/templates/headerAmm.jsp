@@ -10,6 +10,10 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <!-- Font Awesome CDN -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <header>
@@ -46,7 +50,7 @@
 					<li><a href="${pageContext.request.contextPath}/creaposizione"><i
 						class="fas fa-plus"></i> Crea Posizione</a></li>
 					<li><a href="${pageContext.request.contextPath}/visualizzacandidato"><i
-						class="fas fa-plus"></i> Cerca candidati</a></li>
+						class="fa-solid fa-magnifying-glass"></i> Cerca candidati</a></li>
 					<li><a href="${pageContext.request.contextPath}/about"><i
 							class="fa-solid fa-question"></i> About</a></li>
 					<li><a onclick="scrollToBottom()" style="cursor: pointer"><i
@@ -77,7 +81,16 @@
 			</a>
 			<!--<a class="btn btn-primary" href="${pageContext.request.contextPath}/login"> Accedi </a>-->
 
-					<span class="hidden"><p>Accedi</p></span>
+				
+			<div class="dropdown">
+				<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa-solid fa-user" style="font-size: 3vh; width: 3vw;"></i>
+				</a>
+			
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
+				</div>
+			</div>
 
 
 

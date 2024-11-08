@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import user.Candidate;
 import user.User;
 import user.UserDAO;
 
@@ -19,15 +17,9 @@ public class login extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		//request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
-
-		//response.sendRedirect("index.html");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("templates/login.jsp");
-
 	}
-
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -48,9 +40,7 @@ public class login extends HttpServlet {
 
 			response.sendRedirect("home");
 		}else {
-			System.out.println("erroreeeeeeeeee");
-			
+			System.out.println("erroreeeeeeeeee");			
 		}
 	}
 }
-

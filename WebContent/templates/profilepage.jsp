@@ -30,17 +30,15 @@
 
 	<div class="main-container-profilepage">
 		<div class="user-profile">
-			<div class="profile-image">
-				<div class="profile-icon">
+			<div class="profile-image" onclick="triggerImageInput()">
+				<input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageChange(event)">
+				<img id="profilePicture" src="" alt="Profile Picture" style="display: none; border-radius: 50%; width: 100%; height: 100%;">
+				<div class="profile-icon" id="profileIcon">
 					<i class="fa-solid fa-user"></i>
-					<!-- Font Awesome user icon -->
 				</div>
-
 				<div class="camera-icon">
 					<i class="fa-solid fa-plus"></i>
-					<!-- Font Awesome plus icon -->
 				</div>
-
 			</div>
 		</div>
 
@@ -50,7 +48,7 @@
 			<div class="form-group">
 				<label class="form-label">Nome:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="Alessandro"> <span
+					<input type="text" class="form-input" value="${nome}"> <span
 						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -64,7 +62,7 @@
 			<div class="form-group">
 				<label class="form-label">Username:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="CA_AlessandroRossi">
+					<input type="text" class="form-input" value="${username}">
 					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -78,7 +76,7 @@
 			<div class="form-group">
 				<label class="form-label">Cognome:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="Rossi"> <span
+					<input type="text" class="form-input" value="${cognome}"> <span
 						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -92,8 +90,8 @@
 			<div class="form-group">
 				<label class="form-label">Data di nascita:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="14/05/2001"> <span
-						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="text" class="form-input" value="${dataDiNascita}">
+					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -106,10 +104,9 @@
 			<div class="form-group">
 				<label class="form-label">Email:</label>
 				<div class="form-input-wrapper">
-					<input type="email" class="form-input"
-						value="alessandrorossi@gmail.com"> <span class="edit-icon"
-						title="Modifica"> <!-- SVG icona matita --> <svg
-							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<input type="email" class="form-input" value="${email}"> <span
+						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
 								d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -121,8 +118,8 @@
 			<div class="form-group">
 				<label class="form-label">Codice Fiscale:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="ROSALE80A01H501Z">
-					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="text" class="form-input" value="${cf}"> <span
+						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -135,8 +132,8 @@
 			<div class="form-group">
 				<label class="form-label">Telefono:</label>
 				<div class="form-input-wrapper">
-					<input type="tel" class="form-input" value="+39 345 1234123">
-					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="tel" class="form-input" value="${telefono}"> <span
+						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -149,9 +146,8 @@
 			<div class="form-group">
 				<label class="form-label">Titolo:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input"
-						value="Diploma perito informatico"> <span
-						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="text" class="form-input" value="${titoloDiStudio}">
+					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -163,10 +159,128 @@
 		</div>
 
 		<div class="bottom-section">
-<div class="cv-upload">
-    <div class="cv-icon">📁</div>
-    <div>Carica il tuo CV</div>
-</div>
+			
+
+
+			<div>
+				<!-- Sezione per caricare il CV o aprirlo -->
+				<div id="cvUploadSection" class="cv-upload" onclick="handleClick(event)">
+					<input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
+					<div class="cv-icon" id="icon">📁</div>
+					<div id="uploadText">Carica il tuo CV</div>
+					<div id="removePDF" onclick="removePDF(event)">❌</div>
+				</div>
+			</div>
+			
+			
+			<script>
+
+				// CARICA PDF CURRICULUM
+
+				let pdfURL = null;
+			
+				// Funzione per attivare il file input o aprire il PDF
+				function handleClick(event) {
+					// Se l'utente ha cliccato sulla "X", non aprire il PDF
+					if (event.target.id === 'removePDF') return;
+			
+					if (pdfURL) {
+						// Se il PDF è caricato, apri il PDF in una nuova scheda
+						window.open(pdfURL, '_blank');
+					} else {
+						// Altrimenti, attiva il file input per caricare un PDF
+						document.getElementById('fileInput').click();
+					}
+				}
+			
+				// Gestisce il cambiamento del file input
+				function handleFileChange(event) {
+					const file = event.target.files[0];
+					
+					if (file && file.type === 'application/pdf') {
+						// Memorizza l'URL temporaneo per il PDF caricato
+						pdfURL = URL.createObjectURL(file);
+			
+						// Modifica il testo e l'icona del div per aprire il PDF
+						document.getElementById('icon').textContent = "📄";
+						document.getElementById('uploadText').textContent = "Apri il tuo CV";
+			
+						// Mostra la "X" per rimuovere il PDF
+						document.getElementById('removePDF').style.display = 'block';
+					} else {
+						alert("Per favore seleziona un file PDF.");
+					}
+				}
+			
+				// Funzione per rimuovere il PDF e permettere una nuova selezione del file
+				function removePDF(event) {
+					event.stopPropagation(); // Impedisce al click su "X" di attivare `handleClick`
+			
+					// Resetta l'URL del PDF
+					pdfURL = null;
+			
+					// Ripristina l'aspetto del div per caricare il CV
+					document.getElementById('icon').textContent = "📁";
+					document.getElementById('uploadText').textContent = "Carica il tuo CV";
+			
+					// Nascondi la "X"
+					document.getElementById('removePDF').style.display = 'none';
+			
+					// Resetta il campo file
+					document.getElementById('fileInput').value = '';
+				}
+
+
+
+
+
+				// CARICA IMMAGINE PROFILO
+				function triggerImageInput() {
+					document.getElementById('imageInput').click();
+				}
+
+				// Gestisce il caricamento dell'immagine
+				function handleImageChange(event) {
+					const file = event.target.files[0];
+					
+					if (file && file.type.startsWith('image/')) {
+						const reader = new FileReader();
+
+						// Quando l'immagine è pronta, la carica nel div .profile-image
+						reader.onload = function(e) {
+							const profilePicture = document.getElementById('profilePicture');
+							profilePicture.src = e.target.result;
+							profilePicture.style.display = 'block';
+
+							// Nasconde le icone quando l'immagine è presente
+							document.getElementById('profileIcon').style.display = 'none';
+							document.querySelector('.camera-icon').style.display = 'none';
+						};
+
+						// Legge il file come URL data
+						reader.readAsDataURL(file);
+					} else {
+						alert("Per favore seleziona un'immagine valida.");
+					}
+				}
+			</script>
+			
+			
+			
+			
+			
+			
+
+
+	
+		
+		
+		
+
+
+
+
+
 
 			<div class="experience-section">
 				<div class="experience-header">
@@ -214,8 +328,7 @@
 			</div>
 		</div>
 
-		<a class="back-button">
-			<i class="fas fa-arrow-left"></i>
+		<a class="back-button"> <i class="fas fa-arrow-left"></i>
 		</a>
 	</div>
 
