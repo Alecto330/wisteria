@@ -50,7 +50,7 @@
 			<div class="form-group">
 				<label class="form-label">Nome:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="Alessandro"> <span
+					<input type="text" class="form-input" value="${nome}"> <span
 						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -64,7 +64,7 @@
 			<div class="form-group">
 				<label class="form-label">Username:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="CA_AlessandroRossi">
+					<input type="text" class="form-input" value="${username}">
 					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -78,7 +78,7 @@
 			<div class="form-group">
 				<label class="form-label">Cognome:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="Rossi"> <span
+					<input type="text" class="form-input" value="${cognome}"> <span
 						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -92,7 +92,7 @@
 			<div class="form-group">
 				<label class="form-label">Data di nascita:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="14/05/2001"> <span
+					<input type="text" class="form-input" value="${dataDiNascita}"> <span
 						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -107,7 +107,7 @@
 				<label class="form-label">Email:</label>
 				<div class="form-input-wrapper">
 					<input type="email" class="form-input"
-						value="alessandrorossi@gmail.com"> <span class="edit-icon"
+						value="${email}"> <span class="edit-icon"
 						title="Modifica"> <!-- SVG icona matita --> <svg
 							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -121,7 +121,7 @@
 			<div class="form-group">
 				<label class="form-label">Codice Fiscale:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="ROSALE80A01H501Z">
+					<input type="text" class="form-input" value="${cf}">
 					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
@@ -135,7 +135,7 @@
 			<div class="form-group">
 				<label class="form-label">Telefono:</label>
 				<div class="form-input-wrapper">
-					<input type="tel" class="form-input" value="+39 345 1234123">
+					<input type="tel" class="form-input" value="${telefono}">
 					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />

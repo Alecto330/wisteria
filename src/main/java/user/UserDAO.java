@@ -9,7 +9,6 @@ import utils.DatabaseConnection;
 public class UserDAO {
 
 	public User login(String email, String password) {
-		String hashedPassword = null;
 		User user=null;
 		
 		try {
@@ -33,8 +32,8 @@ public class UserDAO {
 					String role = resultSet.getString("ruolo");
 
 					Class <? > userClass = Class.forName(role);
-					user= (User)userClass.getDeclaredConstructor(String. class, String. class, String.class, String.class)
-							.newInstance(username, email, hashedPassword, role);
+					user= (User)userClass.getDeclaredConstructor(String.class, String.class, String.class, String.class)
+							.newInstance(username, null, email, role);
 
 					connection.close();
 					return user;
