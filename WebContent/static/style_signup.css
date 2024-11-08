@@ -1,0 +1,143 @@
+ /* Resetta margini e padding di base */
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Centra il contenuto verticalmente e orizzontalmente */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color: #d3d3d3;*/
+    flex-direction: column;
+    background-image: url("../assets/bg-blurrato.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 9.5vh;
+    background-attachment: fixed;
+}
+
+/* Stile per la navbar per evitare che copra il form */
+.navbar {
+    width: 100%;
+    margin-bottom: 20px; /* Aggiungi spazio sotto la navbar */
+}
+.navbar .logo-img{
+    margin: 0;
+    padding-left: 0px;
+}
+/* Contenitore principale del form di login */
+.login-container {
+    background-color: #d8aef7;
+    width: 22%;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-bottom: 5vh; /* Spazio sotto il form per il bottone indietro */
+    margin-top: 6vh;
+}
+
+/* Titolo di benvenuto */
+.login-container h2 {
+    font-size: 1.7em;
+    margin-top: 1vw;
+    margin-bottom: 3vw;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Stile per le etichette */
+.login-container label {
+    display: block;
+    font-size: 0.85em;
+    color: #333;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Campi di input */
+/* Stile generico per tutti gli input */
+.login-container input[type="text"],
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 1vw;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.8em;
+    background-color: #f3e8fc;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Regola specifica per l'input password */
+.login-container input[type="password"] {
+    margin-bottom: 2vw;
+}
+/* Bottone per accedere */
+.login-container button {
+    margin-top: 3vw;
+    margin-bottom: 1vw;
+    width: 100%;
+    padding: 12px;
+    background-color: #a560e5;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #954bd9;
+}
+
+/* Link per la registrazione */
+.login-container .register-link {
+    font-size: 1em;
+    color: #6b38d1;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.login-container .register-link:hover {
+    text-decoration: underline;
+}
+
+/* Bottone Torna Indietro */
+.btn-back {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: background-color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: pointer;
+    padding-left: 0px;
+    margin: auto;
+}
+
+.btn-back:hover {
+    color: rgb(123, 31, 255);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15vh;
+}
+.footer{
+    margin-top: 200px;
+}
