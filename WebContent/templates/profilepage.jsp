@@ -174,6 +174,9 @@
 			
 			
 			<script>
+
+				// CARICA PDF CURRICULUM
+
 				let pdfURL = null;
 			
 				// Funzione per attivare il file input o aprire il PDF
@@ -231,35 +234,35 @@
 
 
 
-
+				// CARICA IMMAGINE PROFILO
 				function triggerImageInput() {
-		document.getElementById('imageInput').click();
-	}
+					document.getElementById('imageInput').click();
+				}
 
-	// Gestisce il caricamento dell'immagine
-	function handleImageChange(event) {
-		const file = event.target.files[0];
-		
-		if (file && file.type.startsWith('image/')) {
-			const reader = new FileReader();
+				// Gestisce il caricamento dell'immagine
+				function handleImageChange(event) {
+					const file = event.target.files[0];
+					
+					if (file && file.type.startsWith('image/')) {
+						const reader = new FileReader();
 
-			// Quando l'immagine è pronta, la carica nel div .profile-image
-			reader.onload = function(e) {
-				const profilePicture = document.getElementById('profilePicture');
-				profilePicture.src = e.target.result;
-				profilePicture.style.display = 'block';
+						// Quando l'immagine è pronta, la carica nel div .profile-image
+						reader.onload = function(e) {
+							const profilePicture = document.getElementById('profilePicture');
+							profilePicture.src = e.target.result;
+							profilePicture.style.display = 'block';
 
-				// Nasconde le icone quando l'immagine è presente
-				document.getElementById('profileIcon').style.display = 'none';
-				document.querySelector('.camera-icon').style.display = 'none';
-			};
+							// Nasconde le icone quando l'immagine è presente
+							document.getElementById('profileIcon').style.display = 'none';
+							document.querySelector('.camera-icon').style.display = 'none';
+						};
 
-			// Legge il file come URL data
-			reader.readAsDataURL(file);
-		} else {
-			alert("Per favore seleziona un'immagine valida.");
-		}
-	}
+						// Legge il file come URL data
+						reader.readAsDataURL(file);
+					} else {
+						alert("Per favore seleziona un'immagine valida.");
+					}
+				}
 			</script>
 			
 			
