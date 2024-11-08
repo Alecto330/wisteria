@@ -27,23 +27,56 @@
 
 	<div class="login-container">
 		<h2>Registrati!</h2>
-		<form id="signupForm" action="" method="POST">
-
-			<!-- Campo Username Aggiunto -->
-			<label for="username">Username</label> <input type="text"
-				id="username" name="username"
-				placeholder="Inserisci il tuo username" required> <label
-				for="email">Email</label> <input type="email" id="email"
-				name="email" placeholder="Inserisci la tua email" required>
-
-			<label for="password">Password</label> <input type="password"
-				id="password" name="password"
-				placeholder="Inserisci la tua password" required> <label
-				for="confirmPassword">Conferma Password</label> <input
-				type="password" id="confirmPassword" name="confirmPassword"
-				placeholder="Conferma la tua password" required>
-
-			<button type="submit">Registrati</button>
+		<form id="signupForm" action="" method="POST" enctype="multipart/form-data">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="nome">Nome</label>
+					<input type="text" class="form-control" id="nome" name="nome"
+						placeholder="Inserisci il tuo nome" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="cognome">Cognome</label>
+					<input type="text" class="form-control" id="cognome" name="cognome"
+						placeholder="Inserisci il tuo cognome" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="dataNascita">Data di Nascita</label>
+					<input type="date" class="form-control" id="dataNascita" name="dataNascita"
+						required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="codiceFiscale">Codice Fiscale</label>
+					<input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale"
+						placeholder="Inserisci il tuo codice fiscale" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" id="username" name="username"
+						placeholder="Inserisci il tuo username" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" name="email"
+						placeholder="Inserisci la tua email" required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" name="password"
+						placeholder="Inserisci la tua password" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="confirmPassword">Conferma Password</label>
+					<input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+						placeholder="Conferma la tua password" required>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary btn-block">Registrati</button>
 		</form>
 		<a href="${pageContext.request.contextPath}/login"
 			class="register-link">Hai già un account? Accedi</a>
