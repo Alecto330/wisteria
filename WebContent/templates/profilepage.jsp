@@ -92,8 +92,8 @@
 			<div class="form-group">
 				<label class="form-label">Data di nascita:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="${dataDiNascita}"> <span
-						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="text" class="form-input" value="${dataDiNascita}">
+					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -106,10 +106,9 @@
 			<div class="form-group">
 				<label class="form-label">Email:</label>
 				<div class="form-input-wrapper">
-					<input type="email" class="form-input"
-						value="${email}"> <span class="edit-icon"
-						title="Modifica"> <!-- SVG icona matita --> <svg
-							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<input type="email" class="form-input" value="${email}"> <span
+						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
 								d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -121,8 +120,8 @@
 			<div class="form-group">
 				<label class="form-label">Codice Fiscale:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="${cf}">
-					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="text" class="form-input" value="${cf}"> <span
+						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -135,8 +134,8 @@
 			<div class="form-group">
 				<label class="form-label">Telefono:</label>
 				<div class="form-input-wrapper">
-					<input type="tel" class="form-input" value="${telefono}">
-					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="tel" class="form-input" value="${telefono}"> <span
+						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -163,10 +162,34 @@
 		</div>
 
 		<div class="bottom-section">
-<div class="cv-upload">
-    <div class="cv-icon">📁</div>
-    <div>Carica il tuo CV</div>
-</div>
+			<div class="cv-upload">
+				<input type="file" id="fileInput" accept="application/pdf"
+					style="display: none;">
+				<div class="cv-icon">📁</div>
+				<div>Carica il tuo CV</div>
+			</div>
+			<iframe id="pdfPreview" width="100%" height="500px"
+				style="display: none;"></iframe>
+
+			<script>
+  // Gestione dell'upload del file
+  document.querySelector('.cv-upload').addEventListener('click', () => {
+    document.getElementById('fileInput').click();
+  });
+ 
+  document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      const fileURL = URL.createObjectURL(file);
+      const pdfPreview = document.getElementById('pdfPreview');
+      pdfPreview.src = fileURL;
+      pdfPreview.style.display = 'block';
+      // Aggiungi qui la funzione per inviare il file al server
+    } else {
+      alert("Per favore seleziona un file PDF.");
+    }
+  });
+</script>
 
 			<div class="experience-section">
 				<div class="experience-header">
@@ -214,8 +237,7 @@
 			</div>
 		</div>
 
-		<a class="back-button">
-			<i class="fas fa-arrow-left"></i>
+		<a class="back-button"> <i class="fas fa-arrow-left"></i>
 		</a>
 	</div>
 
