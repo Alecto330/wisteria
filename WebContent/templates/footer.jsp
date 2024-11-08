@@ -48,7 +48,7 @@
 	<div class="footer-bottom">
 		<p>
 			&copy; 2023 Azienda S.p.A. - Tutti i diritti riservati. | <a
-				href="privacy-policy.html">Privacy Policy</a> | <a
+				href="${pageContext.request.contextPath}/templates/privacypolicy.jsp">Privacy Policy</a> | <a
 				href="/termini-e-condizioni">Termini e Condizioni</a>
 		</p>
 	</div>
