@@ -132,7 +132,7 @@ input[type="search"] {
     left: 0;
     right: 0;
     height: 100%; /* Make it full height */
-    background: rgb(197, 197, 197);
+    background: #c5c5c5;
     z-index: -1; 
 }
 
