@@ -6,21 +6,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/style_about.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/style.css">
-<link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <!-- Bootstrap per gli elementi -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- Font-Awesome per le icone (senz doverle scaricare) -->
-
-<title>Sezione Introduzione</title>
 <link
-	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-	rel="stylesheet">
-
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+	rel="stylesheet">	
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_about.css">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
