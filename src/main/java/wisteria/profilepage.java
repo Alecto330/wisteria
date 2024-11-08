@@ -1,11 +1,6 @@
 package wisteria;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import javax.servlet.http.Part;
 import user.CV;
 import user.CvDAO;
 import user.User;
-import utils.DatabaseConnection;
 
 @WebServlet("/profilepage")
 public class profilepage extends HttpServlet{
@@ -48,7 +42,7 @@ public class profilepage extends HttpServlet{
 			request.setAttribute("curriculum", cv.getCurriculum());
 			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 			request.setAttribute("telefono", cv.getTelefono());
-			
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/profilepage.jsp");
 			dispatcher.forward(request, response);
 		} else {
@@ -57,12 +51,17 @@ public class profilepage extends HttpServlet{
 
 
 
-
-
 	}
 	
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		Part filePart = request.getPart("pdf"); // Ottieni il file PDF
+		//InputStream fileContent = filePart.getInputStream();
+	}
+
 	/*public static void main(String[] args) {
-		
+
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();

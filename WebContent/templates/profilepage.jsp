@@ -149,7 +149,7 @@
 				<label class="form-label">Titolo:</label>
 				<div class="form-input-wrapper">
 					<input type="text" class="form-input"
-						value="Diploma perito informatico"> <span
+						value="${titoloDiStudio}"> <span
 						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
