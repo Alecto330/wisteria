@@ -148,9 +148,8 @@
 			<div class="form-group">
 				<label class="form-label">Titolo:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input"
-						value="${titoloDiStudio}"> <span
-						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input type="text" class="form-input" value="${titoloDiStudio}">
+					<span class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -162,109 +161,76 @@
 		</div>
 
 		<div class="bottom-section">
-			
+
+			<!-- ################################ -->
+
+			<div class="cv-container">
+				<!-- Sezione per caricare il CV -->
+				<div id="cvUploadSection" class="cv-upload"
+					onclick="triggerFileInput()">
+					<input type="file" id="fileInput" accept="application/pdf"
+						style="display: none;" onchange="handleFileChange(event)">
+					<div class="cv-icon">📁</div>
+					<div id="uploadText">Carica il tuo CV</div>
+				</div>
+
+				<!-- Link per visualizzare il PDF come allegato -->
+				<a id="pdfAttachment" class="attachment-link" target="_blank"> <i
+					class="fas fa-file-pdf fa-2x pdf-icon"></i> <span id="fileName"></span>
+				</a>
+
+				<!-- Bottone per rimuovere il PDF -->
+				<div id="removePDF" onclick="resetCV()">❌</div>
+			</div>
 
 
 
+			<script>
+    // Funzione per attivare il file input
+    function triggerFileInput() {
+        document.getElementById('fileInput').click();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			<style>
-        /* Aggiunge uno stile per la "x" sotto la preview */
-        #removePDF {
-            font-size: 20px;
-            color: red;
-            cursor: pointer;
-            display: none;
-            text-align: center;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="main-container-profilepage">
-        <!-- Sezione per caricare il CV -->
-        <div id="cvUploadSection" class="cv-upload" onclick="triggerFileInput()">
-            <input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
-            <div class="cv-icon">📁</div>
-            <div id="uploadText">Carica il tuo CV</div>
-        </div>
+    // Gestisce il cambiamento del file input
+    function handleFileChange(event) {
+        const file = event.target.files[0];
         
-        <!-- Iframe per la preview del PDF -->
-        <iframe id="pdfPreview" width="100%" height="500px" style="display: none;" onclick="resetCV()"></iframe>
-        
-        <!-- Bottone per rimuovere il PDF -->
-        <div id="removePDF" onclick="resetCV()">❌</div>
-    </div>
+        if (file && file.type === 'application/pdf') {
+            // Nascondi il div "Carica il tuo CV"
+            document.getElementById('cvUploadSection').style.display = 'none';
 
-    <script>
-        // Funzione per attivare il file input
-        function triggerFileInput() {
-            document.getElementById('fileInput').click();
-        }
-
-        // Gestisce il cambiamento del file input
-        function handleFileChange(event) {
-            const file = event.target.files[0];
+            // Mostra il link di allegato per il PDF
+            const pdfAttachment = document.getElementById('pdfAttachment');
+            const fileName = document.getElementById('fileName');
+            const fileURL = URL.createObjectURL(file);
             
-            if (file && file.type === 'application/pdf') {
-                // Nascondi il div "Carica il tuo CV"
-                document.getElementById('cvUploadSection').style.display = 'none';
+            pdfAttachment.href = fileURL;
+            fileName.textContent = file.name; // Mostra il nome del file
+            pdfAttachment.style.display = 'block';
 
-                // Mostra l'iframe con il PDF
-                const pdfPreview = document.getElementById('pdfPreview');
-                pdfPreview.style.display = 'block';
-
-                // Mostra la "x" per rimuovere il PDF
-                document.getElementById('removePDF').style.display = 'block';
-
-                // Crea un URL temporaneo per il PDF caricato
-                const fileURL = URL.createObjectURL(file);
-                pdfPreview.src = fileURL;
-            } else {
-                alert("Per favore seleziona un file PDF.");
-            }
+            // Mostra la "x" per rimuovere il PDF
+            document.getElementById('removePDF').style.display = 'block';
+        } else {
+            alert("Per favore seleziona un file PDF.");
         }
+    }
 
-        // Funzione per resettare il CV e permettere una nuova selezione del file
-        function resetCV() {
-            // Nascondi l'iframe e mostra il div per caricare il CV
-            document.getElementById('pdfPreview').style.display = 'none';
-            document.getElementById('cvUploadSection').style.display = 'block';
+    // Funzione per resettare il CV e permettere una nuova selezione del file
+    function resetCV() {
+        // Nascondi il link di allegato e mostra il div per caricare il CV
+        document.getElementById('pdfAttachment').style.display = 'none';
+        document.getElementById('cvUploadSection').style.display = 'block';
 
-            // Nascondi la "x"
-            document.getElementById('removePDF').style.display = 'none';
+        // Nascondi la "x"
+        document.getElementById('removePDF').style.display = 'none';
 
-            // Resetta il campo file
-            document.getElementById('fileInput').value = ''; // Reset del file input
-        }
-    </script>
-		
-		
-		
+        // Resetta il campo file
+        document.getElementById('fileInput').value = ''; // Reset del file input
+        document.getElementById('fileName').textContent = ''; // Clear file name
+    }
+</script>
 
-
-
-
-
+			<!-- ################################ -->
 
 			<div class="experience-section">
 				<div class="experience-header">
@@ -330,7 +296,6 @@
 
 
 	<%@ include file="footer.jsp"%>
-
 
 </body>
 </html>
