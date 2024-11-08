@@ -162,34 +162,109 @@
 		</div>
 
 		<div class="bottom-section">
-			<div class="cv-upload">
-				<input type="file" id="fileInput" accept="application/pdf"
-					style="display: none;">
-				<div class="cv-icon">📁</div>
-				<div>Carica il tuo CV</div>
-			</div>
-			<iframe id="pdfPreview" width="100%" height="500px"
-				style="display: none;"></iframe>
+			
 
-			<script>
-  // Gestione dell'upload del file
-  document.querySelector('.cv-upload').addEventListener('click', () => {
-    document.getElementById('fileInput').click();
-  });
- 
-  document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file && file.type === 'application/pdf') {
-      const fileURL = URL.createObjectURL(file);
-      const pdfPreview = document.getElementById('pdfPreview');
-      pdfPreview.src = fileURL;
-      pdfPreview.style.display = 'block';
-      // Aggiungi qui la funzione per inviare il file al server
-    } else {
-      alert("Per favore seleziona un file PDF.");
-    }
-  });
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<style>
+        /* Aggiunge uno stile per la "x" sotto la preview */
+        #removePDF {
+            font-size: 20px;
+            color: red;
+            cursor: pointer;
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container-profilepage">
+        <!-- Sezione per caricare il CV -->
+        <div id="cvUploadSection" class="cv-upload" onclick="triggerFileInput()">
+            <input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
+            <div class="cv-icon">📁</div>
+            <div id="uploadText">Carica il tuo CV</div>
+        </div>
+        
+        <!-- Iframe per la preview del PDF -->
+        <iframe id="pdfPreview" width="100%" height="500px" style="display: none;" onclick="resetCV()"></iframe>
+        
+        <!-- Bottone per rimuovere il PDF -->
+        <div id="removePDF" onclick="resetCV()">❌</div>
+    </div>
+
+    <script>
+        // Funzione per attivare il file input
+        function triggerFileInput() {
+            document.getElementById('fileInput').click();
+        }
+
+        // Gestisce il cambiamento del file input
+        function handleFileChange(event) {
+            const file = event.target.files[0];
+            
+            if (file && file.type === 'application/pdf') {
+                // Nascondi il div "Carica il tuo CV"
+                document.getElementById('cvUploadSection').style.display = 'none';
+
+                // Mostra l'iframe con il PDF
+                const pdfPreview = document.getElementById('pdfPreview');
+                pdfPreview.style.display = 'block';
+
+                // Mostra la "x" per rimuovere il PDF
+                document.getElementById('removePDF').style.display = 'block';
+
+                // Crea un URL temporaneo per il PDF caricato
+                const fileURL = URL.createObjectURL(file);
+                pdfPreview.src = fileURL;
+            } else {
+                alert("Per favore seleziona un file PDF.");
+            }
+        }
+
+        // Funzione per resettare il CV e permettere una nuova selezione del file
+        function resetCV() {
+            // Nascondi l'iframe e mostra il div per caricare il CV
+            document.getElementById('pdfPreview').style.display = 'none';
+            document.getElementById('cvUploadSection').style.display = 'block';
+
+            // Nascondi la "x"
+            document.getElementById('removePDF').style.display = 'none';
+
+            // Resetta il campo file
+            document.getElementById('fileInput').value = ''; // Reset del file input
+        }
+    </script>
+		
+		
+		
+
+
+
+
+
 
 			<div class="experience-section">
 				<div class="experience-header">
