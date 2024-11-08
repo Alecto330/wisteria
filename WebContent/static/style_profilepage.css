@@ -46,7 +46,6 @@ body {
 	justify-content: space-between;
 	margin-bottom: 1rem;
 }
-
 .profile-image {
 	width: 5vw;
 	height: 5vw;
@@ -58,24 +57,26 @@ body {
 	justify-content: center;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	overflow: visible;
 }
 
 .profile-image:hover {
 	background-color: #ccc;
 }
 
+/* Stile dell'icona dell'utente */
 .profile-icon {
 	width: 2vw;
 	height: 2vw;
 	background-color: #6e41e2;
-	color: white; /* Makes the icon white */
+	color: white;
 	border-radius: 8px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/* Centers the icon both horizontally and vertically */
 }
 
+/* Stile dell'icona della fotocamera */
 .camera-icon {
 	position: absolute;
 	bottom: 0;

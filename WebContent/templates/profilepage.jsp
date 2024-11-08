@@ -30,17 +30,15 @@
 
 	<div class="main-container-profilepage">
 		<div class="user-profile">
-			<div class="profile-image">
-				<div class="profile-icon">
+			<div class="profile-image" onclick="triggerImageInput()">
+				<input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageChange(event)">
+				<img id="profilePicture" src="" alt="Profile Picture" style="display: none; border-radius: 50%; width: 100%; height: 100%;">
+				<div class="profile-icon" id="profileIcon">
 					<i class="fa-solid fa-user"></i>
-					<!-- Font Awesome user icon -->
 				</div>
-
 				<div class="camera-icon">
 					<i class="fa-solid fa-plus"></i>
-					<!-- Font Awesome plus icon -->
 				</div>
-
 			</div>
 		</div>
 
@@ -228,6 +226,40 @@
 					// Resetta il campo file
 					document.getElementById('fileInput').value = '';
 				}
+
+
+
+
+
+
+				function triggerImageInput() {
+		document.getElementById('imageInput').click();
+	}
+
+	// Gestisce il caricamento dell'immagine
+	function handleImageChange(event) {
+		const file = event.target.files[0];
+		
+		if (file && file.type.startsWith('image/')) {
+			const reader = new FileReader();
+
+			// Quando l'immagine è pronta, la carica nel div .profile-image
+			reader.onload = function(e) {
+				const profilePicture = document.getElementById('profilePicture');
+				profilePicture.src = e.target.result;
+				profilePicture.style.display = 'block';
+
+				// Nasconde le icone quando l'immagine è presente
+				document.getElementById('profileIcon').style.display = 'none';
+				document.querySelector('.camera-icon').style.display = 'none';
+			};
+
+			// Legge il file come URL data
+			reader.readAsDataURL(file);
+		} else {
+			alert("Per favore seleziona un'immagine valida.");
+		}
+	}
 			</script>
 			
 			
