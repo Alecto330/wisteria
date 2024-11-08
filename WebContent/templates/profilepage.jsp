@@ -161,76 +161,91 @@
 		</div>
 
 		<div class="bottom-section">
+			
 
-			<!-- ################################ -->
 
-			<div class="cv-container">
-				<!-- Sezione per caricare il CV -->
-				<div id="cvUploadSection" class="cv-upload"
-					onclick="triggerFileInput()">
-					<input type="file" id="fileInput" accept="application/pdf"
-						style="display: none;" onchange="handleFileChange(event)">
-					<div class="cv-icon">📁</div>
+			<div>
+				<!-- Sezione per caricare il CV o aprirlo -->
+				<div id="cvUploadSection" class="cv-upload" onclick="handleClick(event)">
+					<input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
+					<div class="cv-icon" id="icon">📁</div>
 					<div id="uploadText">Carica il tuo CV</div>
+					<div id="removePDF" onclick="removePDF(event)">❌</div>
 				</div>
-
-				<!-- Link per visualizzare il PDF come allegato -->
-				<a id="pdfAttachment" class="attachment-link" target="_blank"> <i
-					class="fas fa-file-pdf fa-2x pdf-icon"></i> <span id="fileName"></span>
-				</a>
-
-				<!-- Bottone per rimuovere il PDF -->
-				<div id="removePDF" onclick="resetCV()">❌</div>
 			</div>
-
-
-
+			
+			
 			<script>
-    // Funzione per attivare il file input
-    function triggerFileInput() {
-        document.getElementById('fileInput').click();
-    }
+				let pdfURL = null;
+			
+				// Funzione per attivare il file input o aprire il PDF
+				function handleClick(event) {
+					// Se l'utente ha cliccato sulla "X", non aprire il PDF
+					if (event.target.id === 'removePDF') return;
+			
+					if (pdfURL) {
+						// Se il PDF è caricato, apri il PDF in una nuova scheda
+						window.open(pdfURL, '_blank');
+					} else {
+						// Altrimenti, attiva il file input per caricare un PDF
+						document.getElementById('fileInput').click();
+					}
+				}
+			
+				// Gestisce il cambiamento del file input
+				function handleFileChange(event) {
+					const file = event.target.files[0];
+					
+					if (file && file.type === 'application/pdf') {
+						// Memorizza l'URL temporaneo per il PDF caricato
+						pdfURL = URL.createObjectURL(file);
+			
+						// Modifica il testo e l'icona del div per aprire il PDF
+						document.getElementById('icon').textContent = "📄";
+						document.getElementById('uploadText').textContent = "Apri il tuo CV";
+			
+						// Mostra la "X" per rimuovere il PDF
+						document.getElementById('removePDF').style.display = 'block';
+					} else {
+						alert("Per favore seleziona un file PDF.");
+					}
+				}
+			
+				// Funzione per rimuovere il PDF e permettere una nuova selezione del file
+				function removePDF(event) {
+					event.stopPropagation(); // Impedisce al click su "X" di attivare `handleClick`
+			
+					// Resetta l'URL del PDF
+					pdfURL = null;
+			
+					// Ripristina l'aspetto del div per caricare il CV
+					document.getElementById('icon').textContent = "📁";
+					document.getElementById('uploadText').textContent = "Carica il tuo CV";
+			
+					// Nascondi la "X"
+					document.getElementById('removePDF').style.display = 'none';
+			
+					// Resetta il campo file
+					document.getElementById('fileInput').value = '';
+				}
+			</script>
+			
+			
+			
+			
+			
+			
 
-    // Gestisce il cambiamento del file input
-    function handleFileChange(event) {
-        const file = event.target.files[0];
-        
-        if (file && file.type === 'application/pdf') {
-            // Nascondi il div "Carica il tuo CV"
-            document.getElementById('cvUploadSection').style.display = 'none';
 
-            // Mostra il link di allegato per il PDF
-            const pdfAttachment = document.getElementById('pdfAttachment');
-            const fileName = document.getElementById('fileName');
-            const fileURL = URL.createObjectURL(file);
-            
-            pdfAttachment.href = fileURL;
-            fileName.textContent = file.name; // Mostra il nome del file
-            pdfAttachment.style.display = 'block';
+	
+		
+		
+		
 
-            // Mostra la "x" per rimuovere il PDF
-            document.getElementById('removePDF').style.display = 'block';
-        } else {
-            alert("Per favore seleziona un file PDF.");
-        }
-    }
 
-    // Funzione per resettare il CV e permettere una nuova selezione del file
-    function resetCV() {
-        // Nascondi il link di allegato e mostra il div per caricare il CV
-        document.getElementById('pdfAttachment').style.display = 'none';
-        document.getElementById('cvUploadSection').style.display = 'block';
 
-        // Nascondi la "x"
-        document.getElementById('removePDF').style.display = 'none';
 
-        // Resetta il campo file
-        document.getElementById('fileInput').value = ''; // Reset del file input
-        document.getElementById('fileName').textContent = ''; // Clear file name
-    }
-</script>
 
-			<!-- ################################ -->
 
 			<div class="experience-section">
 				<div class="experience-header">
@@ -296,6 +311,7 @@
 
 
 	<%@ include file="footer.jsp"%>
+
 
 </body>
 </html>
