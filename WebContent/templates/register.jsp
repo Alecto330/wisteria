@@ -26,52 +26,52 @@
 
     <div class="login-container">
         <h2>Registrati!</h2>
-        <form id="signupForm" action="" method="POST" enctype="multipart/form-data">
+        <form id="signupForm" action="${pageContext.request.contextPath}/register" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome"
+                    <input type="text" class="form-control" id="nome" name="nome" value="${nome}"
                         placeholder="Inserisci il tuo nome" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="cognome">Cognome</label>
-                    <input type="text" class="form-control" id="cognome" name="cognome"
+                    <input type="text" class="form-control" id="cognome" name="cognome" value="${cognome}"
                         placeholder="Inserisci il tuo cognome" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="dataNascita">Data di Nascita</label>
-                    <input type="date" class="form-control" id="dataNascita" name="dataNascita"
+                    <input type="date" class="form-control" id="dataNascita" name="dataNascita" value="${dataNascita}"
                         required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="codiceFiscale">Codice Fiscale</label>
-                    <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale"
+                    <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale" value="${codiceFiscale}"
                         placeholder="Inserisci il tuo codice fiscale" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username"
+                    <input type="text" class="form-control" id="username" name="username" value="${username}"
                         placeholder="Inserisci il tuo username" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email"
+                    <input type="email" class="form-control" id="email" name="email" value="${email}"
                         placeholder="Inserisci la tua email" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password"
+                    <input type="password" class="form-control" id="password" name="password" value="${password}"
                         placeholder="Inserisci la tua password" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="confirmPassword">Conferma Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" value="${confirmPassword}"
                         placeholder="Conferma la tua password" required>
                     <small id="passwordHelp" class="form-text text-danger" style="display: none;">Le password non corrispondono.</small>
                 </div>
@@ -91,6 +91,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+        	
             const signupForm = document.getElementById('signupForm');
             const password = document.getElementById('password');
             const confirmPassword = document.getElementById('confirmPassword');
@@ -107,14 +108,16 @@
             password.addEventListener('input', validatePassword);
             confirmPassword.addEventListener('input', validatePassword);
 
-            signupForm.addEventListener('submit', function(event) {
-                if (password.value !== confirmPassword.value) {
-                    event.preventDefault();
-                    passwordHelp.style.display = 'block';
-                    alert('Le password non corrispondono. Per favore, riprova.');
-                }
-            });
         });
+        
+        
+        window.addEventListener('load', function() {
+            const error = "<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>";
+            if (error && error.trim() !== "") {
+                alert(error);
+            }
+        });
+        
     </script>
 
 </body>

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import user.CV;
-import user.CvDAO;
+import cv.CV;
+import cv.CvDAO;
 import user.User;
 
 @WebServlet("/profilepage")

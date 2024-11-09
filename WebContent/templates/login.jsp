@@ -36,7 +36,7 @@
 
 			<button type="submit">Accedi</button>
 		</form>
-		<a href="#" class="register-link">Registrati</a>
+		<a href="${pageContext.request.contextPath}/register" class="register-link">Registrati</a>
 	</div>
 
 	<!--<div class="btn-container">

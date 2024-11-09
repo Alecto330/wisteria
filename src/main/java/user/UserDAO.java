@@ -1,8 +1,12 @@
 package user;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.LocalDate;
+
 import org.mindrot.jbcrypt.BCrypt;
 import utils.DatabaseConnection;
 
@@ -46,6 +50,37 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	
+	public void insertUser(String nome, String cognome, String username, String password, String email, String codiceFiscale, LocalDate dateOfBirth) {
+		//TODO ROLE!
+		String hashPassword=BCrypt.hashpw(password, BCrypt.gensalt());
+		
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="INSERT INTO Utenti (nome, cognome, username, pw, email, dateOfBirth, codiceFiscale) VALUES (?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, nome);
+			preparedStatement.setString(2, cognome);
+			preparedStatement.setString(3, username);
+			preparedStatement.setString(4, hashPassword);
+			preparedStatement.setString(5, email);
+			preparedStatement.setDate(6, Date.valueOf(dateOfBirth));
+			preparedStatement.setString(7, codiceFiscale);
+
+			preparedStatement.executeUpdate();
+			/*ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				int generatedId = generatedKeys.getInt(1);
+
+			}*/
+			connection.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
