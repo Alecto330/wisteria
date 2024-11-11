@@ -310,7 +310,7 @@ input[type="search"] {
     height: 25vh;
     width: auto;
     margin: 0; /* Elimina margini extra */
-    padding: 0;
+    padding-left: 1vw;
 }
 .navbar-items{
     margin-left: auto;
