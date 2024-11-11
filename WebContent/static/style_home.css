@@ -40,7 +40,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; 
+    background-attachment: fixed;
 }
 #regioni {
     appearance: none;
@@ -84,6 +84,7 @@ body {
     margin-top: 8vh;
     margin-left: 12.5vh;
     color: rgb(123, 31, 255);
+    text-shadow: 0 0 20px #7c1fff,
     0 0 10px #ffffff99,
     0 0 15px rgba(255, 255, 255, 0.5),
     0 0 20px rgba(0, 0, 0, 0.4);
@@ -91,7 +92,13 @@ body {
 }
 
 .introduction{
+    font-size: 20px;
     text-align: left;
     margin-top: 4vh;
     margin-left: 12.5vh;
+    margin-right: 750px;
+}
+.highlight {
+    color: #8328FF; /* Sottolineare con colore di sfondo */
+    font-weight: bold;
 }
