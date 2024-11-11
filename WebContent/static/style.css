@@ -305,7 +305,7 @@ input[type="search"] {
     height: 25vh;
     width: auto;
     margin: 0; /* Elimina margini extra */
-    padding: 0;
+    padding-left: 1vw;
 }
 .navbar-items{
     margin-left: auto;
@@ -393,4 +393,9 @@ input[type="search"] {
 
 .div-footer > .col-footer:last-child {
     align-self: flex-start; /* Allinea la sezione "Seguici" alla stessa altezza degli altri paragrafi */
+}
+
+.logout {
+    background: transparent;
+    width: 80px;
 }

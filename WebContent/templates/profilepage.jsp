@@ -23,16 +23,17 @@
 <title>Profilo e personalizzazione</title>
 
 </head>
-<body>
-
+<body onmouseup="exit()">
 
 	<%@ include file="header.jsp"%>
 
 	<div class="main-container-profilepage">
 		<div class="user-profile">
 			<div class="profile-image" onclick="triggerImageInput()">
-				<input type="file" id="imageInput" accept="image/*" style="display: none;" onchange="handleImageChange(event)">
-				<img id="profilePicture" src="" alt="Profile Picture" style="display: none; border-radius: 50%; width: 100%; height: 100%;">
+				<input type="file" id="imageInput" accept="image/*"
+					style="display: none;" onchange="handleImageChange(event)">
+				<img id="profilePicture" src="" alt="Profile Picture"
+					style="display: none; border-radius: 50%; width: 100%; height: 100%;">
 				<div class="profile-icon" id="profileIcon">
 					<i class="fa-solid fa-user"></i>
 				</div>
@@ -48,8 +49,9 @@
 			<div class="form-group">
 				<label class="form-label">Nome:</label>
 				<div class="form-input-wrapper">
-					<input type="text" class="form-input" value="${nome}"> <span
-						class="edit-icon" title="Modifica"> <!-- SVG icona matita -->
+					<input id="input-nome" type="text" class="form-input"
+						value="${nome}" disabled> <span id="modifica-nome"
+						class="edit-icon" title="Modifica" onclick="toggle()"> <!-- SVG icona matita -->
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -159,20 +161,19 @@
 		</div>
 
 		<div class="bottom-section">
-			
-
-
 			<div>
 				<!-- Sezione per caricare il CV o aprirlo -->
-				<div id="cvUploadSection" class="cv-upload" onclick="handleClick(event)">
-					<input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
+				<div id="cvUploadSection" class="cv-upload"
+					onclick="handleClick(event)">
+					<input type="file" id="fileInput" accept="application/pdf"
+						style="display: none;" onchange="handleFileChange(event)">
 					<div class="cv-icon" id="icon">📁</div>
 					<div id="uploadText">Carica il tuo CV</div>
 					<div id="removePDF" onclick="removePDF(event)">❌</div>
 				</div>
 			</div>
-			
-			
+
+
 			<script>
 
 				// CARICA PDF CURRICULUM
@@ -263,24 +264,38 @@
 						alert("Per favore seleziona un'immagine valida.");
 					}
 				}
+				  function toggle() {
+						console.log("ciao");
+				      const input = document.getElementById('input-nome');
+				      const editIcon = document.getElementById('modifica-nome');
+				      input.disabled = false; // Enable the input
+				      input.focus();
+				      editIcon.style.display ='none';
+				 
+				      // Optionally, disable editing again when the user clicks outside
+				      input.addEventListener('keydown', (event) => {
+				          if (event.key === 'Enter') {
+				            input.disabled = true; // Disable the input when Enter is pressed
+				            editIcon.style.display='inline';
+				          }
+				          
+				        });
+				      
+
+				    }
+				
+				  
+			      
+				  function exit(){
+					  const input = document.getElementById('input-nome');
+				      const editIcon = document.getElementById('modifica-nome');
+			            input.disabled = true; // Disable the input when Enter is pressed
+			            editIcon.style.display='inline';
+			          
+			          
+			        }
+				
 			</script>
-			
-			
-			
-			
-			
-			
-
-
-	
-		
-		
-		
-
-
-
-
-
 
 			<div class="experience-section">
 				<div class="experience-header">
