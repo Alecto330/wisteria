@@ -399,3 +399,8 @@ input[type="search"] {
 .div-footer > .col-footer:last-child {
     align-self: flex-start; /* Allinea la sezione "Seguici" alla stessa altezza degli altri paragrafi */
 }
+
+.logout {
+    background: transparent;
+    width: 80px;
+}
