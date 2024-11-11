@@ -36,12 +36,11 @@
 	margin-top:150px;
 }
 body {
-    background-image: url("../assets/bg.png");
+    background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.8), rgba(230, 230, 230, 0.8), rgba(165, 48, 255, 0.8)), url("../assets/bg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background: linear-gradient(130deg, #ffffff, #e6e6e6, #a530ff);
+    background-attachment: fixed; 
 }
 #regioni {
     appearance: none;
@@ -85,7 +84,6 @@ body {
     margin-top: 8vh;
     margin-left: 12.5vh;
     color: rgb(123, 31, 255);
-    text-shadow: 0 0 20px rgba(123, 31, 255, 0.8),
     0 0 10px #ffffff99,
     0 0 15px rgba(255, 255, 255, 0.5),
     0 0 20px rgba(0, 0, 0, 0.4);
@@ -93,13 +91,7 @@ body {
 }
 
 .introduction{
-    font-size: 20px;
     text-align: left;
     margin-top: 4vh;
     margin-left: 12.5vh;
-    margin-right: 750px;
-}
-.highlight {
-    color: #8328FF; /* Sottolineare con colore di sfondo */
-    font-weight: bold;
 }
