@@ -38,7 +38,7 @@
 		<p class="introduction-title">Benvenuto!</p>
 		<p class="introduction">
 			Wisteria è un'azienda <span class="highlight">leader nel
-				settore informatico</span> in Italia, riconosciuta <br> per l'<span
+				settore informatico</span> in Italia, riconosciuta  per l'<span
 				class="highlight">innovazione</span> e l’<span class="highlight">eccellenza</span>
 			delle <span class="highlight">soluzioni digitali</span>. La nostra
 			esperienza nel campo tecnologico ha portato alla creazione di una <span

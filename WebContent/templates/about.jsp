@@ -44,17 +44,19 @@
 			</div>
 			<div class="storia-container">
 				<div class="storia">
-					Wisteria nasce con una visione chiara: utilizzare la tecnologia per
-					migliorare la vita quotidiana delle persone e delle aziende. <br>Fin
-					dall’inizio, Wisteria ha investito nell’innovazione continua,
-					creando soluzioni digitali capaci di adattarsi alle esigenze di un
-					mercato in costante evoluzione.<br> La nostra missione è
-					semplice ma ambiziosa: trasformare le sfide tecnologiche in
-					opportunità, con strumenti intuitivi e potenti che semplificano i
-					processi e aumentano l’efficienza. <img
-						src="${pageContext.request.contextPath}/assets/strettamano.png"
-						class="persona2-png" alt="persona2">
+					Wisteria nasce con una <span class="highlight">visione chiara</span>: utilizzare la <span class="highlight">tecnologia</span> per migliorare la vita 
+					quotidiana delle persone e delle aziende. Fin dall'inizio, Wisteria ha investito nell'<span class="highlight">innovazione continua</span>, 
+					creando soluzioni digitali capaci di adattarsi alle esigenze di un mercato in costante evoluzione.<br> 
+					La nostra <span class="highlight">missione</span> è semplice ma <span class="highlight">ambiziosa</span>: trasformare le sfide tecnologiche in opportunità,<br>
+					con strumenti <span class="highlight">intuitivi e potenti</span> che semplificano i processi e aumentano l'efficienza.<br>
+					Grazie al nostro team di <span class="highlight">esperti visionari</span>, sviluppiamo 
+					soluzioni all'avanguardia che anticipano le tendenze del futuro digitale. La nostra <span class="highlight">dedizione all'eccellenza</span> si riflette 
+					in ogni progetto, dove l'attenzione al dettaglio si unisce alla ricerca costante della <span class="highlight">perfezione</span>. Con Wisteria, il <span class="highlight">futuro 
+					tecnologico</span> diventa accessibile oggi, aprendo nuove strade verso il <span class="highlight">successo</span> nel mondo digitale.
+					
 				</div>
+				<img src="${pageContext.request.contextPath}/assets/strettamano.png"
+						class="persona2-png" alt="persona2">
 				<div class="number-container">
 					<div class="number-inner">
 						<div class="number-text">oltre</div>
