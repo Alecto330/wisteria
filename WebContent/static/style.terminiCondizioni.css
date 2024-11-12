@@ -4,9 +4,12 @@
             background-color: #f8f9fa;
         }
 
+        .header {
+            margin-top: 20px;
+        }
         .container {
             background-color: #ffffff;
-            padding: 30px;
+            padding: 70px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -17,10 +20,11 @@
 
         p {
             text-align: justify;
+            margin-bottom: 20px;
         }
 
         .section {
-            margin-bottom: 20px;
+            margin: 20px;
         }
 
         footer {
@@ -37,3 +41,4 @@
         a:hover {
             text-decoration: underline;
         }
+        

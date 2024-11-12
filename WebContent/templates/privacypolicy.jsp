@@ -9,102 +9,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone (senz doverle scaricare) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
+   <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.terminiCondizioni.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_nav.css">
     <title>Privacy Policy - Wisteria</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #222;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-        	margin-top: 9.5vh;
-            width: 90%;
-            max-width: 1200px;
-            padding: 40px;
-            background: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #e6d4f0;
-        }
-
-        h2 {
-            color: #333;
-            font-size: 20px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-
-        p, ul {
-            margin-bottom: 1.2em;
-            color: #444;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        a {
-            color: #9370db;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        strong {
-            color: #333;
-        }
-
-        .last-update {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .header {
-            margin-bottom: 40px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
-        }
-    </style>
+   
 </head>
 <body>
 	<%@ include file="header.jsp"%>
