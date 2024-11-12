@@ -1,6 +1,7 @@
 package wisteria;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,15 @@ public class login extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("templates/login.jsp");
+		HttpSession session = request.getSession();
+		User user=(User)session.getAttribute("user");
+
+		if(user==null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/login.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			response.sendRedirect("home");
+		}
 	}
 
 	@Override
@@ -32,7 +41,6 @@ public class login extends HttpServlet {
 		UserDAO dao=new UserDAO();
 		User user=dao.login(email, password);
 
-		//Candidate user=new Candidate(email, email, email, email);
 		if(user!=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
@@ -40,7 +48,11 @@ public class login extends HttpServlet {
 
 			response.sendRedirect("home");
 		}else {
-			System.out.println("erroreeeeeeeeee");			
+			request.setAttribute("email", email);
+			request.setAttribute("password", password);
+			request.setAttribute("error", "Credenziali Errate");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/login.jsp");
+			dispatcher.forward(request, response);		
 		}
 	}
 }

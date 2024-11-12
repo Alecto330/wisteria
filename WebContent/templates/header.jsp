@@ -12,8 +12,10 @@
 
 <!-- Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
@@ -29,24 +31,7 @@
 
 		<nav class="navbar custom-navbar justify-content-between fixed-top">
 
-			<!--<c:choose>
-				<c:when
-					test="${pageContext.request.servletPath == '/templates/login.jsp'}">
-					<link rel="stylesheet"
-						href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-					<div class="hamburger" id="hamburger">
-						<i class="fas fa-arrow-left"></i>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="hamburger" id="hamburger">
-						&#9776;
-					</div>
-				</c:otherwise>
-			</c:choose> -->
-
 			<div class="hamburger" id="hamburger">&#9776;</div>
-
 
 			<nav class="menu" id="menu">
 				<ul>
@@ -57,7 +42,7 @@
 					<li><a href="${pageContext.request.contextPath}/about"><i
 							class="fa-solid fa-question"></i> About</a></li>
 					<li><a onclick="scrollToBottom() " class="contact"><i
-							class="fas fa-envelope" ></i> Contact</a></li>
+							class="fas fa-envelope"></i> Contact</a></li>
 				</ul>
 			</nav>
 			<script>
@@ -82,7 +67,6 @@
 					alt="Logo Wisteria" class="logo-img">
 			</span>
 			</a>
-			<!--<a class="btn btn-primary" href="${pageContext.request.contextPath}/login"> Accedi </a>-->
 
 			<c:choose>
 				
@@ -93,46 +77,29 @@
 					
 				</c:when>
 				<c:otherwise>
-					
-					<c:if test="${not empty user}"> <!-- Se l'utente è autenticato, mostra l'icona -->
+
+					<c:if test="${not empty user}">
+						<!-- Se l'utente è autenticato, mostra l'icona -->
 						<div class="logout">
 							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div class="acc2">
-									<i class="fa-solid fa-user usernav"></i>
-								</div>
+								<i class="fa-solid fa-user" style="font-size: 3vh; width: 3vw;"></i>
 							</a>
-						
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
+
+							<div class="dropdown-menu dropdown-menu-right"
+								aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item"
+									href="${pageContext.request.contextPath}/logout">Logout</a>
 							</div>
 						</div>
 					</c:if>
+					
 					<c:if test="${empty user}"> <!-- Se l'utente non è autenticato, mostra il link per il login -->
-						<div class="acc">
-							<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
-						</div>
+						<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
 					</c:if>
 					
 					
 				</c:otherwise>
 			</c:choose>
-
-
-
-			<!--
-	  <c:choose>
-        <c:when test="${not empty user}">
-
-            <div class="user-info">
-
-                <p>Hello, ${user.username}!</p>
-            </div>
-        </c:when>
-        <c:otherwise>
-         
-            <p>Hello, Guest! <a href="login.jsp">Log in</a> to see more features.</p>
-        </c:otherwise>
-    </c:choose>-->
 
 		</nav>
 	</section>

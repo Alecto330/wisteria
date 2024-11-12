@@ -58,7 +58,6 @@ public class home extends HttpServlet {
 		
 		request.setAttribute("title", "Home - Wisteria");
 		request.setAttribute("content", "home.jsp");
-		System.out.println(header);
 		request.setAttribute("headerPath", header);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 		dispatcher.forward(request, response);

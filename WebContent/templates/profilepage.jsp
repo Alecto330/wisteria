@@ -275,6 +275,7 @@
 
 
 					function toggleNome() {
+						nome=1;
 						const input = document.getElementById('input-nome');
 						const editIcon = document.getElementById('modifica-nome');
 						input.disabled = false; // Enable the input
@@ -286,13 +287,13 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								nome=1;
 							}
 						});
 						
 						}
 
 					function toggleUsername(){
+						username=1;
 						const input = document.getElementById('input-username');
 						const editIcon = document.getElementById('modifica-username');
 						input.disabled = false; // Enable the input
@@ -304,12 +305,12 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								username=1;
 							}
 						});
 					}
 
 					function toggleCognome(){
+						cognome=1;
 						const input = document.getElementById('input-cognome');
 						const editIcon = document.getElementById('modifica-cognome');
 						input.disabled = false; // Enable the input
@@ -321,12 +322,12 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								cognome=1;
 							}
 						});
 					}
 
 					function toggleDataDiNascita(){
+						dataDiNascita=1;
 						const input = document.getElementById('input-datadinascita');
 						const editIcon = document.getElementById('modifica-datadinascita');
 						input.disabled = false; // Enable the input
@@ -338,12 +339,12 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								dataDiNascita=1;
 							}
 						});
 					}
 
 					function toggleEmail(){
+						email=1;
 						const input = document.getElementById('input-email');
 						const editIcon = document.getElementById('modifica-email');
 						input.disabled = false; // Enable the input
@@ -355,12 +356,12 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								email=1;
 							}
 						});
 						}
 
 					function toggleCF(){
+						cf=1;
 						const input = document.getElementById('input-cf');
 						const editIcon = document.getElementById('modifica-cf');
 						input.disabled = false; // Enable the input
@@ -372,12 +373,12 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								cf=1;
 							}
 						});
 					}
 
 					function toggleTelefono(){
+						telefono=1;
 						const input = document.getElementById('input-telefono');
 						const editIcon = document.getElementById('modifica-telefono');
 						input.disabled = false; // Enable the input
@@ -389,12 +390,12 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								telefono=1;
 							}
 						});
 					}
 
 					function toggleTitoloDiStudio(){
+						titolo=1;
 						const input = document.getElementById('input-titolo');
 						const editIcon = document.getElementById('modifica-titolo');
 						input.disabled = false; // Enable the input
@@ -406,7 +407,6 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
-								titolo=1;
 							}
 						});
 					}

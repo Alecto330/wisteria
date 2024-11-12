@@ -35,7 +35,6 @@ public class about extends HttpServlet{
 		
 		request.setAttribute("title", "About - Wisteria");
 		request.setAttribute("content", "about.jsp");
-		System.out.println(header);
 		request.setAttribute("headerPath", header);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 		dispatcher.forward(request, response);
