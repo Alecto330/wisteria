@@ -19,17 +19,17 @@ import user.UserDAO;
 
 @WebServlet("/register")
 public class register extends HttpServlet{
-	
+
 	public register() {
 
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		response.sendRedirect("templates/register.jsp");
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
@@ -40,13 +40,14 @@ public class register extends HttpServlet{
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
-		
+
 		String error=check(nome, cognome, username, password, confirmPassword, email, codiceFiscale, dataNascita);
 		if(error==null) {
 			UserDAO dao=new UserDAO();
 			try {
 				dao.insertUser(nome, cognome, username, password, email, codiceFiscale, dataNascita);
-			} catch (SQLException e) {
+				response.sendRedirect("login");
+			} catch (Exception e) {
 				request.setAttribute("nome", nome);
 				request.setAttribute("cognome", cognome);
 				request.setAttribute("dataNascita", dataNascita.toString());
@@ -58,10 +59,8 @@ public class register extends HttpServlet{
 				request.setAttribute("error", "Utente già presente");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/register.jsp");
 				dispatcher.forward(request, response);
-				
-				e.printStackTrace();
 			}
-			response.sendRedirect("login");
+
 		}else {
 			request.setAttribute("nome", nome);
 			request.setAttribute("cognome", cognome);
@@ -76,32 +75,32 @@ public class register extends HttpServlet{
 			dispatcher.forward(request, response);
 		}
 	}
-	
-	
+
+
 	public String check(String nome, String cognome, String username, String password, String confirmPassword, String email, String codiceFiscale, LocalDate dateOfBirth) {
-	    if (nome.isEmpty() || cognome.isEmpty() || username.isEmpty() || password.isEmpty() ||
-	        confirmPassword.isEmpty() || email.isEmpty() || codiceFiscale.isEmpty() || dateOfBirth == null) {
-	        //System.out.println("Errore: tutti i campi devono essere compilati.");
-	        return "Errore: tutti i campi devono essere compilati.";
-	    }
+		if (nome.isEmpty() || cognome.isEmpty() || username.isEmpty() || password.isEmpty() ||
+				confirmPassword.isEmpty() || email.isEmpty() || codiceFiscale.isEmpty() || dateOfBirth == null) {
+			//System.out.println("Errore: tutti i campi devono essere compilati.");
+			return "Errore: tutti i campi devono essere compilati.";
+		}
 
-	    String regex = "^(?=.*[a-zA-Z])(?=.*\\d).{6,}$";
-	    if (!Pattern.matches(regex, password)) {
-	        //System.out.println("Errore: la password deve contenere almeno 6 caratteri, includendo lettere e numeri.");
-	        return "Errore: la password deve contenere almeno 6 caratteri, includendo lettere e numeri.";
-	    }
+		String regex = "^(?=.*[a-zA-Z])(?=.*\\d).{6,}$";
+		if (!Pattern.matches(regex, password)) {
+			//System.out.println("Errore: la password deve contenere almeno 6 caratteri, includendo lettere e numeri.");
+			return "Errore: la password deve contenere almeno 6 caratteri, includendo lettere e numeri.";
+		}
 
-	    if (!password.equals(confirmPassword)) {
-	        //System.out.println("Errore: le password non coincidono.");
-	        return "Errore: le password non coincidono.";
-	    }
+		if (!password.equals(confirmPassword)) {
+			//System.out.println("Errore: le password non coincidono.");
+			return "Errore: le password non coincidono.";
+		}
 
-	    LocalDate currentDate = LocalDate.now();
-	    Period age = Period.between(dateOfBirth, currentDate);
-	    if (age.getYears() < 16) {
-	        //System.out.println("Errore: è necessario avere almeno 16 anni.");
-	        return "Errore: è necessario avere almeno 16 anni.";
-	    }
-	    return null;
+		LocalDate currentDate = LocalDate.now();
+		Period age = Period.between(dateOfBirth, currentDate);
+		if (age.getYears() < 16) {
+			//System.out.println("Errore: è necessario avere almeno 16 anni.");
+			return "Errore: è necessario avere almeno 16 anni.";
+		}
+		return null;
 	}
 }

@@ -54,7 +54,7 @@ public class UserDAO {
 	}
 
 
-	public void insertUser(String nome, String cognome, String username, String password, String email, String codiceFiscale, LocalDate dateOfBirth) throws SQLException {
+	public void insertUser(String nome, String cognome, String username, String password, String email, String codiceFiscale, LocalDate dateOfBirth) throws Exception {
 		//TODO ROLE!
 		String hashPassword=BCrypt.hashpw(password, BCrypt.gensalt());
 
