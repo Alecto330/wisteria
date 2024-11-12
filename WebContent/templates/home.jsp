@@ -32,7 +32,6 @@
 <body>
 
 
-	<%@ include file="header.jsp"%>
 
 	<div class="home-main">
 		<p class="introduction-title">Benvenuto!</p>
@@ -117,8 +116,6 @@
 			</c:forEach>
 		</div>
 	</div>
-
-	<%@ include file="footer.jsp"%>
 
 	<script>
 		function performSearch() {

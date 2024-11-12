@@ -2,6 +2,7 @@ package wisteria;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.regex.Matcher;
@@ -43,7 +44,23 @@ public class register extends HttpServlet{
 		String error=check(nome, cognome, username, password, confirmPassword, email, codiceFiscale, dataNascita);
 		if(error==null) {
 			UserDAO dao=new UserDAO();
-			dao.insertUser(nome, cognome, username, password, email, codiceFiscale, dataNascita);
+			try {
+				dao.insertUser(nome, cognome, username, password, email, codiceFiscale, dataNascita);
+			} catch (SQLException e) {
+				request.setAttribute("nome", nome);
+				request.setAttribute("cognome", cognome);
+				request.setAttribute("dataNascita", dataNascita.toString());
+				request.setAttribute("codiceFiscale", codiceFiscale);
+				request.setAttribute("username", username);
+				request.setAttribute("email", email);
+				request.setAttribute("password", password);
+				request.setAttribute("confirmPassword", confirmPassword);
+				request.setAttribute("error", "Email già presente");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/register.jsp");
+				dispatcher.forward(request, response);
+				
+				e.printStackTrace();
+			}
 			response.sendRedirect("login");
 		}else {
 			request.setAttribute("nome", nome);

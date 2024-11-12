@@ -8,8 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import posizione.Posizione;
 import posizione.PosizioneDAO;
+import user.User;
 
 @WebServlet("/home")
 public class home extends HttpServlet {
@@ -41,7 +44,23 @@ public class home extends HttpServlet {
 		request.setAttribute("jobOffers", jobOffers);
 		request.setAttribute("professionList", professionList);
 		request.setAttribute("regionList", regionList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/home.jsp");
+		
+
+		HttpSession session = request.getSession();
+		User user=(User)session.getAttribute("user");
+		
+		String header="";
+		if(user==null) {
+			header="header.jsp";
+		}else {
+			header=user.getHeader();
+		}
+		
+		request.setAttribute("title", "Home - Wisteria");
+		request.setAttribute("content", "home.jsp");
+		System.out.println(header);
+		request.setAttribute("headerPath", header);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 		dispatcher.forward(request, response);
 	}
 }

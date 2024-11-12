@@ -6,4 +6,10 @@ public class Admin extends User{
 		super(username, password, email, role);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public String getHeader() {
+		// TODO Auto-generated method stub
+		return "headerAmm.jsp";
+	}
 }

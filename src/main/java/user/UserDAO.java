@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 
@@ -14,7 +15,7 @@ public class UserDAO {
 
 	public User login(String email, String password) {
 		User user=null;
-		
+
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
@@ -51,42 +52,38 @@ public class UserDAO {
 		}
 		return null;
 	}
-	
-	
-	public void insertUser(String nome, String cognome, String username, String password, String email, String codiceFiscale, LocalDate dateOfBirth) {
+
+
+	public void insertUser(String nome, String cognome, String username, String password, String email, String codiceFiscale, LocalDate dateOfBirth) throws SQLException {
 		//TODO ROLE!
 		String hashPassword=BCrypt.hashpw(password, BCrypt.gensalt());
-		
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="INSERT INTO Utenti (nome, cognome, username, pw, email, dateOfBirth, codiceFiscale) VALUES (?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-			preparedStatement.setString(1, nome);
-			preparedStatement.setString(2, cognome);
-			preparedStatement.setString(3, username);
-			preparedStatement.setString(4, hashPassword);
-			preparedStatement.setString(5, email);
-			preparedStatement.setDate(6, Date.valueOf(dateOfBirth));
-			preparedStatement.setString(7, codiceFiscale);
 
-			preparedStatement.executeUpdate();
-			/*ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-			if (generatedKeys.next()) {
-				int generatedId = generatedKeys.getInt(1);
+		DatabaseConnection database = new DatabaseConnection();
+		Connection connection = database.getConnection();
+		String query ="INSERT INTO Utente (username, pw, email, ruolo) VALUES (?, ?, ?, ?)";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, username);
+		preparedStatement.setString(2, hashPassword);
+		preparedStatement.setString(3, email);
+		preparedStatement.setString(4, "user.Candidate");
+		preparedStatement.executeUpdate();
 
-			}*/
-			connection.close();
+		query ="INSERT INTO CV (cf, nome, cognome, DataDiNascita, FK_Utente) VALUES (?, ?, ?, ?, ?)";
+		preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, codiceFiscale);
+		preparedStatement.setString(2, nome);
+		preparedStatement.setString(3, cognome);
+		preparedStatement.setDate(4, Date.valueOf(dateOfBirth));
+		preparedStatement.setString(5, username);
+		preparedStatement.executeUpdate();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		connection.close();
 	}
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
 		System.out.println(Admin.class.getName()); //user.Admin
-		
+
 		System.out.println(BCrypt.hashpw("admin", BCrypt.gensalt())); //$2a$10$j2mex2WKgAzkr9a2yniN4ePQN2gZPzGFXEH72bt5uAhf93kYhc7ku
-		
+
 	}*/
 }

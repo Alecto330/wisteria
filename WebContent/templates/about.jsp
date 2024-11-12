@@ -17,9 +17,10 @@
 	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_about.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_nav.css">
 </head>
 <body>
-	<%@ include file="header.jsp"%>
 
 	<section class="intro-section">
 		<div class="text-content">
@@ -99,7 +100,6 @@
 			</div>
 		</div>
 	</section>
-	<%@ include file="footer.jsp"%>
 
 </body>
 </html>
