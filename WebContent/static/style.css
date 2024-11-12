@@ -214,8 +214,8 @@ input[type="search"] {
     color: #8328FF;
     Z-INDEX: 101;
     user-select: none; /* Prevent text selection */
-}
- 
+    padding-left: 57px;
+} 
 .menu {
     background-color: #686868;
     color: white;
@@ -305,7 +305,7 @@ input[type="search"] {
     height: 25vh;
     width: auto;
     margin: 0; /* Elimina margini extra */
-    padding-left: 1vw;
+    padding-right: 18px;
 }
 .navbar-items{
     margin-left: auto;
@@ -394,5 +394,12 @@ input[type="search"] {
 .div-footer > .col-footer:last-child {
     align-self: flex-start; /* Allinea la sezione "Seguici" alla stessa altezza degli altri paragrafi */
 }
+.logout{
+    background: transparent;
+    width: 80px; 
+}
 
+.logout .fa-user{
+    color: rgb(123, 31, 255);
+}
 
