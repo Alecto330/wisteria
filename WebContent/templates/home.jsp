@@ -60,7 +60,7 @@
 
             <!-- Carousel Allineato in Basso -->
             <div class="col-lg-4 col-md-5 col-sm-12 d-flex flex-column justify-content-end align-items-center">
-                <div id="aboutUsCarousel" class="carousel slide" data-ride="carousel">
+                <div id="aboutUsCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
                     <ol class="carousel-indicators">
                         <li data-target="#aboutUsCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#aboutUsCarousel" data-slide-to="1"></li>
