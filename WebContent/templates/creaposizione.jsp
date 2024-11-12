@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style_creaposizione.css">
-
+	<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
     <title>Aggiungi Posizione</title>
 
 </head>

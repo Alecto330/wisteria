@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     	<link rel="stylesheet"
         href="${pageContext.request.contextPath}/static/style_cercaDomande.css">
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">

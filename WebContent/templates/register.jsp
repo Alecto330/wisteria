@@ -19,8 +19,9 @@
 	href="${pageContext.request.contextPath}/static/style_signup.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style.css">
+<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
-<body>
+<body onload="checkError()">
 
 	<%@ include file="header.jsp"%>
 
@@ -117,12 +118,12 @@
 
         });       
         
-        window.addEventListener('load', function() {
+       function checkError(){
             const error = "<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>";
             if (error && error.trim() !== "") {
                 alert(error);
             }
-        });
+        }
         
     </script>
 

@@ -23,6 +23,7 @@
 	href="${pageContext.request.contextPath}/static/style.terminiCondizioni.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_nav.css">
+<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
 

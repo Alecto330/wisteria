@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style_nav.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
     <title>Posizione e Classifica</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<%@ include file="header.jsp"%>

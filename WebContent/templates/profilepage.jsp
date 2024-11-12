@@ -20,6 +20,7 @@
 	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_profilepage.css">
+<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 <title>Profilo e personalizzazione</title>
 
 </head>
