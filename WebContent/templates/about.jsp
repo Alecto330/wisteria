@@ -40,7 +40,7 @@
 	<section class="storia-section">
 		<div class="p-storia">
 			<div class="logo-wisteria">
-				<img src="${pageContext.request.contextPath}/assets/logo-about2.png"
+				<img src="${pageContext.request.contextPath}/assets/WISTERIA.png"
 					class="wisteria-png">
 			</div>
 			<div class="storia-container">
