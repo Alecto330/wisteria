@@ -87,14 +87,19 @@
 			<c:choose>
 				
 				<c:when test="${pageContext.request.servletPath == '/templates/login.jsp'}"> <!-- Condizione: se siamo sulla pagina di login -->
-					<span class="hidden"><p>Accedi</p></span>
+					<div class="acc">
+						<span class="hidden"><p>Accedi</p></span>
+					</div>
+					
 				</c:when>
 				<c:otherwise>
 					
 					<c:if test="${not empty user}"> <!-- Se l'utente è autenticato, mostra l'icona -->
 						<div class="logout">
 							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa-solid fa-user" style="font-size: 3vh; width: 3vw;"></i>
+								<div class="acc2">
+									<i class="fa-solid fa-user usernav"></i>
+								</div>
 							</a>
 						
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
@@ -102,10 +107,13 @@
 							</div>
 						</div>
 					</c:if>
-					
 					<c:if test="${empty user}"> <!-- Se l'utente non è autenticato, mostra il link per il login -->
-						<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
+						<div class="acc">
+							<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
+						</div>
 					</c:if>
+					
+					
 				</c:otherwise>
 			</c:choose>
 
