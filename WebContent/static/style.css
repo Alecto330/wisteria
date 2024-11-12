@@ -395,7 +395,4 @@ input[type="search"] {
     align-self: flex-start; /* Allinea la sezione "Seguici" alla stessa altezza degli altri paragrafi */
 }
 
-.logout {
-    background: transparent;
-    width: 80px;
-}
+
