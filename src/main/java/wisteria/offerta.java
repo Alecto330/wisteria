@@ -40,15 +40,17 @@ public class offerta extends HttpServlet{
 			if(user==null) {
 				header="header.jsp";
 				offerta="offerta.jsp";
+				request.setAttribute("candidates", null);
 			}else {
 				header=user.getHeader();
 				offerta=user.getOfferta();
+				request.setAttribute("candidates", user.getCandidatiFromPosizione(posizione.getId()));
 			}
 
 			request.setAttribute("title", posizione.getTitolo());
 			request.setAttribute("content", offerta);
 			request.setAttribute("headerPath", header);
-			request.setAttribute("candidates", user.getCandidatiFromPosizione(posizione.getId()));
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
 
