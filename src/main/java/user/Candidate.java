@@ -6,4 +6,10 @@ public class Candidate extends User{
 		super(username, password, email, role);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public String getHeader() {
+		
+		return "header.jsp";
+	}
 }

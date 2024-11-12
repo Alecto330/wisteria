@@ -14,6 +14,8 @@ public abstract class User{
 		this.email = email;
 		this.role = role;
 	}
+	
+	public abstract String getHeader();
 
 	public String getUsername() {
 		return username;
