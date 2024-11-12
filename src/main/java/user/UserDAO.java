@@ -79,6 +79,9 @@ public class UserDAO {
 
 		connection.close();
 	}
+	
+
+	
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
 		System.out.println(Admin.class.getName()); //user.Admin

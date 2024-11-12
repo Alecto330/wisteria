@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offerta di Lavoro - Sviluppatore Full Stack</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> 
@@ -15,10 +15,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
 </head>
 
-
-
 <body>
-	<%@ include file="header.jsp"%>
+
 
    <div class="offerta-container">
         <!-- Pulsante Indietro stilizzato e centrato -->
@@ -45,7 +43,7 @@
 
         
             <div class="details-section">
-                <h5>Descrizione azienda</h5>
+                <h5>Descrizione Lavoro</h5>
                 <p>${posizione.descrizione}</p>
 
         
@@ -74,6 +72,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<%@ include file="footer.jsp"%>
+
 </body>
 </html>

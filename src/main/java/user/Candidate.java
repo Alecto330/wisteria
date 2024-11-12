@@ -8,8 +8,12 @@ public class Candidate extends User{
 	}
 	
 	@Override
-	public String getHeader() {
-		
+	public String getHeader() {		
 		return "header.jsp";
+	}
+
+	@Override
+	public String getOfferta() {
+		return "offerta.jsp";
 	}
 }

@@ -101,9 +101,9 @@ create table Risposta (
 
 
 insert into Utente values
-('Amm01', '$2a$10$j2mex2WKgAzkr9a2yniN4ePQN2gZPzGFXEH72bt5uAhf93kYhc7ku', 'amm01email@veritas.com', 'user.Admin'),
+('Amm01', '$2a$10$j2mex2WKgAzkr9a2yniN4ePQN2gZPzGFXEH72bt5uAhf93kYhc7ku', 'admin@veritas.com', 'user.Admin'),
 ('Amm02', 'Amm02pw?', 'amm02email@veritas.com', 'Amministratore'),
-('Can01', 'Can01pw!', 'can01email@veritas.com', 'Candidato'),
+('Can01', '$2a$10$j2mex2WKgAzkr9a2yniN4ePQN2gZPzGFXEH72bt5uAhf93kYhc7ku', 'user@veritas.com', 'user.Candidate'),
 ('Can02', 'Can02pw!', 'can02email@veritas.com', 'Candidato'),
 ('Can03', 'Can03pw!', 'can03email@veritas.com', 'Candidato'),
 ('Can04', 'Can04pw!', 'can04email@veritas.com', 'Candidato'),
@@ -259,13 +259,13 @@ insert into Posizione (titolo, descrizione, settore, FK_Utente, FK_Localita) val
 select *
 from Posizione;
 
-insert into SiCandida (FK_Posizione, FK_Utente, punteggio) values
-('1', 'Can01', 4),
-('2', 'Can03', 7),
-('2', 'Can02', 8),
-('2', 'Can01', 10),
-('3', 'Can04', 1),
-('1', 'Can02', 6);
+insert into SiCandida (FK_Posizione, FK_Utente, punteggio, data) values
+('1', 'Can01', 4, '19990516'),
+('2', 'Can03', 7,'19990516'),
+('2', 'Can02', 8, '19990516'),
+('2', 'Can01', 10, '19990516'),
+('3', 'Can04', 1, '19990516'),
+('1', 'Can02', 6, '19990516');
 
 select *
 from SiCandida;

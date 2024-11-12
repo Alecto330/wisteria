@@ -14,9 +14,10 @@ public class CV {
 	private byte[] curriculum;
 	private byte[] fotoProfilo;
 	private String telefono;
+	private String email;
 	
 	public CV(String username, String cf, String nome, String cognome, LocalDate dataDiNascita, String residenza,
-			String titoloDiStudio, byte[] curriculum, byte[] fotoProfilo, String telefono) {
+			String titoloDiStudio, byte[] curriculum, byte[] fotoProfilo, String telefono, String email) {
 		super();
 		this.username = username;
 		this.cf = cf;
@@ -28,6 +29,7 @@ public class CV {
 		this.curriculum = curriculum;
 		this.fotoProfilo = fotoProfilo;
 		this.telefono = telefono;
+		this.email = email;
 	}
 	
 	public String getUsername() {
@@ -90,4 +92,12 @@ public class CV {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
 }

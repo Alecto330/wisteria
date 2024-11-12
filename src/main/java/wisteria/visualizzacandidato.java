@@ -1,6 +1,7 @@
 package wisteria;
 
 import java.io.IOException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,55 +10,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import posizione.Posizione;
-import posizione.PosizioneDAO;
+import cv.CV;
+import cv.CvDAO;
 import user.User;
 
-@WebServlet("/offerta")
-public class offerta extends HttpServlet{
+@WebServlet("/visualizzacandidato")
+public class visualizzacandidato extends HttpServlet{
 
-	public offerta() {
+	public visualizzacandidato() {
+
 	}
-
-
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id=request.getParameter("id");
 
 		if(id != null) {
-
-			PosizioneDAO dao=new PosizioneDAO();
-			Posizione posizione=dao.getPosizione(id);
-
-			request.setAttribute("posizione", posizione);
+			CvDAO dao=new CvDAO();
+			CV cv=dao.getCV(id);
 
 			HttpSession session = request.getSession();
 			User user=(User)session.getAttribute("user");
 
 			String header="";
-			String offerta="";
 			if(user==null) {
 				header="header.jsp";
-				offerta="offerta.jsp";
 			}else {
 				header=user.getHeader();
-				offerta=user.getOfferta();
 			}
 
-			request.setAttribute("title", posizione.getTitolo());
-			request.setAttribute("content", offerta);
+			request.setAttribute("title", "Profilo Utente - "+id);//TODO
+			request.setAttribute("content", "visualizzacandidato.jsp");
 			request.setAttribute("headerPath", header);
-			request.setAttribute("candidates", user.getCandidatiFromPosizione(posizione.getId()));
+			
+			request.setAttribute("username", id);
+			request.setAttribute("email", cv.getEmail());
+			request.setAttribute("cf", cv.getCf());
+			request.setAttribute("nome", cv.getNome());
+			request.setAttribute("cognome", cv.getCognome());
+			request.setAttribute("dataDiNascita", cv.getDataDiNascita());
+			request.setAttribute("residenza", cv.getResidenza());
+			request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
+			request.setAttribute("curriculum", cv.getCurriculum());
+			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
+			request.setAttribute("telefono", cv.getTelefono());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
 
 			/*RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
-		    dispatcher.forward(request, response); */
+			    dispatcher.forward(request, response); */
 		}		
-		/*Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");		
-		request.setAttribute("posizione", posizione1);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
-	    dispatcher.forward(request, response); */
 	}
+
+
 }

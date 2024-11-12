@@ -1,6 +1,10 @@
 package user;
 
-public abstract class User{
+import java.util.ArrayList;
+
+import posizione.Candidatura;
+
+public abstract class User implements OttieniCandidati{
 	
 	private String username;
 	private String password;
@@ -16,6 +20,8 @@ public abstract class User{
 	}
 	
 	public abstract String getHeader();
+	
+	public abstract String getOfferta();
 
 	public String getUsername() {
 		return username;

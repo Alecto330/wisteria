@@ -55,7 +55,7 @@ public class register extends HttpServlet{
 				request.setAttribute("email", email);
 				request.setAttribute("password", password);
 				request.setAttribute("confirmPassword", confirmPassword);
-				request.setAttribute("error", "Email già presente");
+				request.setAttribute("error", "Utente già presente");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/register.jsp");
 				dispatcher.forward(request, response);
 				

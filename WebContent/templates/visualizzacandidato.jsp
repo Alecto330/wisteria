@@ -20,12 +20,9 @@
     href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
     href="${pageContext.request.contextPath}/static/style_profilepage.css">
-<title>Profilo Utente</title>
+
 </head>
 <body>
-
-
-    <%@ include file="header.jsp"%>
     
      <div class="main-container-visualizzacandidator">
         <div class="user-profile">
@@ -49,27 +46,27 @@
                 
                 <div class="info-group">
                     <div class="info-label">Email:</div>
-                    <div class="info-value">can01email@wisteria.com</div>
+                    <div class="info-value">${email}</div>
                 </div>
 
                 <div class="info-group">
                     <div class="info-label">Telefono:</div>
-                    <div class="info-value">+39 345 1232123</div>
+                    <div class="info-value">${telefono}</div>
                 </div>
 
                 <div class="info-group">
                     <div class="info-label">Data di nascita:</div>
-                    <div class="info-value">16/05/1999</div>
+                    <div class="info-value">${dataDiNascita}</div>
                 </div>
 
                 <div class="info-group">
                     <div class="info-label">Codice Fiscale:</div>
-                    <div class="info-value">LVNNTR99E16G942Y</div>
+                    <div class="info-value">${cf}</div>
                 </div>
 
                 <div class="info-group">
                     <div class="info-label">Titolo:</div>
-                    <div class="info-value">Diploma perito informatico</div>
+                    <div class="info-value">${titoloDiStudio}</div>
                 </div>
                 
                 <div class="cv-section">
@@ -147,8 +144,6 @@
 
         <button class="back-button">←</button>
     </div>
-    
-        <%@ include file="footer.jsp"%>
 
 </body>
 </html>
