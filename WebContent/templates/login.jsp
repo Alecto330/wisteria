@@ -31,7 +31,6 @@
 <body>
 
 	<%@ include file="header.jsp"%>
-
 	<div class="login-container">
 		<h2>Bentornato!</h2>
 		<form id="loginForm" action="${pageContext.request.contextPath}/login"

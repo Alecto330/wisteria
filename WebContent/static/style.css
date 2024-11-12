@@ -214,7 +214,8 @@ input[type="search"] {
     color: #8328FF;
     Z-INDEX: 101;
     user-select: none; /* Prevent text selection */
-    padding-left: 57px;
+    width: 135.88px;
+    height: 75px;
 } 
 .menu {
     background-color: #686868;
@@ -305,7 +306,6 @@ input[type="search"] {
     height: 25vh;
     width: auto;
     margin: 0; /* Elimina margini extra */
-    padding-right: 18px;
 }
 .navbar-items{
     margin-left: auto;

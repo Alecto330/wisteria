@@ -3,11 +3,10 @@
     background-color: #D6B5FF;
     border-color: #8228ff;
 }
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #8228ff;
-    border-color: #8228ff;
+.btn-primary:hover{
+    color:#fff;
+    background-color:#8228ff;
+    border-color:#8228ff;
     box-shadow: 0 0 5px rgba(131, 40, 255, 0.8), 0 0 10px rgba(131, 40, 255, 0.6);
 }
 
