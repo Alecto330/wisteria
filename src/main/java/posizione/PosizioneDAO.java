@@ -138,12 +138,12 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "select distinct titolo from Posizione;";
+			String query = "select distinct settore from Posizione order by settore";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			while(resultSet.next()) {
-				String titolo=resultSet.getString("titolo");
+				String titolo=resultSet.getString("settore");
 				professioni.add(titolo);
 			}
 			connection.close();
@@ -162,7 +162,7 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "select distinct regione from Localita;";
+			String query = "select distinct regione from Localita order by regione";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -178,5 +178,49 @@ public class PosizioneDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public ArrayList<String> getAllProvince() {
+
+		ArrayList<String> province=new ArrayList<String>();
+
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "select distinct provincia from Localita order by provincia";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while(resultSet.next()) {
+				String regione=resultSet.getString("provincia");
+				province.add(regione);
+			}
+			connection.close();
+			return province;
+
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void insertPosizione(Posizione posizione, String username) {
+		
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="INSERT INTO Posizione (titolo, descrizione, settore, FK_Utente, FK_Localita) VALUES (?, ?, ?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, posizione.getTitolo());
+			preparedStatement.setString(2, posizione.getDescrizione());
+			preparedStatement.setString(3, posizione.getSettore());
+			preparedStatement.setString(4, username);
+			preparedStatement.setString(4, posizione.getProvincia());
+			preparedStatement.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
