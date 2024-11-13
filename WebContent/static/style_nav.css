@@ -100,3 +100,7 @@
 .logout{
     margin-right: 57px;
 }
+
+.fa-user:before {
+    color: rgb(123, 31, 255);
+}
