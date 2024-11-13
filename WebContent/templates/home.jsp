@@ -206,6 +206,12 @@
         window.addEventListener('popstate', setOptions);
         window.addEventListener('load', setOptions);
     </script>
-
+    <script>
+        document.querySelectorAll('#aboutUsCarousel .carousel-control-prev, #aboutUsCarousel .carousel-control-next').forEach(button => {
+            button.addEventListener('click', () => {
+                button.blur();
+            });
+        });
+    </script>
 </body>
 </html>

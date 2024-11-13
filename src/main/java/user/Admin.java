@@ -30,4 +30,9 @@ public class Admin extends User{
 		CandidaturaDAO dao=new CandidaturaDAO();
 		return dao.getCandidature(id);
 	}
+	
+	@Override
+	public boolean accediACreaPosizione() {
+		return true;
+	}
 }

@@ -116,7 +116,7 @@
 			<h2>7. Privacy</h2>
 			<p>
 				La tua privacy è importante per noi. La nostra <a
-					href="privacy.html">Informativa sulla Privacy</a> descrive come
+					href="${pageContext.request.contextPath}/templates/privacypolicy.jsp">Informativa sulla Privacy</a> descrive come
 				raccogliamo, utilizziamo e proteggiamo le tue informazioni
 				personali. Utilizzando il Sito, accetti anche la nostra Informativa
 				sulla Privacy.

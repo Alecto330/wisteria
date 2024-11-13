@@ -97,10 +97,6 @@
     height: 75px;
     padding: 15px;
 }
-.logout{
-    margin-right: 57px;
-}
-
 .logout .fa-user:before {
     color: rgb(123, 31, 255);
 }

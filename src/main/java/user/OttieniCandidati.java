@@ -9,5 +9,9 @@ public interface OttieniCandidati {
 	public default ArrayList<Candidatura> getCandidatiFromPosizione(int id) {
 		return null;
 	}
+	
+	public default boolean accediACreaPosizione() {
+		return false;
+	}
 
 }
