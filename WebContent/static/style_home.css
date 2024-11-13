@@ -82,15 +82,15 @@ body {
 
 .introduction-title {
     font-weight: bolder;
-    font-size: 4vw;
+    font-size: 3vw;
     text-align: left;
     margin-top: 8vh;
     color: rgb(123, 31, 255);
     text-shadow: 
-        0 0 5px #7c1fff,
-        0 0 10px #ffffff99,
-        0 0 15px rgba(255, 255, 255, 0.5),
-        0 0 20px rgba(0, 0, 0, 0.4);
+        0 0 2px #7c1fff,
+        0 0 2px #ffffff99,
+        0 0 1px rgba(255, 255, 255, 0.5),
+        0 0 2px rgba(0, 0, 0, 0.4);
     animation: glowing infinite;
 }
 
@@ -99,6 +99,11 @@ body {
     text-align: left;
     margin-top: 4vh;
     padding-right: 1rem;
+    text-shadow: 
+        0 0 0.5px #000000,
+        0 0 1px #ffffff99,
+        0 0 0.5px rgba(255, 255, 255, 0.5),
+        0 0 1px rgba(0, 0, 0, 0.4);"
 }
 
 .highlight {

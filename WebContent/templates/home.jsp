@@ -35,27 +35,20 @@
         <div class="row align-items-end">
             <!-- Testo Introduttivo -->
             <div class="col-lg-8 col-md-7 col-sm-12">
-                <p class="introduction-title">Benvenuto!</p>
+                <p class="introduction-title">We want you!</p>
                 <p class="introduction">
-                    Wisteria è un'azienda <span class="highlight">leader nel
-                        settore informatico</span> in Italia, riconosciuta per l'<span
-                        class="highlight">innovazione</span> e l’<span class="highlight">eccellenza</span>
-                    delle <span class="highlight">soluzioni digitali</span>. La nostra
-                    esperienza nel campo tecnologico ha portato alla creazione di una <span
-                        class="highlight">piattaforma avanzata</span> per <span
-                        class="highlight">semplificare il processo di reclutamento</span>,
-                    garantendo un'interazione efficace e trasparente tra candidati e
-                    datori di lavoro.<br> Questa nuova web app consente ai datori di
-                    lavoro di <span class="highlight">pubblicare offerte</span>, <span
-                        class="highlight">filtrare candidature</span> e gestire in modo
-                    ottimale il processo di selezione. <br> Al tempo stesso, i
-                    candidati possono <span class="highlight">monitorare lo stato
-                        delle proprie domande</span> e ricevere aggiornamenti in tempo reale,
-                    accedendo a una piattaforma <span class="highlight">intuitiva
-                        e facile da usare</span>. Wisteria si impegna a connettere talenti e
-                    opportunità, facilitando ogni fase del percorso di selezione con un
-                    approccio <span class="highlight">innovativo</span> e <span
-                        class="highlight">user-friendly</span>.
+
+                    In <span class="highlight">Wisteria</span>, crediamo che il nostro <span class="highlight">successo</span> sia il risultato del <span class="highlight">talento</span>, 
+                    della <span class="highlight">passione</span> e dell’<span class="highlight">impegno</span> delle persone che fanno parte del nostro team. 
+                    Se sei alla ricerca di un ambiente <span class="highlight">dinamico</span>, 
+                    <span class="highlight">stimolante</span> e in <span class="highlight">continua crescita</span>, sei nel posto giusto. 
+                    Offriamo opportunità di carriera per professionisti motivati e desiderosi di fare la <span class="highlight">differenza</span>. 
+                    Che tu sia un esperto del settore o un giovane talento, troverai in <span class="highlight">Wisteria</span> un ambiente che 
+                    ti supporta e ti incoraggia a crescere. Se vuoi fare parte di una realtà che mette al centro le persone 
+                    e la loro crescita, <span class="highlight">esplora</span> le posizioni aperte e <span class="highlight">candidati</span> oggi stesso!</br></br></p>
+
+                    <p class="introduction">Inizia la tua carriera con noi e <span class="highlight">costruisci</span> insieme a noi il <span class="highlight">futuro</span>.
+
                 </p>
             </div>
 
