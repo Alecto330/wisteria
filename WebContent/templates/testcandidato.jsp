@@ -8,60 +8,102 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone (senz doverle scaricare) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style_testcandidato.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style_testcandidato.css">
     <title>Quiz App</title>
 </head>
 <body>
-
-	<%@ include file="header.jsp"%>
 	
-	<div class="quiz-container">
-        <h1 class="question-header">Domanda 3/10</h1>
-        <p class="question-text">Quale linguaggio di programmazione è comunemente usato per lo sviluppo</p>
+	<div class="container-quiz">
+        <h1 class="title">Quiz per #INSERIRE POSIZIONE#</h1>
         
-        <div class="options-container">
-            <div class="option">
-                <span class="option-text">a. Python</span>
-                <div class="option-radio"></div>
-            </div>
-            <div class="option">
-                <span class="option-text">b. JavaScript</span>
-                <div class="option-radio selected"></div>
-            </div>
-            <div class="option">
-                <span class="option-text">c. Java</span>
-                <div class="option-radio"></div>
-            </div>
-            <div class="option">
-                <span class="option-text">d. C++</span>
-                <div class="option-radio"></div>
-            </div>
+        <div class="accordion">
+            
+            <%-- Domande di esempio per testing --%>
+            <c:if test="${empty questions}">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2 class="accordion-title">Domanda</h2>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul class="answer-list">
+                            <button class="answer-item">
+                                <p class="answer-text">Risposta</p>
+                            </button>
+                            <button class="answer-item">
+                                <p class="answer-text">Risposta</p>
+                            </button>
+                            <button class="answer-item">
+                                <p class="answer-text">Risposta</p>
+                            </button>
+                            <button class="answer-item">
+                                <p class="answer-text">Risposta</p>
+                            </button>
+                        </ul>
+                    </div>
+                </div>
+
+            </c:if>
         </div>
 
-        <div class="navigation-buttons">
-            <button class="nav-button prev" aria-label="Precedente">
-                <i class="arrow arrow-left"></i>
-            </button>
-            <button class="nav-button next" aria-label="Successivo">
-                <i class="arrow arrow-right"></i>
-            </button>
-        </div>
+    <div class="submit-container">
+        <button type="button" class="submit-button">Invia</button>
+    </div>
+
     </div>
 
     <script>
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', () => {
-                document.querySelectorAll('.option-radio').forEach(radio => {
-                    radio.classList.remove('selected');
-                });
-                option.querySelector('.option-radio').classList.add('selected');
+        function toggleAccordion(header) {
+            // Trova tutti gli accordion
+            const allContents = document.querySelectorAll('.accordion-content');
+            const allIcons = document.querySelectorAll('.accordion-icon');
+            
+            // Trova il content e l'icona associati all'header cliccato
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+            
+            // Se il content è già aperto, chiudilo
+            if (content.style.height && content.style.height !== '0px') {
+                content.style.height = '0px';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Altrimenti, apri l'accordion
+                content.style.height = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Inizializza tutti gli accordion come aperti di default
+        document.addEventListener('DOMContentLoaded', function() {
+            const allContents = document.querySelectorAll('.accordion-content');
+            const allIcons = document.querySelectorAll('.accordion-icon');
+            
+            // Imposta tutti gli accordion come aperti
+            allContents.forEach(content => {
+                content.style.height = content.scrollHeight + 'px';
+            });
+            
+            // Ruota tutte le icone degli accordion per indicare che sono aperti
+            allIcons.forEach(icon => {
+                icon.style.transform = 'rotate(180deg)';
             });
         });
+
+
+
+
+        document.querySelectorAll('.answer-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Rimuove la classe "selected" da tutti gli elementi
+                document.querySelectorAll('.answer-item').forEach(el => el.classList.remove('selected'));
+                // Aggiunge la classe "selected" solo all'elemento cliccato
+                this.classList.add('selected');
+            });
+        });
+
     </script>
-	
-		<%@ include file="footer.jsp"%>
 
 </body>
 </html>
