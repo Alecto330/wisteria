@@ -82,7 +82,9 @@
 						<!-- Se l'utente è autenticato, mostra l'icona -->
 						<div class="logout">
 							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="fa-solid fa-user" style="font-size: 3vh; width: 3vw;"></i>
+								<div class="acc2">
+									<i class="fa-solid fa-user usernav"></i>
+								</div>
 							</a>
 
 							<div class="dropdown-menu dropdown-menu-right"
@@ -94,7 +96,9 @@
 					</c:if>
 					
 					<c:if test="${empty user}"> <!-- Se l'utente non è autenticato, mostra il link per il login -->
-						<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
+						<div class="acc">
+							<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
+						</div>
 					</c:if>
 					
 					
