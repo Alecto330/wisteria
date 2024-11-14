@@ -265,18 +265,10 @@
 
 				// ###################### FUNZIONI PER MODIFICA CAMPI ##############################
 
-					var nome = 0;
-					var username = 0;
-					var cognome = 0;
-					var dataDiNascita = 0;
-					var email = 0;
-					var cf = 0;
-					var telefono = 0;
-					var titolo = 0;
+					let searchUrl = '/wisteria/profilepage?'
 
 
 					function toggleNome() {
-						nome=1;
 						const input = document.getElementById('input-nome');
 						const editIcon = document.getElementById('modifica-nome');
 						input.disabled = false; // Enable the input
@@ -288,13 +280,17 @@
 							if (event.key === 'Enter') {
 								input.disabled = true; // Disable the input when Enter is pressed
 								editIcon.style.display='inline';
+								const inputValue = encodeURIComponent(input.value);
+								searchUrl = searchUrl + "Nome=" + inputValue;
+								window.location.href = searchUrl;
 							}
 						});
+						
+						
 						
 						}
 
 					function toggleUsername(){
-						username=1;
 						const input = document.getElementById('input-username');
 						const editIcon = document.getElementById('modifica-username');
 						input.disabled = false; // Enable the input
@@ -311,7 +307,6 @@
 					}
 
 					function toggleCognome(){
-						cognome=1;
 						const input = document.getElementById('input-cognome');
 						const editIcon = document.getElementById('modifica-cognome');
 						input.disabled = false; // Enable the input
@@ -328,7 +323,6 @@
 					}
 
 					function toggleDataDiNascita(){
-						dataDiNascita=1;
 						const input = document.getElementById('input-datadinascita');
 						const editIcon = document.getElementById('modifica-datadinascita');
 						input.disabled = false; // Enable the input
@@ -345,7 +339,6 @@
 					}
 
 					function toggleEmail(){
-						email=1;
 						const input = document.getElementById('input-email');
 						const editIcon = document.getElementById('modifica-email');
 						input.disabled = false; // Enable the input
@@ -362,7 +355,6 @@
 						}
 
 					function toggleCF(){
-						cf=1;
 						const input = document.getElementById('input-cf');
 						const editIcon = document.getElementById('modifica-cf');
 						input.disabled = false; // Enable the input
@@ -379,7 +371,6 @@
 					}
 
 					function toggleTelefono(){
-						telefono=1;
 						const input = document.getElementById('input-telefono');
 						const editIcon = document.getElementById('modifica-telefono');
 						input.disabled = false; // Enable the input
@@ -396,7 +387,6 @@
 					}
 
 					function toggleTitoloDiStudio(){
-						titolo=1;
 						const input = document.getElementById('input-titolo');
 						const editIcon = document.getElementById('modifica-titolo');
 						input.disabled = false; // Enable the input

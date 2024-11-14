@@ -23,7 +23,8 @@ public class profilepage extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String nome=request.getParameter("Nome");
+		System.out.println(nome);
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 
