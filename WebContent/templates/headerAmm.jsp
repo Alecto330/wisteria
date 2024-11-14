@@ -90,7 +90,7 @@
 				
 			<div class="logout">
 				<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fa-solid fa-user" style="font-size: 3vh; width: 3vw;"></i>
+					<div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
 				</a>
 			
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
