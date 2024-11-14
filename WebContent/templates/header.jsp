@@ -87,10 +87,8 @@
 								</div>
 							</a>
 
-							<div class="dropdown-menu dropdown-menu-right"
-								aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item"
-									href="${pageContext.request.contextPath}/logout">Logout</a>
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
 							</div>
 						</div>
 					</c:if>
