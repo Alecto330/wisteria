@@ -41,7 +41,6 @@
 .home-main {
     margin-top: 150px;
 }
-
 body {
     background-image: linear-gradient(130deg, 
         rgba(255, 255, 255, 0.8),
@@ -132,7 +131,6 @@ body {
     width: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
-    filter: brightness(0.8);
 }
 
 .carousel-indicators {

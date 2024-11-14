@@ -61,13 +61,13 @@
                         <li data-target="#aboutUsCarousel" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="https://www.bibopfashion.store/cdn/shop/files/0.47834800_1708711105.png?v=1708711107" class="d-block w-100" alt="Descrizione Immagine 1">
+                        <div class="carousel-item active carousel-item1">
+                            <img src="${pageContext.request.contextPath}/assets/placeholder1.png" class="d-block w-100" alt="Descrizione Immagine 1">
                         </div>
-                        <div class="carousel-item">
-                            <img src="https://www.bibopfashion.store/cdn/shop/files/0.47834800_1708711105.png?v=1708711107" class="d-block w-100" alt="Descrizione Immagine 2">
+                        <div class="carousel-item carousel-item2">
+                            <img src="${pageContext.request.contextPath}/assets/placeholder2.png" class="d-block w-100" alt="Descrizione Immagine 2">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item carousel-item3">
                             <img src="https://www.bibopfashion.store/cdn/shop/files/0.47834800_1708711105.png?v=1708711107" class="d-block w-100" alt="Descrizione Immagine 3">
                         </div>
                     </div>
