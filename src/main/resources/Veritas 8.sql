@@ -52,11 +52,7 @@ create table Posizione (
 	titolo varchar (50) not null,
 	descrizione varchar (3000) not null,
 	settore varchar (50) not null,
-	FK_Utente varchar (30),
 	FK_Localita varchar (25),
-	foreign key (FK_Utente) references Utente (username)
-	on delete cascade
-	on update cascade,
 	foreign key (FK_Localita) references Localita (provincia)
 	on delete cascade
 	on update cascade
@@ -70,11 +66,11 @@ create table SiCandida (
 	data datetime,
 	primary key (FK_Posizione, FK_Utente),
 	foreign key (FK_Posizione) references Posizione (id)
-	on delete no action
-	on update no action,
+	on delete cascade
+	on update cascade,
 	foreign key (FK_Utente) references Utente (username)
-	on delete no action
-	on update no action
+	on delete cascade
+	on update cascade
 );
 
 
@@ -84,8 +80,8 @@ create table Domanda (
 	argomento varchar(30)not null,
 	FK_Posizione int,
 	foreign key (FK_Posizione) references Posizione (id)
-	on delete no action
-	on update no action
+	on delete cascade
+	on update cascade
 );
 
 
@@ -248,13 +244,13 @@ insert into Localita values
  select *
 from Localita;
 
-insert into Posizione (titolo, descrizione, settore, FK_Utente, FK_Localita) values
-('Sviluppatore Full Stack', 'Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team. Il candidato ideale avrà esperienza nella creazione di applicazioni web e competenze in linguaggi come JavaScript, Python e SQL. Collaborerai con designer e analisti per sviluppare soluzioni innovative e Utente-friendly.', 'Web developer', 'Amm01', 'Alessandria'),
-('Specialista in Sicurezza Informatica', 'Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati. Il ruolo prevede l analisi delle vulnerabilità, la gestione delle minacce e la formazione del personale. È richiesta una solida esperienza in cybersecurity e una certificazione pertinente.', 'Cybersecurity', 'Amm02', 'Lodi'),
-('Sales Manager ICT', 'Stiamo cercando un Sales Manager ICT motivato per guidare il nostro team di vendita. Il candidato ideale avrà una comprovata esperienza nel settore IT, ottime capacità di negoziazione e un forte approccio orientato ai risultati. Dovrai sviluppare strategie di vendita e costruire relazioni durature con i clienti.', 'Vendite', 'Amm01', 'Milano'),
-('Project Manager IT', 'Unisciti a noi come Project Manager IT! Il candidato gestirà progetti di sviluppo software, coordinando team e risorse per garantire la consegna puntuale e il rispetto del budget. È richiesta esperienza nella gestione di progetti complessi e abilità di leadership.', 'Amministrazione', 'Amm01', 'Milano'),
-('Analista di Dati', 'Siamo alla ricerca di un Analista di Dati per supportare le nostre decisioni strategiche. Il candidato ideale avrà esperienza con strumenti di analisi come SQL e Excel, e sarà in grado di tradurre dati complessi in insights utili per il business.', 'Data analist', 'Amm01', 'Torino'),
-('Consulente Tecnico', 'Cerchiamo un Consulente Tecnico esperto per fornire soluzioni personalizzate ai nostri clienti. Il ruolo richiede competenze in progettazione di sistemi, gestione di progetti e supporto post-implementazione. È fondamentale una forte attitudine al problem solving e ottime capacità comunicative.', 'Consulenza', 'Amm02', 'Bergamo');
+insert into Posizione (titolo, descrizione, settore, FK_Localita) values
+('Sviluppatore Full Stack', 'Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team. Il candidato ideale avrà esperienza nella creazione di applicazioni web e competenze in linguaggi come JavaScript, Python e SQL. Collaborerai con designer e analisti per sviluppare soluzioni innovative e Utente-friendly.', 'Web developer', 'Alessandria'),
+('Specialista in Sicurezza Informatica', 'Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati. Il ruolo prevede l analisi delle vulnerabilità, la gestione delle minacce e la formazione del personale. È richiesta una solida esperienza in cybersecurity e una certificazione pertinente.', 'Cybersecurity', 'Lodi'),
+('Sales Manager ICT', 'Stiamo cercando un Sales Manager ICT motivato per guidare il nostro team di vendita. Il candidato ideale avrà una comprovata esperienza nel settore IT, ottime capacità di negoziazione e un forte approccio orientato ai risultati. Dovrai sviluppare strategie di vendita e costruire relazioni durature con i clienti.', 'Vendite', 'Milano'),
+('Project Manager IT', 'Unisciti a noi come Project Manager IT! Il candidato gestirà progetti di sviluppo software, coordinando team e risorse per garantire la consegna puntuale e il rispetto del budget. È richiesta esperienza nella gestione di progetti complessi e abilità di leadership.', 'Amministrazione', 'Milano'),
+('Analista di Dati', 'Siamo alla ricerca di un Analista di Dati per supportare le nostre decisioni strategiche. Il candidato ideale avrà esperienza con strumenti di analisi come SQL e Excel, e sarà in grado di tradurre dati complessi in insights utili per il business.', 'Data analist', 'Torino'),
+('Consulente Tecnico', 'Cerchiamo un Consulente Tecnico esperto per fornire soluzioni personalizzate ai nostri clienti. Il ruolo richiede competenze in progettazione di sistemi, gestione di progetti e supporto post-implementazione. È fondamentale una forte attitudine al problem solving e ottime capacità comunicative.', 'Consulenza', 'Bergamo');
 
 select *
 from Posizione;
