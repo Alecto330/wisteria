@@ -265,89 +265,86 @@
 
 				// ###################### FUNZIONI PER MODIFICA CAMPI ##############################
 
-					let params = new URLSearchParams(); // Crea un oggetto URLSearchParams per gestire i parametri dell'URL
+				let params = new URLSearchParams(); // Crea un oggetto URLSearchParams per gestire i parametri dell'URL
 
-					// Funzione per attivare la modifica di un campo (input) al click sull'icona di modifica
-					function toggleField(inputId, editIconId, paramName) {
-						const input = document.getElementById(inputId); // Ottiene l'elemento input tramite il suo ID
-						const editIcon = document.getElementById(editIconId); // Ottiene l'icona di modifica tramite il suo ID
+				// Funzione per attivare la modifica di un campo (input) al click sull'icona di modifica
+				function toggleField(inputId, editIconId, paramName) {
+				    const input = document.getElementById(inputId);
+				    const editIcon = document.getElementById(editIconId);
+				    let isFinalized = false; // Flag to prevent double execution
 
-						input.disabled = false; // Abilita l'input per permettere la modifica
-						input.focus(); // Imposta il focus sull'input
-						editIcon.style.display = 'none'; // Nasconde l'icona di modifica
+				    input.disabled = false;
+				    input.focus();
+				    editIcon.style.display = 'none';
 
-						// Gestisce la pressione del tasto "Enter" mentre si modifica il campo
-						const handleKeydown = (event) => {
-							if (event.key === 'Enter') { // Se l'utente preme il tasto "Enter"
-								finalizeEdit(inputId, editIconId, paramName); // Finalizza la modifica
-								input.removeEventListener('keydown', handleKeydown); // Rimuove l'evento keydown
-								input.removeEventListener('blur', handleBlur); // Rimuove l'evento blur
-							}
-						};
+				    // Gestisce la pressione del tasto "Enter" mentre si modifica il campo
+				    const handleKeydown = (event) => {
+				        if (event.key === 'Enter' && !isFinalized) {
+				            isFinalized = true;
+				            finalizeEdit(inputId, editIconId, paramName);
+				            input.removeEventListener('keydown', handleKeydown);
+				            input.removeEventListener('blur', handleBlur);
+				        }
+				    };
 
-						// Gestisce la perdita del focus (quando l'utente clicca fuori dal campo)
-						const handleBlur = () => {
-							finalizeEdit(inputId, editIconId, paramName); // Finalizza la modifica
-							input.removeEventListener('keydown', handleKeydown); // Rimuove l'evento keydown
-							input.removeEventListener('blur', handleBlur); // Rimuove l'evento blur
-						};
+				    // Gestisce la perdita del focus (quando l'utente clicca fuori dal campo)
+				    const handleBlur = () => {
+				        if (!isFinalized) {
+				            isFinalized = true;
+				            finalizeEdit(inputId, editIconId, paramName);
+				            input.removeEventListener('keydown', handleKeydown);
+				            input.removeEventListener('blur', handleBlur);
+				        }
+				    };
 
-						// Aggiunge gli eventi al campo input per la pressione di un tasto e la perdita del focus
-						input.addEventListener('keydown', handleKeydown);
-						input.addEventListener('blur', handleBlur);
-					}
+				    input.addEventListener('keydown', handleKeydown);
+				    input.addEventListener('blur', handleBlur);
+				}
 
-					// Funzione che finalizza la modifica, disabilita il campo e invia i dati al server
-					function finalizeEdit(inputId, editIconId, paramName) {
-						const input = document.getElementById(inputId); // Ottiene l'elemento input tramite l'ID
-						const editIcon = document.getElementById(editIconId); // Ottiene l'icona di modifica tramite l'ID
+				// Funzione che finalizza la modifica, disabilita il campo e invia i dati al server
+				function finalizeEdit(inputId, editIconId, paramName) {
+				    const input = document.getElementById(inputId);
+				    const editIcon = document.getElementById(editIconId);
 
-						input.disabled = true; // Disabilita l'input per impedirne ulteriori modifiche
-						editIcon.style.display = 'inline'; // Rende visibile l'icona di modifica
+				    input.disabled = true;
+				    editIcon.style.display = 'inline';
 
-						// Se il valore dell'input non è vuoto, aggiorna il parametro nell'oggetto URLSearchParams
-						if (input.value.trim() !== "") {
-							params.set(paramName, input.value.trim()); // Aggiunge o aggiorna il parametro nell'oggetto params
-						}
+				    if (input.value.trim() !== "") {
+				        params.set(paramName, input.value.trim());
+				    }
 
-						console.log(`Updated params: ${params.toString()}`); // Stampa i parametri aggiornati nel log
+				    console.log(`Updated params: ${params.toString()}`);
 
-						// Costruisce il nuovo URL con i parametri aggiornati
-						const newUrl = `/wisteria/profilepage?${params.toString()}`;
+				    const newUrl = `/wisteria/profilepage?${params.toString()}`;
+				    window.history.pushState(null, '', newUrl);
 
-						// Aggiorna l'URL nel browser senza ricaricare la pagina
-						window.history.pushState(null, '', newUrl);
+				    const formData = new URLSearchParams(params).toString();
+				    
+				    fetch('/wisteria/profilepage', {
+				        method: 'POST',
+				        headers: {
+				            'Content-Type': 'application/x-www-form-urlencoded',
+				        },
+				        body: formData,
+				    })
+				    .then(response => {
+				        if (!response.ok) {
+				            return response.text().then(err => {
+				                throw new Error(`Server error: ${err}`);
+				            });
+				        }
+				        return response.text();
+				    })
+				    .then(data => {
+				        console.log('Dati aggiornati con successo:', data);
+				    })
+				    .catch(error => {
+				        console.error('Errore:', error);
+				    });
+				}
 
-						// Crea i dati da inviare al server (i parametri URL codificati)
-						const formData = new URLSearchParams(params).toString();
-						
-						// Invia una richiesta POST per aggiornare i dati sul server
-						fetch('/wisteria/profilepage', {
-							method: 'POST', // Metodo HTTP POST
-							headers: {
-								'Content-Type': 'application/x-www-form-urlencoded', // Tipo di contenuto per l'invio dei dati
-							},
-							body: formData, // I dati da inviare al server
-						})
-						.then(response => {
-							if (!response.ok) { // Se la risposta non è ok (errore)
-								return response.text().then(err => {
-									throw new Error(`Server error: ${err}`); // Lancia un errore con il messaggio ricevuto dal server
-								});
-							}
-							return response.text(); // Restituisce la risposta del server come testo
-						})
-						.then(data => {
-							console.log('Dati aggiornati con successo:', data); // Stampa nel log i dati ricevuti dal server
-						})
-						.catch(error => {
-							console.error('Errore:', error); // Gestisce eventuali errori e li stampa nel log
-						});
-					}
-
-					// Esempio di utilizzo per il campo "Nome"
-					// Imposta l'evento per il click sull'elemento con ID 'modifica-nome' per avviare la modifica
-					document.getElementById('modifica-nome').onclick = () => toggleField('input-nome', 'modifica-nome', 'Nome');
+				// Esempio di utilizzo per il campo "Nome"
+				document.getElementById('modifica-nome').onclick = () => toggleField('input-nome', 'modifica-nome', 'Nome');
 
 					// ####################################################################################################################
 
