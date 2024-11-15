@@ -68,7 +68,7 @@
                             <img src="${pageContext.request.contextPath}/assets/placeholder2.png" class="d-block w-100" alt="Descrizione Immagine 2">
                         </div>
                         <div class="carousel-item carousel-item3">
-                            <img src="https://www.bibopfashion.store/cdn/shop/files/0.47834800_1708711105.png?v=1708711107" class="d-block w-100" alt="Descrizione Immagine 3">
+                            <img src="${pageContext.request.contextPath}/assets/placeholder3.png" class="d-block w-100" alt="Descrizione Immagine 3">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#aboutUsCarousel" role="button" data-slide="prev">
