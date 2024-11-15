@@ -79,9 +79,41 @@ public class UserDAO {
 
 		connection.close();
 	}
-	
 
-	
+
+	public void updateUsername(String username, String newUsername) {
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="UPDATE Utente SET username = ? WHERE username= ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, newUsername);
+			preparedStatement.setString(2, username);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void updateEmail(String username, String email) {
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="UPDATE Utente SET email = ? WHERE username= ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, username);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
 		System.out.println(Admin.class.getName()); //user.Admin
