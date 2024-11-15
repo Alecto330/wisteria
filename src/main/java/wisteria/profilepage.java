@@ -3,6 +3,7 @@ package wisteria;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import user.User;
 import user.UserDAO;
 
 @WebServlet("/profilepage")
+@MultipartConfig(maxRequestSize = 1024 * 1024 * 50)
 public class profilepage extends HttpServlet{
 
 	public profilepage() {
@@ -39,7 +41,7 @@ public class profilepage extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("Ciao");
-		//Part filePart = request.getPart("pdf"); // Ottieni il file PDF
+		 // Ottieni il file PDF
 		//InputStream fileContent = filePart.getInputStream();
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
@@ -53,24 +55,27 @@ public class profilepage extends HttpServlet{
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
 		
-		UserDAO dao=new UserDAO();
+		Part cv = request.getPart("cv");
+		
+		UserDAO userDao=new UserDAO();
+		CvDAO cvDao=new CvDAO();
 		
 		if(nome!=null) {
-			dao.updateNome(user.getUsername(), nome);
+			cvDao.updateNome(user.getUsername(), nome);
 			redirectToPage(user, request, response);
 			System.out.println("Nome aggionato");
 			return;
 		}
 		
 		if(cognome!=null) {
-			dao.updateCognome(user.getUsername(), cognome);
+			cvDao.updateCognome(user.getUsername(), cognome);
 			redirectToPage(user, request, response);
 			System.out.println("Cognome aggionato");
 			return;
 		}
 		
 		if(username!=null) {
-			dao.updateUsername(user.getUsername(), username);
+			userDao.updateUsername(user.getUsername(), username);
 		    
 			user.setUsername(username);	  
 		    session.setAttribute("user", user);
@@ -82,14 +87,14 @@ public class profilepage extends HttpServlet{
 		}
 		
 		if(dataDiNascita!=null) {
-			dao.updateDataDiNascita(user.getUsername(), dataDiNascita);
+			cvDao.updateDataDiNascita(user.getUsername(), dataDiNascita);
 			redirectToPage(user, request, response);
 			System.out.println("Data di nascita aggionata");
 			return;
 		}
 		
 		if(email!=null) {
-			dao.updateEmail(user.getUsername(), email);
+			userDao.updateEmail(user.getUsername(), email);
 			
 			user.setEmail(email);	  
 		    session.setAttribute("user", user);
@@ -101,23 +106,30 @@ public class profilepage extends HttpServlet{
 		}
 		
 		if(cf!=null) {
-			dao.updateCf(user.getUsername(), cf);
+			cvDao.updateCf(user.getUsername(), cf);
 			redirectToPage(user, request, response);
 			System.out.println("Codice Fiscale aggionato");
 			return;
 		}
 		
 		if(telefono!=null) {
-			dao.updateTelefono(user.getUsername(), telefono);
+			cvDao.updateTelefono(user.getUsername(), telefono);
 			redirectToPage(user, request, response);
 			System.out.println("Telefono aggionato");
 			return;
 		}
 		
 		if(titolo!=null) {
-			dao.updateTitolo(user.getUsername(), titolo);
+			cvDao.updateTitolo(user.getUsername(), titolo);
 			redirectToPage(user, request, response);
 			System.out.println("Titolo aggionato");
+			return;
+		}
+		
+		if(cv!=null) {
+			cvDao.updateCV(user.getUsername(), cv);
+			redirectToPage(user, request, response);
+			System.out.println("CV aggionato");
 			return;
 		}
 		

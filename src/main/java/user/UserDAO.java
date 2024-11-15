@@ -79,39 +79,8 @@ public class UserDAO {
 
 		connection.close();
 	}
-	
-	public void updateNome(String username, String nome) {
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET nome = ? WHERE FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, nome);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
 
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void updateCognome(String username, String cognome) {
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET cognome = ? WHERE FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, cognome);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
 
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void updateUsername(String username, String newUsername) {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
@@ -127,23 +96,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	public void updateDataDiNascita(String username, String dataDiNascita) {
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET DataDiNascita = ? WHERE FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, dataDiNascita);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
 
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	public void updateEmail(String username, String email) {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
@@ -159,53 +112,8 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-	public void updateCf(String username, String cf) {
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET nome = ? WHERE FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, cf);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
 
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public void updateTelefono(String username, String telefono) {
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET telefono = ? WHERE FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, telefono);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
 
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void updateTitolo(String username, String titolo) {
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET titolo = ? WHERE FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, titolo);
-			preparedStatement.setString(2, username);
-			preparedStatement.executeUpdate();
-
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
 		System.out.println(Admin.class.getName()); //user.Admin
