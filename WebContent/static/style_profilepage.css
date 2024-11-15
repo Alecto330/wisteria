@@ -118,7 +118,6 @@ body {
 	display: block;
 	color: #333;
 	margin-bottom: 0.3rem;
-	font-size: 0.8rem;
 	text-decoration: underline;
 }
 
@@ -145,7 +144,7 @@ body {
 .edit-icon {
 	position: absolute;
 	right: 10px;
-	top: 50%;
+	top: 40%;
 	transform: translateY(-50%);
 	color: #6e41e2;
 	cursor: pointer;
@@ -181,8 +180,12 @@ body {
 	font-size: 0.9rem;
 	justify-content: center;
 	align-items: center;
-	height: 300px;
-	max-height: 300px;
+	/*height: 300px;
+	max-height: 300px;*/
+	max-height: 155px;
+	max-width: 227px;
+	margin-top: 73px;
+	margin-left: 196px;
 }
 
 .cv-upload:hover {
@@ -193,13 +196,14 @@ body {
 .cv-icon {
 	font-size: 3rem;
 }
-
 .experience-section {
 	background-color: rgba(110, 65, 226, 0.1);
 	border-radius: 15px;
 	padding: 1rem;
 	max-height: 300px;
 	overflow-y: auto;
+	max-width: 617px;
+	margin-left: 201px;
 }
 
 .experience-header {

@@ -10,13 +10,13 @@
             </div>
             <p class="footer-description">La nostra azienda si dedica a offrire soluzioni tecnologiche innovative per supportare la crescita del tuo business.</p>
             <div class="footer-social">
-                <a href="https://www.facebook.com/azienda" class="social-link" aria-label="Facebook">
+                <a href="https://www.facebook.com/Wisteria" class="social-link" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.twitter.com/azienda" class="social-link" aria-label="Twitter">
+                <a href="https://www.twitter.com/Wisteria" class="social-link" aria-label="Twitter">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="https://www.linkedin.com/company/azienda" class="social-link" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/company/Wisteria" class="social-link" aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>

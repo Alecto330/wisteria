@@ -160,7 +160,7 @@
 			<h2>12. Contatti</h2>
 			<p>
 				Per domande riguardanti questi Termini, puoi contattarci
-				all'indirizzo email <a href="mailto:contatto@tuosito.com">contatto@tuosito.com</a>
+				all'indirizzo email: <a href="mailto:terms@wisteria.com">terms@wisteria.com</a>
 				o tramite i nostri canali di supporto sul Sito.
 			</p>
 		</div>
