@@ -24,7 +24,7 @@
 <title>Profilo e personalizzazione</title>
 
 </head>
-<body onmouseup="exit()">
+<body>
 
 	<%@ include file="header.jsp"%>
 
@@ -51,7 +51,7 @@
 				<label class="form-label">Nome:</label>
 				<div class="form-input-wrapper">
 					<input id="input-nome" type="text" class="form-input" value="${nome}" disabled>
-					<span id="modifica-nome" class="edit-icon" title="Modifica" onclick="toggleNome()"> 
+					<span id="modifica-nome" class="edit-icon" title="Modifica" onclick="toggleField('input-nome', 'modifica-nome', 'Nome')"> 
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path d="M12 20h9" />
 							<path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -64,7 +64,7 @@
 				<label class="form-label">Username:</label>
 				<div class="form-input-wrapper">
 					<input id="input-username" type="text" class="form-input" value="${username}" disabled>
-					<span id="modifica-username" class="edit-icon" title="Modifica" onclick="toggleUsername()">  
+					<span id="modifica-username" class="edit-icon" title="Modifica" onclick="toggleField('input-username', 'modifica-username', 'Username')">  
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -77,7 +77,7 @@
 				<label class="form-label">Cognome:</label>
 				<div class="form-input-wrapper">
 					<input id="input-cognome" type="text" class="form-input" value="${cognome}" disabled>
-					<span id="modifica-cognome" class="edit-icon" title="Modifica" onclick="toggleCognome()">
+					<span id="modifica-cognome" class="edit-icon" title="Modifica" onclick="toggleField('input-cognome', 'modifica-cognome', 'Cognome')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -91,7 +91,7 @@
 				<label class="form-label">Data di nascita:</label>
 				<div class="form-input-wrapper">
 					<input id="input-datadinascita" type="date" class="form-input" value="${dataDiNascita}" disabled>
-					<span id="modifica-datadinascita" class="edit-icon" title="Modifica" onclick="toggleDataDiNascita()"> 
+					<span id="modifica-datadinascita" class="edit-icon" title="Modifica" onclick="toggleField('input-datadinascita', 'modifica-datadinascita', 'DataDiNascita')"> 
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -105,7 +105,7 @@
 				<label class="form-label">Email:</label>
 				<div class="form-input-wrapper">
 					<input id="input-email" type="email" class="form-input" value="${email}" disabled>
-					<span id="modifica-email" class="edit-icon" title="Modifica" onclick="toggleEmail()"> 
+					<span id="modifica-email" class="edit-icon" title="Modifica" onclick="toggleField('input-email', 'modifica-email', 'Email')"> 
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -119,7 +119,7 @@
 				<label class="form-label">Codice Fiscale:</label>
 				<div class="form-input-wrapper">
 					<input id="input-cf" type="text" class="form-input" value="${cf}" disabled>
-					<span id="modifica-cf" class="edit-icon" title="Modifica" onclick="toggleCF()"> 
+					<span id="modifica-cf" class="edit-icon" title="Modifica" onclick="toggleField('input-cf', 'modifica-cf', 'CF')"> 
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -133,7 +133,7 @@
 				<label class="form-label">Telefono:</label>
 				<div class="form-input-wrapper">
 					<input id="input-telefono" type="tel" class="form-input" value="${telefono}" disabled>
-					<span id="modifica-telefono" class="edit-icon" title="Modifica" onclick="toggleTelefono()"> 
+					<span id="modifica-telefono" class="edit-icon" title="Modifica" onclick="toggleField('input-telefono', 'modifica-telefono', 'Telefono')"> 
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -147,7 +147,7 @@
 				<label class="form-label">Titolo di studio:</label>
 				<div class="form-input-wrapper">
 					<input id="input-titolo" type="text" class="form-input" value="${titoloDiStudio}" disabled>
-					<span id="modifica-titolo" class="edit-icon" title="Modifica" onclick="toggleTitoloDiStudio()"> 
+					<span id="modifica-titolo" class="edit-icon" title="Modifica" onclick="toggleField('input-titolo', 'modifica-titolo', 'Titolo')"> 
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -265,215 +265,91 @@
 
 				// ###################### FUNZIONI PER MODIFICA CAMPI ##############################
 
-					let searchUrl = '/wisteria/profilepage?'
+				let params = new URLSearchParams(); // Crea un oggetto URLSearchParams per gestire i parametri dell'URL
+
+				// Funzione per attivare la modifica di un campo (input) al click sull'icona di modifica
+				function toggleField(inputId, editIconId, paramName) {
+				    const input = document.getElementById(inputId);
+				    const editIcon = document.getElementById(editIconId);
+				    let isFinalized = false; // Flag to prevent double execution
+
+				    input.disabled = false;
+				    input.focus();
+				    editIcon.style.display = 'none';
+
+				    // Gestisce la pressione del tasto "Enter" mentre si modifica il campo
+				    const handleKeydown = (event) => {
+				        if (event.key === 'Enter' && !isFinalized) {
+				            isFinalized = true;
+				            finalizeEdit(inputId, editIconId, paramName);
+				            input.removeEventListener('keydown', handleKeydown);
+				            input.removeEventListener('blur', handleBlur);
+				        }
+				    };
+
+				    // Gestisce la perdita del focus (quando l'utente clicca fuori dal campo)
+				    const handleBlur = () => {
+				        if (!isFinalized) {
+				            isFinalized = true;
+				            finalizeEdit(inputId, editIconId, paramName);
+				            input.removeEventListener('keydown', handleKeydown);
+				            input.removeEventListener('blur', handleBlur);
+				        }
+				    };
+
+				    input.addEventListener('keydown', handleKeydown);
+				    input.addEventListener('blur', handleBlur);
+				}
+
+				// Funzione che finalizza la modifica, disabilita il campo e invia i dati al server
+				function finalizeEdit(inputId, editIconId, paramName) {
+				    const input = document.getElementById(inputId);
+				    const editIcon = document.getElementById(editIconId);
+
+				    input.disabled = true;
+				    editIcon.style.display = 'inline';
+
+				    if (input.value.trim() !== "") {
+				        params.set(paramName, input.value.trim());
+				    }
+
+				    console.log(`Updated params: ${params.toString()}`);
+
+				    const newUrl = `/wisteria/profilepage?${params.toString()}`;
+				    window.history.pushState(null, '', newUrl);
+
+				    const formData = new URLSearchParams(params).toString();
+				    
+				    fetch('/wisteria/profilepage', {
+				        method: 'POST',
+				        headers: {
+				            'Content-Type': 'application/x-www-form-urlencoded',
+				        },
+				        body: formData,
+				    })
+				    .then(response => {
+				        if (!response.ok) {
+				            return response.text().then(err => {
+				                throw new Error(`Server error: ${err}`);
+				            });
+				        }
+				        return response.text();
+				    })
+				    .then(data => {
+				        console.log('Dati aggiornati con successo:', data);
+				    })
+				    .catch(error => {
+				        console.error('Errore:', error);
+				    });
+				}
+
+				// Esempio di utilizzo per il campo "Nome"
+				document.getElementById('modifica-nome').onclick = () => toggleField('input-nome', 'modifica-nome', 'Nome');
+
+					// ####################################################################################################################
 
 
-					function toggleNome() {
-						const input = document.getElementById('input-nome');
-						const editIcon = document.getElementById('modifica-nome');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-						
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-								const inputValue = encodeURIComponent(input.value);
-								searchUrl = searchUrl + "Nome=" + inputValue;
-								window.location.href = searchUrl;
-							}
-						});
-						
-						
-						
-						}
-
-					function toggleUsername(){
-						const input = document.getElementById('input-username');
-						const editIcon = document.getElementById('modifica-username');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-					}
-
-					function toggleCognome(){
-						const input = document.getElementById('input-cognome');
-						const editIcon = document.getElementById('modifica-cognome');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-					}
-
-					function toggleDataDiNascita(){
-						const input = document.getElementById('input-datadinascita');
-						const editIcon = document.getElementById('modifica-datadinascita');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-					}
-
-					function toggleEmail(){
-						const input = document.getElementById('input-email');
-						const editIcon = document.getElementById('modifica-email');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-						}
-
-					function toggleCF(){
-						const input = document.getElementById('input-cf');
-						const editIcon = document.getElementById('modifica-cf');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-					}
-
-					function toggleTelefono(){
-						const input = document.getElementById('input-telefono');
-						const editIcon = document.getElementById('modifica-telefono');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-					}
-
-					function toggleTitoloDiStudio(){
-						const input = document.getElementById('input-titolo');
-						const editIcon = document.getElementById('modifica-titolo');
-						input.disabled = false; // Enable the input
-						input.focus();
-						editIcon.style.display ='none';
-					
-						// Optionally, disable editing again when the user clicks outside
-						input.addEventListener('keydown', (event) => {
-							if (event.key === 'Enter') {
-								input.disabled = true; // Disable the input when Enter is pressed
-								editIcon.style.display='inline';
-							}
-						});
-					}
-				
-				  
-			      
-				  function exit(){
-
-					exitNome();
-					exitCognome();
-					exitEmail();
-					exitTelefono();
-					exitUsername();
-					exitDataDiNascita();
-					exitCF();
-					exitTitoloDiStudio();
-
-			        }
-
-					function exitNome(){
-					  const input = document.getElementById('input-nome');
-				      const editIcon = document.getElementById('modifica-nome');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitCognome(){
-					  const input = document.getElementById('input-cognome');
-				      const editIcon = document.getElementById('modifica-cognome');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitEmail(){
-					  const input = document.getElementById('input-email');
-				      const editIcon = document.getElementById('modifica-email');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitTelefono(){
-					  const input = document.getElementById('input-telefono');
-				      const editIcon = document.getElementById('modifica-telefono');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitUsername(){
-					  const input = document.getElementById('input-username');
-				      const editIcon = document.getElementById('modifica-username');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitDataDiNascita(){
-					  const input = document.getElementById('input-datadinascita');
-				      const editIcon = document.getElementById('modifica-datadinascita');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitCF(){
-					  const input = document.getElementById('input-cf');
-				      const editIcon = document.getElementById('modifica-cf');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					function exitTitoloDiStudio(){
-					  const input = document.getElementById('input-titolo');
-				      const editIcon = document.getElementById('modifica-titolo');
-			            input.disabled = true; // Disable the input when Enter is pressed
-			            editIcon.style.display='inline';
-			        }
-
-					
+										
 				
 			</script>
 
