@@ -163,8 +163,7 @@
 				<!-- Sezione per caricare il CV o aprirlo -->
 				<div id="cvUploadSection" class="cv-upload"
 					onclick="handleClick(event)">
-					<input type="file" id="fileInput" accept="application/pdf"
-						style="display: none;" onchange="handleFileChange(event)">
+					<input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
 					<div class="cv-icon" id="icon">📁</div>
 					<div id="uploadText">Carica il tuo CV</div>
 					<div id="removePDF" onclick="removePDF(event)">❌</div>
@@ -174,97 +173,148 @@
 
 			<script>
 
-				// CARICA PDF CURRICULUM
+				// ########################### CARICA PDF CURRICULUM ######################################
 
 				let pdfURL = null;
-			
-				// Funzione per attivare il file input o aprire il PDF
+
+				// Funzione per gestire il click sul div di upload
 				function handleClick(event) {
-					// Se l'utente ha cliccato sulla "X", non aprire il PDF
 					if (event.target.id === 'removePDF') return;
-			
+
 					if (pdfURL) {
-						// Se il PDF è caricato, apri il PDF in una nuova scheda
-						window.open(pdfURL, '_blank');
+						window.open(pdfURL, '_blank');  // Apri il PDF in una nuova finestra
 					} else {
-						// Altrimenti, attiva il file input per caricare un PDF
-						document.getElementById('fileInput').click();
+						document.getElementById('fileInput').click();  // Mostra il file input per selezionare il PDF
 					}
 				}
-			
+
 				// Gestisce il cambiamento del file input
 				function handleFileChange(event) {
 					const file = event.target.files[0];
-					
+
 					if (file && file.type === 'application/pdf') {
-						// Memorizza l'URL temporaneo per il PDF caricato
-						pdfURL = URL.createObjectURL(file);
-			
-						// Modifica il testo e l'icona del div per aprire il PDF
-						document.getElementById('icon').textContent = "📄";
-						document.getElementById('uploadText').textContent = "Apri il tuo CV";
-			
-						// Mostra la "X" per rimuovere il PDF
-						document.getElementById('removePDF').style.display = 'block';
+						pdfURL = URL.createObjectURL(file);  // Crea l'URL temporaneo per il PDF
+
+						document.getElementById('icon').textContent = "📄";  // Cambia l'icona
+						document.getElementById('uploadText').textContent = "Apri il tuo CV";  // Modifica il testo
+						document.getElementById('removePDF').style.display = 'block';  // Mostra il pulsante per rimuovere il file
+
+						// Invia il file al server
+						sendFileToServer(file);
 					} else {
-						alert("Per favore seleziona un file PDF.");
+						alert("Per favore seleziona un file PDF.");  // Verifica che il file sia un PDF
 					}
 				}
-			
-				// Funzione per rimuovere il PDF e permettere una nuova selezione del file
+
+				// Funzione per inviare il file al server usando FormData
+				function sendFileToServer(file) {
+					const formData = new FormData();
+					formData.append('cv', file);  // Aggiungi il file al FormData con il nome del campo 'cv'
+
+					fetch('/wisteria/profilepage', {
+						method: 'POST',
+						body: formData
+					})
+					.then(response => {
+						if (!response.ok) {
+							// Se la risposta del server non è ok, restituiamo un errore
+							return response.text().then(err => {
+								throw new Error(`Errore nel server: ${err}`);
+							});
+						}
+						// Se la risposta è ok, ritorniamo la risposta come testo
+						return response.text();
+					})
+					.then(data => {
+						console.log('File caricato con successo:', data);  // data ora è una stringa, non un oggetto JSON
+					})
+					.catch(error => {
+						console.error('Errore nel caricamento del file:', error);
+					});
+				}
+
+
+
+				// Funzione per rimuovere il PDF
 				function removePDF(event) {
-					event.stopPropagation(); // Impedisce al click su "X" di attivare `handleClick`
-			
-					// Resetta l'URL del PDF
+					event.stopPropagation();
+
 					pdfURL = null;
-			
-					// Ripristina l'aspetto del div per caricare il CV
-					document.getElementById('icon').textContent = "📁";
-					document.getElementById('uploadText').textContent = "Carica il tuo CV";
-			
-					// Nascondi la "X"
-					document.getElementById('removePDF').style.display = 'none';
-			
-					// Resetta il campo file
-					document.getElementById('fileInput').value = '';
+
+					document.getElementById('icon').textContent = "📁";  // Ripristina l'icona
+					document.getElementById('uploadText').textContent = "Carica il tuo CV";  // Ripristina il testo
+					document.getElementById('removePDF').style.display = 'none';  // Nascondi il pulsante
+					document.getElementById('fileInput').value = '';  // Resetta il campo input
 				}
 
 
 
+				// #############################################################################################
 
 
-				// CARICA IMMAGINE PROFILO
-				function triggerImageInput() {
-					document.getElementById('imageInput').click();
-				}
-
-				// Gestisce il caricamento dell'immagine
-				function handleImageChange(event) {
-					const file = event.target.files[0];
-					
-					if (file && file.type.startsWith('image/')) {
-						const reader = new FileReader();
-
-						// Quando l'immagine è pronta, la carica nel div .profile-image
-						reader.onload = function(e) {
-							const profilePicture = document.getElementById('profilePicture');
-							profilePicture.src = e.target.result;
-							profilePicture.style.display = 'block';
-
-							// Nasconde le icone quando l'immagine è presente
-							document.getElementById('profileIcon').style.display = 'none';
-							document.querySelector('.camera-icon').style.display = 'none';
-						};
-
-						// Legge il file come URL data
-						reader.readAsDataURL(file);
-					} else {
-						alert("Per favore seleziona un'immagine valida.");
+				// ##################################### CARICA IMMAGINE PROFILO ######################################
+									// Funzione per attivare l'input dell'immagine
+					function triggerImageInput() {
+						document.getElementById('imageInput').click();
 					}
-				}
+
+					// Gestisce il caricamento dell'immagine
+					function handleImageChange(event) {
+						const file = event.target.files[0];
+						
+						if (file && file.type.startsWith('image/')) {
+							const reader = new FileReader();
+
+							// Quando l'immagine è pronta, la carica nel div .profile-image
+							reader.onload = function(e) {
+								const profilePicture = document.getElementById('profilePicture');
+								profilePicture.src = e.target.result;
+								profilePicture.style.display = 'block';
+
+								// Nasconde le icone quando l'immagine è presente
+								document.getElementById('profileIcon').style.display = 'none';
+								document.querySelector('.camera-icon').style.display = 'none';
+							};
+
+							// Legge il file come URL data
+							reader.readAsDataURL(file);
+
+							// Ora inviamo l'immagine al server
+							uploadImageToServer(file);
+						} else {
+							alert("Per favore seleziona un'immagine valida.");
+						}
+					}
+
+					// Funzione per caricare l'immagine al server
+					function uploadImageToServer(file) {
+						const formData = new FormData();
+						formData.append('profileImage', file);  // Aggiungi l'immagine al FormData con il nome del campo 'profileImage'
+
+						fetch('/wisteria/profilepage', {
+							method: 'POST',
+							body: formData
+						})
+						.then(response => {
+							if (!response.ok) {
+								return response.text().then(err => {
+									throw new Error(`Errore nel server: ${err}`);
+								});
+							}
+							return response.text();  // Gestiamo la risposta come testo
+						})
+						.then(data => {
+							console.log('Immagine caricata con successo:', data);  // data sarà il testo di risposta dal server
+						})
+						.catch(error => {
+							console.error('Errore nel caricamento dell\'immagine:', error);
+						});
+					}
+
+				// ####################################################################################
+
 
 				// ###################### FUNZIONI PER MODIFICA CAMPI ##############################
-
 				let params = new URLSearchParams(); // Crea un oggetto URLSearchParams per gestire i parametri dell'URL
 
 				// Funzione per attivare la modifica di un campo (input) al click sull'icona di modifica
@@ -346,7 +396,7 @@
 				// Esempio di utilizzo per il campo "Nome"
 				document.getElementById('modifica-nome').onclick = () => toggleField('input-nome', 'modifica-nome', 'Nome');
 
-					// ####################################################################################################################
+				// ####################################################################################################################
 
 
 										
