@@ -11,6 +11,7 @@ public class CvDAO {
 	public CV getCV(String username) {
 
 		try {
+			System.out.println(username);
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
 			String query = "SELECT cf, nome, cognome, DataDiNascita, Residenza, TitoloDiStudio, curriculum, fotoProfilo, telefono, email, FK_Utente FROM CV"
