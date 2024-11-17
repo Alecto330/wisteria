@@ -41,7 +41,8 @@ public class profilepage extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("Ciao");
-		 // Ottieni il file PDF
+
+		
 		//InputStream fileContent = filePart.getInputStream();
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
@@ -55,7 +56,7 @@ public class profilepage extends HttpServlet{
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
 		
-		Part cv = request.getPart("cv");
+		//Part cv = request.getPart("cv");
 		
 		UserDAO userDao=new UserDAO();
 		CvDAO cvDao=new CvDAO();
@@ -126,12 +127,12 @@ public class profilepage extends HttpServlet{
 			return;
 		}
 		
-		if(cv!=null) {
+		/*if(cv!=null) {
 			cvDao.updateCV(user.getUsername(), cv);
 			redirectToPage(user, request, response);
 			System.out.println("CV aggionato");
 			return;
-		}
+		}*/
 		
 	}
 	
