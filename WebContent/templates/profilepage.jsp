@@ -158,11 +158,10 @@
 			</div>
 		</div>
 
-		<div class="bottom-section">
+		<div class="form-grid">
 			<div>
 				<!-- Sezione per caricare il CV o aprirlo -->
-				<div id="cvUploadSection" class="cv-upload"
-					onclick="handleClick(event)">
+				<div id="cvUploadSection" class="cv-upload" onclick="handleClick(event)">
 					<input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
 					<div class="cv-icon" id="icon">📁</div>
 					<div id="uploadText">Carica il tuo CV</div>
