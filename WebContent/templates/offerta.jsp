@@ -35,7 +35,7 @@
                 </div>
                 
                 <div class="col-sm-4 text-end">
-                    <button class="btn btn-apply">Candidati subito!</button>
+                    <button class="btn btn-apply" onclick="location.href='test?idPosizione=${posizione.id}&nomePosizione=${posizione.titolo}';">Candidati subito!</button>
                 </div>
             </div>
 
