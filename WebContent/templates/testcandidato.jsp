@@ -31,37 +31,42 @@
 		<div class="accordion">
 			<!-- Loop over the list of Domanda objects -->
 			<c:forEach var="domanda" items="${domande}">
-				<div class="accordion-item">
-					<!-- Accordion Header -->
-					<div class="accordion-header" onclick="toggleAccordion(this)">
-						<h2 class="accordion-title">${domanda.domanda}</h2>
-						<!-- Assuming 'titolo' is the question title -->
-						<i class="fas fa-chevron-down accordion-icon"></i>
-					</div>
-
-					<!-- Accordion Content -->
-					<div class="accordion-content">
-						<ul class="answer-list">
-							<!-- Loop over the answers of the current Domanda -->
-							<c:forEach var="risposta" items="${domanda.risposte}">
-								<button class="answer-item">
-									<p class="answer-text">${risposta.risposta}</p>
-									<!-- Assuming 'testo' is the answer text -->
-								</button>
-							</c:forEach>
-						</ul>
-					</div>
-				</div>
-			</c:forEach>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h2 class="accordion-title">${domanda.domanda}</h2>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <ul class="answer-list">
+                            <c:forEach var="risposta" items="${domanda.risposte}">
+                                <button 
+                                    class="answer-item" 
+                                    data-domanda-id="${domanda.id}" 
+                                    data-risposta-id="${risposta.id}" 
+                                    onclick="selectAnswer(this)">
+                                    <p class="answer-text">${risposta.risposta}</p>
+                                </button>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+            </c:forEach>
 		</div>
 
 		<div class="submit-container">
-			<button type="button" class="submit-button">Invia</button>
+			<button type="button" class="submit-button" onclick="submitAnswers()">Invia</button>
 		</div>
 
 	</div>
 
 	<script>
+
+
+
+
+
+
+    // ############################  ACCORDION ##############################
         function toggleAccordion(header) {
             // Trova tutti gli accordion
             const allContents = document.querySelectorAll('.accordion-content');
@@ -100,16 +105,39 @@
 
 
 
+        // #################### RISPOSTE #########################
 
-        document.querySelectorAll('.answer-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Rimuove la classe "selected" da tutti gli elementi
-                document.querySelectorAll('.answer-item').forEach(el => el.classList.remove('selected'));
-                // Aggiunge la classe "selected" solo all'elemento cliccato
-                this.classList.add('selected');
-            });
-        });
 
+
+
+
+
+         function selectAnswer(button) {
+    // Ottieni l'ID della risposta selezionata
+    const rispostaId = button.getAttribute("data-risposta-id");
+    const domandaId = button.getAttribute("data-domanda-id");
+
+    console.log("ID della domanda selezionata:", domandaId);
+    console.log("ID della risposta selezionata:", rispostaId);
+
+    // Trova tutti i pulsanti di risposta
+    const buttons = document.querySelectorAll('.answer-item');
+
+    // Filtra solo i pulsanti per la domanda corrente
+    const buttonsForDomanda = Array.from(buttons).filter(btn => btn.getAttribute("data-domanda-id") === domandaId.toString());
+    console.log("Pulsanti trovati per la domanda:", buttonsForDomanda);
+
+    // Rimuovi la classe "selected" da tutti i pulsanti per quella domanda
+    buttonsForDomanda.forEach(btn => {
+        btn.classList.remove("selected");
+    });
+
+    // Aggiungi la classe "selected" al pulsante cliccato
+    button.classList.add("selected");
+
+    // Stampa l'ID della risposta selezionata per debug
+    console.log("Risposta selezionata ID:", rispostaId);
+}
     </script>
 
 </body>
