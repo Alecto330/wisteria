@@ -1,6 +1,9 @@
 package wisteria;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -26,7 +29,7 @@ public class profilepage extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 
@@ -36,14 +39,12 @@ public class profilepage extends HttpServlet{
 			response.sendRedirect("login");
 		}
 	}
-	
+
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("Ciao");
+		//System.out.println("Ciao");
 
-		
-		//InputStream fileContent = filePart.getInputStream();
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 
@@ -55,89 +56,112 @@ public class profilepage extends HttpServlet{
 		String cf = request.getParameter("CF");
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
-		
-		//Part cv = request.getPart("cv");
-		
+
 		UserDAO userDao=new UserDAO();
 		CvDAO cvDao=new CvDAO();
-		
+
 		if(nome!=null) {
 			cvDao.updateNome(user.getUsername(), nome);
 			redirectToPage(user, request, response);
 			System.out.println("Nome aggionato");
 			return;
 		}
-		
+
 		if(cognome!=null) {
 			cvDao.updateCognome(user.getUsername(), cognome);
 			redirectToPage(user, request, response);
 			System.out.println("Cognome aggionato");
 			return;
 		}
-		
+
 		if(username!=null) {
 			userDao.updateUsername(user.getUsername(), username);
-		    
+
 			user.setUsername(username);	  
-		    session.setAttribute("user", user);
-			
+			session.setAttribute("user", user);
+
 			redirectToPage(user, request, response);
-			
-		    System.out.println("Username aggionato");
+
+			System.out.println("Username aggionato");
 			return;
 		}
-		
+
 		if(dataDiNascita!=null) {
 			cvDao.updateDataDiNascita(user.getUsername(), dataDiNascita);
 			redirectToPage(user, request, response);
 			System.out.println("Data di nascita aggionata");
 			return;
 		}
-		
+
 		if(email!=null) {
 			userDao.updateEmail(user.getUsername(), email);
-			
+
 			user.setEmail(email);	  
-		    session.setAttribute("user", user);
-			
+			session.setAttribute("user", user);
+
 			redirectToPage(user, request, response);
-			
+
 			System.out.println("Email aggionata");
 			return;
 		}
-		
+
 		if(cf!=null) {
 			cvDao.updateCf(user.getUsername(), cf);
 			redirectToPage(user, request, response);
 			System.out.println("Codice Fiscale aggionato");
 			return;
 		}
-		
+
 		if(telefono!=null) {
 			cvDao.updateTelefono(user.getUsername(), telefono);
 			redirectToPage(user, request, response);
 			System.out.println("Telefono aggionato");
 			return;
 		}
-		
+
 		if(titolo!=null) {
 			cvDao.updateTitolo(user.getUsername(), titolo);
 			redirectToPage(user, request, response);
 			System.out.println("Titolo aggionato");
 			return;
 		}
-		
-		/*if(cv!=null) {
-			cvDao.updateCV(user.getUsername(), cv);
-			redirectToPage(user, request, response);
-			System.out.println("CV aggionato");
-			return;
-		}*/
-		
+
+		try {
+		    Part cv = request.getPart("cv");
+
+		    if (cv != null) {
+		        InputStream inputStream = null;
+		        try {
+		        	long size=cv.getSize();
+		            inputStream = cv.getInputStream();
+		            cvDao.updateCV(user.getUsername(), inputStream, size);
+
+		            System.out.println("CV updated successfully.");
+		        } finally {
+
+		            if (inputStream != null) {
+		                inputStream.close();
+		            }
+		            
+		            try {
+		                cv.delete(); // Deletes the temporary file if no longer needed.
+		            } catch (IOException e) {
+		                System.err.println("Failed to delete temporary file: " + e.getMessage());
+		            }
+		        }
+		        // Redirect to the profile page.
+		        redirectToPage(user, request, response);
+		        return;
+		    }
+		} catch (Exception e) {
+		    //e.printStackTrace();
+		}
+
+
 	}
-	
+
 	public void redirectToPage(User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		CvDAO dao=new CvDAO();
 		CV cv=dao.getCV(user.getUsername());
 		request.setAttribute("username", user.getUsername());
@@ -148,7 +172,9 @@ public class profilepage extends HttpServlet{
 		request.setAttribute("dataDiNascita", cv.getDataDiNascita());
 		request.setAttribute("residenza", cv.getResidenza());
 		request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-		request.setAttribute("curriculum", cv.getCurriculum());
+		String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
+		request.setAttribute("pdfData", base64PDF);
+		//request.setAttribute("curriculum", cv.getCurriculum());
 		request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 		request.setAttribute("telefono", cv.getTelefono());
 

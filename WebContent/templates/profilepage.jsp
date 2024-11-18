@@ -172,10 +172,32 @@
 
 
 			<script>
+			let pdfURL = null;
+			
+			 const base64PDF = '<%= request.getAttribute("pdfData") != null ? request.getAttribute("pdfData") : "" %>';
+
+		        if (base64PDF) {
+		            // Convert Base64 string to Blob and create a temporary URL.
+		            const pdfBlob = new Blob([Uint8Array.from(atob(base64PDF), c => c.charCodeAt(0))], { type: 'application/pdf' });
+		            pdfURL = URL.createObjectURL(pdfBlob);
+		            
+
+		            // Trigger the handleFileChange-like functionality.
+		            document.getElementById('icon').textContent = "📄";  // Change icon
+		            document.getElementById('uploadText').textContent = "Apri il tuo CV";  // Change text
+		            document.getElementById('removePDF').style.display = 'block';  // Show the remove button
+
+		            // Optional: Display the PDF in a viewer or allow download.
+		            const link = document.createElement('a');
+		            link.href = pdfURL;
+		            link.target = "_blank";
+		            link.textContent = "Visualizza PDF";
+		            document.body.appendChild(link);
+		        }
 
 				// ########################### CARICA PDF CURRICULUM ######################################
 
-				let pdfURL = null;
+
 
 				// Funzione per gestire il click sul div di upload
 				function handleClick(event) {

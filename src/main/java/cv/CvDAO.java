@@ -144,16 +144,16 @@ public class CvDAO {
 	}
 	
 	
-	public void updateCV(String username, Part cv) {
+	public void updateCV(String username, InputStream inputStream, long size) {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 			String query ="UPDATE CV SET curriculum = ? WHERE FK_Utente= ?";
 			
-			InputStream inputStream = cv.getInputStream();
+			//InputStream inputStream = cv.getInputStream();
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setBinaryStream(1, inputStream, cv.getSize());
+			preparedStatement.setBinaryStream(1, inputStream, size);
 			preparedStatement.setString(2, username);
 			preparedStatement.executeUpdate();
 
