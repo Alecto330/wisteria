@@ -1,0 +1,286 @@
+    <!DOCTYPE html>
+    <html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Offerte di Lavoro</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone (senz doverle scaricare) -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> <!-- Per importare il font Poppins -->
+        <link rel="stylesheet" href="static/style.css">
+        <link rel="stylesheet" href="static/style_home.css">
+        <link rel="stylesheet" href="static/style_nav.css">
+        
+    </head>
+
+     <!--############## VISUALIZZA E CERCA POSIZIONI ################-->
+    <body>
+            
+                <div>
+                    <p class="introduction-title">
+                        Benvenuto!
+                    </p>
+                    <p class="introduction">
+                        Wisteria è un'azienda <span class="highlight">leader nel settore informatico</span> in Italia, riconosciuta <br>
+                        per l'<span class="highlight">innovazione</span> e l’<span class="highlight">eccellenza</span> delle <span class="highlight">soluzioni digitali</span>. 
+                        La nostra esperienza nel campo tecnologico ha portato alla creazione di una 
+                        <span class="highlight">piattaforma avanzata</span> per <span class="highlight">semplificare il processo di reclutamento</span>, garantendo 
+                        un'interazione efficace e trasparente tra candidati e datori di lavoro.<br>
+                    
+                        Questa nuova web app consente ai datori di lavoro di <span class="highlight">pubblicare offerte</span>, <span class="highlight">filtrare candidature</span> 
+                        e gestire in modo ottimale il processo di selezione. <br>
+                        Al tempo stesso, i candidati possono <span class="highlight">monitorare lo stato delle proprie domande</span> e ricevere aggiornamenti in tempo reale, 
+                        accedendo a una piattaforma <span class="highlight">intuitiva e facile da usare</span>. Wisteria si impegna a connettere talenti e 
+                        opportunità, facilitando ogni fase del percorso di selezione con un approccio <span class="highlight">innovativo</span> e <span class="highlight">user-friendly</span>.
+                    </p>
+                    
+                </div>
+                <!-- Cointanier delle posizioni aperte -->
+                <div class="container">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="custom-container">
+                                <div class="d-flex justify-content-start search-container">
+                                    <div class="select-wrapper">
+                                        <select class="form-control mr-2" id="regioni">
+                                            <option value="Tutte"> Tutte le regioni</option>
+                                            <option value="Abruzzo">Abruzzo</option>
+                                            <option value="Basilicata">Basilicata</option>
+                                            <option value="Calabria">Calabria</option>
+                                            <option value="Campania">Campania</option>
+                                            <option value="Emilia-Romagna">Emilia-Romagna</option>
+                                            <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
+                                            <option value="Lazio">Lazio</option>
+                                            <option value="Liguria">Liguria</option>
+                                            <option value="Lombardia">Lombardia</option>
+                                            <option value="Marche">Marche</option>
+                                            <option value="Molise">Molise</option>
+                                            <option value="Piemonte">Piemonte</option>
+                                            <option value="Puglia">Puglia</option>
+                                            <option value="Sardegna">Sardegna</option>
+                                            <option value="Sicilia">Sicilia</option>
+                                            <option value="Toscana">Toscana</option>
+                                            <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                                            <option value="Umbria">Umbria</option>
+                                            <option value="Valle d'Aosta">Valle d'Aosta</option>
+                                            <option value="Veneto">Veneto</option>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="select-wrapper">
+                                        <select class="form-control mr-2" id="professioni">
+                                            <option value="Tutte"> Tutte le professioni</option>
+                                            <option value="sviluppatore-backend">Sviluppatore Backend</option>
+                                            <option value="sviluppatore-frontend">Sviluppatore Frontend</option>
+                                            <option value="sviluppatore-full-stack">Sviluppatore Full Stack</option>
+                                            <option value="ingegnere-devops">Ingegnere DevOps</option>
+                                            <option value="data-scientist">Data Scientist</option>
+                                            <option value="data-engineer">Data Engineer</option>
+                                            <option value="analista-dati">Analista Dati</option>
+                                            <option value="specialista-cybersecurity">Specialista Cybersecurity</option>
+                                            <option value="ingegnere-software">Ingegnere Software</option>
+                                            <option value="architetto-software">Architetto Software</option>
+                                            <option value="product-manager">Product Manager</option>
+                                            <option value="project-manager">Project Manager</option>
+                                            <option value="qa-engineer">QA Engineer</option>
+                                            <option value="tecnico-it">Tecnico IT</option>
+                                            <option value="consulente-it">Consulente IT</option>
+                                            <option value="esperto-cloud">Esperto Cloud</option>
+                                            <option value="ux-designer">UX Designer</option>
+                                            <option value="ui-designer">UI Designer</option>
+                                            <option value="specialista-machine-learning">Specialista Machine Learning</option>
+                                            <option value="specialista-ai">Specialista AI</option>
+                                        </select>
+                                    </div>
+                                
+                                    <input style="background-color: #e3e3e3;" class="form-control mr-2" type="search" placeholder="Cerca offerte di lavoro">
+                                    <button class="btn btn-primary">Cerca</button>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <!-- Container singola posizione -->
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="div-footer">
+                        <!-- Logo e Descrizione -->
+                        <div class="div-logo-footer">
+                            <img src="assets/WISTERIA - NO SFONDO.png" alt="Logo Azienda" class="logo-footer">
+                            <p class="desc">La nostra azienda si dedica a offrire soluzioni tecnologiche innovative per supportare la crescita del tuo business.</p>
+                        </div>
+                
+                        <!-- Link utili -->
+                        <div class="col-footer" id="contact-section">
+                            <h3>Link Utili</h3>
+                            <ul class="cont-utili">
+                                <li><a href="/chi-siamo">Chi Siamo</a></li>
+                                <li><a href="/servizi">Servizi</a></li>
+                                <li><a href="/carriere">Lavora con noi</a></li>
+                                <li><a href="/blog">Blog</a></li>
+                                <li><a href="/contatti">Contatti</a></li>
+                            </ul>
+                        </div>
+                
+                        <!-- Contatti -->
+                        <div class="col-footer">
+                            <h3>Contatti</h3>
+                            <p>Email: <a href="mailto:info@wisteria.com">info@wisteria.com</a></p>
+                            <p>Telefono: <a href="tel:+391234567890">+39 123 456 7890</a></p>
+                            <p>Indirizzo: Via Esempio 123, 00100 Roma, Italia</p>
+                        </div>
+                
+                        <!-- Social Media -->
+                        <div class="col-footer">
+                            <h3>Seguici</h3>
+                            <a href="https://www.facebook.com/azienda">Facebook</a>
+                            <a href="https://www.twitter.com/azienda">Twitter</a>
+                            <a href="https://www.linkedin.com/company/azienda">LinkedIn</a>
+                        </div>
+                    </div>
+                
+                    <div class="footer-bottom">
+                        <p>&copy; 2023 Azienda S.p.A. - Tutti i diritti riservati. | <a href="privacy-policy.html">Privacy Policy</a> | <a href="/termini-e-condizioni">Termini e Condizioni</a></p>
+                    </div>
+                </footer>                
+    <!--############## FINE VISUALIZZA E CERCA POSIZIONI ################-->
+    </body>
+</html>

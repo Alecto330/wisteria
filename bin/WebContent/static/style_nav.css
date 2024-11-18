@@ -1,0 +1,102 @@
+.custom-navbar {
+    background-color: #e6e6e6 !important;
+    height: 9.5vh; /* Altezza fissa per la navbar */
+    width: 100%;
+    vertical-align: middle;
+    border-bottom: solid 2px #8328FF;
+    display: flex;
+    justify-content: space-between;    
+}
+.custom-navbar .navbar-brand,
+.custom-navbar .btn {
+    color: rgb(0, 0, 0);
+}
+.btn-primary {
+    background-color: #D6B5FF;
+    border: solid 2px #8228ff;
+    border: none;
+    border-radius: 2vw;
+    color:black;
+    box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+}
+.acc{
+    align-content: center;
+    text-align: right;
+    width: 135.88px;
+    height: 75px;
+    padding: 15px;
+}
+.btn-primary:hover{
+    color:#fff;
+    background-color:#8228ff;
+    border-color:#8228ff
+}
+#logo-btn, .btn-outline-secondary {
+    background-color: #D6B5FF;
+    border: none;
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.hidden { 
+        display: inline-block;
+        width: 78.89px; /* stessa larghezza del pulsante */
+        height: 36px; /* stessa altezza del pulsante */
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        visibility: hidden; /* rende il testo invisibile mantenendo lo spazio occupato */
+        padding-right: 57px;
+}
+
+
+
+
+.menu ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+.menu ul li {
+    display: inline; /* Displays items in a row */
+    margin-right: 20px; /* Adds space between menu items */
+}
+
+.menu ul li  {
+    text-decoration: none; /* Removes underline from links */
+    color: #fff; /* Text color */
+}
+
+.menu ul li  i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.menu ul :hover {
+    color: #D6B5FF; /* Change color on hover */
+}
+.contact{
+    cursor: pointer;
+}
+
+
+
+
+.dropdown i.fa-user {
+    color: rgb(123, 31, 255); /* Colore specifico per l'icona */
+}
+
+.usernav{
+    font-size: 30px;
+}
+.acc2{
+    align-content: center;
+    text-align: right;
+    width: 135.88px;
+    height: 75px;
+    padding: 15px;
+}
+.logout .fa-user:before {
+    color: rgb(123, 31, 255);
+}

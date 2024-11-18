@@ -170,12 +170,16 @@ body {
     opacity: 1;
 }
 
-select.form-control:focus {
+.form-control:focus {
     border-color: #D6B5FF;
     box-shadow: 0 0 8px #D6B5FF;
     outline: none;
 }
-
+.cercaOfferte:focus {
+    border-color: #D6B5FF;
+    box-shadow: 0 0 8px #D6B5FF;
+    outline: none;
+}
 .job-card {
     cursor: pointer;
     transition: transform 0.2s;

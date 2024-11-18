@@ -1,0 +1,277 @@
+<!--
+ 
+Pagina ricerca Poizioni ciao
+ 
+-->
+<!-- -->
+ 
+ 
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offerte di Lavoro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone (senz doverle scaricare) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> <!-- Per importare il font Poppins -->
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/style_nav.css">
+</head>
+
+
+<body>
+
+    <section>  <!--############## BARRA DI NAVIGAZIONE ################-->
+
+        <nav class="navbar custom-navbar justify-content-between fixed-top">
+
+            <div class="hamburger" id="hamburger">
+                &#9776; <!-- This is the hamburger icon -->
+            </div>
+                <nav class="menu" id="menu">
+                    <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            <a class="navbar-brand" href="#">
+                    <img src="WISTERIA.png" alt="Logo Wisteria" style="height: 6.5vh;" class="logo">
+                </a>
+                <form class="form-inline">
+                    <a href="login.html" class="btn btn-outline-secondary">Accedi</a>
+                </form>
+        </nav>
+    </section> <!--############## FINE BARRA DI NAVIGAZIONE ################-->
+
+    <section>  <!--############## BARRA DI NAVIGAZIONE ################-->
+        <div class="scroll-wrapper">
+            <div class="scroll-content">
+                <!-- Cointanier delle posizioni aperte -->
+                <div class="container">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="custom-container">
+                                <div class="d-flex justify-content-start search-container">
+                                    <div class="select-wrapper">
+                                        <select class="form-control mr-2" id="regioni">
+                                            <option> Tutte le regioni</option>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="select-wrapper">
+                                        <select class="form-control mr-2" id="professioni">
+                                            <option> Tutte le professioni</option>
+                                        </select>
+                                    </div>
+                                
+                                    <input style="background-color: #e3e3e3;" class="form-control mr-2" type="search" placeholder="Cerca offerte di lavoro">
+                                    <button class="btn btn-primary">Cerca</button>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <!-- Container singola posizione -->
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Sviluppatore Full Stack</h5>
+                                    <p class="card-text">Siamo alla ricerca di un Sviluppatore Full Stack appassionato per unirsi al nostro team...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Parma - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <div class="card job-card"  onclick="location.href='offerta.html';" >
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialista in Sicurezza Informatica</h5>
+                                    <p class="card-text">Cerchiamo un Specialista in Sicurezza Informatica per proteggere i nostri sistemi e dati...</p>
+                                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Modena - Italia</p>
+                                    <p class="card-category"><i class="fas fa-briefcase"></i> Amministrazione</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-scrollbar">
+                <div class="custom-scrollbar-thumb"></div>
+            </div>
+        </div>
+    </section> <!--############## FINE BARRA DI NAVIGAZIONE ################-->
+
+
+
+    <script>
+        const scrollContent = document.querySelector('.scroll-content');
+        const scrollbarThumb = document.querySelector('.custom-scrollbar-thumb');
+        const scrollbar = document.querySelector('.custom-scrollbar');
+ 
+        // Calcola la thumb in base all'altezza del contenuto
+        scrollbarThumb.style.height = `${(scrollContent.clientHeight / scrollContent.scrollHeight) * 100}%`;
+ 
+        // Sincronizza il movimento della thumb con lo scroll del contenuto
+        scrollContent.addEventListener('scroll', () => {
+            const scrollPercentage = scrollContent.scrollTop / (scrollContent.scrollHeight - scrollContent.clientHeight);
+            scrollbarThumb.style.top = `${scrollPercentage * (scrollbar.clientHeight - scrollbarThumb.clientHeight)}px`;
+        });
+ 
+        // Permette di trascinare la thumb per scrollare
+        let isDragging = false;
+ 
+        scrollbarThumb.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            e.preventDefault();
+            document.body.style.userSelect = 'none';
+        });
+ 
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const scrollbarRect = scrollbar.getBoundingClientRect();
+                let offsetY = e.clientY - scrollbarRect.top;
+                offsetY = Math.max(0, Math.min(offsetY, scrollbar.clientHeight - scrollbarThumb.clientHeight));
+ 
+                scrollbarThumb.style.top = `${offsetY}px`;
+ 
+                // Calcola la posizione di scroll del contenuto
+                const scrollPercentage = offsetY / (scrollbar.clientHeight - scrollbarThumb.clientHeight);
+                scrollContent.scrollTop = scrollPercentage * (scrollContent.scrollHeight - scrollContent.clientHeight);
+            }
+        });
+ 
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.style.userSelect = 'auto';
+        });
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show'); // Toggle the 'show' class
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
