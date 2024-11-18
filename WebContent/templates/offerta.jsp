@@ -27,7 +27,6 @@
                 <div class="col-sm-8">
                     <h1>${posizione.titolo}</h1>
                     <div class="dettagli-offerta">
-                        <p class="p-azienda"><strong><i class="fas fa-building"></i> WISTERIA</strong></p>
                         <p class="p-posizione"><i class="fas fa-map-marker-alt"></i> ${posizione.provincia} - ${posizione.regione}</p>
                         <p class="p-settore"><i class="fas fa-briefcase"></i> ${posizione.settore}</p>
                     </div>
