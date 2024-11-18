@@ -3,6 +3,7 @@ package wisteria;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.tomcat.util.digester.Digester.EnvironmentPropertySource;
-
 import domanda.Domanda;
 import domanda.DomandaDAO;
 import user.User;
@@ -34,10 +32,10 @@ public class test extends HttpServlet {
 			response.sendRedirect("home");
 		}else {
 			String header=user.getHeader();
-			
+
 			String idPosizione=request.getParameter("idPosizione");
 			String nomePosizione=request.getParameter("nomePosizione");
-			
+
 			DomandaDAO dao=new DomandaDAO();
 			HashMap<Integer, Domanda> domande=dao.getDomandeFromPosizione(Integer.parseInt(idPosizione));
 			ArrayList<Domanda> domandeQuiz=new ArrayList<Domanda>(domande.values());
@@ -54,7 +52,34 @@ public class test extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("CIAOOIOIO");
+
+		int result=0;
+
+		Map<String, String[]> parameterMap = request.getParameterMap();	    
+
+		for(Map.Entry<String, String[]> entry: parameterMap.entrySet()) {
+			DomandaDAO dao=new DomandaDAO();
+			boolean check=dao.checkRisposta(Integer.valueOf(entry.getKey()), Integer.valueOf(entry.getValue()[0]));
+
+			if(check) {
+				result++;
+			}
+		}
+
+		HttpSession session = request.getSession();
+		User user=(User)session.getAttribute("user");
+
+		DomandaDAO dao=new DomandaDAO();
+		int posizione=dao.getPosizione(Integer.valueOf(parameterMap.keySet().iterator().next()));
+
+		try {
+			dao.insertSiCandida(posizione, user.getUsername(), result);
+		}catch (Exception e) {
+			// TODO: update
+			System.out.println("fare update");
+		}
+
 	}
-	
+
+
 }

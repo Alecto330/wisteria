@@ -62,49 +62,36 @@
 	<script>
 
 
+	function submitAnswers() {
+	    const formData = new URLSearchParams();
+	    // Collect selected answers
+	    const selectedButtons = document.querySelectorAll('.answer-item.selected');
 
-        function submitAnswers() {
-            const answers = {};
+	    selectedButtons.forEach(button => {
+	        const domandaId = button.getAttribute("data-domanda-id"); 
+	        const rispostaId = button.getAttribute("data-risposta-id"); 
+	        
+	        formData.append(domandaId, rispostaId);
+	    });
 
+	    console.log(formData);
 
-            const selectedButtons = document.querySelectorAll('.answer-item.selected');
-            
-
-            selectedButtons.forEach(button => {
-                const domandaId = button.getAttribute("data-domanda-id"); 
-                const rispostaId = button.getAttribute("data-risposta-id"); 
-                
-                answers[domandaId] = rispostaId;
-            });
-
-            // Stampa le risposte selezionate per il debug
-            console.log("Risposte selezionate:", answers);
-
-            let formData = "";
-
-            for (let domandaId in answers) {
-                if (answers.hasOwnProperty(domandaId)) {
-                    formData += `domanda_${domandaId}_id=${domandaId}&risposta_${domandaId}_id=${answers[domandaId]}&`;
-                }
-            }
-
-            formData = formData.slice(0, -1);
-
-            fetch('/wisteria/test', {
-                method: 'POST', 
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: formData 
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log('Risposte inviate con successo:', data);
-            })
-            .catch(error => {
-                console.error('Errore nell\'invio delle risposte:', error);
-            });
-        }
+	    // Send the formData using fetch
+	    fetch('/wisteria/test', {
+	        method: 'POST', 
+	        headers: {
+	            'Content-Type': 'application/x-www-form-urlencoded'
+	        },
+	        body: formData.toString() // Serialize the formData
+	    })
+	    .then(response => response.text())
+	    .then(data => {
+	        console.log('Risposte inviate con successo:', data);
+	    })
+	    .catch(error => {
+	        console.error('Errore nell\'invio delle risposte:', error);
+	    });
+	}
 
 
 
