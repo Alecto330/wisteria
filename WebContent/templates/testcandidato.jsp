@@ -63,6 +63,48 @@
 
 
 
+        function submitAnswers() {
+            const answers = {};
+
+
+            const selectedButtons = document.querySelectorAll('.answer-item.selected');
+            
+
+            selectedButtons.forEach(button => {
+                const domandaId = button.getAttribute("data-domanda-id"); 
+                const rispostaId = button.getAttribute("data-risposta-id"); 
+                
+                answers[domandaId] = rispostaId;
+            });
+
+            // Stampa le risposte selezionate per il debug
+            console.log("Risposte selezionate:", answers);
+
+            let formData = "";
+
+            for (let domandaId in answers) {
+                if (answers.hasOwnProperty(domandaId)) {
+                    formData += `domanda_${domandaId}_id=${domandaId}&risposta_${domandaId}_id=${answers[domandaId]}&`;
+                }
+            }
+
+            formData = formData.slice(0, -1);
+
+            fetch('/wisteria/test', {
+                method: 'POST', 
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData 
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Risposte inviate con successo:', data);
+            })
+            .catch(error => {
+                console.error('Errore nell\'invio delle risposte:', error);
+            });
+        }
 
 
 
@@ -107,11 +149,6 @@
 
         // #################### RISPOSTE #########################
 
-
-
-
-
-
          function selectAnswer(button) {
             // Ottieni l'ID della risposta selezionata
             const rispostaId = button.getAttribute("data-risposta-id");
@@ -138,6 +175,14 @@
             // Stampa l'ID della risposta selezionata per debug
             console.log("Risposta selezionata ID:", rispostaId);
         }
+
+
+        // ##################### SUBMIT #########################
+
+        
+
+
+
     </script>
 
 </body>
