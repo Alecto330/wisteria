@@ -113,31 +113,31 @@
 
 
          function selectAnswer(button) {
-    // Ottieni l'ID della risposta selezionata
-    const rispostaId = button.getAttribute("data-risposta-id");
-    const domandaId = button.getAttribute("data-domanda-id");
+            // Ottieni l'ID della risposta selezionata
+            const rispostaId = button.getAttribute("data-risposta-id");
+            const domandaId = button.getAttribute("data-domanda-id");
 
-    console.log("ID della domanda selezionata:", domandaId);
-    console.log("ID della risposta selezionata:", rispostaId);
+            console.log("ID della domanda selezionata:", domandaId);
+            console.log("ID della risposta selezionata:", rispostaId);
 
-    // Trova tutti i pulsanti di risposta
-    const buttons = document.querySelectorAll('.answer-item');
+            // Trova tutti i pulsanti di risposta
+            const buttons = document.querySelectorAll('.answer-item');
 
-    // Filtra solo i pulsanti per la domanda corrente
-    const buttonsForDomanda = Array.from(buttons).filter(btn => btn.getAttribute("data-domanda-id") === domandaId.toString());
-    console.log("Pulsanti trovati per la domanda:", buttonsForDomanda);
+            // Filtra solo i pulsanti per la domanda corrente
+            const buttonsForDomanda = Array.from(buttons).filter(btn => btn.getAttribute("data-domanda-id") === domandaId.toString());
+            console.log("Pulsanti trovati per la domanda:", buttonsForDomanda);
 
-    // Rimuovi la classe "selected" da tutti i pulsanti per quella domanda
-    buttonsForDomanda.forEach(btn => {
-        btn.classList.remove("selected");
-    });
+            // Rimuovi la classe "selected" da tutti i pulsanti per quella domanda
+            buttonsForDomanda.forEach(btn => {
+                btn.classList.remove("selected");
+            });
 
-    // Aggiungi la classe "selected" al pulsante cliccato
-    button.classList.add("selected");
+            // Aggiungi la classe "selected" al pulsante cliccato
+            button.classList.add("selected");
 
-    // Stampa l'ID della risposta selezionata per debug
-    console.log("Risposta selezionata ID:", rispostaId);
-}
+            // Stampa l'ID della risposta selezionata per debug
+            console.log("Risposta selezionata ID:", rispostaId);
+        }
     </script>
 
 </body>
