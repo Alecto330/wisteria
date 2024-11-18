@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style_creaposizione.css">
+    <title>Aggiungi Posizione</title>
+
+</head>
+<body>
+
+    <div class="main-container">
+        <h1 class="form-title">Aggiungi posizione</h1>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">Titolo:</label>
+                <input type="text" class="form-input" placeholder="Inserisci il titolo della posizione">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Descrizione:</label>
+                <input type="text" class="form-input" placeholder="Inserisci la descrizione">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Località:</label>
+            <div class="location-group">
+                <select class="form-select">
+                    <option value="" disabled selected>Regione</option>
+                    <option>Lombardia</option>
+                    <option>Lazio</option>
+                    <option>Piemonte</option>
+                </select>
+
+                <select class="form-select">
+                    <option value="" disabled selected>Provincia</option>
+                    <option>Milano</option>
+                    <option>Roma</option>
+                    <option>Torino</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Settore:</label>
+            <select class="form-select">
+                <option value="" disabled selected>Tutte le professioni</option>
+                <option>IT e Tecnologia</option>
+                <option>Marketing</option>
+                <option>Vendite</option>
+                <option>Amministrazione</option>
+            </select>
+        </div>
+
+        <div class="questions-section">
+            <h3 class="questions-title">Aggiungi domanda</h3>
+            <input type="text" class="question-input" placeholder="Quale KPI è fondamentale per un Sales Manager?">
+            <button class="add-question-btn">+</button>
+        </div>
+
+        <button class="create-btn">Crea</button>
+    </div>
+</body>
+</html>

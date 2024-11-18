@@ -1,0 +1,354 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	/*background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            flex-direction: column;*/
+	height: 100%; /* Occupa tutta l'altezza disponibile */
+	width: 100%;
+	align-items: center; /* Centra verticalmente */
+	justify-content: center; /* Centra orizzontalmente */
+	background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.8), rgba(230, 230, 230, 0.8), rgba(165, 48, 255, 0.8)), url("../assets/bg-blurrato.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.main-container-profilepage {
+	width: 65%;
+	/*margin: 0.5rem auto;*/
+	margin: 150px auto; /* Center the container horizontally */
+	/*padding: 1.5rem 2rem;*/
+	background-color: #e0c0ff;
+	border-radius: 25px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	position: relative;
+	/*height: calc(94vh - 1rem);*/
+	padding: 1.5rem 2rem 70px 2rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.user-profile {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+.profile-image {
+	width: 5vw;
+	height: 5vw;
+	background-color: #e8e8e8;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	overflow: visible;
+}
+
+.profile-image:hover {
+	background-color: #ccc;
+}
+
+/* Stile dell'icona dell'utente */
+.profile-icon {
+	width: 2vw;
+	height: 2vw;
+	background-color: #6e41e2;
+	color: white;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Stile dell'icona della fotocamera */
+.camera-icon {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: #6e41e2;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-size: 0.8rem;
+}
+
+.user-icon {
+	font-size: 1.2rem;
+	color: #6e41e2;
+}
+
+.form-title {
+	font-size: 1.3rem;
+	color: #333;
+	margin-bottom: 1rem;
+}
+
+.form-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	margin-bottom: 1rem;
+}
+
+.form-group {
+	margin-bottom: 0.5rem;
+}
+
+.form-label {
+	display: block;
+	color: #333;
+	margin-bottom: 0.3rem;
+	text-decoration: underline;
+}
+
+.form-input {
+	width: 100%;
+	padding: 0.6rem;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	font-size: 0.9rem;
+	background: white;
+	transition: all 0.3s ease;
+}
+
+.form-input:focus {
+	outline: none;
+	border-color: #6e41e2;
+	box-shadow: 0 0 0 2px rgba(110, 65, 226, 0.1);
+}
+
+.form-input:hover {
+	border-color: #6e41e2;
+}
+
+.edit-icon {
+	position: absolute;
+	right: 10px;
+	top: 40%;
+	transform: translateY(-50%);
+	color: #6e41e2;
+	cursor: pointer;
+	opacity: 0.7;
+	transition: opacity 0.3s ease;
+	width: 16px;
+	height: 16px;
+}
+
+.form-input-wrapper {
+	position: relative;
+}
+
+.edit-icon:hover {
+	opacity: 1;
+}
+
+
+.cv-upload {
+	background-color: #e8e8e8;
+	border-radius: 15px;
+	padding: 1.5rem;
+	text-align: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 0.9rem;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.cv-upload:hover {
+	/*background-color: #eee;*/
+	background-color: #ccc;
+}
+
+.cv-icon {
+	font-size: 3rem;
+}
+.experience-section {
+	background-color: rgba(110, 65, 226, 0.1);
+	border-radius: 15px;
+	padding: 1rem;
+	overflow-y: auto;
+	height: 300px;
+}
+
+.experience-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.8rem;
+}
+
+.experience-title {
+	font-size: 1rem;
+	color: #6e41e2;
+}
+
+select.form-input {
+	appearance: none;
+	padding-right: 2rem;
+	background-repeat: no-repeat;
+	background-position: right 0.5rem center;
+	background-size: 1.2em;
+}
+
+.textarea-input {
+	resize: none;
+	min-height: 80px;
+}
+
+.back-button {
+	position: absolute;
+	left: 25px;
+	bottom: 9px;
+	background: none;
+	border: none;
+	color: #6e41e2;
+	cursor: pointer;
+	font-size: 1.5rem;
+	padding: 0.5rem;
+	/*display: flex;
+	align-items: center;
+	justify-content: center;*/
+	transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+	color: #a560e5;
+	transform: translateX(-5px);
+}
+
+.add-experience-btn {
+	background-color: #6e41e2;
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font-size: 1rem;
+	margin-top: 0.5rem;
+}
+
+.add-experience-btn:hover {
+	background-color: #a560e5;
+	border: none;
+}
+
+.edit-icon svg {
+	width: 100%;
+	height: 100%;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.experience-list {
+	margin-top: 1rem;
+}
+
+.experience-item {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 0.8rem;
+	margin-bottom: 0.8rem;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.experience-item h4 {
+	font-size: 1rem;
+	color: #6e41e2;
+	margin-bottom: 0.5rem;
+}
+
+.experience-item p {
+	font-size: 0.9rem;
+	color: #555;
+}
+
+.experience-section::-webkit-scrollbar {
+	width: 8px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.experience-section::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 10px;
+}
+
+.experience-section::-webkit-scrollbar-thumb {
+	background: #6e41e2;
+	border-radius: 10px;
+}
+
+.experience-section::-webkit-scrollbar-thumb:hover {
+	background: #4c2bb0;
+}
+
+
+.cv-upload {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: 300px;
+	width: 100%;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stile per l'icona */
+.cv-icon {
+	font-size: 50px;
+}
+
+/* Stile per il testo */
+#uploadText {
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+/* Stile della "x" per rimuovere il PDF */
+#removePDF {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 20px;
+	color: red;
+	cursor: pointer;
+	display: none; /* Nascondi finché il PDF non è caricato */
+}
+
+
+
+
