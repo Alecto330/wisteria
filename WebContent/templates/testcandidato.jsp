@@ -63,17 +63,30 @@
 
 
 
-        function submitAnswers() {
+       function submitAnswers() {
             const answers = {};
 
-
+            // Trova tutti i pulsanti selezionati
             const selectedButtons = document.querySelectorAll('.answer-item.selected');
-            
+
+            // Controlla se ogni domanda ha una risposta selezionata
+            const allQuestionsAnswered = Array.from(document.querySelectorAll('.accordion-item')).every(item => {
+                const domandaId = item.querySelector('.answer-item')?.getAttribute('data-domanda-id');
+                // Controlla se almeno una risposta è selezionata per questa domanda
+                const isAnswered = item.querySelector('.answer-item.selected');
+                return isAnswered !== null; // True se è selezionata una risposta
+            });
+
+            if (!allQuestionsAnswered) {
+                // Se una domanda non ha risposta, mostra un messaggio
+                alert('Per favore, rispondi a tutte le domande.');
+                return; // Ferma l'esecuzione della funzione
+            }
 
             selectedButtons.forEach(button => {
-                const domandaId = button.getAttribute("data-domanda-id"); 
-                const rispostaId = button.getAttribute("data-risposta-id"); 
-                
+                const domandaId = button.getAttribute("data-domanda-id");
+                const rispostaId = button.getAttribute("data-risposta-id");
+
                 answers[domandaId] = rispostaId;
             });
 
@@ -88,14 +101,14 @@
                 }
             }
 
-            formData = formData.slice(0, -1);
+            formData = formData.slice(0, -1); // Rimuovi l'ultimo "&"
 
             fetch('/wisteria/test', {
-                method: 'POST', 
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: formData 
+                body: formData
             })
             .then(response => response.text())
             .then(data => {
@@ -105,6 +118,7 @@
                 console.error('Errore nell\'invio delle risposte:', error);
             });
         }
+
 
 
 
