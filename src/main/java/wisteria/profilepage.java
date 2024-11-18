@@ -172,8 +172,10 @@ public class profilepage extends HttpServlet{
 		request.setAttribute("dataDiNascita", cv.getDataDiNascita());
 		request.setAttribute("residenza", cv.getResidenza());
 		request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-		String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
-		request.setAttribute("pdfData", base64PDF);
+		if (cv.getCurriculum() != null) {
+			String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
+			request.setAttribute("pdfData", base64PDF);
+		}
 		//request.setAttribute("curriculum", cv.getCurriculum());
 		request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 		request.setAttribute("telefono", cv.getTelefono());
