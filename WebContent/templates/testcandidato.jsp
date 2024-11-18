@@ -63,6 +63,62 @@
 
 
 
+       function submitAnswers() {
+            const answers = {};
+
+            // Trova tutti i pulsanti selezionati
+            const selectedButtons = document.querySelectorAll('.answer-item.selected');
+
+            // Controlla se ogni domanda ha una risposta selezionata
+            const allQuestionsAnswered = Array.from(document.querySelectorAll('.accordion-item')).every(item => {
+                const domandaId = item.querySelector('.answer-item')?.getAttribute('data-domanda-id');
+                // Controlla se almeno una risposta è selezionata per questa domanda
+                const isAnswered = item.querySelector('.answer-item.selected');
+                return isAnswered !== null; // True se è selezionata una risposta
+            });
+
+            if (!allQuestionsAnswered) {
+                // Se una domanda non ha risposta, mostra un messaggio
+                alert('Per favore, rispondi a tutte le domande.');
+                return; // Ferma l'esecuzione della funzione
+            }
+
+            selectedButtons.forEach(button => {
+                const domandaId = button.getAttribute("data-domanda-id");
+                const rispostaId = button.getAttribute("data-risposta-id");
+
+                answers[domandaId] = rispostaId;
+            });
+
+            // Stampa le risposte selezionate per il debug
+            console.log("Risposte selezionate:", answers);
+
+            let formData = "";
+
+            for (let domandaId in answers) {
+                if (answers.hasOwnProperty(domandaId)) {
+                    formData += `domanda_${domandaId}_id=${domandaId}&risposta_${domandaId}_id=${answers[domandaId]}&`;
+                }
+            }
+
+            formData = formData.slice(0, -1); // Rimuovi l'ultimo "&"
+
+            fetch('/wisteria/test', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Risposte inviate con successo:', data);
+            })
+            .catch(error => {
+                console.error('Errore nell\'invio delle risposte:', error);
+            });
+        }
+
 
 
 
@@ -107,11 +163,6 @@
 
         // #################### RISPOSTE #########################
 
-
-
-
-
-
          function selectAnswer(button) {
             // Ottieni l'ID della risposta selezionata
             const rispostaId = button.getAttribute("data-risposta-id");
@@ -138,6 +189,14 @@
             // Stampa l'ID della risposta selezionata per debug
             console.log("Risposta selezionata ID:", rispostaId);
         }
+
+
+        // ##################### SUBMIT #########################
+
+        
+
+
+
     </script>
 
 </body>
