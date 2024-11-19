@@ -40,7 +40,7 @@ public class test extends HttpServlet {
 			CandidaturaDAO candidaturaDao=new CandidaturaDAO();
 			boolean check=candidaturaDao.checkCandidatura(Integer.parseInt(idPosizione), user.getUsername());
 			
-			//if(!check) {
+			if(!check) {
 				DomandaDAO dao=new DomandaDAO();
 				HashMap<Integer, Domanda> domande=dao.getDomandeFromPosizione(Integer.parseInt(idPosizione));
 				ArrayList<Domanda> domandeQuiz=new ArrayList<Domanda>(domande.values());
@@ -52,12 +52,20 @@ public class test extends HttpServlet {
 				request.setAttribute("headerPath", header);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 				dispatcher.forward(request, response);
-			/*}else {
-				// TODO RISULTATO
-			}*/
-			
+			}else {
+				DomandaDAO domandaDAO=new DomandaDAO();
+				int ndomande=domandaDAO.getNumeroDomande(Integer.parseInt(idPosizione));
+				int risultato=candidaturaDao.getRisultato(Integer.parseInt(idPosizione), user.getUsername());
+				
+				request.setAttribute("risultato", risultato);
+				request.setAttribute("ndomande", ndomande);
+				request.setAttribute("title", "Risultatro Quiz");
+				request.setAttribute("content", "risultato.jsp");
+				request.setAttribute("headerPath", header);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+				dispatcher.forward(request, response);
+			}
 
-			
 		}
 	}
 

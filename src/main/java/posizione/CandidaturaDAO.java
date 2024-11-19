@@ -67,4 +67,31 @@ public class CandidaturaDAO {
 		
 		return check;
 	}
+	
+	
+	public int getRisultato(int posizione, String username) {
+		
+		int risultato=0;
+		
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT punteggio FROM SiCandida where FK_Posizione=? and FK_Utente=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, posizione);
+			preparedStatement.setString(2, username);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			resultSet.next();
+			
+			risultato=resultSet.getInt("punteggio");
+			
+			connection.close();		
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return risultato;
+	}
 }
