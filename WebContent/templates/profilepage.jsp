@@ -503,8 +503,8 @@
 						<div class="experience-item">
 							<div class="experience-header">
 								<h4>${esperienza.titolo}</h4>
-								<i class="fa fa-trash" onclick="handleDelete(${esperienza.id})"
-									title="Rimuovi" class="delete-icon"></i>
+								<i class="fa fa-trash delete-icon" onclick="handleDelete(${esperienza.id})"
+									title="Rimuovi"></i>
 							</div>
 							<p>${esperienza.esperienza}</p>
 						</div>
@@ -521,6 +521,39 @@
 	</div>
 
 	<script>
+
+
+		function handleDelete(id) {
+			const formData = new URLSearchParams();
+			if (confirm("Sei sicuro di voler eliminare questo elemento?")) {
+				formData.append('id', id);
+				fetch(`/wisteria/profilepage`, {
+					method: 'DELETE',
+					headers: {
+				            'Content-Type': 'application/x-www-form-urlencoded'
+				        },
+				        body: formData.toString()
+				})
+				.then(response => {
+					if (response.ok) {
+						alert("Esperienza eliminata con successo.");
+						document.querySelector(`[data-id="${id}"]`).closest('.experience-item').remove();
+					} else {
+						alert("Errore durante l'eliminazione. Riprova.");
+					}
+				})
+				.catch(error => {
+					console.error("Errore:", error);
+					alert("Errore durante l'eliminazione. Riprova.");
+				});
+			}
+		}
+
+
+
+
+
+
         document.querySelectorAll('.form-input').forEach(input => {
             input.addEventListener('focus', () => {
                 input.parentElement.querySelector('.edit-icon').style.opacity = '1';

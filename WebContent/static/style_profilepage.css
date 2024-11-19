@@ -350,7 +350,7 @@ select.form-input {
 }
 
 .delete-icon {
-    color: #888;
+    color: #838383;
     cursor: pointer;
     transition: color 0.2s;
 }
@@ -361,5 +361,6 @@ select.form-input {
 
 .experience-header h4 {
     margin: 0;
+
 }
 
