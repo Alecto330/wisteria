@@ -349,6 +349,17 @@ select.form-input {
 	display: none; /* Nascondi finché il PDF non è caricato */
 }
 
+.delete-icon {
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
 
+.delete-icon:hover {
+    color: #e74c3c;
+}
 
+.experience-header h4 {
+    margin: 0;
+}
 
