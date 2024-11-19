@@ -130,3 +130,85 @@ body {
         padding: 1rem;
     }
 }
+
+
+
+
+
+.search-container {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1vw;
+    margin-bottom: 1.5vw;
+    
+}
+.form-control {
+    border-radius: 2vw;
+    height: 2.5vw;
+    border: 1px solid #ced4da;
+}
+.form-control:focus {
+    border-color: #D6B5FF;
+    box-shadow: 0 0 8px #D6B5FF;
+    outline: none;
+}
+
+.cercaOfferte:focus {
+    border-color: #D6B5FF;
+    box-shadow: 0 0 8px #D6B5FF;
+    outline: none;
+}
+input[type="search"] {
+    width: 40%;
+    font-family: 'Poppins', sans-serif;
+    padding : .375rem .75rem;
+    font-size: 1rem;
+}
+
+
+
+.btn-primary {
+    background-color: #D6B5FF;
+    border: solid 2px #8228ff;
+    border: none;
+    border-radius: 2vw;
+    color:black;
+    box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+    width: 78.89px; /* stessa larghezza del pulsante */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+.btn {
+    color: rgb(0, 0, 0);
+}
+.btn-primary:hover
+{
+    color:#fff;
+    background-color:#8228ff;
+    border-color:#8228ff;
+}
+.btn-primary.focus,
+.btn-primary:focus{
+    color:#fff;
+    background-color:#720eff;
+    border-color:#720eff;
+}
+.btn-primary.disabled,
+.btn-primary:disabled{
+    color:#fff;
+    background-color:#720eff;
+    border-color: #720eff
+}
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle{
+    color:#fff;
+    background-color:#720eff;
+    border-color:#720eff
+}
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus{
+    box-shadow:0 0 0 .2rem #720eff
+}

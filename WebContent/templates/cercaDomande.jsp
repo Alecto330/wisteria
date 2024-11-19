@@ -6,16 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista Domande</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     	<link rel="stylesheet"
         href="${pageContext.request.contextPath}/static/style_cercaDomande.css">
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <h1 class="title">Lista Domande</h1>
-        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="custom-container">
+                    <div class="d-flex justify-content-start search-container">
+					    <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
+					        placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
+					    <button class="btn btn-primary" onclick="performSearch()">Cerca</button>
+					    
+					    <button class="btn btn-primary" style="margin-left:48%; width:3vw !important;" onclick="performSearch()">
+					        <i class="fa-solid fa-plus"></i>
+					    </button>
+					</div>
+                </div>
+            </div>
+        </div>
         <div class="accordion">
             <c:forEach var="question" items="${questions}" varStatus="status">
                 <div class="accordion-item">
