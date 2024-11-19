@@ -167,26 +167,28 @@ public class DomandaDAO {
 	}
 
 
-	public void insertSiCandida(int posizione, String utente, int punteggio) throws Exception {
+	public void insertSiCandida(int posizione, String utente, int punteggio){
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query = "INSERT INTO SiCandida (FK_Posizione, FK_Utente, punteggio, data) VALUES (?, ?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, posizione);
+			preparedStatement.setString(2, utente);
+			preparedStatement.setInt(3, punteggio);
+			preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
 
-	        DatabaseConnection database = new DatabaseConnection();
-	        Connection connection = database.getConnection();
-	        String query = "INSERT INTO SiCandida (FK_Posizione, FK_Utente, punteggio, data) VALUES (?, ?, ?, ?)";
-	        PreparedStatement preparedStatement = connection.prepareStatement(query);
-	        preparedStatement.setInt(1, posizione);
-	        preparedStatement.setString(2, utente);
-	        preparedStatement.setInt(3, punteggio);
-	        preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
+			preparedStatement.executeUpdate(); // Execute and get affected rows
 
-	        preparedStatement.executeUpdate(); // Execute and get affected rows
-
-	        connection.close();
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
-	
-	
+
+
 	public int getNumeroDomande(int idPosizione) {
-		System.out.println(idPosizione);
 		int ndomande=0;
 		try {
 			DatabaseConnection database = new DatabaseConnection();
@@ -197,9 +199,9 @@ public class DomandaDAO {
 			ResultSet resultSet = preparedStatement.executeQuery();
 
 			resultSet.next();
-			
+
 			ndomande=resultSet.getInt("ndomande");
-			
+
 			connection.close();
 			return ndomande;
 

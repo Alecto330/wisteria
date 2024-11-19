@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import posizione.Posizione;
 import posizione.PosizioneDAO;
 import user.User;
@@ -53,13 +52,6 @@ public class offerta extends HttpServlet{
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
-
-			/*RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
-		    dispatcher.forward(request, response); */
 		}		
-		/*Posizione posizione1=new Posizione(Integer.parseInt(id), "ciao"+id, "ciaooooooooooooooooooooooooo", "ciao!!!", "cia", "ooo");		
-		request.setAttribute("posizione", posizione1);
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
-	    dispatcher.forward(request, response); */
 	}
 }

@@ -74,7 +74,7 @@
 	        formData.append(domandaId, rispostaId);
 	    });
 
-	    console.log(formData);
+	    //console.log(formData);
 
 	    // Send the formData using fetch
 	    fetch('/wisteria/test', {
@@ -84,7 +84,12 @@
 	        },
 	        body: formData.toString() // Serialize the formData
 	    })
-	    .then(response => response.text())
+	    .then(response => {
+	    	if (response.redirected) {
+	            // Redirect if the server sends a redirect response
+	            window.location.href = response.url;
+	        }
+	    })
 	    .then(data => {
 	        console.log('Risposte inviate con successo:', data);
 	    })

@@ -36,10 +36,10 @@ public class test extends HttpServlet {
 
 			String idPosizione=request.getParameter("idPosizione");
 			String nomePosizione=request.getParameter("nomePosizione");
-			
+
 			CandidaturaDAO candidaturaDao=new CandidaturaDAO();
 			boolean check=candidaturaDao.checkCandidatura(Integer.parseInt(idPosizione), user.getUsername());
-			
+
 			if(!check) {
 				DomandaDAO dao=new DomandaDAO();
 				HashMap<Integer, Domanda> domande=dao.getDomandeFromPosizione(Integer.parseInt(idPosizione));
@@ -57,13 +57,7 @@ public class test extends HttpServlet {
 				int ndomande=domandaDAO.getNumeroDomande(Integer.parseInt(idPosizione));
 				int risultato=candidaturaDao.getRisultato(Integer.parseInt(idPosizione), user.getUsername());
 				
-				request.setAttribute("risultato", risultato);
-				request.setAttribute("ndomande", ndomande);
-				request.setAttribute("title", "Risultatro Quiz");
-				request.setAttribute("content", "risultato.jsp");
-				request.setAttribute("headerPath", header);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect("risultato?risultato="+risultato+"&ndomande="+ndomande);
 			}
 
 		}
@@ -73,7 +67,6 @@ public class test extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int result=0;
-
 		Map<String, String[]> parameterMap = request.getParameterMap();	    
 
 		for(Map.Entry<String, String[]> entry: parameterMap.entrySet()) {
@@ -91,13 +84,9 @@ public class test extends HttpServlet {
 		DomandaDAO dao=new DomandaDAO();
 		int posizione=dao.getPosizione(Integer.valueOf(parameterMap.keySet().iterator().next()));
 
-		try {
-			dao.insertSiCandida(posizione, user.getUsername(), result);
-			
-			//TODO REDIRECT RISULTATO
-		}catch (Exception e) {
-			System.out.println("fare update");
-		}
+		dao.insertSiCandida(posizione, user.getUsername(), result);
+		
+		response.sendRedirect("risultato?risultato="+result+"&ndomande="+parameterMap.values().size());
 
 	}
 
