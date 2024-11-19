@@ -38,7 +38,7 @@ body {
 }
 
 .contenuto-risultato {
-    margin-top: 9vh;
+    margin-top: 5vh;
     margin-bottom: 5vh;
     font-size: 10vh;
     height: 10vh;
@@ -49,9 +49,24 @@ body {
     color: #6b38d1;
     text-decoration: none;
     display: inline-block;
-    margin-top: 9vh;
+    margin-top: 7vh;
 }
 
 .register-home:hover {
     text-decoration: underline;
+}
+
+.progress {
+    width: 100%;
+    height: 30px;  /* Altezza della progress bar */
+    background-color: #e1d1f3; /* Colore di sfondo più chiaro */
+    border-radius: 15px; /* Bordo arrotondato */
+    margin-bottom: 30px;  /* Spazio sotto la barra di progresso */
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 0.5s ease-in-out;  /* Aggiungi una transizione fluida */
+    background-color: #6b38d1;  /* Colore viola */
 }

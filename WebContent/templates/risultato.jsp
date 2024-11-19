@@ -27,6 +27,9 @@
 
     <div class="risultato-container">
 		<h1 class="congrats">Test completato</h2>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: ${risultato / ndomande * 100}%;" aria-valuenow="${risultato}" aria-valuemin="0" aria-valuemax="${ndomande}"></div>
+        </div>
         <div class="contenuto-risultato">
             ${risultato}/${ndomande}
         </div>
