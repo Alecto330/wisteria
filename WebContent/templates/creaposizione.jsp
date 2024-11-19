@@ -76,10 +76,8 @@
 			<h3 class="questions-title">Aggiungi domanda</h3>
 			<input type="text" class="question-input"
 				placeholder="Quale KPI è fondamentale per un Sales Manager?">
-			<button class="add-question-btn">+</button>
+			<button type="button" class="add-question-btn" onclick="location.href='<%= request.getContextPath() %>/templates/cercaDomande.jsp'">+</button>
 		</div>
-
-		<button type="submit" class="create-btn">Crea</button>
 		</form>
 	</div>
 
