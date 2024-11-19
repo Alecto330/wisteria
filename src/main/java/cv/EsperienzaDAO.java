@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
-import domanda.Domanda;
-import domanda.Risposta;
 import utils.DatabaseConnection;
 
 public class EsperienzaDAO {
@@ -18,7 +15,7 @@ public class EsperienzaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "select * from Esperienza where FK_CV=?";
+			String query = "select * from Esperienza where FK_CV=? order by id desc";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, cf);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -27,7 +24,7 @@ public class EsperienzaDAO {
 				int id=resultSet.getInt("id");
 				String titolo=resultSet.getString("titolo");
 				String esperienza=resultSet.getString("esperienza");
-				
+
 				Esperienza esperienzaOggetto=new Esperienza(id, titolo, esperienza);
 				esperienze.add(esperienzaOggetto);
 			}
@@ -40,5 +37,24 @@ public class EsperienzaDAO {
 		return esperienze;
 
 	}
+
+	public void insertEsperienza(String titolo, String descrizione, String cf) {
+
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="INSERT INTO Esperienza (titolo, esperienza, FK_CV) VALUES (?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, titolo);
+			preparedStatement.setString(2, descrizione);
+			preparedStatement.setString(3, cf);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

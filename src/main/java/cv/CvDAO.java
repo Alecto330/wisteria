@@ -162,6 +162,29 @@ public class CvDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public String getCf(String username) {
+		String cf="";
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT cf from CV where FK_Utente= ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			resultSet.next();
+
+			cf=resultSet.getString("cf");
+
+			connection.close();
+			return cf;
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return cf;
+	}
 
 
 }
