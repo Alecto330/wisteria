@@ -2,6 +2,7 @@ package wisteria;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import cv.CV;
 import cv.CvDAO;
+import cv.Esperienza;
+import cv.EsperienzaDAO;
 import user.User;
 import user.UserDAO;
 
@@ -34,7 +37,31 @@ public class profilepage extends HttpServlet{
 		User user = (User) session.getAttribute("user");
 
 		if (user != null) {
-			redirectToPage(user, request, response);
+
+			CvDAO dao=new CvDAO();
+			CV cv=dao.getCV(user.getUsername());
+			request.setAttribute("username", user.getUsername());
+			request.setAttribute("email", user.getEmail());
+			request.setAttribute("cf", cv.getCf());
+			request.setAttribute("nome", cv.getNome());
+			request.setAttribute("cognome", cv.getCognome());
+			request.setAttribute("dataDiNascita", cv.getDataDiNascita());
+			request.setAttribute("residenza", cv.getResidenza());
+			request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
+			if (cv.getCurriculum() != null) {
+				String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
+				request.setAttribute("pdfData", base64PDF);
+			}
+			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
+			request.setAttribute("telefono", cv.getTelefono());
+			
+			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
+			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
+			
+			request.setAttribute("esperienze", esperienze);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/profilepage.jsp");
+			dispatcher.forward(request, response);
 		} else {
 			response.sendRedirect("login");
 		}
@@ -62,14 +89,12 @@ public class profilepage extends HttpServlet{
 
 		if(nome!=null) {
 			cvDao.updateNome(user.getUsername(), nome);
-			redirectToPage(user, request, response);
 			System.out.println("Nome aggionato");
 			return;
 		}
 
 		if(cognome!=null) {
 			cvDao.updateCognome(user.getUsername(), cognome);
-			redirectToPage(user, request, response);
 			System.out.println("Cognome aggionato");
 			return;
 		}
@@ -79,16 +104,12 @@ public class profilepage extends HttpServlet{
 
 			user.setUsername(username);	  
 			session.setAttribute("user", user);
-
-			redirectToPage(user, request, response);
-
 			System.out.println("Username aggionato");
 			return;
 		}
 
 		if(dataDiNascita!=null) {
 			cvDao.updateDataDiNascita(user.getUsername(), dataDiNascita);
-			redirectToPage(user, request, response);
 			System.out.println("Data di nascita aggionata");
 			return;
 		}
@@ -98,92 +119,60 @@ public class profilepage extends HttpServlet{
 
 			user.setEmail(email);	  
 			session.setAttribute("user", user);
-
-			redirectToPage(user, request, response);
-
 			System.out.println("Email aggionata");
 			return;
 		}
 
 		if(cf!=null) {
 			cvDao.updateCf(user.getUsername(), cf);
-			redirectToPage(user, request, response);
 			System.out.println("Codice Fiscale aggionato");
 			return;
 		}
 
 		if(telefono!=null) {
 			cvDao.updateTelefono(user.getUsername(), telefono);
-			redirectToPage(user, request, response);
 			System.out.println("Telefono aggionato");
 			return;
 		}
 
 		if(titolo!=null) {
 			cvDao.updateTitolo(user.getUsername(), titolo);
-			redirectToPage(user, request, response);
 			System.out.println("Titolo aggionato");
 			return;
 		}
 
 		try {
-		    Part cv = request.getPart("cv");
+			Part cv = request.getPart("cv");
 
-		    if (cv != null) {
-		        InputStream inputStream = null;
-		        try {
-		        	long size=cv.getSize();
-		            inputStream = cv.getInputStream();
-		            cvDao.updateCV(user.getUsername(), inputStream, size);
+			if (cv != null) {
+				InputStream inputStream = null;
+				try {
+					long size=cv.getSize();
+					inputStream = cv.getInputStream();
+					cvDao.updateCV(user.getUsername(), inputStream, size);
 
-		            System.out.println("CV updated successfully.");
-		        } finally {
+					System.out.println("CV updated successfully.");
+				} finally {
 
-		            if (inputStream != null) {
-		                inputStream.close();
-		            }
-		            
-		            try {
-		                cv.delete(); // Deletes the temporary file if no longer needed.
-		            } catch (IOException e) {
-		                System.err.println("Failed to delete temporary file: " + e.getMessage());
-		            }
-		        }
-		        // Redirect to the profile page.
-		        redirectToPage(user, request, response);
-		        return;
-		    }
+					if (inputStream != null) {
+						inputStream.close();
+					}
+
+					try {
+						cv.delete(); // Deletes the temporary file if no longer needed.
+					} catch (IOException e) {
+						System.err.println("Failed to delete temporary file: " + e.getMessage());
+					}
+				}
+				return;
+			}
 		} catch (Exception e) {
-		    //e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 
 	}
-
-	public void redirectToPage(User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		CvDAO dao=new CvDAO();
-		CV cv=dao.getCV(user.getUsername());
-		request.setAttribute("username", user.getUsername());
-		request.setAttribute("email", user.getEmail());
-		request.setAttribute("cf", cv.getCf());
-		request.setAttribute("nome", cv.getNome());
-		request.setAttribute("cognome", cv.getCognome());
-		request.setAttribute("dataDiNascita", cv.getDataDiNascita());
-		request.setAttribute("residenza", cv.getResidenza());
-		request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-		if (cv.getCurriculum() != null) {
-			String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
-			request.setAttribute("pdfData", base64PDF);
-		}
-		//request.setAttribute("curriculum", cv.getCurriculum());
-		request.setAttribute("fotoProfilo", cv.getFotoProfilo());
-		request.setAttribute("telefono", cv.getTelefono());
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/profilepage.jsp");
-		dispatcher.forward(request, response);
-	}
-
+	
 	/*public static void main(String[] args) {
 
 		try {
