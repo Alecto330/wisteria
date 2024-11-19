@@ -428,6 +428,44 @@
 				        console.error('Errore:', error);
 				    });
 				}
+				
+				
+				//aggiungi esperienza
+				
+			
+					function aggiungiEsperienza() {
+				    const titoloEsperienza = document.getElementById('titolo-esperienza').value;
+				    const descrizioneEsperienza = document.getElementById('descrizione-esperienza').value;
+
+				    const formData = new URLSearchParams();
+
+				    formData.append('titolo', titoloEsperienza);
+				    formData.append('esperienza', descrizioneEsperienza);
+				    console.log(formData.toString());
+				    // Send the formData using fetch
+				    fetch('/wisteria/profilepage', {
+				        method: 'POST', 
+				        headers: {
+				            'Content-Type': 'application/x-www-form-urlencoded'
+				        },
+				        body: formData.toString() // Serialize the formData
+				    })
+				    .then(response => {
+				    	if (response.redirected) {
+				            // Redirect if the server sends a redirect response
+				            window.location.href = response.url;
+				        }
+				    })
+				    .then(data => {
+				        console.log('Esperienza aggiunta:', data);
+				    })
+				    .catch(error => {
+				        console.error('Errore aggiunta esperienza:', error);
+				    });
+				    
+				   document.getElementById('titolo-esperienza').value='';
+				   document.getElementById('descrizione-esperienza').value='';
+				}
 
 				// Esempio di utilizzo per il campo "Nome"
 				document.getElementById('modifica-nome').onclick = () => toggleField('input-nome', 'modifica-nome', 'Nome');
@@ -445,21 +483,16 @@
 				</div>
 
 				<div class="form-group">
-					<select class="form-input">
-						<option value="" disabled selected>Titolo</option>
-						<option>Sviluppatore Frontend</option>
-						<option>Sviluppatore Backend</option>
-						<option>Full Stack Developer</option>
-						<option>UI Designer</option>
-					</select>
+					<input id="titolo-esperienza" class="form-input"
+						placeholder="Titolo"></input>
 				</div>
 
 				<div class="form-group">
-					<textarea class="form-input textarea-input"
-						placeholder="Descrizione..."></textarea>
+					<textarea id="descrizione-esperienza"
+						class="form-input textarea-input" placeholder="Descrizione..."></textarea>
 				</div>
 
-				<button class="add-experience-btn">
+				<button class="add-experience-btn" onclick="aggiungiEsperienza()">
 					<i class="fas fa-plus"></i>
 				</button>
 
@@ -470,7 +503,8 @@
 						<div class="experience-item">
 							<div class="experience-header">
 								<h4>${esperienza.titolo}</h4>
-								<i class="fa fa-trash" onclick="handleDelete(${esperienza.id})" title="Rimuovi" class="delete-icon"></i>
+								<i class="fa fa-trash" onclick="handleDelete(${esperienza.id})"
+									title="Rimuovi" class="delete-icon"></i>
 							</div>
 							<p>${esperienza.esperienza}</p>
 						</div>

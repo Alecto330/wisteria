@@ -29,7 +29,6 @@ public class profilepage extends HttpServlet{
 
 	}
 
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -83,6 +82,9 @@ public class profilepage extends HttpServlet{
 		String cf = request.getParameter("CF");
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
+		
+		String titoloEsperienza = request.getParameter("titolo");
+		String descrizioneEsperienza = request.getParameter("esperienza");
 
 		UserDAO userDao=new UserDAO();
 		CvDAO cvDao=new CvDAO();
@@ -139,6 +141,15 @@ public class profilepage extends HttpServlet{
 			cvDao.updateTitolo(user.getUsername(), titolo);
 			System.out.println("Titolo aggionato");
 			return;
+		}
+		
+		if(titoloEsperienza!=null && descrizioneEsperienza!=null) {
+			EsperienzaDAO dao=new EsperienzaDAO();
+			String codiceFiscale=cvDao.getCf(user.getUsername());
+			dao.insertEsperienza(titoloEsperienza, descrizioneEsperienza, codiceFiscale);
+			response.sendRedirect("profilepage");
+		}else {
+			//TODO
 		}
 
 		try {
