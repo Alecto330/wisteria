@@ -26,18 +26,22 @@
 <body>
 
     <div class="risultato-container">
-		<h1 class="congrats">Test completato</h2>
+		<h1 class="congrats">Test completato</h1>
+        
+        <!-- Progress bar con ID per riferirsi a essa -->
         <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: ${risultato / ndomande * 100}%;" aria-valuenow="${risultato}" aria-valuemin="0" aria-valuemax="${ndomande}"></div>
+            <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="${risultato}" aria-valuemin="0" aria-valuemax="${ndomande}"></div>
         </div>
+        
         <div class="contenuto-risultato">
             ${risultato}/${ndomande}
         </div>
+		
 		<a href="${pageContext.request.contextPath}/home"
 			class="home-link">← Torna alla home</a>
 	</div>
 
-      <script>
+    <script>
         // Quando la pagina è completamente caricata
         window.onload = function() {
             var risultato = ${risultato};  // Ottieni il valore di 'risultato' dalla JSP
@@ -46,11 +50,16 @@
             // Calcola la percentuale
             var percentuale = (risultato / ndomande) * 100;
 
-            // Se la progress bar esiste, applica la larghezza dinamica
+            // Se la progress bar esiste, applica la larghezza dinamica con animazione
             var progressBar = document.getElementById('progress-bar');
-            progressBar.style.width = percentuale + '%';  // Imposta la larghezza
-            progressBar.setAttribute('aria-valuenow', risultato);  // Aggiorna il valore aria
+            
+            // Usando setTimeout per ritardare il cambiamento di larghezza
+            setTimeout(function() {
+                progressBar.style.width = percentuale + '%';  // Imposta la larghezza
+                progressBar.setAttribute('aria-valuenow', risultato);  // Aggiorna il valore aria
+            }, 100);  // Ritardo di 100 millisecondi
         };
     </script>
+
 </body>
 </html>
