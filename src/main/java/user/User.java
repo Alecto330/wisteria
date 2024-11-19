@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import posizione.Candidatura;
 
-public abstract class User implements OttieniCandidati{
+public abstract class User implements Permessi{
 	
 	private String username;
 	private String password;

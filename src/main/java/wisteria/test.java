@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import domanda.Domanda;
 import domanda.DomandaDAO;
+import posizione.CandidaturaDAO;
 import user.User;
 
 @WebServlet("/test")
@@ -28,25 +29,35 @@ public class test extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user=(User)session.getAttribute("user");
 
-		if(user==null || request.getParameter("idPosizione")==null || request.getParameter("nomePosizione")==null) {			
+		if(user==null || request.getParameter("idPosizione")==null || request.getParameter("nomePosizione")==null || !user.eseguiTest()) {			
 			response.sendRedirect("home");
 		}else {
 			String header=user.getHeader();
 
 			String idPosizione=request.getParameter("idPosizione");
 			String nomePosizione=request.getParameter("nomePosizione");
+			
+			CandidaturaDAO candidaturaDao=new CandidaturaDAO();
+			boolean check=candidaturaDao.checkCandidatura(Integer.parseInt(idPosizione), user.getUsername());
+			
+			//if(!check) {
+				DomandaDAO dao=new DomandaDAO();
+				HashMap<Integer, Domanda> domande=dao.getDomandeFromPosizione(Integer.parseInt(idPosizione));
+				ArrayList<Domanda> domandeQuiz=new ArrayList<Domanda>(domande.values());
 
-			DomandaDAO dao=new DomandaDAO();
-			HashMap<Integer, Domanda> domande=dao.getDomandeFromPosizione(Integer.parseInt(idPosizione));
-			ArrayList<Domanda> domandeQuiz=new ArrayList<Domanda>(domande.values());
+				request.setAttribute("domande", domandeQuiz);
+				request.setAttribute("nomePosizione", nomePosizione);
+				request.setAttribute("title", "Quiz");
+				request.setAttribute("content", "testcandidato.jsp");
+				request.setAttribute("headerPath", header);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+				dispatcher.forward(request, response);
+			/*}else {
+				// TODO RISULTATO
+			}*/
+			
 
-			request.setAttribute("domande", domandeQuiz);
-			request.setAttribute("nomePosizione", nomePosizione);
-			request.setAttribute("title", "Quiz");
-			request.setAttribute("content", "testcandidato.jsp");
-			request.setAttribute("headerPath", header);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-			dispatcher.forward(request, response);
+			
 		}
 	}
 
@@ -74,8 +85,9 @@ public class test extends HttpServlet {
 
 		try {
 			dao.insertSiCandida(posizione, user.getUsername(), result);
+			
+			//TODO REDIRECT RISULTATO
 		}catch (Exception e) {
-			// TODO: update
 			System.out.println("fare update");
 		}
 
