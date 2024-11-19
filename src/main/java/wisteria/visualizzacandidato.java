@@ -1,6 +1,7 @@
 package wisteria;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import cv.CV;
 import cv.CvDAO;
+import cv.Esperienza;
+import cv.EsperienzaDAO;
 import user.User;
 
 @WebServlet("/visualizzacandidato")
@@ -29,6 +32,9 @@ public class visualizzacandidato extends HttpServlet{
 		if(id != null) {
 			CvDAO dao=new CvDAO();
 			CV cv=dao.getCV(id);
+			
+			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
+			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
 
 			HttpSession session = request.getSession();
 			User user=(User)session.getAttribute("user");
@@ -55,11 +61,9 @@ public class visualizzacandidato extends HttpServlet{
 			request.setAttribute("curriculum", cv.getCurriculum());
 			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 			request.setAttribute("telefono", cv.getTelefono());
+			request.setAttribute("esperienze", esperienze);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
-
-			/*RequestDispatcher dispatcher = request.getRequestDispatcher("templates/offerta.jsp");
-			    dispatcher.forward(request, response); */
 		}		
 	}
 

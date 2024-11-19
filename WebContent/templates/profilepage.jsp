@@ -503,8 +503,8 @@
 						<div class="experience-item">
 							<div class="experience-header">
 								<h4>${esperienza.titolo}</h4>
-								<i class="fa fa-trash delete-icon" onclick="handleDelete(${esperienza.id})"
-									title="Rimuovi"></i>
+								<i class="fa fa-trash delete-icon"
+									onclick="handleDelete(${esperienza.id})" title="Rimuovi"></i>
 							</div>
 							<p>${esperienza.esperienza}</p>
 						</div>
@@ -516,8 +516,10 @@
 			</div>
 		</div>
 
-		<a class="back-button"> <i class="fas fa-arrow-left"></i>
+		<a class="back-button" href="javascript:history.back();"> <i
+			class="fas fa-arrow-left"></i>
 		</a>
+
 	</div>
 
 	<script>
