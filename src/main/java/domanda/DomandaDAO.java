@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import utils.DatabaseConnection;
@@ -183,6 +182,31 @@ public class DomandaDAO {
 
 	        connection.close();
 
+	}
+	
+	
+	public int getNumeroDomande(int idPosizione) {
+		System.out.println(idPosizione);
+		int ndomande=0;
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT count(*) as ndomande from Domanda where FK_Posizione=? group by FK_Posizione";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, idPosizione);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			resultSet.next();
+			
+			ndomande=resultSet.getInt("ndomande");
+			
+			connection.close();
+			return ndomande;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ndomande;
 	}
 
 

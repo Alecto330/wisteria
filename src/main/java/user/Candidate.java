@@ -16,4 +16,9 @@ public class Candidate extends User{
 	public String getOfferta() {
 		return "offerta.jsp";
 	}
+	
+	@Override
+	public boolean eseguiTest() {
+		return true;
+	}
 }
