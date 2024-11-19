@@ -37,5 +37,20 @@
 			class="home-link">← Torna alla home</a>
 	</div>
 
+      <script>
+        // Quando la pagina è completamente caricata
+        window.onload = function() {
+            var risultato = ${risultato};  // Ottieni il valore di 'risultato' dalla JSP
+            var ndomande = ${ndomande};    // Ottieni il valore di 'ndomande' dalla JSP
+
+            // Calcola la percentuale
+            var percentuale = (risultato / ndomande) * 100;
+
+            // Se la progress bar esiste, applica la larghezza dinamica
+            var progressBar = document.getElementById('progress-bar');
+            progressBar.style.width = percentuale + '%';  // Imposta la larghezza
+            progressBar.setAttribute('aria-valuenow', risultato);  // Aggiorna il valore aria
+        };
+    </script>
 </body>
 </html>
