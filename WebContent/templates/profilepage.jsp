@@ -468,11 +468,15 @@
 				<div class="experience-list">
 					<c:forEach var="esperienza" items="${esperienze}">
 						<div class="experience-item">
-							<h4>${esperienza.titolo}</h4>
+							<h4>
+								${esperienza.titolo}
+								<i class="fa fa-trash" onclick="handleDelete(${esperienza.id})" title="Rimuovi" class="delete-icon"></i>
+							</h4>
 							<p>${esperienza.esperienza}</p>
 						</div>
 					</c:forEach>
 				</div>
+
 				<!-- Fine della lista delle esperienze -->
 			</div>
 		</div>
