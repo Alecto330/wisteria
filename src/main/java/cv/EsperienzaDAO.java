@@ -55,6 +55,23 @@ public class EsperienzaDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void deleteEsperienza(int idEsperienza) {
+
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="DELETE from Esperienza where id=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, idEsperienza);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 }

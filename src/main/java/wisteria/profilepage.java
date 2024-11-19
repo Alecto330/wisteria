@@ -1,9 +1,11 @@
 package wisteria;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,10 +55,10 @@ public class profilepage extends HttpServlet{
 			}
 			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 			request.setAttribute("telefono", cv.getTelefono());
-			
+
 			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
 			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
-			
+
 			request.setAttribute("esperienze", esperienze);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/profilepage.jsp");
@@ -82,7 +84,7 @@ public class profilepage extends HttpServlet{
 		String cf = request.getParameter("CF");
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
-		
+
 		String titoloEsperienza = request.getParameter("titolo");
 		String descrizioneEsperienza = request.getParameter("esperienza");
 
@@ -142,8 +144,8 @@ public class profilepage extends HttpServlet{
 			System.out.println("Titolo aggionato");
 			return;
 		}
-		
-		if(titoloEsperienza!=null && descrizioneEsperienza!=null) {
+
+		if(titoloEsperienza!=null && descrizioneEsperienza!=null && !titoloEsperienza.trim().isEmpty() && !descrizioneEsperienza.trim().isEmpty()) {
 			EsperienzaDAO dao=new EsperienzaDAO();
 			String codiceFiscale=cvDao.getCf(user.getUsername());
 			dao.insertEsperienza(titoloEsperienza, descrizioneEsperienza, codiceFiscale);
@@ -183,29 +185,29 @@ public class profilepage extends HttpServlet{
 
 
 	}
-	
-	/*public static void main(String[] args) {
 
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query ="INSERT INTO cv (cf, nome, cognome, dataDiNascita, residenza, titoloDiStudio, curriculum, fotoProfilo, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, "cfffff");
-			preparedStatement.setString(2, "nomeee");
-			preparedStatement.setString(3, "cognomeee");
-			preparedStatement.setDate(4, Date.valueOf("2024-11-08"));
-			preparedStatement.setString(5, "residenzaaa");
-			preparedStatement.setString(6, "titoloDiStudio");
-			preparedStatement.setBytes(7, null);
-			preparedStatement.setBytes(8, null);
-			preparedStatement.setString(9, "telefonooo");
-			preparedStatement.executeUpdate();
 
-			connection.close();
+	@Override
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		String body = new BufferedReader(request.getReader())
+				.lines()
+				.collect(Collectors.joining("\n"));
+
+		// Analizzare i parametri dal corpo della richiesta
+		String esperienzaId = null;
+		for (String param : body.split("&")) {
+			String[] keyValue = param.split("=");
+			if ("esperienzaId".equals(keyValue[0])) {
+				esperienzaId = keyValue.length > 1 ? keyValue[1] : null;
+				break;
+			}
 		}
-	}*/
+		
+		if(esperienzaId!=null) {
+			EsperienzaDAO dao=new EsperienzaDAO();
+			dao.deleteEsperienza(Integer.parseInt(esperienzaId));
+			response.setStatus(HttpServletResponse.SC_OK);
+		}
+	}
 }

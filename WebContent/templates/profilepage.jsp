@@ -524,10 +524,13 @@
 
 
 		function handleDelete(id) {
+
 			const formData = new URLSearchParams();
 			if (confirm("Sei sicuro di voler eliminare questo elemento?")) {
-				formData.append('id', id);
-				fetch(`/wisteria/profilepage`, {
+				console.log(id);
+				formData.append('esperienzaId', id);
+				console.log(formData.toString());
+				fetch('/wisteria/profilepage', {
 					method: 'DELETE',
 					headers: {
 				            'Content-Type': 'application/x-www-form-urlencoded'
@@ -535,16 +538,12 @@
 				        body: formData.toString()
 				})
 				.then(response => {
-					if (response.ok) {
-						alert("Esperienza eliminata con successo.");
-						document.querySelector(`[data-id="${id}"]`).closest('.experience-item').remove();
-					} else {
-						alert("Errore durante l'eliminazione. Riprova.");
-					}
+					  if (response.ok) {
+						  location.reload();
+				        }
 				})
 				.catch(error => {
 					console.error("Errore:", error);
-					alert("Errore durante l'eliminazione. Riprova.");
 				});
 			}
 		}
