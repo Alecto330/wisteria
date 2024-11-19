@@ -5,7 +5,8 @@
     vertical-align: middle;
     border-bottom: solid 2px #8328FF;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
+    z-index: 1000;
 }
 .custom-navbar .navbar-brand,
 .custom-navbar .btn {
@@ -18,6 +19,18 @@
     border-radius: 2vw;
     color:black;
     box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+}
+.scroll-line {
+    background: linear-gradient(217deg, #8228ff, #c398ff 70.71%),
+                linear-gradient(127deg, #c398ff, #c398ff 70.71%),
+                linear-gradient(336deg, #8228ff, #c398ff 70.71%);
+    height: 5px; /* Altezza della barra */
+    position: fixed;
+    bottom: 880px; /* Posizionamento in basso */
+    left: 0;
+    width: 0%; /* Larghezza dinamica */
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1001; /* Sopra altri elementi */
 }
 .acc{
     align-content: center;
@@ -79,10 +92,6 @@
 .contact{
     cursor: pointer;
 }
-
-
-
-
 .dropdown i.fa-user {
     color: rgb(123, 31, 255); /* Colore specifico per l'icona */
 }
