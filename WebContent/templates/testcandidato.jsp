@@ -60,7 +60,7 @@
 	</div>
 
 	<script>
-
+        // ##################### SUBMIT #########################
 
 	function submitAnswers() {
 	    const formData = new URLSearchParams();
@@ -165,9 +165,7 @@
         }
 
 
-        // ##################### SUBMIT #########################
 
-        
 
 
 
