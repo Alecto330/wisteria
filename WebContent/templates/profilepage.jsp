@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +21,9 @@
 	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_profilepage.css">
-<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
+<link rel="icon"
+	href="${pageContext.request.contextPath}/assets/favicon.ico"
+	type="image/x-icon">
 <title>Profilo e personalizzazione</title>
 
 </head>
@@ -50,8 +53,10 @@
 			<div class="form-group">
 				<label class="form-label">Nome:</label>
 				<div class="form-input-wrapper">
-					<input id="input-nome" type="text" class="form-input" value="${nome}" disabled>
-					<span id="modifica-nome" class="edit-icon" title="Modifica" onclick="toggleField('input-nome', 'modifica-nome', 'Nome')"> 
+					<input id="input-nome" type="text" class="form-input"
+						value="${nome}" disabled> <span id="modifica-nome"
+						class="edit-icon" title="Modifica"
+						onclick="toggleField('input-nome', 'modifica-nome', 'Nome')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 							<path d="M12 20h9" />
 							<path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -63,11 +68,14 @@
 			<div class="form-group">
 				<label class="form-label">Username:</label>
 				<div class="form-input-wrapper">
-					<input id="input-username" type="text" class="form-input" value="${username}" disabled>
-					<span id="modifica-username" class="edit-icon" title="Modifica" onclick="toggleField('input-username', 'modifica-username', 'Username')">  
+					<input id="input-username" type="text" class="form-input"
+						value="${username}" disabled> <span id="modifica-username"
+						class="edit-icon" title="Modifica"
+						onclick="toggleField('input-username', 'modifica-username', 'Username')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
-                            <path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
+                            <path
+								d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
                         </svg>
 					</span>
 				</div>
@@ -76,8 +84,10 @@
 			<div class="form-group">
 				<label class="form-label">Cognome:</label>
 				<div class="form-input-wrapper">
-					<input id="input-cognome" type="text" class="form-input" value="${cognome}" disabled>
-					<span id="modifica-cognome" class="edit-icon" title="Modifica" onclick="toggleField('input-cognome', 'modifica-cognome', 'Cognome')">
+					<input id="input-cognome" type="text" class="form-input"
+						value="${cognome}" disabled> <span id="modifica-cognome"
+						class="edit-icon" title="Modifica"
+						onclick="toggleField('input-cognome', 'modifica-cognome', 'Cognome')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -90,8 +100,10 @@
 			<div class="form-group">
 				<label class="form-label">Data di nascita:</label>
 				<div class="form-input-wrapper">
-					<input id="input-datadinascita" type="date" class="form-input" value="${dataDiNascita}" disabled>
-					<span id="modifica-datadinascita" class="edit-icon" title="Modifica" onclick="toggleField('input-datadinascita', 'modifica-datadinascita', 'DataDiNascita')"> 
+					<input id="input-datadinascita" type="date" class="form-input"
+						value="${dataDiNascita}" disabled> <span
+						id="modifica-datadinascita" class="edit-icon" title="Modifica"
+						onclick="toggleField('input-datadinascita', 'modifica-datadinascita', 'DataDiNascita')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -104,8 +116,10 @@
 			<div class="form-group">
 				<label class="form-label">Email:</label>
 				<div class="form-input-wrapper">
-					<input id="input-email" type="email" class="form-input" value="${email}" disabled>
-					<span id="modifica-email" class="edit-icon" title="Modifica" onclick="toggleField('input-email', 'modifica-email', 'Email')"> 
+					<input id="input-email" type="email" class="form-input"
+						value="${email}" disabled> <span id="modifica-email"
+						class="edit-icon" title="Modifica"
+						onclick="toggleField('input-email', 'modifica-email', 'Email')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -118,9 +132,11 @@
 			<div class="form-group">
 				<label class="form-label">Codice Fiscale:</label>
 				<div class="form-input-wrapper">
-					<input id="input-cf" type="text" class="form-input" value="${cf}" disabled>
-					<span id="modifica-cf" class="edit-icon" title="Modifica" onclick="toggleField('input-cf', 'modifica-cf', 'CF')"> 
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+					<input id="input-cf" type="text" class="form-input" value="${cf}"
+						disabled> <span id="modifica-cf" class="edit-icon"
+						title="Modifica"
+						onclick="toggleField('input-cf', 'modifica-cf', 'CF')"> <svg
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
 								d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4 12.5-12.5z" />
@@ -132,8 +148,10 @@
 			<div class="form-group">
 				<label class="form-label">Telefono:</label>
 				<div class="form-input-wrapper">
-					<input id="input-telefono" type="tel" class="form-input" value="${telefono}" disabled>
-					<span id="modifica-telefono" class="edit-icon" title="Modifica" onclick="toggleField('input-telefono', 'modifica-telefono', 'Telefono')"> 
+					<input id="input-telefono" type="tel" class="form-input"
+						value="${telefono}" disabled> <span id="modifica-telefono"
+						class="edit-icon" title="Modifica"
+						onclick="toggleField('input-telefono', 'modifica-telefono', 'Telefono')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -146,8 +164,10 @@
 			<div class="form-group">
 				<label class="form-label">Titolo di studio:</label>
 				<div class="form-input-wrapper">
-					<input id="input-titolo" type="text" class="form-input" value="${titoloDiStudio}" disabled>
-					<span id="modifica-titolo" class="edit-icon" title="Modifica" onclick="toggleField('input-titolo', 'modifica-titolo', 'Titolo')"> 
+					<input id="input-titolo" type="text" class="form-input"
+						value="${titoloDiStudio}" disabled> <span
+						id="modifica-titolo" class="edit-icon" title="Modifica"
+						onclick="toggleField('input-titolo', 'modifica-titolo', 'Titolo')">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <path d="M12 20h9" />
                             <path
@@ -161,8 +181,10 @@
 		<div class="form-grid">
 			<div>
 				<!-- Sezione per caricare il CV o aprirlo -->
-				<div id="cvUploadSection" class="cv-upload" onclick="handleClick(event)">
-					<input type="file" id="fileInput" accept="application/pdf" style="display: none;" onchange="handleFileChange(event)">
+				<div id="cvUploadSection" class="cv-upload"
+					onclick="handleClick(event)">
+					<input type="file" id="fileInput" accept="application/pdf"
+						style="display: none;" onchange="handleFileChange(event)">
 					<div class="cv-icon" id="icon">📁</div>
 					<div id="uploadText">Carica il tuo CV</div>
 					<div id="removePDF" onclick="removePDF(event)">❌</div>
@@ -173,7 +195,7 @@
 			<script>
 			let pdfURL = null;
 			
-			 const base64PDF = '<%= request.getAttribute("pdfData") != null ? request.getAttribute("pdfData") : "" %>';
+			 const base64PDF = '<%=request.getAttribute("pdfData") != null ? request.getAttribute("pdfData") : ""%>';
 
 		        if (base64PDF) {
 		            // Convert Base64 string to Blob and create a temporary URL.
@@ -444,20 +466,12 @@
 
 				<!-- Lista delle esperienze predefinite -->
 				<div class="experience-list">
-					<div class="experience-item">
-						<h4>Sviluppatore Frontend per ...</h4>
-						<p>Responsabile della progettazione e implementazione di
-							interfacce</p>
-					</div>
-					<div class="experience-item">
-						<h4>Sviluppatore Backend presso...</h4>
-						<p>Sviluppo e manutenzione di API RESTful.</p>
-					</div>
-					<div class="experience-item">
-						<h4>Full Stack Developer presso Zucchetti</h4>
-						<p>Gestione completa del ciclo di vita del software, dallo
-							sviluppo frontend al backend.</p>
-					</div>
+					<c:forEach var="esperienza" items="${esperienze}">
+						<div class="experience-item">
+							<h4>${esperienza.titolo}</h4>
+							<p>${esperienza.esperienza}</p>
+						</div>
+					</c:forEach>
 				</div>
 				<!-- Fine della lista delle esperienze -->
 			</div>

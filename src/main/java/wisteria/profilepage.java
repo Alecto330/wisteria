@@ -2,6 +2,7 @@ package wisteria;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import cv.CV;
 import cv.CvDAO;
+import cv.Esperienza;
+import cv.EsperienzaDAO;
 import user.User;
 import user.UserDAO;
 
@@ -51,6 +54,11 @@ public class profilepage extends HttpServlet{
 			}
 			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 			request.setAttribute("telefono", cv.getTelefono());
+			
+			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
+			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
+			
+			request.setAttribute("esperienze", esperienze);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/profilepage.jsp");
 			dispatcher.forward(request, response);
