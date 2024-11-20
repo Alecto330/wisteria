@@ -121,31 +121,52 @@
         }
 
         .selected-questions {
-            list-style-type: disc;
-            padding-left: 20px;
+            list-style-type: none;
+            padding: 0;
             margin-bottom: 1rem;
         }
 
         .selected-questions li {
-            margin-bottom: 0.5rem;
+            position: relative;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             font-size: 0.95rem;
             color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            color: #ff4d4d;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            color: #ff1a1a;
         }
 
         .manage-questions-btn {
-            display: block;
-            width: 100%;
-            max-width: 200px;
-            margin: 0 auto;
-            padding: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
             background-color: #6e41e2;
             color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 500;
+            border-radius: 50%;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin: 0 auto;
         }
 
         .manage-questions-btn:hover {
@@ -307,16 +328,25 @@
                 </div>
             </div>
 
-            <!-- Sezione Domande -->
+            <!-- Sezione Domande (Modificata) -->
             <div class="questions-section">
                 <h3 class="questions-title">Domande selezionate</h3>
                 <ul class="selected-questions">
-                    <li>Quale KPI è fondamentale per un Sales Manager?</li>
-                    <li>Come gestisci un team di vendita?</li>
-                    <li>Descrivi una tua esperienza di successo nella vendita.</li>
+                    <li>
+                        Quale KPI è fondamentale per un Sales Manager?
+                        <span class="delete-btn" title="Elimina domanda">&times;</span>
+                    </li>
+                    <li>
+                        Come gestisci un team di vendita?
+                        <span class="delete-btn" title="Elimina domanda">&times;</span>
+                    </li>
+                    <li>
+                        Descrivi una tua esperienza di successo nella vendita.
+                        <span class="delete-btn" title="Elimina domanda">&times;</span>
+                    </li>
                 </ul>
-                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/templates/cercaDomande.jsp'">
-                    Gestisci domande
+                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/templates/cercaDomande.jsp'" title="Aggiungi Domande">
+                    <i class="fas fa-plus"></i>
                 </button>
             </div>
 
@@ -463,6 +493,16 @@
             }
 
             initializeRegione();
+
+            // Funzionalità per eliminare una domanda
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const li = e.target.closest('li');
+                    li.remove();
+                    // Se necessario, puoi aggiungere ulteriori logiche per aggiornare il backend
+                });
+            });
         });
     </script>
 </body>
