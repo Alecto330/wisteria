@@ -370,6 +370,7 @@
 				            finalizeEdit(inputId, editIconId, paramName);
 				            input.removeEventListener('keydown', handleKeydown);
 				            input.removeEventListener('blur', handleBlur);
+							window.location.reload();
 				        }
 				    };
 
@@ -380,6 +381,7 @@
 				            finalizeEdit(inputId, editIconId, paramName);
 				            input.removeEventListener('keydown', handleKeydown);
 				            input.removeEventListener('blur', handleBlur);
+							window.location.reload();
 				        }
 				    };
 
