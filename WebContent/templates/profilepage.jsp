@@ -281,6 +281,7 @@
 					document.getElementById('uploadText').textContent = "Carica il tuo CV";  // Ripristina il testo
 					document.getElementById('removePDF').style.display = 'none';  // Nascondi il pulsante
 					document.getElementById('fileInput').value = '';  // Resetta il campo input
+
 				}
 
 
@@ -289,6 +290,27 @@
 
 
 				// ##################################### CARICA IMMAGINE PROFILO ######################################
+
+					const base64Image = '<%= request.getAttribute("fotoProfiloData") != null ? request.getAttribute("fotoProfiloData") : "" %>';
+
+					if (base64Image) {
+						// Converte la stringa Base64 in un Blob e crea un URL temporaneo
+						const imageBlob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], { type: 'image/jpeg' }); // Può essere 'image/png' o altro tipo di immagine
+						const imageURL = URL.createObjectURL(imageBlob);
+
+						// Imposta l'URL dell'immagine alla foto del profilo
+						const profilePicture = document.getElementById('profilePicture');
+						profilePicture.src = imageURL;
+						profilePicture.style.display = 'block'; // Mostra la foto del profilo
+
+						// Nasconde l'icona e l'icona della fotocamera quando l'immagine è presente
+						document.getElementById('profileIcon').style.display = 'none';
+						document.querySelector('.camera-icon').style.display = 'none';
+					}
+
+
+
+
 									// Funzione per attivare l'input dell'immagine
 					function triggerImageInput() {
 						document.getElementById('imageInput').click();

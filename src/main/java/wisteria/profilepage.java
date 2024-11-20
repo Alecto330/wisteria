@@ -53,7 +53,10 @@ public class profilepage extends HttpServlet{
 				String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
 				request.setAttribute("pdfData", base64PDF);
 			}
-			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
+			if (cv.getFotoProfilo() != null) {
+		        String base64Image = Base64.getEncoder().encodeToString(cv.getFotoProfilo());
+		        request.setAttribute("fotoProfiloData", base64Image);
+		    }
 			request.setAttribute("telefono", cv.getTelefono());
 
 			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
@@ -87,6 +90,8 @@ public class profilepage extends HttpServlet{
 
 		String titoloEsperienza = request.getParameter("titolo");
 		String descrizioneEsperienza = request.getParameter("esperienza");
+		
+		
 
 		UserDAO userDao=new UserDAO();
 		CvDAO cvDao=new CvDAO();
@@ -182,7 +187,38 @@ public class profilepage extends HttpServlet{
 		} catch (Exception e) {
 			//e.printStackTrace();
 		}
+		
+		
+		try {
+			Part image = request.getPart("profileImage");
+			if (image != null) {
+		        InputStream imageInputStream = null;
+		        try {
+		            long imageSize = image.getSize();
+		            imageInputStream = image.getInputStream();
+		            cvDao.updateImage(user.getUsername(), imageInputStream, imageSize);  // Use DAO to save image
 
+		            System.out.println("Immagine aggiornata correttamente.");
+		        } finally {
+		            if (imageInputStream != null) {
+		                imageInputStream.close();
+		            }
+
+		            try {
+		                image.delete(); // Deletes the temporary file if no longer needed.
+		            } catch (IOException e) {
+		                System.err.println("Errore durante la cancellazione del file temporaneo dell'immagine: " + e.getMessage());
+		            }
+		        }
+		        return;
+		    }
+		} catch (Exception e) {
+		    // Handle any error for image processing
+		    System.err.println("Errore durante l'aggiornamento dell'immagine: " + e.getMessage());
+		}
+		
+		
+		
 
 	}
 

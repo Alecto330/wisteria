@@ -131,7 +131,7 @@ public class CvDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
-			String query ="UPDATE CV SET titolo = ? WHERE FK_Utente= ?";
+			String query ="UPDATE CV SET TitoloDiStudio = ? WHERE FK_Utente= ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, titolo);
 			preparedStatement.setString(2, username);
@@ -149,6 +149,25 @@ public class CvDAO {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 			String query ="UPDATE CV SET curriculum = ? WHERE FK_Utente= ?";
+			
+			//InputStream inputStream = cv.getInputStream();
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setBinaryStream(1, inputStream, size);
+			preparedStatement.setString(2, username);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateImage(String username, InputStream inputStream, long size) {
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="UPDATE CV SET fotoProfilo = ? WHERE FK_Utente= ?";
 			
 			//InputStream inputStream = cv.getInputStream();
 			
