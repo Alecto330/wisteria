@@ -392,7 +392,6 @@
 				            finalizeEdit(inputId, editIconId, paramName);
 				            input.removeEventListener('keydown', handleKeydown);
 				            input.removeEventListener('blur', handleBlur);
-							window.location.reload();
 				        }
 				    };
 
@@ -403,7 +402,6 @@
 				            finalizeEdit(inputId, editIconId, paramName);
 				            input.removeEventListener('keydown', handleKeydown);
 				            input.removeEventListener('blur', handleBlur);
-							window.location.reload();
 				        }
 				    };
 
@@ -418,6 +416,8 @@
 
 				    input.disabled = true;
 				    editIcon.style.display = 'inline';
+
+					console.log(input.value.trim());
 
 				    if (input.value.trim() !== "") {
 				        params.set(paramName, input.value.trim());
