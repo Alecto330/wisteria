@@ -217,7 +217,7 @@ public class profilepage extends HttpServlet{
 		    System.err.println("Errore durante l'aggiornamento dell'immagine: " + e.getMessage());
 		}
 		
-		
+		//TODO aggiungere aggiornamento profilePage qui
 		
 
 	}
