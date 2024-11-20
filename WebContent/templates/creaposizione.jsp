@@ -239,7 +239,7 @@
     <div class="main-container-creaposizione">
         <h1 class="form-title">Aggiungi posizione</h1>
         <form action="${pageContext.request.contextPath}/inviaPosizione" method="post">
-            <!-- Campo Titolo su una riga separata -->
+            <!-- Campo Titolo -->
             <div class="form-group">
                 <label class="form-label" for="titolo-input">Titolo:</label>
                 <input name="titolo" type="text"
@@ -247,7 +247,7 @@
                     placeholder="Inserisci il titolo della posizione" required>
             </div>
 
-            <!-- Campo Descrizione sotto il Titolo come textarea -->
+            <!-- Campo Descrizione -->
             <div class="form-group">
                 <label class="form-label" for="descrizione-input">Descrizione:</label>
                 <textarea name="descrizione" 
@@ -258,33 +258,27 @@
                     required></textarea>
             </div>
 
+            <!-- Campo Località -->
             <div class="form-group">
                 <label class="form-label" for="localita-input">Località:</label>
                 <div class="location-group">
-                    <select  id="regione-input" name="regione" class="form-select" required>
+                    <!-- Select Regione -->
+                    <select id="regione-input" name="regione" class="form-select" required ${selectedRegione != null && !selectedRegione.isEmpty() ? 'disabled' : ''}>
                         <option value="">-- Seleziona Regione --</option>
                         <c:forEach var="region" items="${regionList}">
-                            <option value="${region}">${region}</option>
+                            <option value="${region}" ${region == selectedRegione ? 'selected' : ''}>${region}</option>
                         </c:forEach>
                     </select> 
-                    <select  id="provincia-input" name="provincia" class="form-select" required>
+
+                    <!-- Select Provincia con evento onchange -->
+                    <select id="provincia-input" name="provincia" class="form-select" required onchange="updateRegione()">
                         <option value="">-- Seleziona Provincia --</option>
                         <c:forEach var="province" items="${provinceList}">
-                            <option value="${province}">${province}</option>
+                            <option value="${province}" ${province == selectedProvincia ? 'selected' : ''}>${province}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
-            <!--  
-            <div class="form-group">
-                <label class="form-label">Settore:</label> <select name="professione"
-                    class="form-select">
-                    <c:forEach var="profession" items="${professionList}">
-                        <option value="${profession}">${profession}</option>
-                    </c:forEach>
-                </select>
-            </div>
-            -->
 
             <!-- Sezione Settore Migliorata -->
             <div class="form-group">
@@ -304,17 +298,16 @@
                         <c:forEach var="settore" items="${settoreList}">
                             <li role="option" tabindex="0">${settore}</li>
                         </c:forEach>
-                        <!-- Esempi di opzioni statiche, da rimuovere se usi dinamiche -->
-                        
+                        <!-- Opzioni statiche se necessario -->
                         <li role="option" tabindex="0">Opzione 1</li>
                         <li role="option" tabindex="0">Opzione 2</li>
                         <li role="option" tabindex="0">Opzione 3</li>
                         <li role="option" tabindex="0">Opzione 4</li>
-                       
                     </ul>
                 </div>
             </div>
 
+            <!-- Sezione Domande -->
             <div class="questions-section">
                 <h3 class="questions-title">Domande selezionate</h3>
                 <ul class="selected-questions">
@@ -327,13 +320,23 @@
                 </button>
             </div>
 
-            <!-- Aggiungi qui eventuali altri campi del form -->
-
+            <!-- Pulsante di Invio -->
             <button type="submit" class="create-btn">Crea Posizione</button>
         </form>
     </div>
 
     <script>
+        function updateRegione() {
+            var provincia = document.getElementById('provincia-input').value;
+            if (provincia) {
+                // Reindirizza alla stessa servlet con parametro 'provincia'
+                window.location.href = '${pageContext.request.contextPath}/creaposizione?provincia=' + encodeURIComponent(provincia);
+            } else {
+                // Se nessuna Provincia è selezionata, ricarica la pagina senza parametri
+                window.location.href = '${pageContext.request.contextPath}/creaposizione';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             // Gestione del dropdown Settore
             const dropdown = document.getElementById('settore-dropdown');
@@ -429,89 +432,38 @@
                 items.forEach(item => item.classList.remove('active'));
             }
 
-            // Nuovo codice per gestire Regione e Provincia
+            // Gestione di Regione e Provincia senza AJAX
             const regioneSelect = document.getElementById('regione-input');
             const provinciaSelect = document.getElementById('provincia-input');
 
-            function toggleRegioneSelect() {
+            function handleProvinciaChange() {
                 if (provinciaSelect.value) {
-                    regioneSelect.disabled = true;
-                    // Rimuove la selezione della Regione se è stata disabilitata
-                    regioneSelect.value = "";
+                    // La funzione updateRegione gestisce il reindirizzamento
+                    updateRegione();
                 } else {
+                    // Se nessuna Provincia è selezionata, riabilita il campo Regione
+                    regioneSelect.value = "";
                     regioneSelect.disabled = false;
                 }
             }
 
+            // Assegna l'evento onchange al campo Provincia
+            provinciaSelect.addEventListener('change', handleProvinciaChange);
+
             // Inizializza lo stato del campo Regione al caricamento della pagina
-            toggleRegioneSelect();
-
-            // Aggiunge l'evento di cambio al campo Provincia
-            provinciaSelect.addEventListener('change', toggleRegioneSelect);
-
-            // Opzionale: Se desideri che la selezione della Regione influisca sulla Provincia
-            // puoi aggiungere un listener anche al campo Regione
-            /*
-            regioneSelect.addEventListener('change', () => {
-                if (regioneSelect.value) {
-                    provinciaSelect.disabled = false;
+            function initializeRegione() {
+                var selectedRegione = '<c:out value="${selectedRegione}" />';
+                if (selectedRegione && selectedRegione !== "") {
+                    regioneSelect.value = selectedRegione;
+                    regioneSelect.disabled = true;
+                } else {
+                    regioneSelect.value = "";
+                    regioneSelect.disabled = false;
                 }
-            });
-            */
+            }
+
+            initializeRegione();
         });
     </script>
 </body>
-
-<script>
-
-
-    function inviaPosizione() {
-        const titolo = document.getElementById('titolo-input').value.trim();
-        const descrizione = document.getElementById('descrizione-input').value.trim();
-        const regione = document.getElementById('regione-input').value;
-        const provincia = document.getElementById('provincia-input').value;
-        const settore = document.getElementById('settore-input').value.trim();
-
-        if (!titolo || !descrizione || !regione || !provincia || !settore) {
-            alert("Tutti i campi sono obbligatori!");
-            return;
-        }
-
-        const params = new URLSearchParams({
-            titolo: titolo,
-            descrizione: descrizione,
-            regione: regione,
-            provincia: provincia,
-            settore: settore
-        });
-
-        fetch('${pageContext.request.contextPath}/creaposizione', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: params.toString(),
-        })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(err => {
-                    throw new Error(`Errore dal server: ${err}`);
-                });
-            }
-            return response.text();
-        })
-        .then(data => {
-            console.log('Posizione salvata con successo:', data);
-            // FARE REINDIRIZZAMENTO IN BACK-END?
-            window.location.href = '${pageContext.request.contextPath}/home';
-        })
-        .catch(error => {
-            console.error('Errore:', error);
-            alert("Si è verificato un errore durante la creazione della posizione.");
-        });
-    }
-
-
-</script>
-
 </html>
