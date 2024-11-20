@@ -53,15 +53,15 @@ public class creaposizione extends HttpServlet{
 		String descrizione=request.getParameter("descrizione");
 		String regione=request.getParameter("regione");
 		String provincia=request.getParameter("provincia");
-		String professione=request.getParameter("professione");
-
-		Posizione posizione=new Posizione(0, titolo, descrizione, professione, provincia, regione);
+		String settore=request.getParameter("settore");
+		
+		Posizione posizione=new Posizione(0, titolo, descrizione, settore, provincia, regione);
 
 		HttpSession session = request.getSession();
 		User user=(User)session.getAttribute("user");
 
-		/*PosizioneDAO dao=new PosizioneDAO();
-		dao.insertPosizione(posizione, user.getUsername());*/
+		PosizioneDAO dao=new PosizioneDAO();
+		dao.insertPosizione(posizione, user.getUsername());
 
 	}
 

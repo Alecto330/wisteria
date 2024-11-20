@@ -23,7 +23,7 @@ public class PosizioneDAO {
 			while(resultSet.next()) {
 				int id=resultSet.getInt("id");
 				String titolo=resultSet.getString("titolo");
-				String descrizione=resultSet.getString("descrizione").substring(0, 200).concat("...");
+				String descrizione=resultSet.getString("descrizione").substring(0, 200).concat("...");// TODO mettere if
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
 				String regione=resultSet.getString("regione");
@@ -210,12 +210,11 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
-			String query ="INSERT INTO Posizione (titolo, descrizione, settore, FK_Utente, FK_Localita) VALUES (?, ?, ?, ?, ?)";
+			String query ="INSERT INTO Posizione (titolo, descrizione, settore, FK_Localita) VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, posizione.getTitolo());
 			preparedStatement.setString(2, posizione.getDescrizione());
 			preparedStatement.setString(3, posizione.getSettore());
-			preparedStatement.setString(4, username);
 			preparedStatement.setString(4, posizione.getProvincia());
 			preparedStatement.executeUpdate();
 		}catch (Exception e) {

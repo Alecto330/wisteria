@@ -156,6 +156,48 @@
             // Esempio di invio del form
             // form.submit();
         }
+
+
+        // ############################### RICERCA ##############################
+        function performSearch() {
+            const settore = document.getElementById("professioni");
+            const searchElem = document.getElementById("job-search");
+
+            if (!settore || !searchElem) {
+                console.error("Uno degli elementi di ricerca non è stato trovato.");
+                return;
+            }
+
+            const selectedProfession = settore.value;
+            const searchQuery = searchElem.value;
+
+            let searchUrl = '/wisteria/home?settore='
+                + encodeURIComponent(selectedProfession) + '&search='
+                + encodeURIComponent(searchQuery);
+
+            window.location.href = searchUrl;
+        }
+
+        function setOptions() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const region = urlParams.get('settore');
+
+            const regionSelect = document.getElementById('professioni');
+            if (region && regionSelect) {
+                const regionOption = regionSelect.querySelector(`option[value="${settore}"]`);
+                if (regionOption) {
+                    regionOption.selected = true;
+                } else {
+                    regionSelect.selectedIndex = 0;
+                }
+            } else if (regionSelect) {
+                regionSelect.selectedIndex = 0;
+            }
+
+        }
+
+        window.addEventListener('popstate', setOptions);
+        window.addEventListener('load', setOptions);
     </script>
 </body>
 </html>
