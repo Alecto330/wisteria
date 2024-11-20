@@ -210,12 +210,11 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
-			String query ="INSERT INTO Posizione (titolo, descrizione, settore, FK_Utente, FK_Localita) VALUES (?, ?, ?, ?, ?)";
+			String query ="INSERT INTO Posizione (titolo, descrizione, settore, FK_Localita) VALUES (?, ?, ?, ?)";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, posizione.getTitolo());
 			preparedStatement.setString(2, posizione.getDescrizione());
 			preparedStatement.setString(3, posizione.getSettore());
-			preparedStatement.setString(4, username);
 			preparedStatement.setString(4, posizione.getProvincia());
 			preparedStatement.executeUpdate();
 		}catch (Exception e) {
