@@ -58,7 +58,7 @@
             </div>
         </div>
 
-        <button class="create-btn">Crea</button>
+        <button class="create-btn" onclick="location.href='<%= request.getContextPath() %>/templates/cercaDomande.jsp'">Crea</button>
     </div>
 
     <script>

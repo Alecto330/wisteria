@@ -177,3 +177,37 @@ body {
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(110, 65, 226, 0.2);
 }
+
+.selected-questions {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 1rem;
+}
+
+.selected-questions li {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.manage-questions-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 0.8rem;
+    background-color: #6e41e2;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.manage-questions-btn:hover {
+    background-color: #5a35c8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(110, 65, 226, 0.2);
+}
