@@ -187,7 +187,7 @@
 						style="display: none;" onchange="handleFileChange(event)">
 					<div class="cv-icon" id="icon">📁</div>
 					<div id="uploadText">Carica il tuo CV</div>
-					<div id="removePDF" onclick="removePDF(event)">❌</div>
+					<div id="removePDF" onclick="removePDF(event)" title="Rimuovi">❌</div>
 				</div>
 			</div>
 
