@@ -37,31 +37,31 @@
             <div class="form-grid">
                 <div class="form-group">
                     <label class="form-label">Titolo:</label> <input name="titolo" type="text"
-                        class="form-input"
+                        class="form-input" id="titolo-input"
                         placeholder="Inserisci il titolo della posizione">
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Descrizione:</label> <input name="descrizione" type="text"
-                        class="form-input" placeholder="Inserisci la descrizione">
+                        class="form-input" placeholder="Inserisci la descrizione"  id="descrizione-input">
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="form-label">Località:</label>
                 <div class="location-group">
-                    <select name="regione" class="form-select">
+                    <select  id="regione-input" name="regione" class="form-select">
                         <c:forEach var="region" items="${regionList}">
                             <option value="${region}">${region}</option>
                         </c:forEach>
-                    </select> <select name="provincia" class="form-select">
+                    </select> <select  id="provincia-input" name="provincia" class="form-select">
                         <c:forEach var="province" items="${provinceList}">
                             <option value="${province}">${province}</option>
                         </c:forEach>
                     </select>
                 </div>
             </div>
-
+            <!--  
             <div class="form-group">
                 <label class="form-label">Settore:</label> <select name="professione"
                     class="form-select">
@@ -70,7 +70,17 @@
                     </c:forEach>
                 </select>
             </div>
-
+			-->
+			<div class="container">
+				<label for="textAreaWithOptions">Scrivi o seleziona un'opzione:</label>
+				<textarea  id="settore-input" rows="4" placeholder="Scrivi qui..."></textarea>
+				<select id="dropdownOptions">
+					<option value="">-- Seleziona un'opzione --</option>
+					<option value="Opzione 1">Opzione 1</option>
+					<option value="Opzione 2">Opzione 2</option>
+					<option value="Opzione 3">Opzione 3</option>
+				</select>
+			</div>
             <div class="questions-section">
                 <h3 class="questions-title">Domande selezionate</h3>
                 <ul class="selected-questions">
@@ -85,7 +95,7 @@
 
             <!-- Aggiungi qui eventuali altri campi del form -->
 
-            <button type="submit" class="create-btn">Crea Posizione</button>
+            <button onclick="inviaPosizione()"class="create-btn">Crea Posizione</button>
         </form>
     </div>
 
