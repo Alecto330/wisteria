@@ -351,7 +351,7 @@
             </div>
 
             <!-- Pulsante di Invio -->
-            <button type="submit" class="create-btn">Crea Posizione</button>
+            <button onclick="inviaPosizione()" class="create-btn">Crea Posizione</button>
         </form>
     </div>
 
@@ -504,6 +504,54 @@
                 });
             });
         });
+
+
+
+         function inviaPosizione() {
+            const titolo = document.getElementById('titolo-input').value.trim();
+            const descrizione = document.getElementById('descrizione-input').value.trim();
+            const regione = document.getElementById('regione-input').value;
+            const provincia = document.getElementById('provincia-input').value;
+            const settore = document.getElementById('settore-input').value.trim();
+
+            if (!titolo || !descrizione || !regione || !provincia || !settore) {
+                alert("Tutti i campi sono obbligatori!");
+                return;
+            }
+
+            const params = new URLSearchParams({
+                titolo: titolo,
+                descrizione: descrizione,
+                regione: regione,
+                provincia: provincia,
+                settore: settore
+            });
+
+            fetch('${pageContext.request.contextPath}/creaposizione', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: params.toString(),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(err => {
+                        throw new Error(`Errore dal server: ${err}`);
+                    });
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log('Posizione salvata con successo:', data);
+                // FARE REINDIRIZZAMENTO IN BACK-END?
+                window.location.href = '${pageContext.request.contextPath}/home';
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert("Si è verificato un errore durante la creazione della posizione.");
+            });
+        }
     </script>
 </body>
 </html>
