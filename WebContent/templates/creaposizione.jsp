@@ -353,6 +353,9 @@
             <!-- Pulsante di Invio -->
             <button onclick="inviaPosizione()" class="create-btn">Crea Posizione</button>
         </form>
+        <a class="back-button" href="javascript:history.back();"> 
+        <i class="fas fa-arrow-left"></i>
+		</a>
     </div>
 
     <script>

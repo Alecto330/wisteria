@@ -534,8 +534,8 @@
 			</div>
 		</div>
 
-		<a class="back-button" href="javascript:history.back();"> <i
-			class="fas fa-arrow-left"></i>
+		<a class="back-button" href="javascript:history.back();"> 
+		<i class="fas fa-arrow-left"></i>
 		</a>
 
 	</div>
