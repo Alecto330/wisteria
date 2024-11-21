@@ -183,6 +183,7 @@ body {
 .job-card {
     cursor: pointer;
     transition: transform 0.2s;
+    /*height: 280px;*/
 }
 
 .job-card:hover {
@@ -192,6 +193,10 @@ body {
 
 .card-location, .card-category {
     color: #555;
+}
+
+.card-text{
+	height: 80px;
 }
 
 @media (max-width: 767.98px) {

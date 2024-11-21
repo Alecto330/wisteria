@@ -24,15 +24,8 @@ public class PosizioneDAO {
 				int id=resultSet.getInt("id");
 				String titolo=resultSet.getString("titolo");
 				String descrizione=resultSet.getString("descrizione");
-				if(descrizione.length()<200) {
-					descrizione.substring(0, 200).concat("...");
-				}else {
-					int spaziMancanti = 203 - descrizione.length();
-					StringBuilder spazi = new StringBuilder();
-					for (int i = 0; i < spaziMancanti; i++) {
-						spazi.append(" ");
-					}
-					descrizione = descrizione.concat(spazi.toString());
+				if(descrizione.length()>=200) {
+					descrizione=descrizione.substring(0, 200).concat("...");
 				}
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
