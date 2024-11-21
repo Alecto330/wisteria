@@ -106,7 +106,7 @@
                         <span class="delete-btn" title="Elimina domanda">&times;</span>
                     </li>
                 </ul>
-                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/templates/cercaDomande.jsp'" title="Aggiungi Domande">
+                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/listadomande'" title="Aggiungi Domande">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>

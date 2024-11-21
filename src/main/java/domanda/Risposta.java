@@ -4,13 +4,13 @@ public class Risposta {
 	
 	private int id;
 	private String risposta;
-	private boolean VoF;
+	private boolean vof;
 	
-	public Risposta(int id, String risposta, boolean voF) {
+	public Risposta(int id, String risposta, boolean vof) {
 		super();
 		this.id = id;
 		this.risposta = risposta;
-		VoF = voF;
+		this.vof = vof;
 	}
 	
 	public int getId() {
@@ -25,14 +25,10 @@ public class Risposta {
 	public void setRisposta(String risposta) {
 		this.risposta = risposta;
 	}
-	public boolean isVoF() {
-		return VoF;
+	public boolean getVof() {
+		return this.vof;
 	}
-	public void setVoF(boolean voF) {
-		VoF = voF;
+	public void setVof(boolean voF) {
+		this.vof = voF;
 	}
-	
-	
-	
-
 }
