@@ -34,7 +34,7 @@
 			<div class="hamburger" id="hamburger">&#9776;</div>
 
 			<nav class="menu" id="menu">
-				<ul>
+				<ul style="margin-top:1vw; height:87%; display: flex; flex-direction: column;">
 					<li><a href="${pageContext.request.contextPath}/home"><i
 							class="fas fa-home"></i> Home</a></li>
 					<li><a href="${pageContext.request.contextPath}/profilepage"><i
@@ -43,6 +43,7 @@
 							class="fa-solid fa-question"></i> About</a></li>
 					<li><a onclick="scrollToBottom() " class="contact"><i
 							class="fas fa-envelope"></i> Contact</a></li>
+					<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-person"></i> Logout</a></li>
 				</ul>
 			</nav>
 			<div class="scroll-line"></div>
@@ -63,8 +64,8 @@
                 });
             </script>
 			<a href="${pageContext.request.contextPath}/home"
-				class="logo-container">  <img
-					src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO2.png"
+				class="logo-container"> <span> <img
+					src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png"
 					alt="Logo Wisteria" class="logo-img">
 			</span>
 			</a>

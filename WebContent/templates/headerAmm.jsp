@@ -45,21 +45,15 @@
 			</c:choose> -->
 
 			<div class="hamburger" id="hamburger">&#9776;</div>
-
-
 			<nav class="menu" id="menu">
-				<ul>
-					<li><a href="${pageContext.request.contextPath}/home"><i
-							class="fas fa-home"></i> Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/creaposizione"><i
-						class="fas fa-plus"></i> Crea Posizione</a></li>
-					<li><a href="${pageContext.request.contextPath}/visualizzacandidato"><i
-						class="fa-solid fa-magnifying-glass"></i> Cerca candidati</a></li>
-					<li><a href="${pageContext.request.contextPath}/about"><i
-							class="fa-solid fa-question"></i> About</a></li>
-					<li><a onclick="scrollToBottom()" style="cursor: pointer"><i
-							class="fas fa-envelope"></i> Contact</a></li>
+				<ul style="margin-top:1vw; height:87%; display: flex; flex-direction: column; justify-content: space-between;">
+				    <li><a href="${pageContext.request.contextPath}/home"><i class="fas fa-home"></i> Home</a></li>
+				    <li><a href="${pageContext.request.contextPath}/creaposizione"><i class="fas fa-plus"></i> Crea Posizione</a></li>
+				    <li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-person"></i> Logout</a></li>
+				    <!-- > <li><a href="${pageContext.request.contextPath}/visualizzacandidato"><i
+				        class="fa-solid fa-magnifying-glass"></i> Cerca candidati</a></li> -->
 				</ul>
+
 			</nav>
 			<script>
                 const hamburger = document.getElementById("hamburger");
@@ -78,8 +72,8 @@
                 });
             </script>
 			<a href="${pageContext.request.contextPath}/home"
-				class="logo-container"> <img
-					src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO2.png"
+				class="logo-container"> <span> <img
+					src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png"
 					alt="Logo Wisteria" class="logo-img">
 			</span>
 			</a>
