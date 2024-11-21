@@ -23,7 +23,10 @@ public class PosizioneDAO {
 			while(resultSet.next()) {
 				int id=resultSet.getInt("id");
 				String titolo=resultSet.getString("titolo");
-				String descrizione=resultSet.getString("descrizione").substring(0, 200).concat("...");// TODO mettere if
+				String descrizione=resultSet.getString("descrizione");
+				if(descrizione.length()<200) {
+					descrizione.substring(0, 200).concat("...");
+				}
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
 				String regione=resultSet.getString("regione");

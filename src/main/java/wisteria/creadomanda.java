@@ -33,5 +33,8 @@ public class creadomanda extends HttpServlet{
 		
 		response.sendRedirect("templates/creadomanda.jsp");
 	}
+	
+	
+	
 
 }
