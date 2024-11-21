@@ -28,7 +28,6 @@ import user.UserDAO;
 public class profilepage extends HttpServlet{
 
 	public profilepage() {
-
 	}
 
 	@Override
@@ -74,8 +73,6 @@ public class profilepage extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		//System.out.println("Ciao");
-
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 
@@ -90,8 +87,6 @@ public class profilepage extends HttpServlet{
 
 		String titoloEsperienza = request.getParameter("titolo");
 		String descrizioneEsperienza = request.getParameter("esperienza");
-		
-		
 
 		UserDAO userDao=new UserDAO();
 		CvDAO cvDao=new CvDAO();
@@ -99,12 +94,14 @@ public class profilepage extends HttpServlet{
 		if(nome!=null) {
 			cvDao.updateNome(user.getUsername(), nome);
 			System.out.println("Nome aggionato");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
 		if(cognome!=null) {
 			cvDao.updateCognome(user.getUsername(), cognome);
 			System.out.println("Cognome aggionato");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
@@ -114,12 +111,14 @@ public class profilepage extends HttpServlet{
 			user.setUsername(username);	  
 			session.setAttribute("user", user);
 			System.out.println("Username aggionato");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
 		if(dataDiNascita!=null) {
 			cvDao.updateDataDiNascita(user.getUsername(), dataDiNascita);
 			System.out.println("Data di nascita aggionata");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
@@ -129,24 +128,28 @@ public class profilepage extends HttpServlet{
 			user.setEmail(email);	  
 			session.setAttribute("user", user);
 			System.out.println("Email aggionata");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
 		if(cf!=null) {
 			cvDao.updateCf(user.getUsername(), cf);
 			System.out.println("Codice Fiscale aggionato");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
 		if(telefono!=null) {
 			cvDao.updateTelefono(user.getUsername(), telefono);
 			System.out.println("Telefono aggionato");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
 		if(titolo!=null) {
 			cvDao.updateTitolo(user.getUsername(), titolo);
 			System.out.println("Titolo aggionato");
+			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
 
@@ -185,9 +188,7 @@ public class profilepage extends HttpServlet{
 				return;
 			}
 		} catch (Exception e) {
-			//e.printStackTrace();
 		}
-		
 		
 		try {
 			Part image = request.getPart("profileImage");
@@ -196,7 +197,7 @@ public class profilepage extends HttpServlet{
 		        try {
 		            long imageSize = image.getSize();
 		            imageInputStream = image.getInputStream();
-		            cvDao.updateImage(user.getUsername(), imageInputStream, imageSize);  // Use DAO to save image
+		            cvDao.updateImage(user.getUsername(), imageInputStream, imageSize);
 
 		            System.out.println("Immagine aggiornata correttamente.");
 		        } finally {
