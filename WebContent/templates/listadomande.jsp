@@ -110,20 +110,81 @@
         });
 
         // Funzione per eseguire azioni sulle domande selezionate
-        function submitSelectedQuestions() {
+        /*function submitSelectedQuestions() {
+        	
+        	 const formData = new URLSearchParams();
             const form = document.getElementById('questionsForm');
             const selected = Array.from(form.selectedQuestions)
                                   .filter(checkbox => checkbox.checked)
                                   .map(checkbox => checkbox.value);
+            
+            
+            selected.forEach(checkbox => {
+    	        const domandaId = checkbox.getAttribute("data-domanda-id"); 
+    	        
+    	        formData.append(domandaId, rispostaId);
+    	    });
+            
+            
             if (selected.length === 0) {
                 alert('Seleziona almeno una domanda.');
                 return;
             }
-            // Esegui l'azione desiderata con le domande selezionate
-            // Ad esempio, invia il form o effettua una richiesta AJAX
             console.log('Domande selezionate:', selected);
-            // Esempio di invio del form
-            // form.submit();
+            
+            fetch('/wisteria/creaposizione', {  // Replace '/your-servlet-url' with your actual servlet URL
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(selected.join(',')) // Join array and send as a comma-separated string
+            })
+            //.then(response => response.text())
+            .then(data => {
+                console.log('Response from server:', data);
+                // Handle the server response here
+            })
+            .catch(error => {
+                console.error('Error submitting data:', error);
+                // Handle error here
+            });
+        }*/
+        
+        function submitSelectedQuestions() {
+            // Seleziona tutte le checkbox spuntate
+            const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked');
+
+            // Controlla se ci sono checkbox selezionate
+            if (selectedCheckboxes.length === 0) {
+                alert('Seleziona almeno una domanda prima di inviare.');
+                return;
+            }
+
+            // Crea un array per le domande selezionate
+            const selectedQuestions = [];
+            
+            selectedCheckboxes.forEach(checkbox => {
+                selectedQuestions.push(encodeURIComponent(checkbox.value)); // Aggiungi i valori delle checkbox all'array, codificando i valori per l'URL
+            });
+
+            // Crea l'URL con i parametri di query
+            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&');
+
+            // Invia la richiesta GET con l'URL costruito
+            fetch(url, {
+                method: 'GET'
+            })
+            .then(response => {
+                const url = response.url;
+                window.location.href = url;
+            })
+            .then(data => {
+                console.log(data); // Stampa la risposta del server (opzionale)
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert('Si è verificato un errore durante l\'invio.');
+            });
         }
 
 

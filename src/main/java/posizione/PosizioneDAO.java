@@ -250,15 +250,18 @@ public class PosizioneDAO {
 
 
 	public void deletePosizione(int posizioneId) throws Exception {
-        String query = "DELETE FROM posizioni WHERE id = ?";
-        try (Connection conn = Database.getConnection(); 
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, posizioneId);
-            stmt.executeUpdate();
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query = "DELETE FROM posizioni WHERE id = ?";
+
+			PreparedStatement stmt = connection.prepareStatement(query);
+			stmt.setInt(1, posizioneId);
+			stmt.executeUpdate();
 
 			connection.close();
-        }catch (Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
+	}
 }

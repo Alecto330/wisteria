@@ -1,120 +1,112 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Bootstrap per gli elementi -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Font-Awesome per le icone (senza doverle scaricare) -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="${pageContext.request.contextPath}/static/style.css">
-    <link rel="stylesheet"
-        href="${pageContext.request.contextPath}/static/style_creaposizione.css">
-    <link rel="stylesheet"
-        href="${pageContext.request.contextPath}/static/style_nav.css">
-    <link rel="icon"
-        href="${pageContext.request.contextPath}/assets/favicon.ico"
-        type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Bootstrap per gli elementi -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- Font-Awesome per le icone (senza doverle scaricare) -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_creaposizione.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_nav.css">
+<link rel="icon"
+	href="${pageContext.request.contextPath}/assets/favicon.ico"
+	type="image/x-icon">
 </head>
 
 <body>
 
-    <div class="main-container-creaposizione">
-        <h1 class="form-title">Crea una posizione</h1>
-        <form action="${pageContext.request.contextPath}/inviaPosizione" method="post">
-            <div class="form-group">
-                <label class="form-label" for="titolo-input">Titolo:</label>
-                <input name="titolo" type="text"
-                    class="form-input" id="titolo-input"
-                    placeholder="Inserisci il titolo della posizione" required>
-            </div>
+	<div class="main-container-creaposizione">
+		<h1 class="form-title">Crea una posizione</h1>
+		<form action="${pageContext.request.contextPath}/inviaPosizione"
+			method="post">
+			<div class="form-group">
+				<label class="form-label" for="titolo-input">Titolo:</label> <input
+					name="titolo" type="text" class="form-input" id="titolo-input"
+					placeholder="Inserisci il titolo della posizione" required>
+			</div>
 
-            <div class="form-group">
-                <label class="form-label" for="descrizione-input">Descrizione:</label>
-                <textarea name="descrizione" 
-                    class="form-input" 
-                    placeholder="Inserisci la descrizione"  
-                    id="descrizione-input" 
-                    rows="4" 
-                    required></textarea>
-            </div>
+			<div class="form-group">
+				<label class="form-label" for="descrizione-input">Descrizione:</label>
+				<textarea name="descrizione" class="form-input"
+					placeholder="Inserisci la descrizione" id="descrizione-input"
+					rows="4" required></textarea>
+			</div>
 
-            <div class="form-group">
-                <label class="form-label" for="localita-input">Località:</label>
-                <div class="location-group">
-                    <select id="regione-input" name="regione" class="form-select" required ${selectedRegione != null && !selectedRegione.isEmpty() ? 'disabled' : ''}>
+			<div class="form-group">
+				<label class="form-label" for="localita-input">Località:</label>
+				<div class="location-group">
+					<select id="regione-input" name="regione" class="form-select"
+						required ${selectedRegione !=null&& !selectedRegione.isEmpty() ? 'disabled' : ''}>
                         <option value="">-- Seleziona Regione --</option>
                         <c:forEach var="region" items="${regionList}">
                             <option value="${region}" ${region == selectedRegione ? 'selected' : ''}>${region}</option>
                         </c:forEach>
-                    </select> 
-
-                    <select id="provincia-input" name="provincia" class="form-select" required onchange="updateRegione()">
-                        <option value="">-- Seleziona Provincia --</option>
-                        <c:forEach var="province" items="${provinceList}">
-                            <option value="${province}" ${province == selectedProvincia ? 'selected' : ''}>${province}</option>
-                        </c:forEach>
                     </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="settore-input">Settore:</label>
-                <div class="dropdown" id="settore-dropdown">
-                    <input 
-                        id="settore-input" 
-                        type="text" 
-                        class="form-input dropdown-toggle" 
-                        placeholder="Seleziona o digita un settore" 
-                        aria-haspopup="listbox" 
-                        aria-expanded="false" 
-                        autocomplete="off"
-                        required
-                    >
-                    <ul class="dropdown-menu" role="listbox" aria-labelledby="settore-input">
-                        <c:forEach var="settore" items="${settoreList}">
-                            <li role="option" tabindex="0">${settore}</li>
-                        </c:forEach>
-                        <li role="option" tabindex="0">Opzione 1</li>
-                        <li role="option" tabindex="0">Opzione 2</li>
-                        <li role="option" tabindex="0">Opzione 3</li>
-                        <li role="option" tabindex="0">Opzione 4</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="questions-section">
-                <h3 class="questions-title">Domande selezionate</h3>
-                <ul class="selected-questions">
-                    <li>
-                        Quale KPI è fondamentale per un Sales Manager?
-                        <span class="delete-btn" title="Elimina domanda">&times;</span>
-                    </li>
-                    <li>
-                        Come gestisci un team di vendita?
-                        <span class="delete-btn" title="Elimina domanda">&times;</span>
-                    </li>
-                    <li>
-                        Descrivi una tua esperienza di successo nella vendita.
-                        <span class="delete-btn" title="Elimina domanda">&times;</span>
-                    </li>
-                </ul>
-                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/listadomande'" title="Aggiungi Domande">
-                    <i class="fas fa-plus"></i>
-                </button>
-            </div>
-            <button onclick="inviaPosizione()" class="create-btn">Crea Posizione</button>
-        </form>
-    </div>
 
-    <script>
+					<select id="provincia-input" name="provincia" class="form-select"
+						required onchange="updateRegione()">
+						<option value="">-- Seleziona Provincia --</option>
+						<c:forEach var="province" items="${provinceList}">
+							<option value="${province}"
+								${province == selectedProvincia ? 'selected' : ''}>${province}</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-label" for="settore-input">Settore:</label>
+				<div class="dropdown" id="settore-dropdown">
+					<input id="settore-input" type="text"
+						class="form-input dropdown-toggle"
+						placeholder="Seleziona o digita un settore"
+						aria-haspopup="listbox" aria-expanded="false" autocomplete="off"
+						required>
+					<ul class="dropdown-menu" role="listbox"
+						aria-labelledby="settore-input">
+						<c:forEach var="settore" items="${settoreList}">
+							<li role="option" tabindex="0">${settore}</li>
+						</c:forEach>
+						<li role="option" tabindex="0">Opzione 1</li>
+						<li role="option" tabindex="0">Opzione 2</li>
+						<li role="option" tabindex="0">Opzione 3</li>
+						<li role="option" tabindex="0">Opzione 4</li>
+					</ul>
+				</div>
+			</div>
+			<div class="questions-section">
+				<h3 class="questions-title">Domande selezionate</h3>
+				<ul class="selected-questions">
+					<c:forEach var="domanda" items="${domande}">
+						<li>${domanda.domanda} <span class="delete-btn"
+							title="Elimina domanda">&times;</span>
+						</li>
+					</c:forEach>
+				</ul>
+				<button type="button" class="manage-questions-btn"
+					onclick="location.href='${pageContext.request.contextPath}/listadomande'"
+					title="Aggiungi Domande">
+					<i class="fas fa-plus"></i>
+				</button>
+			</div>
+			<button onclick="inviaPosizione()" class="create-btn">Crea
+				Posizione</button>
+		</form>
+	</div>
+
+	<script>
         function updateRegione() {
             var provincia = document.getElementById('provincia-input').value;
             if (provincia) {

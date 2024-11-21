@@ -2,6 +2,9 @@ package wisteria;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import domanda.Domanda;
+import domanda.DomandaDAO;
 import posizione.Posizione;
 import posizione.PosizioneDAO;
 import user.User;
@@ -16,61 +22,63 @@ import user.User;
 @WebServlet("/creaposizione")
 public class creaposizione extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-    private PosizioneDAO dao;
+	public creaposizione() {
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        dao = new PosizioneDAO();
-    }
+	}
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        // Parte connessione provincia-regione
-        String provincia = request.getParameter("provincia");
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Parte connessione provincia-regione
+		/*String provincia = request.getParameter("provincia");
         String regione = "";
 
         if (provincia != null && !provincia.trim().isEmpty()) {
             regione = dao.getRegioneByProvincia(provincia);
-        }
+        }*/
 
-        
-        
-        
-        
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+		PosizioneDAO dao=new PosizioneDAO();        
 
-        if (user == null || user.accediACreaPosizione() == false) {
-            response.sendRedirect("home");
-        } else {
-            ArrayList<String> regionList = dao.getAllRegioni();
-            ArrayList<String> provinceList = dao.getAllProvince();
-            ArrayList<String> professionList = dao.getAllProfessioni();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
 
-            request.setAttribute("regionList", regionList);
-            request.setAttribute("provinceList", provinceList);
-            request.setAttribute("professionList", professionList);
-            request.setAttribute("title", "Crea Posizione");
-            request.setAttribute("content", "creaposizione.jsp");
-            request.setAttribute("headerPath", user.getHeader());
+		if (user == null || user.accediACreaPosizione() == false) {
+			response.sendRedirect("home");
+		} else {
+			ArrayList<String> regionList = dao.getAllRegioni();
+			ArrayList<String> provinceList = dao.getAllProvince();
+			ArrayList<String> professionList = dao.getAllProfessioni();
 
-            // Se una Provincia è selezionata, imposta gli attributi per pre-popolare la Regione
-            if (provincia != null && !provincia.trim().isEmpty()) {
+			String[] selectedQuestions = request.getParameterValues("question");
+
+			if(selectedQuestions!=null) {
+				DomandaDAO daoDomande=new DomandaDAO();
+				HashMap<Integer, Domanda> domandeMap= daoDomande.getDomandeFromIds(selectedQuestions);
+				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
+				System.out.println(domande.size());
+				request.setAttribute("domande", domande);
+			}
+
+			request.setAttribute("regionList", regionList);
+			request.setAttribute("provinceList", provinceList);
+			request.setAttribute("professionList", professionList);
+			request.setAttribute("title", "Crea Posizione");
+			request.setAttribute("content", "creaposizione.jsp");
+			request.setAttribute("headerPath", user.getHeader());
+
+			// Se una Provincia è selezionata, imposta gli attributi per pre-popolare la Regione
+			/*if (provincia != null && !provincia.trim().isEmpty()) {
                 request.setAttribute("selectedProvincia", provincia);
                 request.setAttribute("selectedRegione", regione);
-            }
+            }*/
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-            dispatcher.forward(request, response);
-        }
-    }
+			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String titolo = request.getParameter("titolo");
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*String titolo = request.getParameter("titolo");
         String descrizione = request.getParameter("descrizione");
         String regione = request.getParameter("regione");
         String provincia = request.getParameter("provincia");
@@ -81,9 +89,38 @@ public class creaposizione extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
+        PosizioneDAO dao=new PosizioneDAO();
         dao.insertPosizione(posizione, user.getUsername());
 
-        // Redirect a una pagina di successo dopo l'inserimento
-        response.sendRedirect("successoCreazione.jsp"); // Assicurati di creare questa pagina
+
+        response.sendRedirect("successoCreazione.jsp");*/
+	}
+	
+	@Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Recupera l'ID della posizione dai parametri della richiesta
+        String posizioneId = request.getParameter("posizioneId");
+ 
+        if (posizioneId != null) {
+            try {
+                // Istanzia il DAO per gestire le operazioni sul database
+                PosizioneDAO dao = new PosizioneDAO();
+               
+                // Elimina la posizione dal database
+                dao.deletePosizione(Integer.parseInt(posizioneId));
+ 
+                // Imposta lo stato della risposta a 200 (successo)
+                response.setStatus(HttpServletResponse.SC_OK);
+            } catch (NumberFormatException e) {
+                // Se l'ID non è valido, restituisce un errore 400 (Bad Request)
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            } catch (Exception e) {
+                // In caso di errore generico, restituisce un errore 500 (Internal Server Error)
+                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            }
+        } else {
+            // Se l'ID non è stato fornito, restituisce un errore 400 (Bad Request)
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
     }
 }
