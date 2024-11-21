@@ -30,7 +30,7 @@ public class test extends HttpServlet {
 		User user=(User)session.getAttribute("user");
 
 		if(user==null || request.getParameter("idPosizione")==null || request.getParameter("nomePosizione")==null || !user.eseguiTest()) {			
-			response.sendRedirect("home");
+			response.sendRedirect("login");
 		}else {
 			String header=user.getHeader();
 

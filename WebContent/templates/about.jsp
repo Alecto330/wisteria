@@ -100,7 +100,11 @@
 					class="italia">
 			</div>
 		</div>
+		<div class="btn-container">
+        	<a href="/wisteria/home" class="btn btn-back" href="javascript:history.back();">
+            	Torna alla Home
+        	</a>
+    	</div>
 	</section>
-
 </body>
 </html>

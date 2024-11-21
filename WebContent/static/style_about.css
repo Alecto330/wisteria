@@ -295,6 +295,39 @@ body {
     height: auto;
     margin-bottom: 0;
 }
+.btn-back {
+    width: auto;
+    margin-top: 10vh;
+    padding: 15px 30px; /* Aumentato il padding per dare più spazio al pulsante */
+    font-size: 20px; /* Aumentato il font per migliorare la leggibilità */
+    font-weight: bold;
+    background-color: #8b2cff; /* Colore di sfondo simile al tema */
+    color: #eeeeee;
+    border: 1px;
+    border-radius: 10px; /* Angoli arrotondati */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
+    text-transform: uppercase; /* Aggiunto testo maiuscolo per migliorare l'aspetto */
+}
+
+.btn-back:hover {
+    background-color: #312e81; /* Colore al passaggio del mouse */
+    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
+    color: #eeeeee;
+}
+.btn-back:active {
+    transform: scale(1); /* Ripristina la dimensione normale quando il pulsante viene premuto */
+}
+.btn-back:focus {
+    outline: none;
+    box-shadow: 0 0 10px #8b2cff; /* Effetto di focus con sfumatura viola */
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+	margin-top: 20px;
+}
 .footer{
     margin-top: 0;
 }
