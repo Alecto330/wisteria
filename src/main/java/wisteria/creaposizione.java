@@ -14,56 +14,76 @@ import posizione.PosizioneDAO;
 import user.User;
 
 @WebServlet("/creaposizione")
-public class creaposizione extends HttpServlet{
+public class creaposizione extends HttpServlet {
 
-	public creaposizione() {
+    private static final long serialVersionUID = 1L;
+    private PosizioneDAO dao;
 
-	}
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        dao = new PosizioneDAO();
+    }
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		User user=(User)session.getAttribute("user");
+        // Parte connessione provincia-regione
+        String provincia = request.getParameter("provincia");
+        String regione = "";
 
-		if(user==null || user.accediACreaPosizione()==false) {
-			response.sendRedirect("home");
-		}else {
-			PosizioneDAO dao=new PosizioneDAO();
-			ArrayList<String> regionList=dao.getAllRegioni();
-			ArrayList<String> provinceList=dao.getAllProvince();
-			ArrayList<String> professionList=dao.getAllProfessioni();
+        if (provincia != null && !provincia.trim().isEmpty()) {
+            regione = dao.getRegioneByProvincia(provincia);
+        }
 
-			request.setAttribute("regionList", regionList);
-			request.setAttribute("provinceList", provinceList);
-			request.setAttribute("professionList", professionList);
-			request.setAttribute("title", "Crea Posizione");
-			request.setAttribute("content", "creaposizione.jsp");
-			request.setAttribute("headerPath", user.getHeader());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-			dispatcher.forward(request, response);
-		}
-	}
+        
+        
+        
+        
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
+        if (user == null || user.accediACreaPosizione() == false) {
+            response.sendRedirect("home");
+        } else {
+            ArrayList<String> regionList = dao.getAllRegioni();
+            ArrayList<String> provinceList = dao.getAllProvince();
+            ArrayList<String> professionList = dao.getAllProfessioni();
 
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            request.setAttribute("regionList", regionList);
+            request.setAttribute("provinceList", provinceList);
+            request.setAttribute("professionList", professionList);
+            request.setAttribute("title", "Crea Posizione");
+            request.setAttribute("content", "creaposizione.jsp");
+            request.setAttribute("headerPath", user.getHeader());
 
-		String titolo=request.getParameter("titolo");
-		String descrizione=request.getParameter("descrizione");
-		String regione=request.getParameter("regione");
-		String provincia=request.getParameter("provincia");
-		String settore=request.getParameter("settore");
-		
-		Posizione posizione=new Posizione(0, titolo, descrizione, settore, provincia, regione);
+            // Se una Provincia è selezionata, imposta gli attributi per pre-popolare la Regione
+            if (provincia != null && !provincia.trim().isEmpty()) {
+                request.setAttribute("selectedProvincia", provincia);
+                request.setAttribute("selectedRegione", regione);
+            }
 
-		HttpSession session = request.getSession();
-		User user=(User)session.getAttribute("user");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+            dispatcher.forward(request, response);
+        }
+    }
 
-		PosizioneDAO dao=new PosizioneDAO();
-		dao.insertPosizione(posizione, user.getUsername());
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String titolo = request.getParameter("titolo");
+        String descrizione = request.getParameter("descrizione");
+        String regione = request.getParameter("regione");
+        String provincia = request.getParameter("provincia");
+        String settore = request.getParameter("settore");
 
-	}
+        Posizione posizione = new Posizione(0, titolo, descrizione, settore, provincia, regione);
 
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
+        dao.insertPosizione(posizione, user.getUsername());
+
+        // Redirect a una pagina di successo dopo l'inserimento
+        response.sendRedirect("successoCreazione.jsp"); // Assicurati di creare questa pagina
+    }
 }

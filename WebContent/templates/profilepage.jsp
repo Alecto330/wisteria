@@ -437,17 +437,11 @@
 				        },
 				        body: formData,
 				    })
-				    .then(response => {
-				        if (!response.ok) {
-				            return response.text().then(err => {
-				                throw new Error(`Server error: ${err}`);
-				            });
+					.then(response => {
+					  if (response.ok) {
+						  location.reload();
 				        }
-				        return response.text();
-				    })
-				    .then(data => {
-				        console.log('Dati aggiornati con successo:', data);
-				    })
+					})
 				    .catch(error => {
 				        console.error('Errore:', error);
 				    });

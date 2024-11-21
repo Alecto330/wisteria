@@ -220,6 +220,24 @@ public class PosizioneDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
+	
+    public String getRegioneByProvincia(String provincia) {
+        String regione = "";
+        try {
+            DatabaseConnection database = new DatabaseConnection();
+            Connection connection = database.getConnection();
+            String query = "SELECT regione FROM Localita WHERE provincia = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, provincia);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                regione = rs.getString("regione");
+            }
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return regione;
+    }
 }
