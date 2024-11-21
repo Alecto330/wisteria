@@ -150,41 +150,58 @@
             });
         }*/
         
-        function submitSelectedQuestions() {
-            // Seleziona tutte le checkbox spuntate
-            const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked');
-
-            // Controlla se ci sono checkbox selezionate
-            if (selectedCheckboxes.length === 0) {
-                alert('Seleziona almeno una domanda prima di inviare.');
-                return;
-            }
-
-            // Crea un array per le domande selezionate
-            const selectedQuestions = [];
-            
-            selectedCheckboxes.forEach(checkbox => {
-                selectedQuestions.push(encodeURIComponent(checkbox.value)); // Aggiungi i valori delle checkbox all'array, codificando i valori per l'URL
-            });
-
-            // Crea l'URL con i parametri di query
-            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&');
-
-            // Invia la richiesta GET con l'URL costruito
-            fetch(url, {
-                method: 'GET'
-            })
+        function submitSelectedQuestions() { 
+            const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+         
+            if (selectedCheckboxes.length === 0) { 
+                alert('Seleziona almeno una domanda prima di inviare.'); 
+                return; 
+            } 
+         
+            const selectedQuestions = []; 
+             
+            selectedCheckboxes.forEach(checkbox => { 
+                selectedQuestions.push(encodeURIComponent(checkbox.value)); 
+            }); 
+         
+            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&'); 
+         
+            fetch(url, { 
+                method: 'GET',
+                headers: {
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                },
+                credentials: 'same-origin' // Important for session handling
+            }) 
             .then(response => {
-                const url = response.url;
-                window.location.href = url;
+                // Log full response details
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+
+                // Check content type
+                const contentType = response.headers.get('content-type');
+                console.log('Content Type:', contentType);
+
+                // If it's an HTML response, assume it's the page we want
+                if (contentType && contentType.includes('text/html')) {
+                    return response.text().then(html => {
+                        // Optional: replace page content
+                        document.open();
+                        document.write(html);
+                        document.close();
+                    });
+                } else if (response.redirected) {
+                    // If redirected, go to the new URL
+                    window.location.href = response.url;
+                } else {
+                    // Handle other response types
+                    throw new Error('Unexpected response type');
+                }
             })
-            .then(data => {
-                console.log(data); // Stampa la risposta del server (opzionale)
-            })
-            .catch(error => {
-                console.error('Errore:', error);
-                alert('Si è verificato un errore durante l\'invio.');
-            });
+            .catch(error => { 
+                console.error('Errore:', error); 
+                alert('Si è verificato un errore durante l\'invio: ' + error.message); 
+            }); 
         }
 
 
