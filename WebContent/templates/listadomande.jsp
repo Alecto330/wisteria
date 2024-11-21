@@ -109,46 +109,6 @@
             });
         });
 
-        // Funzione per eseguire azioni sulle domande selezionate
-        /*function submitSelectedQuestions() {
-        	
-        	 const formData = new URLSearchParams();
-            const form = document.getElementById('questionsForm');
-            const selected = Array.from(form.selectedQuestions)
-                                  .filter(checkbox => checkbox.checked)
-                                  .map(checkbox => checkbox.value);
-            
-            
-            selected.forEach(checkbox => {
-    	        const domandaId = checkbox.getAttribute("data-domanda-id"); 
-    	        
-    	        formData.append(domandaId, rispostaId);
-    	    });
-            
-            
-            if (selected.length === 0) {
-                alert('Seleziona almeno una domanda.');
-                return;
-            }
-            console.log('Domande selezionate:', selected);
-            
-            fetch('/wisteria/creaposizione', {  // Replace '/your-servlet-url' with your actual servlet URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(selected.join(',')) // Join array and send as a comma-separated string
-            })
-            //.then(response => response.text())
-            .then(data => {
-                console.log('Response from server:', data);
-                // Handle the server response here
-            })
-            .catch(error => {
-                console.error('Error submitting data:', error);
-                // Handle error here
-            });
-        }*/
         
         function submitSelectedQuestions() { 
             const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
@@ -162,40 +122,37 @@
              
             selectedCheckboxes.forEach(checkbox => { 
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
-            }); 
+            });
          
-            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&'); 
+            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&')+'&titolo=${titolo}&descrizione=${descrizione}'; 
          
             fetch(url, { 
                 method: 'GET',
                 headers: {
                     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
                 },
-                credentials: 'same-origin' // Important for session handling
+                credentials: 'same-origin'
             }) 
             .then(response => {
-                // Log full response details
-                console.log('Response status:', response.status);
-                console.log('Response headers:', response.headers);
-
-                // Check content type
-                const contentType = response.headers.get('content-type');
-                console.log('Content Type:', contentType);
-
-                // If it's an HTML response, assume it's the page we want
-                if (contentType && contentType.includes('text/html')) {
-                    return response.text().then(html => {
-                        // Optional: replace page content
-                        document.open();
-                        document.write(html);
-                        document.close();
-                    });
-                } else if (response.redirected) {
-                    // If redirected, go to the new URL
+                // Check if the response is a redirect
+                if (response.redirected) {
+                    // If server sent a redirect, follow it
                     window.location.href = response.url;
-                } else {
-                    // Handle other response types
-                    throw new Error('Unexpected response type');
+                    return;
+                }
+                
+                // Otherwise, process the response
+                return response.text();
+            })
+            .then(html => {
+                if (html) {
+                    // Update URL without page reload
+                    history.pushState(null, '', url);
+                    
+                    // Update page content
+                    document.open();
+                    document.write(html);
+                    document.close();
                 }
             })
             .catch(error => { 
