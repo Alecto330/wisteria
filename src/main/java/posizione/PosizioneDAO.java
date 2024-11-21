@@ -61,7 +61,7 @@ public class PosizioneDAO {
 				whereConditions.add("Localita.regione = ?");
 			}
 			if (professione != null && !professione.isEmpty()) {
-				whereConditions.add("titolo = ?");
+				whereConditions.add("settore = ?");
 			}
 
 			if (!whereConditions.isEmpty()) {
@@ -89,7 +89,10 @@ public class PosizioneDAO {
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String titolo = resultSet.getString("titolo");
-				String descrizioneVal = resultSet.getString("descrizione").substring(0, 200).concat("...");
+				String descrizioneVal = resultSet.getString("descrizione");
+				if(descrizioneVal.length()>=200) {
+					descrizioneVal=descrizioneVal.substring(0, 200).concat("...");
+				}				
 				String settore = resultSet.getString("settore");
 				String provinciaVal = resultSet.getString("provincia");
 				String regioneVal = resultSet.getString("regione");
