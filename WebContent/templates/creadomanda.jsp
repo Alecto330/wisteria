@@ -59,6 +59,10 @@
         </div>
 
         <button class="create-btn" onclick="location.href='<%= request.getContextPath() %>/templates/cercaDomande.jsp'">Crea</button>
+
+        <a class="back-button" href="javascript:history.back();"> 
+        <i class="fas fa-arrow-left"></i>
+		</a>
     </div>
 
     <script>

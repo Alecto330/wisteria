@@ -86,7 +86,7 @@
                     <li>Come gestisci un team di vendita?</li>
                     <li>Descrivi una tua esperienza di successo nella vendita.</li>
                 </ul>
-                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/templates/cercaDomande.jsp'">
+                <button type="button" class="manage-questions-btn questions-btn-2" onclick="location.href='${pageContext.request.contextPath}/templates/cercaDomande.jsp'">
                     Gestisci domande
                 </button>
             </div>
@@ -95,6 +95,9 @@
 
             <button onclick="inviaPosizione()"class="create-btn">Crea Posizione</button>
         </form>
+        <a class="back-button" href="javascript:history.back();"> 
+        <i class="fas fa-arrow-left"></i>
+		</a>
     </div>
 
 </body>
