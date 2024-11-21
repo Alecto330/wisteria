@@ -31,7 +31,7 @@ public class listadomande extends HttpServlet{
 		if(user==null) {
 			response.sendRedirect("home");
 		}else {
-			
+
 			String titolo=request.getParameter("titolo");		
 			String descrizione=request.getParameter("descrizione");	
 			
@@ -39,7 +39,6 @@ public class listadomande extends HttpServlet{
 			HashMap<Integer, Domanda> domande=dao.getDomande();
 			ArrayList<Domanda> questions=new  ArrayList<Domanda>(domande.values());
 			request.setAttribute("questions", questions);
-			
 			request.setAttribute("titolo", titolo);
 			request.setAttribute("descrizione", descrizione);
 			request.setAttribute("title", "Lista Domande");

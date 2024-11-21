@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style_creadomanda.css">
-    <title>Aggiungi Nuova Domanda</title>
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
     <style>
         /* Stile per il div dell'alert */
@@ -45,9 +44,6 @@
     </style>
 </head>
 <body>
-
-	<%@ include file="header.jsp"%>
-	
 	<div class="main-container-creadomanda">
         <h1 class="form-title">Aggiungi Domanda</h1>
 
@@ -149,11 +145,42 @@
 
             // Se il form è valido
             if (isValid) {
-                showAlert('Domanda aggiunta con successo!', 'success');
-                setTimeout(() => {
+	
+            	   // Estrai il testo della domanda e le risposte
+                const questionText = questionInput.value.trim();
+                const answers = Array.from(answerInputs).map(input => input.value.trim());
+
+                // Prepara i dati da inviare nel formato JSON
+                const formData = {
+                    question: questionText,
+                    answers: answers
+                };
+
+                // Invia i dati tramite POST
+                fetch('${pageContext.request.contextPath}/creadomanda', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Aggiungi qui la logica in caso di successo del POST
+                    console.log('Domanda aggiunta con successo:', data);
                     location.href = '${pageContext.request.contextPath}/listadomande';
-                }, 1300); // Redirect dopo 2 secondi
+                })
+                .catch(error => {
+                    // Aggiungi qui la logica in caso di errore
+                    console.error('Errore durante l\'invio della domanda:', error);
+                    showAlert('Errore durante l\'invio della domanda.');
+                });
+            	
             }
+            
+            
+            
+            
         }
 
         // Seleziona automaticamente il radio button quando si clicca su un campo di input risposta
@@ -164,8 +191,6 @@
             });
         });
     </script>
-	
-	<%@ include file="footer.jsp"%>
 
 </body>
 </html>

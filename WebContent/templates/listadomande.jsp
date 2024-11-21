@@ -1,18 +1,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Domande</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet"
-        href="${pageContext.request.contextPath}/static/style_cercaDomande.css">
-    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista Domande</title>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_cercaDomande.css">
+<link rel="icon"
+	href="${pageContext.request.contextPath}/assets/favicon.ico"
+	type="image/x-icon">
 </head>
 <body>
     <div class="container">
@@ -67,11 +71,60 @@
             </form>
         </div>
         <div class="actions-container">
-            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Aggiungi</button>
+            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Salva</button>
         </div>
     </div>
 
-    <script>
+	<script>
+    
+    function checkSelected() {
+        console.log("Checking selected questions...");
+        const params = new URLSearchParams(window.location.search);
+        const questions = params.getAll('question'); // Get all selected question IDs from the URL query
+
+        // Iterate through each checkbox and check if it matches a selected question
+        const checkboxes = document.querySelectorAll('.question-checkbox');
+        checkboxes.forEach(checkbox => {
+            if (questions.includes(checkbox.value)) {
+                checkbox.checked = true;
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure checkboxes are selected if needed on page load
+        checkSelected();
+        
+        const contents = document.querySelectorAll('.accordion-content');
+        contents.forEach(content => {
+            content.style.height = '0px';
+        });
+    });
+    
+    function nuovaDomanda(){
+    	 const params = new URLSearchParams(window.location.search);
+    	 const titolo=params.get('titolo');
+    	 const descrizione=params.get('descrizione');
+    	 
+    	 console.log(titolo);
+    	 console.log(descrizione);
+    	 
+    	 const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+      
+         const selectedQuestions = []; 
+          
+         selectedCheckboxes.forEach(checkbox => { 
+             selectedQuestions.push(encodeURIComponent(checkbox.value)); 
+         });
+         
+        const baseUrl = '${pageContext.request.contextPath}/creadomanda';
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+         
+        location.href = urlWithParams;
+    }
+
+    
+    
         function toggleAccordion(header) {
             if (event.target.type === 'checkbox') {
                 event.stopPropagation();
@@ -202,6 +255,43 @@
 
         window.addEventListener('popstate', setOptions);
         window.addEventListener('load', setOptions);
+
+
+
+window.addEventListener('scroll', function() {
+    const footer = document.querySelector('footer'); // Il tuo footer
+    const button = document.querySelector('.btn-add');
+
+    if (footer && button) {
+        const footerRect = footer.getBoundingClientRect(); // Ottieni la posizione del footer
+        const windowHeight = window.innerHeight; // Altezza della finestra di visualizzazione
+
+        // Se il footer è vicino al fondo della finestra
+        if (footerRect.top <= windowHeight && footerRect.top > 0) {
+            // Solo se il pulsante non è già in posizione assoluta, cambiamo la posizione
+            if (button.style.position !== 'absolute') {
+                button.style.position = 'absolute'; // Cambiamo a 'absolute'
+                button.style.bottom = (footerRect.height + 20) + 'px'; // Posizionalo sopra il footer
+                button.style.transition = 'none'; // Evitiamo transizioni rapide durante il cambio
+            }
+        } else {
+            // Quando il footer non è vicino, il bottone deve rimanere fisso
+            if (button.style.position !== 'fixed') {
+                button.style.position = 'fixed'; // Torniamo alla posizione 'fixed'
+                button.style.bottom = '20px'; // Mantienilo 20px sopra il fondo
+                button.style.transition = 'none';  // Transizione fluida per tornare
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+
     </script>
 </body>
 </html>
