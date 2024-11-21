@@ -28,6 +28,7 @@ public class creaposizione extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("test1");
 		// Parte connessione provincia-regione
 		/*String provincia = request.getParameter("provincia");
         String regione = "";
@@ -49,6 +50,10 @@ public class creaposizione extends HttpServlet {
 			ArrayList<String> professionList = dao.getAllProfessioni();
 
 			String[] selectedQuestions = request.getParameterValues("question");
+			
+			String titolo=request.getParameter("titolo");
+			String descrizione=request.getParameter("descrizione");
+			
 
 			if(selectedQuestions!=null) {
 				DomandaDAO daoDomande=new DomandaDAO();
@@ -56,7 +61,16 @@ public class creaposizione extends HttpServlet {
 				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
 				System.out.println(domande.size());
 				request.setAttribute("domande", domande);
+			}else {
+				/*DomandaDAO daoDomande=new DomandaDAO();
+				HashMap<Integer, Domanda> domandeMap= daoDomande.getDomande();
+				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
+				System.out.println(domande.size());
+				request.setAttribute("domande", domande);*/
 			}
+			
+			request.setAttribute("titolo", titolo);
+			request.setAttribute("descrizione", descrizione);
 
 			request.setAttribute("regionList", regionList);
 			request.setAttribute("provinceList", provinceList);

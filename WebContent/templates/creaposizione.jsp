@@ -35,14 +35,14 @@
 			<div class="form-group">
 				<label class="form-label" for="titolo-input">Titolo:</label> <input
 					name="titolo" type="text" class="form-input" id="titolo-input"
-					placeholder="Inserisci il titolo della posizione" required>
+					value="${titolo}" placeholder="Inserisci il titolo della posizione" required>
 			</div>
 
 			<div class="form-group">
 				<label class="form-label" for="descrizione-input">Descrizione:</label>
 				<textarea name="descrizione" class="form-input"
 					placeholder="Inserisci la descrizione" id="descrizione-input"
-					rows="4" required></textarea>
+					rows="4" required>${descrizione}</textarea>
 			</div>
 
 			<div class="form-group">
@@ -96,17 +96,29 @@
 					</c:forEach>
 				</ul>
 				<button type="button" class="manage-questions-btn"
-					onclick="location.href='${pageContext.request.contextPath}/listadomande'"
+					onclick="goToListaDomande()"
 					title="Aggiungi Domande">
 					<i class="fas fa-plus"></i>
 				</button>
 			</div>
-			<button onclick="inviaPosizione()" class="create-btn">Crea
-				Posizione</button>
 		</form>
 	</div>
 
 	<script>
+	
+    function goToListaDomande() {
+        // Get the input values
+        const titolo = encodeURIComponent(document.getElementById('titolo-input').value);
+        const descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
+
+        // Construct the URL with the additional parameters
+        const baseUrl = '${pageContext.request.contextPath}/listadomande';
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione;
+		console.log(urlWithParams);
+        // Redirect to the constructed URL
+        location.href = urlWithParams;
+    }
+	
         function updateRegione() {
             var provincia = document.getElementById('provincia-input').value;
             if (provincia) {

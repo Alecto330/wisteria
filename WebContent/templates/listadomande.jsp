@@ -109,82 +109,56 @@
             });
         });
 
-        // Funzione per eseguire azioni sulle domande selezionate
-        /*function submitSelectedQuestions() {
-        	
-        	 const formData = new URLSearchParams();
-            const form = document.getElementById('questionsForm');
-            const selected = Array.from(form.selectedQuestions)
-                                  .filter(checkbox => checkbox.checked)
-                                  .map(checkbox => checkbox.value);
-            
-            
-            selected.forEach(checkbox => {
-    	        const domandaId = checkbox.getAttribute("data-domanda-id"); 
-    	        
-    	        formData.append(domandaId, rispostaId);
-    	    });
-            
-            
-            if (selected.length === 0) {
-                alert('Seleziona almeno una domanda.');
-                return;
-            }
-            console.log('Domande selezionate:', selected);
-            
-            fetch('/wisteria/creaposizione', {  // Replace '/your-servlet-url' with your actual servlet URL
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(selected.join(',')) // Join array and send as a comma-separated string
-            })
-            //.then(response => response.text())
-            .then(data => {
-                console.log('Response from server:', data);
-                // Handle the server response here
-            })
-            .catch(error => {
-                console.error('Error submitting data:', error);
-                // Handle error here
-            });
-        }*/
         
-        function submitSelectedQuestions() {
-            // Seleziona tutte le checkbox spuntate
-            const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked');
-
-            // Controlla se ci sono checkbox selezionate
-            if (selectedCheckboxes.length === 0) {
-                alert('Seleziona almeno una domanda prima di inviare.');
-                return;
-            }
-
-            // Crea un array per le domande selezionate
-            const selectedQuestions = [];
-            
-            selectedCheckboxes.forEach(checkbox => {
-                selectedQuestions.push(encodeURIComponent(checkbox.value)); // Aggiungi i valori delle checkbox all'array, codificando i valori per l'URL
+        function submitSelectedQuestions() { 
+            const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+         
+            if (selectedCheckboxes.length === 0) { 
+                alert('Seleziona almeno una domanda prima di inviare.'); 
+                return; 
+            } 
+         
+            const selectedQuestions = []; 
+             
+            selectedCheckboxes.forEach(checkbox => { 
+                selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
-
-            // Crea l'URL con i parametri di query
-            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&');
-
-            // Invia la richiesta GET con l'URL costruito
-            fetch(url, {
-                method: 'GET'
-            })
+         
+            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&')+'&titolo=${titolo}&descrizione=${descrizione}'; 
+         
+            fetch(url, { 
+                method: 'GET',
+                headers: {
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                },
+                credentials: 'same-origin'
+            }) 
             .then(response => {
-                const url = response.url;
-                window.location.href = url;
+                // Check if the response is a redirect
+                if (response.redirected) {
+                    // If server sent a redirect, follow it
+                    window.location.href = response.url;
+                    return;
+                }
+                
+                // Otherwise, process the response
+                return response.text();
             })
-            .then(data => {
-                console.log(data); // Stampa la risposta del server (opzionale)
+            .then(html => {
+                if (html) {
+                    // Update URL without page reload
+                    history.pushState(null, '', url);
+                    
+                    // Update page content
+                    document.open();
+                    document.write(html);
+                    document.close();
+                }
             })
-            .catch(error => {
-                console.error('Errore:', error);
-                alert('Si è verificato un errore durante l\'invio.');
-            });
+            .catch(error => { 
+                console.error('Errore:', error); 
+                alert('Si è verificato un errore durante l\'invio: ' + error.message); 
+            }); 
         }
 
 
