@@ -141,6 +141,7 @@ body {
    
     padding: 15px 30px; /* Aumentato il padding per dare più spazio al pulsante */
     font-size: 20px; /* Aumentato il font per migliorare la leggibilità */
+    font-weight: bold;
     background-color: rgba(214, 181, 255, 1); /* Colore di sfondo simile al tema */
     color: #0f0f0f;
     border: 1px solid rgba(214, 181, 255, 1);
@@ -165,7 +166,29 @@ body {
     outline: none;
     box-shadow: 0 0 10px rgba(139, 44, 255, 1); /* Effetto di focus con sfumatura viola */
 }
+.btn-back {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: background-color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 30px;
+    padding-left: 0px;
+    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
+    font-size: 20px;
+}
+.btn-back:hover {
+    color: #7b1fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+    transform: translateX(-5px);
+}
 
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2vw;
+    
+}
 
 
 

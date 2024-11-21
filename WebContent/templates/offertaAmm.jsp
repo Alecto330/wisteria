@@ -103,7 +103,11 @@
 
 			</div>
 		</div>
-
+		
 	</div>
+	<div class="btn-container">
+				<button class="btn btn-back" onclick="history.back()">← Torna
+					Indietro</button>
+		</div>
 </body>
 </html>

@@ -45,15 +45,18 @@ body {
 }
 
 .home-link {
-    font-size: 2vh;
+    font-size: 20px;
     color: #6b38d1;
-    text-decoration: none;
     display: inline-block;
     margin-top: 7vh;
+    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
+    font-weight: bold;
 }
 
-.register-home:hover {
-    text-decoration: underline;
+.home-link:hover {
+    transform: translateX(-5px);
+    color: #7b1fff;
+    text-decoration: none;
 }
 
 /* Progress bar */
@@ -68,8 +71,36 @@ body {
 .progress-bar {
     height: 100%;
     border-radius: 15px;
-    background-color: #6b38d1;  /* Colore viola */
     width: 0%; /* Impostazione iniziale della larghezza */
     transition: width 1s ease-in-out;  /* Animazione della larghezza con transizione fluida */
+
+    position: relative;
+    overflow: hidden;
+    transition: width 0.2s ease-in-out;
+
+    background: radial-gradient(circle, #312e81, #7e22ce);
+    animation: glow-pulse 2s infinite;
+    pointer-events: none;
+    z-index: 1;
+
+    background-size: 300% 100%;
+    animation: gradient-move 5s linear infinite;
+    pointer-events: none;
 }
 
+@keyframes glow-pulse {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+@keyframes gradient-move {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 150% 50%;
+    }
+}

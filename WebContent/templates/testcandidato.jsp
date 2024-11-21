@@ -57,6 +57,11 @@
 			<button type="button" class="submit-button" onclick="submitAnswers()">Invia</button>
 		</div>
 
+        <div class="btn-container">
+            <button class="btn btn-back" href="javascript:history.back();">
+                ← Torna Indietro
+            </button>
+        </div>
 	</div>
 
 	<script>

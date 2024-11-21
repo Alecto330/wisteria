@@ -37,6 +37,7 @@ body {
 	margin: 150px auto; /* Center the container horizontally */
 	width: 100%;
 	margin-top: 20vh;
+	margin-bottom: 5vh;
 }
 
 .card {
@@ -229,4 +230,29 @@ body {
 	margin: 0; /* Rimuove il margine di default dell'h1 */
 	
 	width: auto;
+}
+.btn-back {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: background-color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    border: none;
+    cursor: pointer;
+    padding-left: 0px;
+    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
+    font-size: 20px;
+}
+
+.btn-back:hover {
+    color: #7b1fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+    transform: translateX(-5px);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+	margin-top: 20px;
 }

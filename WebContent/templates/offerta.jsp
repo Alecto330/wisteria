@@ -63,8 +63,10 @@
         </div>
         
         <div class="btn-container">
-		<button class="btn btn-back" onclick="history.back()">← Torna
-			Indietro</button>
+            <a href="/wisteria/home" class="btn btn-back" href="javascript:history.back();">
+                ← Torna Indietro
+            </a>
+        </div>
 	</div>
 
     </div>

@@ -49,11 +49,13 @@ body {
     border-radius: 2vw;
     color:black;
     box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 .offer-card .btn-apply:hover {
     color:#fff;
     background-color:#8228ff;
-    border-color:#8228ff
+    border-color:#8228ff;
+    transform: scale(1.01);
 }
 .offer-card .row {
     display: flex;
@@ -90,10 +92,13 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     margin-top: 30px;
     padding-left: 0px;
+    transition: transform 0.3s ease;
+    font-size: 20px;
 }
 .btn-back:hover {
     color: rgb(123, 31, 255);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+    transform: translateX(-5px);
 }
 
 .btn-container {
