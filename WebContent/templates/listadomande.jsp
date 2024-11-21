@@ -67,7 +67,7 @@
             </form>
         </div>
         <div class="actions-container">
-            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Aggiungi</button>
+            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Salva</button>
         </div>
     </div>
 
@@ -202,6 +202,43 @@
 
         window.addEventListener('popstate', setOptions);
         window.addEventListener('load', setOptions);
+
+
+
+window.addEventListener('scroll', function() {
+    const footer = document.querySelector('footer'); // Il tuo footer
+    const button = document.querySelector('.btn-add');
+
+    if (footer && button) {
+        const footerRect = footer.getBoundingClientRect(); // Ottieni la posizione del footer
+        const windowHeight = window.innerHeight; // Altezza della finestra di visualizzazione
+
+        // Se il footer è vicino al fondo della finestra
+        if (footerRect.top <= windowHeight && footerRect.top > 0) {
+            // Solo se il pulsante non è già in posizione assoluta, cambiamo la posizione
+            if (button.style.position !== 'absolute') {
+                button.style.position = 'absolute'; // Cambiamo a 'absolute'
+                button.style.bottom = (footerRect.height + 20) + 'px'; // Posizionalo sopra il footer
+                button.style.transition = 'none'; // Evitiamo transizioni rapide durante il cambio
+            }
+        } else {
+            // Quando il footer non è vicino, il bottone deve rimanere fisso
+            if (button.style.position !== 'fixed') {
+                button.style.position = 'fixed'; // Torniamo alla posizione 'fixed'
+                button.style.bottom = '20px'; // Mantienilo 20px sopra il fondo
+                button.style.transition = 'none';  // Transizione fluida per tornare
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+
     </script>
 </body>
 </html>
