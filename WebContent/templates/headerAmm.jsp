@@ -55,6 +55,7 @@
 				</ul>
 
 			</nav>
+			<div class="scroll-line"></div>
 			<script>
                 const hamburger = document.getElementById("hamburger");
                 const menu = document.getElementById("menu");
@@ -71,6 +72,16 @@
                     }
                 });
             </script>
+            <script>
+			    window.addEventListener("scroll", function () {
+			        const scrollLine = document.querySelector(".scroll-line");
+			        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+			        scrollLine.style.width = scrollPercentage + "%"; // Aggiorna la larghezza della barra
+			    });
+			</script>
+            
 			<a href="${pageContext.request.contextPath}/home"
 				class="logo-container"> <span> <img
 					src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png"
