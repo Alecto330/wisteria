@@ -303,9 +303,9 @@ input[type="search"] {
     justify-content: center;
 }
 .logo-img{
-    height: 25vh;
+    height: 120%;
     width: auto;
-    margin: 0; /* Elimina margini extra */
+    margin: 0;
 }
 .navbar-items{
     margin-left: auto;
