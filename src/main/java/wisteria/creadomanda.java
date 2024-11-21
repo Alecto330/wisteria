@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import user.User;
 
@@ -41,6 +42,11 @@ public class creadomanda extends HttpServlet{
 		
 		
 		String nomeDomanda=request.getParameter("question");
+		String risposte=request.getParameter("answers");
+		String[] risposteArray=risposte.split(",");
+
+		
+		
 		System.out.println(nomeDomanda);
 	}
 

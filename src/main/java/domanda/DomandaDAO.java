@@ -267,5 +267,26 @@ public class DomandaDAO {
 
 		return domande;
 	}
+	
+	
+	/*public void insertDomandaRisposte(String domanda, String[] risposte){
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query = "INSERT INTO SiCandida (FK_Posizione, FK_Utente, punteggio, data) VALUES (?, ?, ?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, posizione);
+			preparedStatement.setString(2, utente);
+			preparedStatement.setInt(3, punteggio);
+			preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
+
+			preparedStatement.executeUpdate(); // Execute and get affected rows
+
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}*/
 
 }

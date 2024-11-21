@@ -150,25 +150,26 @@
                 const questionText = questionInput.value.trim();
                 const answers = Array.from(answerInputs).map(input => input.value.trim());
 
-                // Prepara i dati da inviare nel formato JSON
-                const formData = {
+                const formData = new URLSearchParams({
                     question: questionText,
                     answers: answers
-                };
-
+                });
+                
                 // Invia i dati tramite POST
                 fetch('${pageContext.request.contextPath}/creadomanda', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    body: JSON.stringify(formData)
+                    body: formData.toString(),
                 })
-                .then(response => response.json())
+                .then(response => {
+                	
+                })
                 .then(data => {
                     // Aggiungi qui la logica in caso di successo del POST
                     console.log('Domanda aggiunta con successo:', data);
-                    location.href = '${pageContext.request.contextPath}/listadomande';
+                    //location.href = '${pageContext.request.contextPath}/listadomande';
                 })
                 .catch(error => {
                     // Aggiungi qui la logica in caso di errore
