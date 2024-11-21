@@ -111,11 +111,12 @@
         const titolo = encodeURIComponent(document.getElementById('titolo-input').value);
         const descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
 
-        // Construct the URL with the additional parameters
+        const params = new URLSearchParams(window.location.search);
+        const questions=params.getAll('question');
+        
         const baseUrl = '${pageContext.request.contextPath}/listadomande';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione;
-		console.log(urlWithParams);
-        // Redirect to the constructed URL
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&'+questions.map(q => 'question=' + q).join('&');
+        
         location.href = urlWithParams;
     }
 	

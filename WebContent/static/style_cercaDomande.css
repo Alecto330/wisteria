@@ -273,7 +273,7 @@ input[type="search"] {
 .btn-add {
     width: auto;
     position: fixed;
-    bottom: 20px;
+    bottom: 20px; /* Inizialmente 20px dal fondo */
     left: 50%;
     transform: translateX(-50%);
     background: linear-gradient(135deg, #a200ff, #d400ff);
@@ -286,8 +286,9 @@ input[type="search"] {
     box-shadow: 0 8px 15px rgba(162, 0, 255, 0.4);
     cursor: pointer;
     z-index: 1000;
-    transition: all 0.3s ease, transform 0.2s ease;
+    transition: bottom 0.3s ease;
 }
+
 
 .btn-add:hover {
     background: linear-gradient(135deg, #d400ff, #ff00ff);
@@ -300,3 +301,7 @@ input[type="search"] {
     box-shadow: 0 6px 12px rgba(162, 0, 255, 0.4);
 }
 
+footer {
+    position: relative;
+    z-index: 10; /* Se il footer ha un alto z-index, aggiungi questo per garantire che il bottone sia sopra */
+}
