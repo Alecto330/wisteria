@@ -30,9 +30,9 @@
 			<div class="scroll-wrapper-classifica">
 				<div class="job-header" style="margin-top: 5px">
 					<h1 class="job-title">${posizione.titolo}</h1>
-					<button class="btn btn-primary" style="margin-left: auto;"
-						onclick="cancellaPosizione">Cancella</button>
-					<button class="btn btn-primary" onclick="ChiudiPosizione">Chiudi</button>
+					<button class="btn btn-primary" style="margin-left: auto; margin-right: 10px;"
+						onclick="handleDelete(${posizione.id})" title="Cancella">Cancella</button>
+					<button class="btn btn-primary" style="margin-right: 10px;" onclick="ChiudiPosizione">Chiudi Posizione</button>
 				</div>
 				<div class="job-meta">
 					<div class="meta-item">
@@ -109,5 +109,31 @@
 				<button class="btn btn-back" onclick="history.back()">← Torna
 					Indietro</button>
 		</div>
+	<script>
+		function handleDelete(id) {
+
+			const formData = new URLSearchParams();
+			if (confirm("Sei sicuro di voler eliminare questa posizione lavorativa?")) {
+				console.log(id);
+				formData.append('posizioneID', id);
+				console.log(formData.toString());
+				fetch('/wisteria/creaposizione', {
+					method: 'DELETE',
+					headers: {
+				            'Content-Type': 'application/x-www-form-urlencoded'
+				        },
+				        body: formData.toString()
+				})
+				.then(response => {
+					  if (response.ok) {
+						  location.reload();
+				        }
+				})
+				.catch(error => {
+					console.error("Errore:", error);
+				});
+			}
+		}
+	</script>
 </body>
 </html>
