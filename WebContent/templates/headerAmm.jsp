@@ -51,8 +51,6 @@
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/home"><i
 							class="fas fa-home"></i> Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/creadomanda"><i
-							class="fas fa-plus"></i> Crea Domande</a></li>
 					<li><a href="${pageContext.request.contextPath}/creaposizione"><i
 						class="fas fa-plus"></i> Crea Posizione</a></li>
 					<li><a href="${pageContext.request.contextPath}/visualizzacandidato"><i
