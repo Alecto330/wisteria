@@ -23,7 +23,10 @@ public class PosizioneDAO {
 			while(resultSet.next()) {
 				int id=resultSet.getInt("id");
 				String titolo=resultSet.getString("titolo");
-				String descrizione=resultSet.getString("descrizione").substring(0, 200).concat("...");// TODO mettere if
+				String descrizione=resultSet.getString("descrizione");
+				if(descrizione.length()>=200) {
+					descrizione=descrizione.substring(0, 200).concat("...");
+				}
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
 				String regione=resultSet.getString("regione");
@@ -41,7 +44,7 @@ public class PosizioneDAO {
 	}
 
 	public ArrayList<Posizione> getFilteredPosizioni(String descrizione, String regione, String professione) {
-		
+
 		ArrayList<Posizione> posizioni = new ArrayList<>();
 
 		try {
@@ -52,13 +55,13 @@ public class PosizioneDAO {
 			ArrayList<String> whereConditions = new ArrayList<>();
 
 			if (descrizione != null && !descrizione.isEmpty()) {
-				whereConditions.add("descrizione LIKE ? or titolo LIKE ?");
+				whereConditions.add("descrizione LIKE ? or titolo LIKE ? or settore LIKE ?");
 			}
 			if (regione != null && !regione.isEmpty()) {
 				whereConditions.add("Localita.regione = ?");
 			}
 			if (professione != null && !professione.isEmpty()) {
-				whereConditions.add("titolo = ?");
+				whereConditions.add("settore = ?");
 			}
 
 			if (!whereConditions.isEmpty()) {
@@ -71,6 +74,7 @@ public class PosizioneDAO {
 			if (descrizione != null && !descrizione.isEmpty()) {
 				String likePattern = "%" + descrizione + "%";
 				preparedStatement.setString(parameterIndex++, likePattern); // for descrizione LIKE ?
+				preparedStatement.setString(parameterIndex++, likePattern); // for titolo LIKE ?
 				preparedStatement.setString(parameterIndex++, likePattern); // for titolo LIKE ?
 			}
 
@@ -86,7 +90,10 @@ public class PosizioneDAO {
 			while (resultSet.next()) {
 				int id = resultSet.getInt("id");
 				String titolo = resultSet.getString("titolo");
-				String descrizioneVal = resultSet.getString("descrizione").substring(0, 200).concat("...");
+				String descrizioneVal = resultSet.getString("descrizione");
+				if(descrizioneVal.length()>=200) {
+					descrizioneVal=descrizioneVal.substring(0, 200).concat("...");
+				}				
 				String settore = resultSet.getString("settore");
 				String provinciaVal = resultSet.getString("provincia");
 				String regioneVal = resultSet.getString("regione");
@@ -179,7 +186,7 @@ public class PosizioneDAO {
 		}
 		return null;
 	}
-	
+
 	public ArrayList<String> getAllProvince() {
 
 		ArrayList<String> province=new ArrayList<String>();
@@ -204,9 +211,9 @@ public class PosizioneDAO {
 		}
 		return null;
 	}
-	
+
 	public void insertPosizione(Posizione posizione, String username) {
-		
+
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
@@ -221,23 +228,23 @@ public class PosizioneDAO {
 			e.printStackTrace();
 		}
 	}
-	
-    public String getRegioneByProvincia(String provincia) {
-        String regione = "";
-        try {
-            DatabaseConnection database = new DatabaseConnection();
-            Connection connection = database.getConnection();
-            String query = "SELECT regione FROM Localita WHERE provincia = ?";
-            PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, provincia);
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                regione = rs.getString("regione");
-            }
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return regione;
-    }
+
+	public String getRegioneByProvincia(String provincia) {
+		String regione = "";
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query = "SELECT regione FROM Localita WHERE provincia = ?";
+			PreparedStatement stmt = connection.prepareStatement(query);
+			stmt.setString(1, provincia);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				regione = rs.getString("regione");
+			}
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return regione;
+	}
 }

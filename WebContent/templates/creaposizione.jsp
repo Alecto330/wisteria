@@ -24,243 +24,13 @@
     <link rel="icon"
         href="${pageContext.request.contextPath}/assets/favicon.ico"
         type="image/x-icon">
-    
-    <style>
-        /* Stili esistenti */
-        @import
-            url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-        body {
-            height: 100%; /* Occupa tutta l'altezza disponibile */
-            width: 100%;
-            align-items: center; /* Centra verticalmente */
-            justify-content: center; /* Centra orizzontalmente */
-            background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.8), rgba(230, 230, 230, 0.8), rgba(165, 48, 255, 0.8)), url("../assets/bg-blurrato.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .main-container-creaposizione {
-            max-width: 65%; /* Limits the container width */
-            margin: 150px auto; /* Centers it horizontally and adds top margin */
-            padding: 2.5rem;
-            background-color: #e0c0ff;
-            border-radius: 25px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 90%; /* Sets the width to 90% of the parent up to max-width */
-        }
-
-        .form-title {
-            font-size: 1.8rem;
-            color: #333;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        /* Rimozione della griglia per i campi Titolo e Descrizione */
-        /* .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        } */
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: inline-block;
-            color: #333;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            border-bottom: 2px solid #6e41e2;
-            padding-bottom: 2px;
-        }
-
-        .form-input, .form-select, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            background: white;
-            transition: all 0.3s ease;
-            color: #333;
-        }
-
-        .form-input:focus, .form-select:focus, textarea:focus {
-            outline: none;
-            border-color: #6e41e2;
-            box-shadow: 0 0 0 3px rgba(110, 65, 226, 0.1);
-        }
-
-        .form-input::placeholder, textarea::placeholder {
-            color: #aaa;
-        }
-
-        .location-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .questions-section {
-            background-color: rgba(110, 65, 226, 0.1);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .questions-title {
-            font-size: 1.2rem;
-            color: #6e41e2;
-            margin-bottom: 1rem;
-        }
-
-        .selected-questions {
-            list-style-type: none;
-            padding: 0;
-            margin-bottom: 1rem;
-        }
-
-        .selected-questions li {
-            position: relative;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 0.95rem;
-            color: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .delete-btn {
-            color: #ff4d4d;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .delete-btn:hover {
-            color: #ff1a1a;
-        }
-
-        .manage-questions-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #6e41e2;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0 auto;
-        }
-
-        .manage-questions-btn:hover {
-            background-color: #5a35c8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(110, 65, 226, 0.2);
-        }
-
-        .create-btn {
-            display: block;
-            width: 100%;
-            max-width: 200px;
-            margin: 0 auto;
-            padding: 1rem;
-            background-color: #6e41e2;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .create-btn:hover {
-            background-color: #5a35c8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(110, 65, 226, 0.2);
-        }
-
-        /* Stili per il dropdown Settore migliorato */
-        .dropdown {
-            position: relative;
-            width: 100%;
-        }
-
-        .dropdown-toggle {
-            border-radius: 10px;
-            padding-right: 2.5rem; /* Spazio per l'icona */
-            position: relative;
-        }
-
-        .dropdown-toggle::after {
-            content: '\f0d7'; /* Icona freccia giù di Font Awesome */
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            color: #6e41e2;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
-            display: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .dropdown-menu li {
-            padding: 10px 15px;
-            cursor: pointer;
-        }
-
-        .dropdown-menu li:hover,
-        .dropdown-menu li.active {
-            background-color: #f0f0f0;
-        }
-
-        /* Stili per campo Regione disabilitato */
-        .form-select:disabled {
-            background-color: #e9ecef;
-            cursor: not-allowed;
-        }
-    </style>
-    
 </head>
 
 <body>
 
     <div class="main-container-creaposizione">
-        <h1 class="form-title">Aggiungi posizione</h1>
+        <h1 class="form-title">Crea una posizione</h1>
         <form action="${pageContext.request.contextPath}/inviaPosizione" method="post">
-            <!-- Campo Titolo -->
             <div class="form-group">
                 <label class="form-label" for="titolo-input">Titolo:</label>
                 <input name="titolo" type="text"
@@ -268,7 +38,6 @@
                     placeholder="Inserisci il titolo della posizione" required>
             </div>
 
-            <!-- Campo Descrizione -->
             <div class="form-group">
                 <label class="form-label" for="descrizione-input">Descrizione:</label>
                 <textarea name="descrizione" 
@@ -279,11 +48,9 @@
                     required></textarea>
             </div>
 
-            <!-- Campo Località -->
             <div class="form-group">
                 <label class="form-label" for="localita-input">Località:</label>
                 <div class="location-group">
-                    <!-- Select Regione -->
                     <select id="regione-input" name="regione" class="form-select" required ${selectedRegione != null && !selectedRegione.isEmpty() ? 'disabled' : ''}>
                         <option value="">-- Seleziona Regione --</option>
                         <c:forEach var="region" items="${regionList}">
@@ -291,7 +58,6 @@
                         </c:forEach>
                     </select> 
 
-                    <!-- Select Provincia con evento onchange -->
                     <select id="provincia-input" name="provincia" class="form-select" required onchange="updateRegione()">
                         <option value="">-- Seleziona Provincia --</option>
                         <c:forEach var="province" items="${provinceList}">
@@ -300,8 +66,6 @@
                     </select>
                 </div>
             </div>
-
-            <!-- Sezione Settore Migliorata -->
             <div class="form-group">
                 <label class="form-label" for="settore-input">Settore:</label>
                 <div class="dropdown" id="settore-dropdown">
@@ -319,7 +83,6 @@
                         <c:forEach var="settore" items="${settoreList}">
                             <li role="option" tabindex="0">${settore}</li>
                         </c:forEach>
-                        <!-- Opzioni statiche se necessario -->
                         <li role="option" tabindex="0">Opzione 1</li>
                         <li role="option" tabindex="0">Opzione 2</li>
                         <li role="option" tabindex="0">Opzione 3</li>
@@ -327,8 +90,6 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Sezione Domande (Modificata) -->
             <div class="questions-section">
                 <h3 class="questions-title">Domande selezionate</h3>
                 <ul class="selected-questions">
@@ -345,46 +106,35 @@
                         <span class="delete-btn" title="Elimina domanda">&times;</span>
                     </li>
                 </ul>
-                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/templates/cercaDomande.jsp'" title="Aggiungi Domande">
+                <button type="button" class="manage-questions-btn" onclick="location.href='${pageContext.request.contextPath}/listadomande'" title="Aggiungi Domande">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
-
-            <!-- Pulsante di Invio -->
             <button onclick="inviaPosizione()" class="create-btn">Crea Posizione</button>
         </form>
-        <a class="back-button" href="javascript:history.back();"> 
-        <i class="fas fa-arrow-left"></i>
-		</a>
     </div>
 
     <script>
         function updateRegione() {
             var provincia = document.getElementById('provincia-input').value;
             if (provincia) {
-                // Reindirizza alla stessa servlet con parametro 'provincia'
                 window.location.href = '${pageContext.request.contextPath}/creaposizione?provincia=' + encodeURIComponent(provincia);
             } else {
-                // Se nessuna Provincia è selezionata, ricarica la pagina senza parametri
                 window.location.href = '${pageContext.request.contextPath}/creaposizione';
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Gestione del dropdown Settore
             const dropdown = document.getElementById('settore-dropdown');
             const input = dropdown.querySelector('#settore-input');
             const list = dropdown.querySelector('.dropdown-menu');
             const items = Array.from(list.querySelectorAll('li'));
             let currentFocus = -1;
-
-            // Mostra il dropdown quando l'input è focalizzato
             input.addEventListener('focus', () => {
                 list.style.display = 'block';
                 input.setAttribute('aria-expanded', 'true');
             });
 
-            // Nasconde il dropdown quando si clicca fuori
             document.addEventListener('click', (e) => {
                 if (!dropdown.contains(e.target)) {
                     list.style.display = 'none';
@@ -394,7 +144,6 @@
                 }
             });
 
-            // Filtra le opzioni mentre l'utente digita
             input.addEventListener('input', () => {
                 const filter = input.value.toLowerCase();
                 let visibleCount = 0;
@@ -417,7 +166,6 @@
                 removeActive();
             });
 
-            // Popola l'input quando si clicca su un'opzione
             items.forEach(item => {
                 item.addEventListener('click', () => {
                     input.value = item.textContent;
@@ -435,7 +183,6 @@
                 });
             });
 
-            // Navigazione tramite tastiera
             input.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowDown') {
                     e.preventDefault();
@@ -465,25 +212,20 @@
                 items.forEach(item => item.classList.remove('active'));
             }
 
-            // Gestione di Regione e Provincia senza AJAX
             const regioneSelect = document.getElementById('regione-input');
             const provinciaSelect = document.getElementById('provincia-input');
 
             function handleProvinciaChange() {
                 if (provinciaSelect.value) {
-                    // La funzione updateRegione gestisce il reindirizzamento
                     updateRegione();
                 } else {
-                    // Se nessuna Provincia è selezionata, riabilita il campo Regione
                     regioneSelect.value = "";
                     regioneSelect.disabled = false;
                 }
             }
 
-            // Assegna l'evento onchange al campo Provincia
             provinciaSelect.addEventListener('change', handleProvinciaChange);
 
-            // Inizializza lo stato del campo Regione al caricamento della pagina
             function initializeRegione() {
                 var selectedRegione = '<c:out value="${selectedRegione}" />';
                 if (selectedRegione && selectedRegione !== "") {
@@ -497,13 +239,11 @@
 
             initializeRegione();
 
-            // Funzionalità per eliminare una domanda
             const deleteButtons = document.querySelectorAll('.delete-btn');
             deleteButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
                     const li = e.target.closest('li');
                     li.remove();
-                    // Se necessario, puoi aggiungere ulteriori logiche per aggiornare il backend
                 });
             });
         });
@@ -547,7 +287,6 @@
             })
             .then(data => {
                 console.log('Posizione salvata con successo:', data);
-                // FARE REINDIRIZZAMENTO IN BACK-END?
                 window.location.href = '${pageContext.request.contextPath}/home';
             })
             .catch(error => {

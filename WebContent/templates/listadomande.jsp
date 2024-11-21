@@ -47,54 +47,23 @@
                             <div class="selection-container">
                                 <input type="checkbox" class="question-checkbox" name="selectedQuestions" value="${question.id}">
                             </div>
-                            <h2 class="accordion-title">${question.testo}</h2>
+                            <h2 class="accordion-title">${question.domanda}</h2>
                             <i class="fas fa-chevron-down accordion-icon"></i>
                         </div>
                         <div class="accordion-content">
                             <ul class="answer-list">
                                 <c:forEach var="answer" items="${question.risposte}">
-                                    <li class="answer-item ${answer.corretta ? 'correct' : ''}">
-                                        <c:if test="${answer.corretta}">
+                                    <li class="answer-item" data-vof="${answer.vof ? 'true' : ''}">
+                                        <c:if test="${answer.vof}">
                                             <i class="fas fa-check-circle answer-icon"></i>
                                         </c:if>
-                                        <p class="answer-text">${answer.testo}</p>
+                                        <p class="answer-text">${answer.risposta}</p>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
                     </div>
                 </c:forEach>
-                
-                <%-- Domande di esempio per testing --%>
-                <c:if test="${empty questions}">
-                    <div class="accordion-item">
-                        <div class="accordion-header" onclick="toggleAccordion(this)">
-                            <div class="selection-container">
-                                <input type="checkbox" class="question-checkbox" name="selectedQuestions" value="sample1">
-                            </div>
-                            <h2 class="accordion-title">Domanda di Esempio 1</h2>
-                            <i class="fas fa-chevron-down accordion-icon"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <ul class="answer-list">
-                                <li class="answer-item">
-                                    <p class="answer-text">Risposta errata</p>
-                                </li>
-                                <li class="answer-item correct">
-                                    <i class="fas fa-check-circle answer-icon"></i>
-                                    <p class="answer-text">Risposta corretta</p>
-                                </li>
-                                <li class="answer-item">
-                                    <p class="answer-text">Risposta errata</p>
-                                </li>
-                                <li class="answer-item">
-                                    <p class="answer-text">Risposta errata</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Ripeti per altre domande di esempio -->
-                </c:if>
             </form>
         </div>
         <div class="actions-container">
