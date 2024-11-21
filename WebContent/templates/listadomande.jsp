@@ -32,8 +32,8 @@
                         <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
                             placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
                         <button class="btn btn-primary" onclick="performSearch()">Cerca</button>
-                        <button class="btn btn-primary" style="margin-left: 35%; width:3vw !important;" onclick="location.href='<%= request.getContextPath() %>/templates/creadomanda.jsp'">
-                            <i class="fa-solid fa-plus"></i>
+                        <button class="btn btn-primary" style="margin-left: 35%; width:auto;" onclick="location.href='<%= request.getContextPath() %>/templates/creadomanda.jsp'">
+                            Nuova
                         </button>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             </form>
         </div>
         <div class="actions-container">
-            <!-- <button class="btn btn-primary" onclick="submitSelectedQuestions()">Invia</button> -->
+            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Aggiungi</button>
         </div>
     </div>
 
