@@ -14,27 +14,38 @@ import user.User;
 
 @WebServlet("/creadomanda")
 public class creadomanda extends HttpServlet{
-	
+
 	public creadomanda() {
-		
+
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		User user=(User)session.getAttribute("user");
 
-		/*request.setAttribute("title", "Crea Domanda");
-		request.setAttribute("content", "about.jsp");
-		request.setAttribute("headerPath", header);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-		dispatcher.forward(request, response);*/
-		
-		response.sendRedirect("templates/creadomanda.jsp");
+		if(user!=null) {
+			request.setAttribute("title", "Crea Domanda");
+			request.setAttribute("content", "creadomanda.jsp");
+			request.setAttribute("headerPath", user.getHeader());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+			dispatcher.forward(request, response);
+		}else {
+			response.sendRedirect("home");
+		}
 	}
 	
-	
-	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String nomeDomanda=request.getParameter("question");
+		System.out.println(nomeDomanda);
+	}
+
+
+
+
 
 }

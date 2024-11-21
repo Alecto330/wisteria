@@ -268,5 +268,4 @@ public class DomandaDAO {
 		return domande;
 	}
 
-
 }

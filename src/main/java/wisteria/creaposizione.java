@@ -61,12 +61,6 @@ public class creaposizione extends HttpServlet {
 				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
 				System.out.println(domande.size());
 				request.setAttribute("domande", domande);
-			}else {
-				/*DomandaDAO daoDomande=new DomandaDAO();
-				HashMap<Integer, Domanda> domandeMap= daoDomande.getDomande();
-				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
-				System.out.println(domande.size());
-				request.setAttribute("domande", domande);*/
 			}
 			
 			request.setAttribute("titolo", titolo);
