@@ -30,69 +30,39 @@
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 
     <!-- CSS per la alert box personalizzata -->
-    <style>
-        .alert-box {
-            display: none;
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            background-color: #f44336;
-            color: #fff;
-            padding: 20px 25px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
-            text-align: center;
-            cursor: pointer; /* Permette di chiudere l'alert cliccandoci sopra */
-        }
-
-        .alert-box.success {
-            background-color: #4caf50;
-        }
-
-        .alert-box.show {
-            display: block;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-    </style>
 </head>
 
 <body>
 
     <!-- Alert Box Personalizzata -->
-    <div class="alert-box" id="alertBox"></div>
-
-    <%@ include file="header.jsp"%>
-    <div class="login-container">
-        <h2>Bentornato!</h2>
-        <form id="loginForm" action="${pageContext.request.contextPath}/login"
-            method="POST">
-
-            <label for="email">Email</label>
-            <input type="email" id="email"
-                name="email" value="${email}" placeholder="Inserisci la tua mail"
-                required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="${password}"
-                placeholder="Inserisci la tua password" required>
-
-            <button type="submit">Accedi</button>
-        </form>
-        <a href="${pageContext.request.contextPath}/register"
-            class="register-link">Registrati</a>
-    </div>
-
-    <div class="btn-container">
-        <button class="btn btn-back" onclick="history.back()">← Torna
-            Indietro</button>
-    </div>
-
+	    <div class="alert-box" id="alertBox"></div>
+	
+	    <%@ include file="header.jsp"%>
+	    <div class="login-container">
+	        <h2>Bentornato!</h2>
+	        <form id="loginForm" action="${pageContext.request.contextPath}/login"
+	            method="POST">
+	
+	            <label for="email">Email</label>
+	            <input type="email" id="email"
+	                name="email" value="${email}" placeholder="Inserisci la tua mail"
+	                required>
+	            <label for="password">Password</label>
+	            <input type="password" id="password" name="password" value="${password}"
+	                placeholder="Inserisci la tua password" required>
+	
+	            <button type="submit">Accedi</button>
+	            <a href="${pageContext.request.contextPath}/register"
+	            class="register-link">Registrati</a>
+	            <br>
+	            <br>
+	            <br>
+	            <a class="back-button"href="${pageContext.request.contextPath}/home"> <i
+					class="fas fa-arrow-left"></i>
+				</a>
+	        </form>
+	
+	    </div>
 
     <script type="text/javascript">
         window.addEventListener('load', function() {

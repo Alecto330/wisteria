@@ -28,7 +28,7 @@
                         <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
                             placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
                         <button class="btn btn-primary" onclick="performSearch()">Cerca</button>
-                        <button class="btn btn-primary" style="margin-left: 41.7%; width:auto;" onclick="location.href='<%= request.getContextPath() %>/templates/creadomanda.jsp'">
+                        <button class="btn btn-primary" style="margin-left: 41.7%; width:auto;" onclick="nuovaDomanda()">
                             Nuova
                         </button>
                     </div>
@@ -97,6 +97,7 @@
     	 const params = new URLSearchParams(window.location.search);
     	 const titolo=params.get('titolo');
     	 const descrizione=params.get('descrizione');
+    	 const provincia=params.get('provincia');
     	 
     	 console.log(titolo);
     	 console.log(descrizione);
@@ -110,7 +111,9 @@
          });
          
         const baseUrl = '${pageContext.request.contextPath}/creadomanda';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+        
+        console.log(urlWithParams);
          
         location.href = urlWithParams;
     }

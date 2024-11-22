@@ -28,15 +28,6 @@ public class creaposizione extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("test1");
-		String provincia = request.getParameter("provincia");
-		PosizioneDAO daopos = new PosizioneDAO();
-        String regione = "";
-
-        if (provincia != null && !provincia.trim().isEmpty()) {
-            regione = daopos.getRegioneByProvincia(provincia);
-        }
-
 		PosizioneDAO dao=new PosizioneDAO();        
 
 		HttpSession session = request.getSession();
@@ -53,6 +44,7 @@ public class creaposizione extends HttpServlet {
 			
 			String titolo=request.getParameter("titolo");
 			String descrizione=request.getParameter("descrizione");
+			String provincia=request.getParameter("provincia");
 			
 
 			if(selectedQuestions!=null) {
@@ -65,6 +57,7 @@ public class creaposizione extends HttpServlet {
 			
 			request.setAttribute("titolo", titolo);
 			request.setAttribute("descrizione", descrizione);
+			request.setAttribute("provincia", provincia);
 
 			request.setAttribute("regionList", regionList);
 			request.setAttribute("provinceList", provinceList);
@@ -72,13 +65,7 @@ public class creaposizione extends HttpServlet {
 			request.setAttribute("title", "Crea Posizione");
 			request.setAttribute("content", "creaposizione.jsp");
 			request.setAttribute("headerPath", user.getHeader());
-
-			// Se una Provincia è selezionata, imposta gli attributi per pre-popolare la Regione
-			if (provincia != null && !provincia.trim().isEmpty()) {
-                request.setAttribute("selectedProvincia", provincia);
-                request.setAttribute("selectedRegione", regione);
-            }
-
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
 		}
@@ -104,7 +91,7 @@ public class creaposizione extends HttpServlet {
         response.sendRedirect("successoCreazione.jsp");
 	}
 	
-	@Override
+	/*@Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recupera l'ID della posizione dai parametri della richiesta
         String posizioneId = request.getParameter("posizioneId");
@@ -130,5 +117,5 @@ public class creaposizione extends HttpServlet {
             // Se l'ID non è stato fornito, restituisce un errore 400 (Bad Request)
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
-    }
+    }*/
 }
