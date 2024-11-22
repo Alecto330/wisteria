@@ -267,9 +267,12 @@ public class DomandaDAO {
 	}
 	
 	
-	public void insertDomandaRisposte(String domanda, String[] risposte, int corretta){
+	public Domanda insertDomandaRisposte(String domanda, String[] risposte, int corretta){
 		
 		int domandaId=0;
+		int rispostaId=0;
+		boolean vof=false;
+		Domanda domandaOggetto=null;
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
@@ -284,35 +287,41 @@ public class DomandaDAO {
 
 			}
 			
+			
+			domandaOggetto=new Domanda(domandaId, domanda, 0);
+			
 			for(int i=0; i<risposte.length; i++) {
 				query = "INSERT INTO Risposta (risposta, VoF, FK_Domanda) VALUES (?, ?, ?)";
-				preparedStatement = connection.prepareStatement(query);
+				preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 				preparedStatement.setString(1, risposte[i]);
 				if (i == corretta) {
 					preparedStatement.setBoolean(2, true);
+					vof=true;
 				} else {
 					preparedStatement.setBoolean(2, false);
+					vof=false;
 				}
 				preparedStatement.setInt(3, domandaId);
 				preparedStatement.executeUpdate();
+
+			
+				generatedKeys = preparedStatement.getGeneratedKeys();
+				if (generatedKeys.next()) {
+					rispostaId = generatedKeys.getInt(1);
+
+				}
+				
+				Risposta risposta=new Risposta(rispostaId, risposte[i], vof);
+				domandaOggetto.getRisposte().add(risposta);
 			}
-			
-			
-			/*
-			for(String risposta: risposte) {
-				query = "INSERT INTO Risposta (risposta, VoF, FK_Domanda) VALUES (?, ?, ?)";
-				preparedStatement = connection.prepareStatement(query);
-				preparedStatement.setString(1, risposta);
-				preparedStatement.setBoolean(2, false);
-				preparedStatement.setInt(3, domandaId);
-				preparedStatement.executeUpdate();
-			}*/
-			
 
 			connection.close();
+			
+			return domandaOggetto;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return domandaOggetto;
 
 	}
 

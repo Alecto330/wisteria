@@ -1,104 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    <!-- Bootstrap per gli elementi -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <!-- Font-Awesome per le icone -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/style_creadomanda.css">
-    <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
-    <style>
-        /* Stile per il div dell'alert */
-        .alert-box {
-            display: none;
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            background-color: #f44336;
-            color: #fff;
-            padding: 20px 25px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
-            text-align: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Bootstrap per gli elementi -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<!-- Font-Awesome per le icone -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_creadomanda.css">
+<link rel="icon"
+	href="${pageContext.request.contextPath}/assets/favicon.ico"
+	type="image/x-icon">
+<style>
+/* Stile per il div dell'alert */
+.alert-box {
+	display: none;
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-100%);
+	background-color: #f44336;
+	color: #fff;
+	padding: 20px 25px;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: 'Poppins', sans-serif;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	opacity: 0;
+	transition: all 0.5s ease-in-out;
+	text-align: center;
+}
 
-        .alert-box.success {
-            background-color: #4caf50;
-        }
+.alert-box.success {
+	background-color: #4caf50;
+}
 
-        .alert-box.show {
-            display: block;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-    </style>
+.alert-box.show {
+	display: block;
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
+}
+</style>
 </head>
 <body>
 	<div class="main-container-creadomanda">
-        <h1 class="form-title">Aggiungi Domanda</h1>
+		<h1 class="form-title">Aggiungi Domanda</h1>
 
-        <form id="question-form">
-            <label class="question-label">Testo della domanda :</label>
-            <input type="text" class="question-input" id="question-input" placeholder="Inserisci la domanda">
+		<form id="question-form">
+			<label class="question-label">Testo della domanda :</label> <input
+				type="text" class="question-input" id="question-input"
+				placeholder="Inserisci la domanda">
 
-            <div class="answers-container">
-                <div class="answer-group">
-                    <label class="radio-container">
-                        <input type="radio" name="answer" class="radio-input" checked>
-                        <span class="radio-mark"></span>
-                    </label>
-                    <input type="text" class="answer-input" placeholder="Inserisci la risposta">
-                </div>
+			<div class="answers-container">
+				<div class="answer-group">
+					<label class="radio-container"> <input type="radio"
+						name="answer" class="radio-input" checked> <span
+						class="radio-mark"></span>
+					</label> <input type="text" class="answer-input"
+						placeholder="Inserisci la risposta">
+				</div>
 
-                <div class="answer-group">
-                    <label class="radio-container">
-                        <input type="radio" name="answer" class="radio-input">
-                        <span class="radio-mark"></span>
-                    </label>
-                    <input type="text" class="answer-input" placeholder="Inserisci la risposta">
-                </div>
+				<div class="answer-group">
+					<label class="radio-container"> <input type="radio"
+						name="answer" class="radio-input"> <span
+						class="radio-mark"></span>
+					</label> <input type="text" class="answer-input"
+						placeholder="Inserisci la risposta">
+				</div>
 
-                <div class="answer-group">
-                    <label class="radio-container">
-                        <input type="radio" name="answer" class="radio-input">
-                        <span class="radio-mark"></span>
-                    </label>
-                    <input type="text" class="answer-input" placeholder="Inserisci la risposta">
-                </div>
+				<div class="answer-group">
+					<label class="radio-container"> <input type="radio"
+						name="answer" class="radio-input"> <span
+						class="radio-mark"></span>
+					</label> <input type="text" class="answer-input"
+						placeholder="Inserisci la risposta">
+				</div>
 
-                <div class="answer-group">
-                    <label class="radio-container">
-                        <input type="radio" name="answer" class="radio-input">
-                        <span class="radio-mark"></span>
-                    </label>
-                    <input type="text" class="answer-input" placeholder="Inserisci la risposta">
-                </div>
-            </div>
+				<div class="answer-group">
+					<label class="radio-container"> <input type="radio"
+						name="answer" class="radio-input"> <span
+						class="radio-mark"></span>
+					</label> <input type="text" class="answer-input"
+						placeholder="Inserisci la risposta">
+				</div>
+			</div>
 
-            <button type="button" class="create-btn" onclick="validateForm()" title="Aggiungi Domande">
-                Crea
-            </button>
+			<button type="button" class="create-btn" onclick="validateForm()"
+				title="Aggiungi Domande">Crea</button>
 
-            <a class="back-button" href="javascript:history.back();"> 
-                <i class="fas fa-arrow-left"></i>
-            </a>
-        </form>
-    </div>
+			<a class="back-button" href="javascript:history.back();"> <i
+				class="fas fa-arrow-left"></i>
+			</a>
+		</form>
+	</div>
 
-    <!-- Div per i messaggi di alert -->
-    <div id="alert-box" class="alert-box"></div>
+	<!-- Div per i messaggi di alert -->
+	<div id="alert-box" class="alert-box"></div>
 
-    <script>
+	<script>
         function showAlert(message, type = 'error') {
             const alertBox = document.getElementById('alert-box');
             alertBox.textContent = message;
@@ -157,30 +167,40 @@
             	   // Estrai il testo della domanda e le risposte
                 const questionText = questionInput.value.trim();
                 const answers = Array.from(answerInputs).map(input => input.value.trim());
+                
+                const params = new URLSearchParams(window.location.search);
+           	 	const titolo=params.get('titolo');
+           	 	const descrizione=params.get('descrizione');
+           	 	const domande=params.getAll('question');
 
                 const formData = new URLSearchParams({
                     question: questionText,
                     answers: answers,
-                    selectedAnswer: selectedAnswer 
+                    selectedAnswer: selectedAnswer,
+                    titolo: titolo,
+                    descrizione, descrizione,
+                    domande: domande
                 });
-
-                console.log(formData.toString())
                 
                 // Invia i dati tramite POST
                 fetch('${pageContext.request.contextPath}/creadomanda', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                    	 'Content-Type': 'application/x-www-form-urlencoded',
+                         'X-Requested-With': 'XMLHttpRequest'
                     },
                     body: formData.toString(),
                 })
                 .then(response => {
-                	
+                    if (response.redirected) {
+                        // If server sent a redirect, follow it
+                        window.location.href = response.url;
+                        return;
+                    }
+                    
                 })
                 .then(data => {
-                    // Aggiungi qui la logica in caso di successo del POST
-                    console.log('Domanda aggiunta con successo:', data);
-                    //location.href = '${pageContext.request.contextPath}/listadomande';
+
                 })
                 .catch(error => {
                     // Aggiungi qui la logica in caso di errore
