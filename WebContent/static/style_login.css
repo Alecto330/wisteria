@@ -91,10 +91,12 @@ body {
     margin-top: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .login-container button:hover {
     background-color: #954bd9;
+    transform: translateY(-2px);
 }
 
 /* Link per la registrazione */
@@ -104,10 +106,12 @@ body {
     text-decoration: none;
     display: inline-block;
     margin-top: 15px;
+    transition: all 0.3s ease;
 }
 
 .login-container .register-link:hover {
     text-decoration: underline;
+    transform: translateY(-2px);
 }
 
 /* Bottone Torna Indietro */
@@ -140,6 +144,7 @@ body {
     margin-top: 200px;
 }
 .back-button {
+    display: inline-block;
 	left: 25px;
 	bottom: 9px;
 	background: none;
@@ -148,15 +153,12 @@ body {
 	cursor: pointer;
 	font-size: 1.5rem;
 	padding: 0.5rem;
-	/*display: flex;
-align-items: center;
-justify-content: center;*/
-	transition: transform 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
 .back-button:hover {
 	color: #a560e5;
-	transform: translateX(-5px);
+    transform: translateX(-5px);
 }
 
 .alert-box {

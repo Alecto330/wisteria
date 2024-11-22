@@ -44,7 +44,7 @@ body {
 
 /* Titolo di benvenuto */
 .login-container h2 {
-    font-size: 1.7em;
+    font-size: 2.3em;
     margin-top: 1vw;
     margin-bottom: 3vw;
     color: #333;
@@ -108,6 +108,7 @@ body {
 
 /* Bottone Torna Indietro */
 .btn-back {
+    display: inline-block;
     background-color: transparent;
     color: rgb(0, 0, 0);
     font-weight: bold;
@@ -117,11 +118,13 @@ body {
     cursor: pointer;
     padding-left: 0px;
     margin: auto;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
 .btn-back:hover {
     color: rgb(123, 31, 255);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
+    transform: translateX(-5px);
 }
 
 .btn-container {
