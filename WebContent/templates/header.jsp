@@ -86,13 +86,12 @@
 						<!-- Se l'utente è autenticato, mostra l'icona -->
 						<div class="logout">
 							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div class="acc2">
-									<i></i>
-								</div>
+								<div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
 							</a>
 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
 								<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
+								<a class="dropdown-item" href="${pageContext.request.contextPath}/profilepage">Profilo</a>
 							</div>
 						</div>
 					</c:if>
