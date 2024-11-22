@@ -32,20 +32,13 @@
 			<div class="profile-image">
 				<div class="profile-icon">
 					<i class="fa-solid fa-user"></i>
-					<!-- Font Awesome user icon -->
 				</div>
-
-				<div class="camera-icon">
-					<i class="fa-solid fa-plus"></i>
-					<!-- Font Awesome plus icon -->
-				</div>
-
 			</div>
 		</div>
 
 		<div class="content-grid">
 			<div class="info-section">
-				<h2 class="section-title">Informazioni di contatto:</h2>
+				<h2 class="section-title">Informazioni dell'utente:</h2>
 
 				<div class="info-group">
 					<div class="info-label">Email:</div>
@@ -74,7 +67,7 @@
 
 				<div class="cv-section">
 					<div class="folder-icon">📁</div>
-					<div>Carica il tuo CV</div>
+					<div>Visualizza CV</div>
 				</div>
 			</div>
 
