@@ -25,10 +25,10 @@ body {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 2rem;
-	max-width: 80%;
-	margin: 150px auto;
+	max-width: 90%;
+	margin: 100px auto;
 	width: 100%;
-	margin-top: 20vh;
+	margin-top: 8vw;
 	margin-bottom: 5vh;
 }
 
@@ -157,8 +157,8 @@ body {
 }
 
 .ranking-title {
-	font-size: 1.8rem;
-	color: #333;
+	font-size: 3rem;
+	color: rgb(123, 31, 255);
 	margin-bottom: 2rem;
 	text-align: center;
 	font-weight: 600;
@@ -178,6 +178,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	transition: background-color 0.3s;
+	margin-bottom: 1rem; /* Spaziatura aggiunta */
 }
 
 .ranking-item:hover {
@@ -224,80 +225,192 @@ body {
 }
 
 .btn-back {
-    background-color: transparent;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    transition: background-color 0.3s ease, text-shadow 0.3s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    border: none;
-    cursor: pointer;
-    padding-left: 0px;
-    transition: background-color 0.3s, transform 0.3s ease-in-out; 
-    font-size: 20px;
+	background-color: transparent;
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	transition: background-color 0.3s ease, text-shadow 0.3s ease;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	border: none;
+	cursor: pointer;
+	padding-left: 0px;
+	transition: background-color 0.3s, transform 0.3s ease-in-out; 
+	font-size: 20px;
 }
 
 .btn-back:hover {
-    color: #7b1fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    transform: translateX(-5px);
+	color: #7b1fff;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	transform: translateX(-5px);
 }
 
 .btn-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 	margin-top: 20px;
 }
 
 .alert-box {
-    display: none;
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-100%);
-    background-color: #e0c0ff;
-    color: black;
-    padding: 20px 25px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-    text-align: center;
-    cursor: default;
+	display: none;
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-100%);
+	background-color: #e0c0ff;
+	color: black;
+	padding: 20px 25px;
+	border-radius: 8px;
+	font-size: 1rem;
+	font-family: 'Poppins', sans-serif;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	opacity: 0;
+	transition: all 0.5s ease-in-out;
+	text-align: center;
+	cursor: default;
 }
 
 .alert-box.show {
-    display: block;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+	display: block;
+	opacity: 1;
+	transform: translateX(-50%) translateY(0);
 }
 
 .alert-box button {
-    margin: 10px 5px;
-    font-size: 0.9rem;
-    padding: 10px 15px;
+	margin: 10px 5px;
+	font-size: 0.9rem;
+	padding: 10px 15px;
 }
 
 .btn-del {
-     margin-left: auto; 
-     margin-right: 10px; 
-     width: 3rem; 
-     height: 3rem; 
-     padding: 0; 
-     background: none; 
-     border: none; 
-     outline: none; 
-     appearance: none;
+	margin-left: auto; 
+	margin-right: 10px; 
+	width: 3rem; 
+	height: 3rem; 
+	padding: 0; 
+	background: none; 
+	border: none; 
+	outline: none; 
+	appearance: none;
 }
 
 .btn-del:focus {
-    outline: none;
-    box-shadow: none;
+	outline: none;
+	box-shadow: none;
 }
 
 .btn-del:hover .far.fa-trash-alt {
-    color: red;
+	color: red;
 }
+
+/* Stili del Podio */
+.podium-container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	gap: 20px;
+	margin-bottom: 2rem;
+}
+
+.podium-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+	border: 2px solid #6e41e2;
+	border-radius: 10px;
+	padding: 10px;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	position: relative;
+	width: 100px;
+	transition: transform 0.3s;
+}
+
+.podium-item:hover {
+	transform: translateY(-10px);
+}
+
+.podium-position-1 {
+	height: 200px;
+	background-color: #ffd700; /* Oro per il primo posto */
+	order: 2;
+}
+
+.podium-position-2 {
+	height: 180px;
+	background-color: #c0c0c0; /* Argento per il secondo posto */
+	order: 1;
+}
+
+.podium-position-3 {
+	height: 160px;
+	background-color: #cd7f32; /* Bronzo per il terzo posto */
+	order: 3;
+}
+
+.podium-rank {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.podium-name {
+	font-size: 1rem;
+	color: #333;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+.podium-score {
+	font-size: 0.9rem;
+	color: #6e41e2;
+}
+
+/* Responsive Design per il Podio */
+@media (max-width: 768px) {
+	.podium-container {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.podium-item {
+		width: 80px;
+		height: auto;
+		margin-bottom: 1rem;
+	}
+}
+
+/* Aggiustamento della spaziatura nella lista della classifica */
+.ranking-item {
+	background-color: rgba(110, 65, 226, 0.15);
+	padding: 1rem 1.5rem;
+	border-radius: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: background-color 0.3s;
+	margin-bottom: 1rem; /* Spaziatura aggiunta */
+}
+
+.ranking-item:hover {
+	background-color: rgba(110, 65, 226, 0.25);
+}
+
+
+
+
+
+.ranking-stats {
+    background-color: rgba(110, 65, 226, 0.1);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+}
+.ranking-stats span {
+    font-weight: bold;
+    color: #6e41e2;
+}
+

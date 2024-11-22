@@ -25,144 +25,166 @@
 </head>
 <body>
 
-   <div class="content-container contenuto">
-       <!-- Popup Personalizzato -->
-       <div id="custom-alert" class="alert-box">
-           Sei sicuro di voler eliminare questa posizione lavorativa?<br>
-           <button class="btn btn-danger" onclick="confirmDelete(true)">Conferma</button>
-           <button class="btn btn-secondary" onclick="confirmDelete(false)">Annulla</button>
-       </div>
-       
-       <div class="card">
-           <div class="scroll-wrapper-classifica">
-               <div class="job-header" style="margin-top: 5px">
-                   <h1 class="job-title">${posizione.titolo}</h1>
-                   <button
-					class="btn-del"
-                       onclick="handleDelete(${posizione.id})" 
-                       title="Cancella">
-                       <i class="far fa-trash-alt" style="color: black; font-size: 1.5rem;"></i>
-                   </button>
-               </div>
-               <div class="job-meta">
-                   <div class="meta-item">
-                       <span class="meta-icon">📍</span> <span>${posizione.provincia}
-                           - ${posizione.regione}</span>
-                   </div>
-                   <div class="meta-item">
-                       <span class="meta-icon">🏢</span> <span>${posizione.settore}</span>
-                   </div>
-               </div>
+    <div class="content-container contenuto">
+        <!-- Popup Personalizzato -->
+        <div id="custom-alert" class="alert-box">
+            Sei sicuro di voler eliminare questa posizione lavorativa?<br>
+            <button class="btn btn-danger" onclick="confirmDelete(true)">Conferma</button>
+            <button class="btn btn-secondary" onclick="confirmDelete(false)">Annulla</button>
+        </div>
+        
+        <div class="card">
+            <div class="scroll-wrapper-classifica">
+                <div class="job-header" style="margin-top: 5px">
+                    <h1 class="job-title">${posizione.titolo}</h1>
+                    <button
+						class="btn-del"
+                        onclick="handleDelete(${posizione.id})" 
+                        title="Cancella">
+                        <i class="far fa-trash-alt" style="color: black; font-size: 1.5rem;"></i>
+                    </button>
+                </div>
+                <div class="job-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">📍</span> <span>${posizione.provincia}
+                            - ${posizione.regione}</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">🏢</span> <span>${posizione.settore}</span>
+                    </div>
+                </div>
 
-               <!-- Resto del contenuto -->
-               <h2 class="section-title">Descrizione azienda</h2>
-               <div class="job-description">Lantech Longwave, società del
-                   Gruppo Zucchetti, prima software house in Europa con più di 8000
-                   addetti, si occupa della progettazione e dell'implementazione di
-                   soluzioni e servizi tecnologici innovativi, sicuri e performanti
-                   negli ambiti Security, Networking, Datacenter & Cloud,
-                   Collaboration & AVI e Sviluppo Software.</div>
+                <!-- Resto del contenuto -->
+                <h2 class="section-title">Descrizione azienda</h2>
+                <div class="job-description">Lantech Longwave, società del
+                    Gruppo Zucchetti, prima software house in Europa con più di 8000
+                    addetti, si occupa della progettazione e dell'implementazione di
+                    soluzioni e servizi tecnologici innovativi, sicuri e performanti
+                    negli ambiti Security, Networking, Datacenter & Cloud,
+                    Collaboration & AVI e Sviluppo Software.</div>
 
-               <div class="company-location">È presente in tredici sedi
-                   dislocate in nove città italiane e una in Svizzera: Reggio Emilia,
-                   Bologna, Padova, Verona, Milano, Besana Brianza, Roma, Modena,
-                   Parma e Chiasso.</div>
+                <div class="company-location">È presente in tredici sedi
+                    dislocate in nove città italiane e una in Svizzera: Reggio Emilia,
+                    Bologna, Padova, Verona, Milano, Besana Brianza, Roma, Modena,
+                    Parma e Chiasso.</div>
 
-               <div class="job-description">Il Team di oltre 300
-                   collaboratori opera con l'obiettivo di rendere la tecnologia alla
-                   portata di tutti. Ogni soluzione ICT viene pensata e progettata
-                   partendo dalle persone e, attraverso uno studio di fattibilità,
-                   viene definita la tecnologia più adeguata alla specifica esigenza,
-                   in termini di performance, affidabilità e sicurezza.</div>
+                <div class="job-description">Il Team di oltre 300
+                    collaboratori opera con l'obiettivo di rendere la tecnologia alla
+                    portata di tutti. Ogni soluzione ICT viene pensata e progettata
+                    partendo dalle persone e, attraverso uno studio di fattibilità,
+                    viene definita la tecnologia più adeguata alla specifica esigenza,
+                    in termini di performance, affidabilità e sicurezza.</div>
 
-               <div class="job-description">
-                   Ha ingegnerizzato una suite di servizi gestiti - LION® - erogati
-                   h24 7*7 per garantire un monitoraggio real-time e una gestione
-                   continua in massima sicurezza dell'intera infrastruttura ICT delle
-                   aziende. <br>
-                   <br> <a href="http://www.lantechlongwave.it"
-                       class="website-link">www.lantechlongwave.it</a>
-               </div>
+                <div class="job-description">
+                    Ha ingegnerizzato una suite di servizi gestiti - LION® - erogati
+                    h24 7*7 per garantire un monitoraggio real-time e una gestione
+                    continua in massima sicurezza dell'intera infrastruttura ICT delle
+                    aziende. <br>
+                    <br> <a href="http://www.lantechlongwave.it"
+                        class="website-link">www.lantechlongwave.it</a>
+                </div>
 
-               <div class="job-position">
-                   <h2 class="section-title">Posizione</h2>
-                   <div class="job-description">Il/La candidato/a, che
-                       risponderà alla Direzione aziendale sarà inserito/a
-                       nell'organizzazione per gestire e monitorare i budget aziendali
-                       occupandosi del monitoraggio e analisi delle performance...</div>
-               </div>
-           </div>
-       </div>
+                <div class="job-position">
+                    <h2 class="section-title">Posizione</h2>
+                    <div class="job-description">Il/La candidato/a, che
+                        risponderà alla Direzione aziendale sarà inserito/a
+                        nell'organizzazione per gestire e monitorare i budget aziendali
+                        occupandosi del monitoraggio e analisi delle performance...</div>
+                </div>
+            </div>
+        </div>
 
-       <div class="card">
-           <div class="scroll-wrapper-classifica">
-               <h2 class="ranking-title">Classifica</h2>
+        <div class="card">
+            <div class="scroll-wrapper-classifica">
+                <h2 class="ranking-title">Classifica</h2>
 
-               <c:forEach var="candidate" items="${candidates}" varStatus="loopStatus">
-                   <div class="ranking-item"
-                       onclick="window.location.href='${pageContext.request.contextPath}/visualizzacandidato?id=${candidate.utente}'"
-                       style="cursor: pointer">
-                       <div class="candidate-info">
-                           <span class="rank-number">${loopStatus.index + 1}°</span> <span
-                               class="medal-icon"><c:if test="${loopStatus.index + 1 == 1}"><i class="fa-solid fa-trophy"></i> <!-- Font Awesome trophy icon --></c:if></span>
-                           <span class="candidate-name">${candidate.utente}</span>
-                       </div>
-                       <span class="candidate-score">${candidate.punteggio}/10</span>
-                   </div>
-               </c:forEach>
+                <!-- Sezione Podio -->
+                <div class="podium-container">
+                    <c:forEach var="candidate" items="${candidates}" varStatus="loopStatus">
+                        <c:if test="${loopStatus.index < 3}">
+                            <div class="podium-item podium-position-${loopStatus.index + 1}">
+                                <span class="podium-rank">${loopStatus.index + 1}°</span>
+                                <span class="podium-name">${candidate.utente}</span>
+                                <span class="podium-score">${candidate.punteggio}/10</span>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </div>
 
-           </div>
-       </div>
-       
-   </div>
-   <div class="btn-container">
-       <button class="btn btn-back" onclick="history.back()">← Torna
-           Indietro</button>
-   </div>
-   
-   <script>
-       let deleteId = null;
+                <!-- Lista della Classifica -->
+                <div class="ranking-list">
+                    <c:forEach var="candidate" items="${candidates}" varStatus="loopStatus">
+                        <c:if test="${loopStatus.index >= 3}">
+                            <div class="ranking-item"
+                                onclick="window.location.href='${pageContext.request.contextPath}/visualizzacandidato?id=${candidate.utente}'"
+                                style="cursor: pointer">
+                                <div class="candidate-info">
+                                    <span class="rank-number">${loopStatus.index + 1}°</span> 
+                                    <span class="medal-icon">
+                                        <c:if test="${loopStatus.index + 1 == 1}">
+                                            <i class="fa-solid fa-trophy"></i>
+                                        </c:if>
+                                    </span>
+                                    <span class="candidate-name">${candidate.utente}</span>
+                                </div>
+                                <span class="candidate-score">${candidate.punteggio}/10</span>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </div>
 
-       function handleDelete(id) {
-           deleteId = id;
-           showAlert();
-       }
+            </div>
+        </div>
+        
+    </div>
+    <div class="btn-container">
+        <button class="btn btn-back" onclick="history.back()">← Torna
+            Indietro</button>
+    </div>
+    
+    <script>
+        let deleteId = null;
 
-       function showAlert() {
-           const alertBox = document.getElementById('custom-alert');
-           alertBox.classList.add('show');
-       }
+        function handleDelete(id) {
+            deleteId = id;
+            showAlert();
+        }
 
-       function hideAlert() {
-           const alertBox = document.getElementById('custom-alert');
-           alertBox.classList.remove('show');
-       }
+        function showAlert() {
+            const alertBox = document.getElementById('custom-alert');
+            alertBox.classList.add('show');
+        }
 
-       function confirmDelete(confirm) {
-           if (confirm && deleteId !== null) {
-               const formData = new URLSearchParams();
-               formData.append('posizioneID', deleteId);
-               fetch('/wisteria/creaposizione', {
-                   method: 'DELETE',
-                   headers: {
-                       'Content-Type': 'application/x-www-form-urlencoded'
-                   },
-                   body: formData.toString()
-               })
-               .then(response => {
-                   if (response.ok) {
-                       location.reload();
-                   } else {
-                       alert('Errore durante l\'eliminazione della posizione.');
-                   }
-               })
-               .catch(error => {
-                   console.error("Errore:", error);
-                   alert('Si è verificato un errore. Riprova più tardi.');
-               });
-           }
-           hideAlert();
-       }
-   </script>
+        function hideAlert() {
+            const alertBox = document.getElementById('custom-alert');
+            alertBox.classList.remove('show');
+        }
+
+        function confirmDelete(confirm) {
+            if (confirm && deleteId !== null) {
+                const formData = new URLSearchParams();
+                formData.append('posizioneID', deleteId);
+                fetch('/wisteria/creaposizione', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formData.toString()
+                })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        alert('Errore durante l\'eliminazione della posizione.');
+                    }
+                })
+                .catch(error => {
+                    console.error("Errore:", error);
+                    alert('Si è verificato un errore. Riprova più tardi.');
+                });
+            }
+            hideAlert();
+        }
+    </script>
 </body>
 </html>
