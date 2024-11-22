@@ -77,7 +77,6 @@ create table SiCandida (
 create table Domanda (
 	id int primary key identity (1, 1),
 	domanda varchar (500) not null unique,
-	argomento varchar(30)not null,
 	FK_Posizione int,
 	foreign key (FK_Posizione) references Posizione (id)
 	on delete cascade
@@ -266,19 +265,19 @@ insert into SiCandida (FK_Posizione, FK_Utente, punteggio, data) values
 select *
 from SiCandida;
 
-insert into Domanda (domanda, argomento, FK_Posizione) values
-('Quale linguaggio di programmazione è comunemente usato per lo sviluppo front-end?', 'Front-end', 1),
-('Quale framework è popolare per lo sviluppo back-end in Node.js?', 'Back-end', 1),
-('Qual è la principale funzione di un firewall?', 'Sicurezza di rete', 2),
-('Che cos#è il phishing?', 'Sicurezza di rete', 2),
-('Qual è l#obiettivo principale di un Sales Manager?', 'Vendite', 3),
-('Quale KPI è fondamentale per un Sales Manager?', 'Vendite', 3),
-('Qual è la metodologia più comune per la gestione dei progetti IT?', 'Managment', 4),
-('Qual è un documento chiave in un progetto IT?', 'Managment', 4),
-('Quale strumento è spesso usato per l#analisi dei dati?', 'Analisi dati', 5),
-('Che cosa rappresenta un "dataset"?', 'Analisi dati', 5),
-('Qual è il ruolo principale di un consulente tecnico?', 'Consulenza', 6),
-('Quale competenza è fondamentale per un consulente tecnico?', 'Consulenza', 6);
+insert into Domanda (domanda, FK_Posizione) values
+('Quale linguaggio di programmazione è comunemente usato per lo sviluppo front-end?', 1),
+('Quale framework è popolare per lo sviluppo back-end in Node.js?', 1),
+('Qual è la principale funzione di un firewall?', 2),
+('Che cos#è il phishing?', 2),
+('Qual è l#obiettivo principale di un Sales Manager?', 3),
+('Quale KPI è fondamentale per un Sales Manager?', 3),
+('Qual è la metodologia più comune per la gestione dei progetti IT?', 4),
+('Qual è un documento chiave in un progetto IT?', 4),
+('Quale strumento è spesso usato per l#analisi dei dati?',5),
+('Che cosa rappresenta un "dataset"?',5),
+('Qual è il ruolo principale di un consulente tecnico?', 6),
+('Quale competenza è fondamentale per un consulente tecnico?', 6);
 
 select *
 from Domanda;
