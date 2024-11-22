@@ -126,6 +126,19 @@
 			menu.classList.remove("slide-in");
 			menu.classList.add("slide-out");
 		}
+		document.addEventListener("click", function (event) {
+		    const menu = document.getElementById("menu");
+		    const hamburger = document.getElementById("hamburger");
+
+		    // Controlla se il clic è avvenuto fuori dalla sidebar e dall'hamburger
+		    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+		        if (menu.classList.contains("slide-in")) {
+		            menu.classList.remove("slide-in");
+		            menu.classList.add("slide-out");
+		        }
+		    }
+		});
+
     </script>
 <!-- ########################## FINE FUNZIONI IN JAVASCRIPT ###############################-->
 
