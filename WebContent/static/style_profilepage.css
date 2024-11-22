@@ -28,14 +28,11 @@ body {
 
 .main-container-profilepage {
 	width: 65%;
-	/*margin: 0.5rem auto;*/
-	margin: 150px auto; /* Center the container horizontally */
-	/*padding: 1.5rem 2rem;*/
+	margin: 150px auto;
 	background-color: #e0c0ff;
 	border-radius: 25px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	position: relative;
-	/*height: calc(94vh - 1rem);*/
 	padding: 1.5rem 2rem 70px 2rem;
 	display: flex;
 	flex-direction: column;
@@ -63,8 +60,6 @@ body {
 .profile-image:hover {
 	background-color: #ccc;
 }
-
-/* Stile dell'icona dell'utente */
 .profile-icon {
 	width: 2vw;
 	height: 2vw;
@@ -75,8 +70,6 @@ body {
 	align-items: center;
 	justify-content: center;
 }
-
-/* Stile dell'icona della fotocamera */
 .camera-icon {
 	position: absolute;
 	bottom: 0;
@@ -177,7 +170,6 @@ body {
 }
 
 .cv-upload:hover {
-	/*background-color: #eee;*/
 	background-color: #ccc;
 }
 
@@ -227,9 +219,6 @@ select.form-input {
 	cursor: pointer;
 	font-size: 1.5rem;
 	padding: 0.5rem;
-	/*display: flex;
-	align-items: center;
-	justify-content: center;*/
 	transition: transform 0.3s ease;
 }
 
@@ -327,18 +316,18 @@ select.form-input {
 	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Stile per l'icona */
+
 .cv-icon {
 	font-size: 50px;
 }
 
-/* Stile per il testo */
+
 #uploadText {
 	font-size: 18px;
 	margin-top: 10px;
 }
 
-/* Stile della "x" per rimuovere il PDF */
+
 #removePDF {
 	position: absolute;
 	top: 10px;
@@ -346,7 +335,7 @@ select.form-input {
 	font-size: 20px;
 	color: red;
 	cursor: pointer;
-	display: none; /* Nascondi finché il PDF non è caricato */
+	display: none;
 }
 
 .delete-icon {
@@ -396,7 +385,7 @@ select.form-input {
     top: 10%;
     left: 50%;
     transform: translateX(-50%) translateY(-100%);
-    background-color: #4CAF50; /* Verde per successo */
+    background-color: #4CAF50;
     color: #fff;
     padding: 20px 25px;
     border-radius: 8px;

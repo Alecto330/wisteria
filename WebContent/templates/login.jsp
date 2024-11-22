@@ -57,7 +57,7 @@
 	            <br>
 	            <br>
 	            <br>
-	            <a class="back-button" href="javascript:history.back();"> <i
+	            <a class="back-button"href="${pageContext.request.contextPath}/home"> <i
 					class="fas fa-arrow-left"></i>
 				</a>
 	        </form>

@@ -100,11 +100,100 @@
 					<i class="fas fa-plus"></i>
 				</button>
 			</div>
+			<div style="display: flex; justify-content: center; align-items: center; height:4vw;">
+			    <button class="btn btn-primary" onclick="performSearch()">Crea</button>
+			</div>
+
 		</form>
 	</div>
 
 	<script>
-	
+	 const dropdown = document.getElementById('settore-dropdown');
+     const input = dropdown.querySelector('#settore-input');
+     const list = dropdown.querySelector('.dropdown-menu');
+     const items = Array.from(list.querySelectorAll('li'));
+     let currentFocus = -1;
+     input.addEventListener('focus', () => {
+         list.style.display = 'block';
+         input.setAttribute('aria-expanded', 'true');
+     });
+
+     document.addEventListener('click', (e) => {
+         if (!dropdown.contains(e.target)) {
+             list.style.display = 'none';
+             input.setAttribute('aria-expanded', 'false');
+             currentFocus = -1;
+             removeActive();
+         }
+     });
+
+     input.addEventListener('input', () => {
+         const filter = input.value.toLowerCase();
+         let visibleCount = 0;
+         items.forEach(item => {
+             if (item.textContent.toLowerCase().includes(filter)) {
+                 item.style.display = 'block';
+                 visibleCount++;
+             } else {
+                 item.style.display = 'none';
+             }
+         });
+         if (visibleCount > 0) {
+             list.style.display = 'block';
+             input.setAttribute('aria-expanded', 'true');
+         } else {
+             list.style.display = 'none';
+             input.setAttribute('aria-expanded', 'false');
+         }
+         currentFocus = -1;
+         removeActive();
+     });
+
+     items.forEach(item => {
+         item.addEventListener('click', () => {
+             input.value = item.textContent;
+             list.style.display = 'none';
+             input.setAttribute('aria-expanded', 'false');
+             currentFocus = -1;
+             removeActive();
+         });
+
+         item.addEventListener('keydown', (e) => {
+             if (e.key === 'Enter') {
+                 e.preventDefault();
+                 item.click();
+             }
+         });
+     });
+
+     input.addEventListener('keydown', (e) => {
+         if (e.key === 'ArrowDown') {
+             e.preventDefault();
+             currentFocus++;
+             addActive();
+         } else if (e.key === 'ArrowUp') {
+             e.preventDefault();
+             currentFocus--;
+             addActive();
+         } else if (e.key === 'Enter') {
+             e.preventDefault();
+             if (currentFocus > -1) {
+                 items[currentFocus].click();
+             }
+         }
+     });
+
+     function addActive() {
+         if (currentFocus >= items.length) currentFocus = 0;
+         if (currentFocus < 0) currentFocus = items.length - 1;
+         removeActive();
+         items[currentFocus].classList.add('active');
+         items[currentFocus].scrollIntoView({ block: 'nearest' });
+     }
+
+     function removeActive() {
+         items.forEach(item => item.classList.remove('active'));
+     }
     const provinciaToRegioneMap = {
             "Chieti": "Abruzzo",
             "L'Aquila": "Abruzzo",
