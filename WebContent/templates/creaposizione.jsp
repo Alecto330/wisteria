@@ -48,14 +48,6 @@
 			<div class="form-group">
 				<label class="form-label" for="localita-input">Località:</label>
 				<div class="location-group">
-					<select id="regione-input" name="regione" class="form-select"
-						required ${selectedRegione !=null&& !selectedRegione.isEmpty() ? 'disabled' : ''}>
-                        <option value="">-- Seleziona Regione --</option>
-                        <c:forEach var="region" items="${regionList}">
-                            <option value="${region}" ${region == selectedRegione ? 'selected' : ''}>${region}</option>
-                        </c:forEach>
-                    </select>
-
 					<select id="provincia-input" name="provincia" class="form-select"
 						required onchange="updateRegione()">
 						<option value="">-- Seleziona Provincia --</option>
@@ -64,6 +56,13 @@
 								${province == selectedProvincia ? 'selected' : ''}>${province}</option>
 						</c:forEach>
 					</select>
+					<select id="regione-input" name="regione" class="form-select"
+						required ${selectedRegione !=null&& !selectedRegione.isEmpty() ? 'disabled' : ''}>
+                        <option value="">-- Seleziona Regione --</option>
+                        <c:forEach var="region" items="${regionList}">
+                            <option value="${region}" ${region == selectedRegione ? 'selected' : ''}>${region}</option>
+                        </c:forEach>
+                    </select>
 				</div>
 			</div>
 			<div class="form-group">

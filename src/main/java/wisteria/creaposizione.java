@@ -29,13 +29,13 @@ public class creaposizione extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("test1");
-		// Parte connessione provincia-regione
-		/*String provincia = request.getParameter("provincia");
+		String provincia = request.getParameter("provincia");
+		PosizioneDAO daopos = new PosizioneDAO();
         String regione = "";
 
         if (provincia != null && !provincia.trim().isEmpty()) {
-            regione = dao.getRegioneByProvincia(provincia);
-        }*/
+            regione = daopos.getRegioneByProvincia(provincia);
+        }
 
 		PosizioneDAO dao=new PosizioneDAO();        
 
@@ -74,10 +74,10 @@ public class creaposizione extends HttpServlet {
 			request.setAttribute("headerPath", user.getHeader());
 
 			// Se una Provincia è selezionata, imposta gli attributi per pre-popolare la Regione
-			/*if (provincia != null && !provincia.trim().isEmpty()) {
+			if (provincia != null && !provincia.trim().isEmpty()) {
                 request.setAttribute("selectedProvincia", provincia);
                 request.setAttribute("selectedRegione", regione);
-            }*/
+            }
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
@@ -86,7 +86,7 @@ public class creaposizione extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*String titolo = request.getParameter("titolo");
+		String titolo = request.getParameter("titolo");
         String descrizione = request.getParameter("descrizione");
         String regione = request.getParameter("regione");
         String provincia = request.getParameter("provincia");
@@ -101,7 +101,7 @@ public class creaposizione extends HttpServlet {
         dao.insertPosizione(posizione, user.getUsername());
 
 
-        response.sendRedirect("successoCreazione.jsp");*/
+        response.sendRedirect("successoCreazione.jsp");
 	}
 	
 	@Override
