@@ -113,6 +113,7 @@
           const titolo = params.get("titolo");
           const descrizione = params.get("descrizione");
           const provincia = params.get("provincia");
+          const settore = params.get("settore");
           const domande = params.getAll("question");
 
           const formData = new URLSearchParams({
@@ -122,7 +123,8 @@
             titolo: titolo,
             descrizione: descrizione,
             domande: domande,
-            provincia: provincia
+            provincia: provincia,
+            settore: settore
           });
 
           // Invia i dati tramite POST

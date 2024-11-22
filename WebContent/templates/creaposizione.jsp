@@ -75,13 +75,9 @@
 						required>
 					<ul class="dropdown-menu" role="listbox"
 						aria-labelledby="settore-input">
-						<c:forEach var="settore" items="${settoreList}">
+						<c:forEach var="settore" items="${professionList}">
 							<li role="option" tabindex="0">${settore}</li>
 						</c:forEach>
-						<li role="option" tabindex="0">Opzione 1</li>
-						<li role="option" tabindex="0">Opzione 2</li>
-						<li role="option" tabindex="0">Opzione 3</li>
-						<li role="option" tabindex="0">Opzione 4</li>
 					</ul>
 				</div>
 			</div>
@@ -311,17 +307,24 @@
         
         const provinciaSelect = document.getElementById('provincia-input');
         const provincia = provinciaSelect.value;
+        
+        const settore = encodeURIComponent(document.getElementById('settore-input').value);
 
         const params = new URLSearchParams(window.location.search);
         const questions=params.getAll('question');
         
         const baseUrl = '${pageContext.request.contextPath}/listadomande';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&'+questions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+questions.map(q => 'question=' + q).join('&');
         
         location.href = urlWithParams;
     }
 
         document.addEventListener('DOMContentLoaded', () => {
+        	
+        	 const params = new URLSearchParams(window.location.search);
+             const settore = params.get("settore");
+             document.getElementById('settore-input').value=settore;
+        	
             const provinciaSelect = document.getElementById('provincia-input');
             const regioneSelect = document.getElementById('regione-input');
 

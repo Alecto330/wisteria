@@ -34,6 +34,8 @@ public class listadomande extends HttpServlet{
 
 			String titolo=request.getParameter("titolo");		
 			String descrizione=request.getParameter("descrizione");	
+			String provincia=request.getParameter("provincia");	
+			String settore=request.getParameter("settore");	
 			
 			DomandaDAO dao=new DomandaDAO();
 			HashMap<Integer, Domanda> domande=dao.getDomande();
@@ -41,6 +43,8 @@ public class listadomande extends HttpServlet{
 			request.setAttribute("questions", questions);
 			request.setAttribute("titolo", titolo);
 			request.setAttribute("descrizione", descrizione);
+			request.setAttribute("provincia", provincia);
+			request.setAttribute("settore", settore);
 			request.setAttribute("title", "Lista Domande");
 			request.setAttribute("content", "listadomande.jsp");
 			request.setAttribute("headerPath", user.getHeader());

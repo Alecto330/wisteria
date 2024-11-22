@@ -47,6 +47,7 @@ public class creadomanda extends HttpServlet{
 		String titolo=request.getParameter("titolo");
 		String provincia=request.getParameter("provincia");
 		String descrizione=request.getParameter("descrizione");
+		String settore=request.getParameter("settore");
 		String domande=request.getParameter("domande");
 
 		DomandaDAO domandaDAO = new DomandaDAO();
@@ -61,7 +62,7 @@ public class creadomanda extends HttpServlet{
 		}
 		builder.append("&question="+newDomanda.getId());
 
-		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+builder.toString());
+		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+"&settore="+settore+builder.toString());
 	}
 
 }

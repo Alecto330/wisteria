@@ -45,7 +45,7 @@ public class creaposizione extends HttpServlet {
 			String titolo=request.getParameter("titolo");
 			String descrizione=request.getParameter("descrizione");
 			String provincia=request.getParameter("provincia");
-			
+			String settore=request.getParameter("settore");
 
 			if(selectedQuestions!=null) {
 				DomandaDAO daoDomande=new DomandaDAO();
@@ -58,6 +58,7 @@ public class creaposizione extends HttpServlet {
 			request.setAttribute("titolo", titolo);
 			request.setAttribute("descrizione", descrizione);
 			request.setAttribute("provincia", provincia);
+			request.setAttribute("settore", settore);
 
 			request.setAttribute("regionList", regionList);
 			request.setAttribute("provinceList", provinceList);
@@ -86,7 +87,6 @@ public class creaposizione extends HttpServlet {
 
         PosizioneDAO dao=new PosizioneDAO();
         dao.insertPosizione(posizione, user.getUsername());
-
 
         response.sendRedirect("successoCreazione.jsp");
 	}

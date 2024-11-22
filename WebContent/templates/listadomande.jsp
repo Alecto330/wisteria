@@ -98,6 +98,7 @@
     	 const titolo=params.get('titolo');
     	 const descrizione=params.get('descrizione');
     	 const provincia=params.get('provincia');
+    	 const settore=params.get('settore');
     	 
     	 console.log(titolo);
     	 console.log(descrizione);
@@ -111,7 +112,7 @@
          });
          
         const baseUrl = '${pageContext.request.contextPath}/creadomanda';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
         
         console.log(urlWithParams);
          
@@ -172,7 +173,7 @@
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
          
-            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&')+'&titolo=${titolo}&descrizione=${descrizione}'; 
+            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&')+'&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}'; 
          
             fetch(url, { 
                 method: 'GET',
