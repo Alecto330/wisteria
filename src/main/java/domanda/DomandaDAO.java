@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.HashMap;
 import utils.DatabaseConnection;
@@ -266,24 +267,38 @@ public class DomandaDAO {
 	}
 	
 	
-	/*public void insertDomandaRisposte(String domanda, String[] risposte){
+	public void insertDomandaRisposte(String domanda, String[] risposte){
+		
+		int domandaId=0;
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
-			String query = "INSERT INTO SiCandida (FK_Posizione, FK_Utente, punteggio, data) VALUES (?, ?, ?, ?)";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setInt(1, posizione);
-			preparedStatement.setString(2, utente);
-			preparedStatement.setInt(3, punteggio);
-			preparedStatement.setDate(4, Date.valueOf(LocalDate.now()));
+			String query = "INSERT INTO Domanda (domanda) VALUES (?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+			preparedStatement.setString(1, domanda);
+			preparedStatement.executeUpdate();
+			
+			ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				domandaId = generatedKeys.getInt(1);
 
-			preparedStatement.executeUpdate(); // Execute and get affected rows
+			}
+			
+			for(String risposta: risposte) {
+				query = "INSERT INTO Risposta (risposta, VoF, FK_Domanda) VALUES (?, ?, ?)";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, risposta);
+				preparedStatement.setBoolean(2, false);
+				preparedStatement.setInt(3, domandaId);
+				preparedStatement.executeUpdate();
+			}
+			
 
 			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-	}*/
+	}
 
 }
