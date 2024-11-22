@@ -51,7 +51,6 @@ public class creaposizione extends HttpServlet {
 				DomandaDAO daoDomande=new DomandaDAO();
 				HashMap<Integer, Domanda> domandeMap= daoDomande.getDomandeFromIds(selectedQuestions);
 				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
-				System.out.println(domande.size());
 				request.setAttribute("domande", domande);
 			}
 			
@@ -76,19 +75,27 @@ public class creaposizione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String titolo = request.getParameter("titolo");
         String descrizione = request.getParameter("descrizione");
-        String regione = request.getParameter("regione");
-        String provincia = request.getParameter("provincia");
+        String provincia = request.getParameter("provinciaupdateRegione");
         String settore = request.getParameter("settore");
+        String[] domande = request.getParameterValues("domanda");
+        
+        System.out.println(titolo);
+        System.out.println(descrizione);
+        System.out.println(provincia);
+        System.out.println(settore);
+        System.out.println(domande[0]);
 
-        Posizione posizione = new Posizione(0, titolo, descrizione, settore, provincia, regione);
+        /*Posizione posizione = new Posizione(0, titolo, descrizione, settore, provincia, regione);
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
         PosizioneDAO dao=new PosizioneDAO();
-        dao.insertPosizione(posizione, user.getUsername());
+        dao.insertPosizione(posizione, user.getUsername());*/
+        
+        
 
-        response.sendRedirect("successoCreazione.jsp");
+        //response.sendRedirect("successoCreazione.jsp");
 	}
 	
 	/*@Override
