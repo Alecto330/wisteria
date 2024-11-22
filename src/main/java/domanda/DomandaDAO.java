@@ -18,7 +18,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda order by Domanda.id";
+			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda group by domanda,  Domanda.id, FK_Posizione, Risposta.id, risposta, VoF, FK_Domanda order by Domanda.id";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -267,7 +267,7 @@ public class DomandaDAO {
 	}
 	
 	
-	public void insertDomandaRisposte(String domanda, String[] risposte){
+	public void insertDomandaRisposte(String domanda, String[] risposte, int corretta){
 		
 		int domandaId=0;
 		try {
@@ -284,6 +284,21 @@ public class DomandaDAO {
 
 			}
 			
+			for(int i=0; i<risposte.length; i++) {
+				query = "INSERT INTO Risposta (risposta, VoF, FK_Domanda) VALUES (?, ?, ?)";
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setString(1, risposte[i]);
+				if (i == corretta) {
+					preparedStatement.setBoolean(2, true);
+				} else {
+					preparedStatement.setBoolean(2, false);
+				}
+				preparedStatement.setInt(3, domandaId);
+				preparedStatement.executeUpdate();
+			}
+			
+			
+			/*
 			for(String risposta: risposte) {
 				query = "INSERT INTO Risposta (risposta, VoF, FK_Domanda) VALUES (?, ?, ?)";
 				preparedStatement = connection.prepareStatement(query);
@@ -291,7 +306,7 @@ public class DomandaDAO {
 				preparedStatement.setBoolean(2, false);
 				preparedStatement.setInt(3, domandaId);
 				preparedStatement.executeUpdate();
-			}
+			}*/
 			
 
 			connection.close();

@@ -122,6 +122,7 @@
         function validateForm() {
             const questionInput = document.getElementById('question-input');
             const answerInputs = document.querySelectorAll('.answer-input');
+            const radioButtons = document.querySelectorAll('.radio-input');
 
             let isValid = true;
 
@@ -132,6 +133,13 @@
                 isValid = false;
                 return;
             }
+
+            let selectedAnswer = null;
+                radioButtons.forEach((radio, index) => {
+                    if (radio.checked) {
+                        selectedAnswer = index;  // Puoi passare l'indice del radio selezionato
+                    }
+               });
 
             // Controllo che tutte le risposte siano presenti
             for (let input of answerInputs) {
@@ -152,8 +160,11 @@
 
                 const formData = new URLSearchParams({
                     question: questionText,
-                    answers: answers
+                    answers: answers,
+                    selectedAnswer: selectedAnswer 
                 });
+
+                console.log(formData.toString())
                 
                 // Invia i dati tramite POST
                 fetch('${pageContext.request.contextPath}/creadomanda', {
@@ -185,8 +196,13 @@
         }
 
         // Seleziona automaticamente il radio button quando si clicca su un campo di input risposta
-        document.querySelectorAll('.answer-input').forEach(input => {
-            input.addEventListener('focus', () => {
+       document.querySelectorAll('.answer-input').forEach(input => {
+            input.removeEventListener('focus', () => {
+                const radioInput = input.previousElementSibling.querySelector('input[type="radio"]');
+                radioInput.checked = true;
+            });
+
+            input.removeEventListener('click', () => {
                 const radioInput = input.previousElementSibling.querySelector('input[type="radio"]');
                 radioInput.checked = true;
             });

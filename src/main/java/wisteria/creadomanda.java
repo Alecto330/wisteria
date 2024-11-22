@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 
+import domanda.DomandaDAO;
 import user.User;
 
 @WebServlet("/creadomanda")
@@ -44,10 +45,13 @@ public class creadomanda extends HttpServlet{
 		String nomeDomanda=request.getParameter("question");
 		String risposte=request.getParameter("answers");
 		String[] risposteArray=risposte.split(",");
-
+		String corretta=request.getParameter("selectedAnswer");
+		System.out.println(corretta);
 		
 		
 		System.out.println(nomeDomanda);
+		DomandaDAO domandaDAO = new DomandaDAO();
+		domandaDAO.insertDomandaRisposte(nomeDomanda, risposteArray, Integer.parseInt(corretta));
 	}
 
 
