@@ -47,7 +47,7 @@
 			<div class="form-group">
 				<label class="form-label" for="localita-input">Località:</label>
 				<div class="location-group">
-					<select id="provincia-input" name="provincia" class="form-select"
+					<select id="provincia-input" name="provinciaupdateRegione" class="form-select"
 						required onchange="updateRegione()">
 						<option value="">-- Seleziona Provincia --</option>
 						<c:forEach var="province" items="${provinceList}">
@@ -57,8 +57,8 @@
 					</select>
 					
 					<select id="regione-input" name="regione" class="form-select"
-						required ${selectedRegione !=null&& !selectedRegione.isEmpty() ? 'disabled' : ''}>
-                        <option value="">-- Seleziona Regione --</option>
+						disabled style="appearance: none; -webkit-appearance: none; -moz-appearance: none;">
+                        <option value="">-- Regione --</option>
                         <c:forEach var="region" items="${regionList}">
                             <option value="${region}" ${region == selectedRegione ? 'selected' : ''}>${region}</option>
                         </c:forEach>
@@ -119,16 +119,136 @@
         location.href = urlWithParams;
     }
 	
-        function updateRegione() {
-            var provincia = document.getElementById('provincia-input').value;
-            if (provincia) {
-                window.location.href = '${pageContext.request.contextPath}/creaposizione?provincia=' + encodeURIComponent(provincia);
-            } else {
-                window.location.href = '${pageContext.request.contextPath}/creaposizione';
-            }
-        }
+
+
 
         document.addEventListener('DOMContentLoaded', () => {
+            const provinciaSelect = document.getElementById('provincia-input');
+            const regioneSelect = document.getElementById('regione-input');
+
+            // Mappa Provincia -> Regione
+            const provinciaToRegioneMap = {
+                "Chieti": "Abruzzo",
+                "L'Aquila": "Abruzzo",
+                "Pescara": "Abruzzo",
+                "Teramo": "Abruzzo",
+                "Potenza": "Basilicata",
+                "Matera": "Basilicata",
+                "Catanzaro": "Calabria",
+                "Cosenza": "Calabria",
+                "Crotone": "Calabria",
+                "Reggio Calabria": "Calabria",
+                "Vibo Valentia": "Calabria",
+                "Avellino": "Campania",
+                "Benevento": "Campania",
+                "Caserta": "Campania",
+                "Napoli": "Campania",
+                "Salerno": "Campania",
+                "Bologna": "Emilia-Romagna",
+                "Ferrara": "Emilia-Romagna",
+                "Forlì-Cesena": "Emilia-Romagna",
+                "Modena": "Emilia-Romagna",
+                "Parma": "Emilia-Romagna",
+                "Piacenza": "Emilia-Romagna",
+                "Ravenna": "Emilia-Romagna",
+                "Reggio Emilia": "Emilia-Romagna",
+                "Rimini": "Emilia-Romagna",
+                "Gorizia": "Friuli-Venezia Giulia",
+                "Pordenone": "Friuli-Venezia Giulia",
+                "Trieste": "Friuli-Venezia Giulia",
+                "Udine": "Friuli-Venezia Giulia",
+                "Frosinone": "Lazio",
+                "Latina": "Lazio",
+                "Rieti": "Lazio",
+                "Roma": "Lazio",
+                "Viterbo": "Lazio",
+                "Genova": "Liguria",
+                "Imperia": "Liguria",
+                "La Spezia": "Liguria",
+                "Savona": "Liguria",
+                "Bergamo": "Lombardia",
+                "Brescia": "Lombardia",
+                "Como": "Lombardia",
+                "Cremona": "Lombardia",
+                "Lecco": "Lombardia",
+                "Lodi": "Lombardia",
+                "Mantova": "Lombardia",
+                "Milano": "Lombardia",
+                "Monza e Brianza": "Lombardia",
+                "Pavia": "Lombardia",
+                "Sondrio": "Lombardia",
+                "Varese": "Lombardia",
+                "Ancona": "Marche",
+                "Ascoli Piceno": "Marche",
+                "Fermo": "Marche",
+                "Macerata": "Marche",
+                "Pesaro e Urbino": "Marche",
+                "Campobasso": "Molise",
+                "Isernia": "Molise",
+                "Alessandria": "Piemonte",
+                "Asti": "Piemonte",
+                "Biella": "Piemonte",
+                "Cuneo": "Piemonte",
+                "Novara": "Piemonte",
+                "Torino": "Piemonte",
+                "Verbano-Cusio-Ossola": "Piemonte",
+                "Vercelli": "Piemonte",
+                "Bari": "Puglia",
+                "Barletta-Andria-Trani": "Puglia",
+                "Brindisi": "Puglia",
+                "Foggia": "Puglia",
+                "Lecce": "Puglia",
+                "Taranto": "Puglia",
+                "Cagliari": "Sardegna",
+                "Nuoro": "Sardegna",
+                "Oristano": "Sardegna",
+                "Sassari": "Sardegna",
+                "Sud Sardegna": "Sardegna",
+                "Agrigento": "Sicilia",
+                "Caltanissetta": "Sicilia",
+                "Catania": "Sicilia",
+                "Enna": "Sicilia",
+                "Messina": "Sicilia",
+                "Palermo": "Sicilia",
+                "Ragusa": "Sicilia",
+                "Siracusa": "Sicilia",
+                "Trapani": "Sicilia",
+                "Arezzo": "Toscana",
+                "Firenze": "Toscana",
+                "Grosseto": "Toscana",
+                "Livorno": "Toscana",
+                "Lucca": "Toscana",
+                "Massa-Carrara": "Toscana",
+                "Pisa": "Toscana",
+                "Pistoia": "Toscana",
+                "Prato": "Toscana",
+                "Siena": "Toscana",
+                "Bolzano": "Trentino-Alto Adige",
+                "Trento": "Trentino-Alto Adige",
+                "Perugia": "Umbria",
+                "Terni": "Umbria",
+                "Aosta": "Valle d'Aosta",
+                "Belluno": "Veneto",
+                "Padova": "Veneto",
+                "Rovigo": "Veneto",
+                "Treviso": "Veneto",
+                "Venezia": "Veneto",
+                "Verona": "Veneto",
+                "Vicenza": "Veneto"
+            };
+
+            provinciaSelect.addEventListener('change', () => {
+                const provincia = provinciaSelect.value;
+
+                if (provincia && provinciaToRegioneMap[provincia]) {
+                    regioneSelect.value = provinciaToRegioneMap[provincia];
+                } else {
+                    regioneSelect.value = "";
+                }
+            });
+        });
+
+        /*document.addEventListener('DOMContentLoaded', () => {
             const dropdown = document.getElementById('settore-dropdown');
             const input = dropdown.querySelector('#settore-input');
             const list = dropdown.querySelector('.dropdown-menu');
@@ -250,7 +370,7 @@
                     li.remove();
                 });
             });
-        });
+        });*/
 
 
 
