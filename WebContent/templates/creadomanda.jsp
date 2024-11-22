@@ -13,34 +13,7 @@
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
     <style>
         /* Stile per il div dell'alert */
-        .alert-box {
-            display: none;
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            background-color: #f44336;
-            color: #fff;
-            padding: 20px 25px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
-            text-align: center;
-        }
 
-        .alert-box.success {
-            background-color: #4caf50;
-        }
-
-        .alert-box.show {
-            display: block;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
     </style>
 </head>
 <body>
