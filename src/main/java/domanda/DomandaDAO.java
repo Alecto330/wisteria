@@ -17,7 +17,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, argomento, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda order by Domanda.id";
+			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda order by Domanda.id";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -26,10 +26,9 @@ public class DomandaDAO {
 				int domandaId=resultSet.getInt("domandaId");
 				if(!domande.containsKey(domandaId)) {
 					String domandaTesto=resultSet.getString("domanda");
-					String argomento=resultSet.getString("argomento");
 					int FK_Posizione=resultSet.getInt("FK_Posizione");
 
-					Domanda domanda=new Domanda(domandaId, domandaTesto, argomento, FK_Posizione);
+					Domanda domanda=new Domanda(domandaId, domandaTesto, FK_Posizione);
 
 
 					int rispostaId=resultSet.getInt("rispostaId");
@@ -67,7 +66,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, argomento, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda where FK_Posizione=? order by Domanda.id";
+			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda where FK_Posizione=? order by Domanda.id";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, idPosizione);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -77,10 +76,9 @@ public class DomandaDAO {
 				int domandaId=resultSet.getInt("domandaId");
 				if(!domande.containsKey(domandaId)) {
 					String domandaTesto=resultSet.getString("domanda");
-					String argomento=resultSet.getString("argomento");
 					int FK_Posizione=resultSet.getInt("FK_Posizione");
 
-					Domanda domanda=new Domanda(domandaId, domandaTesto, argomento, FK_Posizione);
+					Domanda domanda=new Domanda(domandaId, domandaTesto, FK_Posizione);
 
 
 					int rispostaId=resultSet.getInt("rispostaId");
@@ -221,7 +219,7 @@ public class DomandaDAO {
 			Connection connection = database.getConnection(); 
 
 			for(String id: ids) {
-				String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, argomento, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda where Domanda.id =? order by Domanda.id";
+				String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda where Domanda.id =? order by Domanda.id";
 				PreparedStatement preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setInt(1, Integer.parseInt(id));
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -231,10 +229,9 @@ public class DomandaDAO {
 					int domandaId=resultSet.getInt("domandaId");
 					if(!domande.containsKey(domandaId)) {
 						String domandaTesto=resultSet.getString("domanda");
-						String argomento=resultSet.getString("argomento");
 						int FK_Posizione=resultSet.getInt("FK_Posizione");
 
-						Domanda domanda=new Domanda(domandaId, domandaTesto, argomento, FK_Posizione);
+						Domanda domanda=new Domanda(domandaId, domandaTesto, FK_Posizione);
 
 
 						int rispostaId=resultSet.getInt("rispostaId");

@@ -25,14 +25,6 @@
             <div class="col-md-12">
                 <div class="custom-container">
                     <div class="d-flex justify-content-start search-container">
-                        <div class="select-wrapper mr-2">
-                            <select class="form-control-dd" id="professioni">
-                                <option value="" selected>Settori</option>
-                                <c:forEach var="profession" items="${professionList}">
-                                    <option value="${profession}">${profession}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
                         <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
                             placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
                         <button class="btn btn-primary" onclick="performSearch()">Cerca</button>
