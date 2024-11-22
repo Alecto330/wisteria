@@ -30,7 +30,7 @@
 
 	<div class="main-container-creaposizione">
 		<h1 class="form-title" style="font-size:2.5vw;">Crea una posizione</h2>
-		<form action="${pageContext.request.contextPath}/inviaPosizione" method="post">
+		<form action="${pageContext.request.contextPath}/creaposizione" method="POST">
 			<div class="form-group">
 				<label class="form-label" for="titolo-input">Titolo:</label> <input
 					name="titolo" type="text" class="form-input" id="titolo-input"
@@ -97,7 +97,7 @@
 				</button>
 			</div>
 			<div style="display: flex; justify-content: center; align-items: center; height:4vw;">
-			    <button class="btn btn-primary" onclick="performSearch()">Crea</button>
+			    <button class="btn btn-primary" type="submit">Crea</button>
 			</div>
 
 		</form>
