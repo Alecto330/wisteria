@@ -36,11 +36,11 @@
 				</div>
 				<div class="job-meta">
 					<div class="meta-item">
-						<span class="meta-icon">📍</span> <span>${posizione.provincia}
+						<span class="fas fa-map-marker-alt"></span> <span>${posizione.provincia}
 							- ${posizione.regione}</span>
 					</div>
 					<div class="meta-item">
-						<span class="meta-icon">🏢</span> <span>${posizione.settore}</span>
+						<span class="fas fa-briefcase"></span> <span>${posizione.settore}</span>
 					</div>
 				</div>
 

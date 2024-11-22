@@ -63,7 +63,7 @@
             </form>
         </div>
         <div class="actions-container">
-            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Salva</button>
+            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">✔</button>
         </div>
     </div>
 
