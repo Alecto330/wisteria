@@ -1,3 +1,29 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+
+<head>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Font Awesome CDN -->
+
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_home.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style_nav.css">
+<link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
+</head>
+
 <header>
     <section>
         <!--############################ BARRA DI NAVIGAZIONE ####################################-->
@@ -22,7 +48,7 @@
 
             <div class="logout">
                 <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
+                    <div class="acc2"> </div>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
