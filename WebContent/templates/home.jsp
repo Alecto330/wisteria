@@ -107,9 +107,10 @@
                                 </c:forEach>
                             </select>
                         </div>
-
-                        <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
+                        <div>
+                            <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
                             placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
+                        </div>
                         <button class="btn btn-primary" onclick="performSearch()">Cerca</button>
                     </div>
                 </div>

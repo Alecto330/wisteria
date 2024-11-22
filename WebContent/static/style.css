@@ -71,25 +71,13 @@ body {
     cursor: pointer;
 }
 
-.form-control {
-    border-radius: 2vw;
-    height: 2.5vw;
-}
 
-#regioni, #professioni {
-    cursor: pointer;
-    width: 18vw;
-    height: 2.5vw;
-    text-align: left;
-    left: -1vw;
-}
 
-input[type="search"] {
-    width: 40%;
-}
+
+
+
 
 .search-container {
-    max-width: 80%;
     display: flex;
     justify-content: flex-start;
     gap: 0.2vw;

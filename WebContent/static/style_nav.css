@@ -109,3 +109,113 @@
 .logout .fa-user:before {
     color: rgb(123, 31, 255);
 }
+
+/* Media query per schermi fino a 768px (tablet e mobile) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .logo-img {
+        max-height: 150px;
+    }
+
+    /* Stile per il menu hamburger */
+    .hamburger {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    /* Stile per il menu laterale */
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Nasconde il menu fuori dallo schermo */
+        width: 250px;
+        height: 100vh;
+        background-color: white;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+    }
+
+    /* Animazioni per il menu */
+    .menu.slide-in {
+        transform: translateX(250px);
+    }
+
+    .menu.slide-out {
+        transform: translateX(0);
+    }
+
+    .menu ul {
+        padding: 20px 0;
+        margin-top: 60px !important; /* Spazio per evitare sovrapposizione con hamburger */
+    }
+
+    .menu li {
+        display: block;
+        margin: 10px 0;
+        padding: 10px 20px;
+    }
+
+    .menu li a {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+    /* Aggiustamenti per il bottone di accesso */
+    .acc .btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    /* Stile per l'icona utente */
+    .acc2 {
+        padding: 8px;
+    }
+
+    .usernav {
+        font-size: 18px;
+    }
+
+    /* Aggiustamenti per il dropdown menu */
+    .dropdown-menu {
+        min-width: 120px;
+        right: 0;
+        left: auto;
+    }
+}
+
+/* Media query per schermi molto piccoli (smartphone) */
+@media screen and (max-width: 480px) {
+    .navbar {
+        padding: 8px 15px;
+        height: 8vh;
+    }
+
+    .logo-img {
+        max-height: 35px;
+    }
+
+    .menu {
+        width: 220px;
+        left: -220px;
+    }
+
+    .menu.slide-in {
+        transform: translateX(220px);
+    }
+
+    .menu li a {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        padding: 5px 10px;
+        font-size: 13px;
+        width: 10px;
+    }
+}

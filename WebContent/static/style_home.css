@@ -64,6 +64,7 @@ body {
     background-size: 25px;
 }
 
+
 .barra {
     width: 100%;
     display: flex;
@@ -97,12 +98,7 @@ body {
     font-size: 1vw;
     text-align: left;
     margin-top: 4vh;
-    padding-right: 1rem;
-    text-shadow: 
-        0 0 0.5px #000000,
-        0 0 1px #ffffff99,
-        0 0 0.5px rgba(255, 255, 255, 0.5),
-        0 0 1px rgba(0, 0, 0, 0.4);
+    padding-right: 7rem;
 }
 
 .highlight {
@@ -169,11 +165,24 @@ body {
 #aboutUsCarousel:hover .carousel-control-next {
     opacity: 1;
 }
-
+#regioni, #professioni {
+    cursor: pointer;
+    width: 345.6px;
+    height: 48px;
+    text-align: left;
+    left: -19,2px;
+}
+.form-control {
+    border-radius: 2vw;
+    height: 48px;
+}
 .form-control:focus {
     border-color: #D6B5FF;
     box-shadow: 0 0 8px #D6B5FF;
     outline: none;
+}
+input[type="search"] {
+    width: 385.6px;
 }
 .cercaOfferte:focus {
     border-color: #D6B5FF;
@@ -206,8 +215,11 @@ body {
 
     .carousel {
         margin-top: 2rem;
-        max-width: 100%;
-        height: 300px;
+        max-width: 80%;
+        height: 100%;
+    }
+    .carousel-inner img{
+        height: auto;
     }
 
     .carousel-item img {
@@ -222,3 +234,11 @@ body {
         font-size: 16px;
     }
 }
+@media (max-width: 1400px) { /*media query per incolonnare i box dei servizi su righe multiple*/
+    .container {
+      font-size: 12px;
+    }
+}
+
+
+
