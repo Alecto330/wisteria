@@ -35,31 +35,34 @@
 <body>
 
     <!-- Alert Box Personalizzata -->
-    <div class="alert-box" id="alertBox"></div>
-
-    <%@ include file="header.jsp"%>
-    <div class="login-container">
-        <h2>Bentornato!</h2>
-        <form id="loginForm" action="${pageContext.request.contextPath}/login"
-            method="POST">
-
-            <label for="email">Email</label>
-            <input type="email" id="email"
-                name="email" value="${email}" placeholder="Inserisci la tua mail"
-                required>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" value="${password}"
-                placeholder="Inserisci la tua password" required>
-
-            <button type="submit">Accedi</button>
-            <br>
-            <br>
-            <a class="back-button" href="javascript:history.back();"> <i
-				class="fas fa-arrow-left"></i>
-			</a>
-        </form>
-
-    </div>
+	    <div class="alert-box" id="alertBox"></div>
+	
+	    <%@ include file="header.jsp"%>
+	    <div class="login-container">
+	        <h2>Bentornato!</h2>
+	        <form id="loginForm" action="${pageContext.request.contextPath}/login"
+	            method="POST">
+	
+	            <label for="email">Email</label>
+	            <input type="email" id="email"
+	                name="email" value="${email}" placeholder="Inserisci la tua mail"
+	                required>
+	            <label for="password">Password</label>
+	            <input type="password" id="password" name="password" value="${password}"
+	                placeholder="Inserisci la tua password" required>
+	
+	            <button type="submit">Accedi</button>
+	            <a href="${pageContext.request.contextPath}/register"
+	            class="register-link">Registrati</a>
+	            <br>
+	            <br>
+	            <br>
+	            <a class="back-button" href="javascript:history.back();"> <i
+					class="fas fa-arrow-left"></i>
+				</a>
+	        </form>
+	
+	    </div>
 
     <script type="text/javascript">
         window.addEventListener('load', function() {
