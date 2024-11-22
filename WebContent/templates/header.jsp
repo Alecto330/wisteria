@@ -43,7 +43,9 @@
 							class="fa-solid fa-question"></i> About</a></li>
 					<li><a onclick="scrollToBottom() " class="contact"><i
 							class="fas fa-envelope"></i> Contact</a></li>
-					<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-person"></i> Logout</a></li>
+					<c:if test="${not empty user}">
+						<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-person"></i> Logout</a></li>
+					</c:if>
 				</ul>
 			</nav>
 			<div class="scroll-line"></div>
