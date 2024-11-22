@@ -30,37 +30,6 @@
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 
     <!-- CSS per la alert box personalizzata -->
-    <style>
-        .alert-box {
-            display: none;
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            background-color: #f44336;
-            color: #fff;
-            padding: 20px 25px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            opacity: 0;
-            transition: all 0.5s ease-in-out;
-            text-align: center;
-            cursor: pointer; /* Permette di chiudere l'alert cliccandoci sopra */
-        }
-
-        .alert-box.success {
-            background-color: #4caf50;
-        }
-
-        .alert-box.show {
-            display: block;
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-    </style>
 </head>
 
 <body>
@@ -83,16 +52,14 @@
                 placeholder="Inserisci la tua password" required>
 
             <button type="submit">Accedi</button>
+            <br>
+            <br>
+            <a class="back-button" href="javascript:history.back();"> <i
+				class="fas fa-arrow-left"></i>
+			</a>
         </form>
-        <a href="${pageContext.request.contextPath}/register"
-            class="register-link">Registrati</a>
-    </div>
 
-    <div class="btn-container">
-        <button class="btn btn-back" onclick="history.back()">← Torna
-            Indietro</button>
     </div>
-
 
     <script type="text/javascript">
         window.addEventListener('load', function() {
