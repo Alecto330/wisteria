@@ -45,6 +45,7 @@ public class creadomanda extends HttpServlet{
 		String corretta=request.getParameter("selectedAnswer");
 
 		String titolo=request.getParameter("titolo");
+		String provincia=request.getParameter("provincia");
 		String descrizione=request.getParameter("descrizione");
 		String domande=request.getParameter("domande");
 
@@ -60,7 +61,7 @@ public class creadomanda extends HttpServlet{
 		}
 		builder.append("&question="+newDomanda.getId());
 
-		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+descrizione+builder.toString());
+		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+builder.toString());
 	}
 
 }

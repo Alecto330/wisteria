@@ -58,7 +58,7 @@
 		</div>
 
         <div class="btn-container">
-            <button class="btn btn-back" href="javascript:history.back();">
+            <button class="btn btn-back" onclick="javascript:history.back();">
                 ← Torna Indietro
             </button>
         </div>
@@ -173,13 +173,6 @@
             // Stampa l'ID della risposta selezionata per debug
             console.log("Risposta selezionata ID:", rispostaId);
         }
-
-
-
-
-
-
     </script>
-
 </body>
 </html>

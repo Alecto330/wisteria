@@ -63,7 +63,7 @@
             </form>
         </div>
         <div class="actions-container">
-            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">Salva</button>
+            <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">✔</button>
         </div>
     </div>
 
@@ -97,6 +97,7 @@
     	 const params = new URLSearchParams(window.location.search);
     	 const titolo=params.get('titolo');
     	 const descrizione=params.get('descrizione');
+    	 const provincia=params.get('provincia');
     	 
     	 console.log(titolo);
     	 console.log(descrizione);
@@ -110,7 +111,7 @@
          });
          
         const baseUrl = '${pageContext.request.contextPath}/creadomanda';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
         
         console.log(urlWithParams);
          

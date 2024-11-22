@@ -271,19 +271,19 @@ input[type="search"] {
 }
 
 .btn-add {
-    width: auto;
+    width: 100px;
     position: fixed;
     bottom: 20px; /* Inizialmente 20px dal fondo */
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, #a200ff, #d400ff);
+    background: linear-gradient(135deg, #b700ff, #552e81, #312e81);
     color: white;
     border: none;
     border-radius: 50px;
     padding: 15px 25px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
-    box-shadow: 0 8px 15px rgba(162, 0, 255, 0.4);
+    box-shadow: 0 1px 20px #720eff;
     cursor: pointer;
     z-index: 1000;
     transition: bottom 0.3s ease;
@@ -291,9 +291,9 @@ input[type="search"] {
 
 
 .btn-add:hover {
-    background: linear-gradient(135deg, #d400ff, #ff00ff);
-    box-shadow: 0 12px 25px rgba(212, 0, 255, 0.6);
-    transform: translateX(-50%) scale(1.1);
+    background: linear-gradient(135deg, #b700ff, #552e81, #312e81);
+    box-shadow: 0 1px 20px #d400ff;
+    color: #d400ff;
 }
 
 .btn-add:active {

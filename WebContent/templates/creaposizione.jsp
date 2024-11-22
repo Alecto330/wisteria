@@ -48,7 +48,7 @@
 				<label class="form-label" for="localita-input">Località:</label>
 				<div class="location-group">
 					<select id="provincia-input" name="provinciaupdateRegione" class="form-select"
-						required onchange="updateRegione()">
+						required>
 						<option value="">-- Seleziona Provincia --</option>
 						<c:forEach var="province" items="${provinceList}">
 							<option value="${province}"
@@ -326,8 +326,7 @@
             const regioneSelect = document.getElementById('regione-input');
 
             provinciaSelect.addEventListener('change', () => {
-                const provincia = provinciaSelect.value;
-
+                const provincia = provinciaSelect.value.trim();
                 if (provincia && provinciaToRegioneMap[provincia]) {
                     regioneSelect.value = provinciaToRegioneMap[provincia];
                 } else {
