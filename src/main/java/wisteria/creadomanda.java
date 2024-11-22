@@ -1,7 +1,6 @@
 package wisteria;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-
+import domanda.Domanda;
 import domanda.DomandaDAO;
 import user.User;
 
@@ -37,25 +35,32 @@ public class creadomanda extends HttpServlet{
 			response.sendRedirect("home");
 		}
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
 		String nomeDomanda=request.getParameter("question");
 		String risposte=request.getParameter("answers");
 		String[] risposteArray=risposte.split(",");
 		String corretta=request.getParameter("selectedAnswer");
-		System.out.println(corretta);
-		
-		
-		System.out.println(nomeDomanda);
+
+		String titolo=request.getParameter("titolo");
+		String descrizione=request.getParameter("descrizione");
+		String domande=request.getParameter("domande");
+
 		DomandaDAO domandaDAO = new DomandaDAO();
-		domandaDAO.insertDomandaRisposte(nomeDomanda, risposteArray, Integer.parseInt(corretta));
+		Domanda newDomanda=domandaDAO.insertDomandaRisposte(nomeDomanda, risposteArray, Integer.parseInt(corretta));
+
+		StringBuilder builder=new StringBuilder();
+		if(!domande.isEmpty() || !domande.trim().isEmpty()) {
+			String[] domandeArray=domande.split(",");
+			for(String domandaId: domandeArray) {
+				builder.append("&question="+domandaId);
+			}
+		}
+		builder.append("&question="+newDomanda.getId());
+
+		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+descrizione+builder.toString());
 	}
-
-
-
-
 
 }

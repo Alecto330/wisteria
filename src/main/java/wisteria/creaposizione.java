@@ -28,7 +28,6 @@ public class creaposizione extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("test1");
 		String provincia = request.getParameter("provincia");
 		PosizioneDAO daopos = new PosizioneDAO();
         String regione = "";
