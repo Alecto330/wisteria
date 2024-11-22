@@ -6,15 +6,13 @@ public class Domanda {
 	
 	private int id;
 	private String domanda;
-	private String argomento;
 	private int posizione;
 	private ArrayList<Risposta> risposte;
 	
-	public Domanda(int id, String domanda, String argomento, int posizione) {
+	public Domanda(int id, String domanda, int posizione) {
 		super();
 		this.id = id;
 		this.domanda = domanda;
-		this.argomento = argomento;
 		this.posizione = posizione;
 		this.risposte=new ArrayList<Risposta>();
 	}
@@ -30,12 +28,6 @@ public class Domanda {
 	}
 	public void setDomanda(String domanda) {
 		this.domanda = domanda;
-	}
-	public String getArgomento() {
-		return argomento;
-	}
-	public void setArgomento(String argomento) {
-		this.argomento = argomento;
 	}
 	public int getPosizione() {
 		return posizione;
