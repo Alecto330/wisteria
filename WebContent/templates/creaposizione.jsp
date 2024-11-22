@@ -29,9 +29,8 @@
 <body>
 
 	<div class="main-container-creaposizione">
-		<h1 class="form-title">Crea una posizione</h1>
-		<form action="${pageContext.request.contextPath}/inviaPosizione"
-			method="post">
+		<h1 class="form-title" style="font-size:2.5vw;">Crea una posizione</h2>
+		<form action="${pageContext.request.contextPath}/inviaPosizione" method="post">
 			<div class="form-group">
 				<label class="form-label" for="titolo-input">Titolo:</label> <input
 					name="titolo" type="text" class="form-input" id="titolo-input"
@@ -56,6 +55,7 @@
 								${province == selectedProvincia ? 'selected' : ''}>${province}</option>
 						</c:forEach>
 					</select>
+					
 					<select id="regione-input" name="regione" class="form-select"
 						required ${selectedRegione !=null&& !selectedRegione.isEmpty() ? 'disabled' : ''}>
                         <option value="">-- Seleziona Regione --</option>
