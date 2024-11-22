@@ -105,137 +105,136 @@
 
 	<script>
 	
+    const provinciaToRegioneMap = {
+            "Chieti": "Abruzzo",
+            "L'Aquila": "Abruzzo",
+            "Pescara": "Abruzzo",
+            "Teramo": "Abruzzo",
+            "Potenza": "Basilicata",
+            "Matera": "Basilicata",
+            "Catanzaro": "Calabria",
+            "Cosenza": "Calabria",
+            "Crotone": "Calabria",
+            "Reggio Calabria": "Calabria",
+            "Vibo Valentia": "Calabria",
+            "Avellino": "Campania",
+            "Benevento": "Campania",
+            "Caserta": "Campania",
+            "Napoli": "Campania",
+            "Salerno": "Campania",
+            "Bologna": "Emilia-Romagna",
+            "Ferrara": "Emilia-Romagna",
+            "Forlì-Cesena": "Emilia-Romagna",
+            "Modena": "Emilia-Romagna",
+            "Parma": "Emilia-Romagna",
+            "Piacenza": "Emilia-Romagna",
+            "Ravenna": "Emilia-Romagna",
+            "Reggio Emilia": "Emilia-Romagna",
+            "Rimini": "Emilia-Romagna",
+            "Gorizia": "Friuli-Venezia Giulia",
+            "Pordenone": "Friuli-Venezia Giulia",
+            "Trieste": "Friuli-Venezia Giulia",
+            "Udine": "Friuli-Venezia Giulia",
+            "Frosinone": "Lazio",
+            "Latina": "Lazio",
+            "Rieti": "Lazio",
+            "Roma": "Lazio",
+            "Viterbo": "Lazio",
+            "Genova": "Liguria",
+            "Imperia": "Liguria",
+            "La Spezia": "Liguria",
+            "Savona": "Liguria",
+            "Bergamo": "Lombardia",
+            "Brescia": "Lombardia",
+            "Como": "Lombardia",
+            "Cremona": "Lombardia",
+            "Lecco": "Lombardia",
+            "Lodi": "Lombardia",
+            "Mantova": "Lombardia",
+            "Milano": "Lombardia",
+            "Monza e Brianza": "Lombardia",
+            "Pavia": "Lombardia",
+            "Sondrio": "Lombardia",
+            "Varese": "Lombardia",
+            "Ancona": "Marche",
+            "Ascoli Piceno": "Marche",
+            "Fermo": "Marche",
+            "Macerata": "Marche",
+            "Pesaro e Urbino": "Marche",
+            "Campobasso": "Molise",
+            "Isernia": "Molise",
+            "Alessandria": "Piemonte",
+            "Asti": "Piemonte",
+            "Biella": "Piemonte",
+            "Cuneo": "Piemonte",
+            "Novara": "Piemonte",
+            "Torino": "Piemonte",
+            "Verbano-Cusio-Ossola": "Piemonte",
+            "Vercelli": "Piemonte",
+            "Bari": "Puglia",
+            "Barletta-Andria-Trani": "Puglia",
+            "Brindisi": "Puglia",
+            "Foggia": "Puglia",
+            "Lecce": "Puglia",
+            "Taranto": "Puglia",
+            "Cagliari": "Sardegna",
+            "Nuoro": "Sardegna",
+            "Oristano": "Sardegna",
+            "Sassari": "Sardegna",
+            "Sud Sardegna": "Sardegna",
+            "Agrigento": "Sicilia",
+            "Caltanissetta": "Sicilia",
+            "Catania": "Sicilia",
+            "Enna": "Sicilia",
+            "Messina": "Sicilia",
+            "Palermo": "Sicilia",
+            "Ragusa": "Sicilia",
+            "Siracusa": "Sicilia",
+            "Trapani": "Sicilia",
+            "Arezzo": "Toscana",
+            "Firenze": "Toscana",
+            "Grosseto": "Toscana",
+            "Livorno": "Toscana",
+            "Lucca": "Toscana",
+            "Massa-Carrara": "Toscana",
+            "Pisa": "Toscana",
+            "Pistoia": "Toscana",
+            "Prato": "Toscana",
+            "Siena": "Toscana",
+            "Bolzano": "Trentino-Alto Adige",
+            "Trento": "Trentino-Alto Adige",
+            "Perugia": "Umbria",
+            "Terni": "Umbria",
+            "Aosta": "Valle d'Aosta",
+            "Belluno": "Veneto",
+            "Padova": "Veneto",
+            "Rovigo": "Veneto",
+            "Treviso": "Veneto",
+            "Venezia": "Veneto",
+            "Verona": "Veneto",
+            "Vicenza": "Veneto"
+        };
+	
     function goToListaDomande() {
         // Get the input values
         const titolo = encodeURIComponent(document.getElementById('titolo-input').value);
         const descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
+        
+        const provinciaSelect = document.getElementById('provincia-input');
+        const provincia = provinciaSelect.value;
 
         const params = new URLSearchParams(window.location.search);
         const questions=params.getAll('question');
         
         const baseUrl = '${pageContext.request.contextPath}/listadomande';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&'+questions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&'+questions.map(q => 'question=' + q).join('&');
         
         location.href = urlWithParams;
     }
-	
-
-
 
         document.addEventListener('DOMContentLoaded', () => {
             const provinciaSelect = document.getElementById('provincia-input');
             const regioneSelect = document.getElementById('regione-input');
-
-            // Mappa Provincia -> Regione
-            const provinciaToRegioneMap = {
-                "Chieti": "Abruzzo",
-                "L'Aquila": "Abruzzo",
-                "Pescara": "Abruzzo",
-                "Teramo": "Abruzzo",
-                "Potenza": "Basilicata",
-                "Matera": "Basilicata",
-                "Catanzaro": "Calabria",
-                "Cosenza": "Calabria",
-                "Crotone": "Calabria",
-                "Reggio Calabria": "Calabria",
-                "Vibo Valentia": "Calabria",
-                "Avellino": "Campania",
-                "Benevento": "Campania",
-                "Caserta": "Campania",
-                "Napoli": "Campania",
-                "Salerno": "Campania",
-                "Bologna": "Emilia-Romagna",
-                "Ferrara": "Emilia-Romagna",
-                "Forlì-Cesena": "Emilia-Romagna",
-                "Modena": "Emilia-Romagna",
-                "Parma": "Emilia-Romagna",
-                "Piacenza": "Emilia-Romagna",
-                "Ravenna": "Emilia-Romagna",
-                "Reggio Emilia": "Emilia-Romagna",
-                "Rimini": "Emilia-Romagna",
-                "Gorizia": "Friuli-Venezia Giulia",
-                "Pordenone": "Friuli-Venezia Giulia",
-                "Trieste": "Friuli-Venezia Giulia",
-                "Udine": "Friuli-Venezia Giulia",
-                "Frosinone": "Lazio",
-                "Latina": "Lazio",
-                "Rieti": "Lazio",
-                "Roma": "Lazio",
-                "Viterbo": "Lazio",
-                "Genova": "Liguria",
-                "Imperia": "Liguria",
-                "La Spezia": "Liguria",
-                "Savona": "Liguria",
-                "Bergamo": "Lombardia",
-                "Brescia": "Lombardia",
-                "Como": "Lombardia",
-                "Cremona": "Lombardia",
-                "Lecco": "Lombardia",
-                "Lodi": "Lombardia",
-                "Mantova": "Lombardia",
-                "Milano": "Lombardia",
-                "Monza e Brianza": "Lombardia",
-                "Pavia": "Lombardia",
-                "Sondrio": "Lombardia",
-                "Varese": "Lombardia",
-                "Ancona": "Marche",
-                "Ascoli Piceno": "Marche",
-                "Fermo": "Marche",
-                "Macerata": "Marche",
-                "Pesaro e Urbino": "Marche",
-                "Campobasso": "Molise",
-                "Isernia": "Molise",
-                "Alessandria": "Piemonte",
-                "Asti": "Piemonte",
-                "Biella": "Piemonte",
-                "Cuneo": "Piemonte",
-                "Novara": "Piemonte",
-                "Torino": "Piemonte",
-                "Verbano-Cusio-Ossola": "Piemonte",
-                "Vercelli": "Piemonte",
-                "Bari": "Puglia",
-                "Barletta-Andria-Trani": "Puglia",
-                "Brindisi": "Puglia",
-                "Foggia": "Puglia",
-                "Lecce": "Puglia",
-                "Taranto": "Puglia",
-                "Cagliari": "Sardegna",
-                "Nuoro": "Sardegna",
-                "Oristano": "Sardegna",
-                "Sassari": "Sardegna",
-                "Sud Sardegna": "Sardegna",
-                "Agrigento": "Sicilia",
-                "Caltanissetta": "Sicilia",
-                "Catania": "Sicilia",
-                "Enna": "Sicilia",
-                "Messina": "Sicilia",
-                "Palermo": "Sicilia",
-                "Ragusa": "Sicilia",
-                "Siracusa": "Sicilia",
-                "Trapani": "Sicilia",
-                "Arezzo": "Toscana",
-                "Firenze": "Toscana",
-                "Grosseto": "Toscana",
-                "Livorno": "Toscana",
-                "Lucca": "Toscana",
-                "Massa-Carrara": "Toscana",
-                "Pisa": "Toscana",
-                "Pistoia": "Toscana",
-                "Prato": "Toscana",
-                "Siena": "Toscana",
-                "Bolzano": "Trentino-Alto Adige",
-                "Trento": "Trentino-Alto Adige",
-                "Perugia": "Umbria",
-                "Terni": "Umbria",
-                "Aosta": "Valle d'Aosta",
-                "Belluno": "Veneto",
-                "Padova": "Veneto",
-                "Rovigo": "Veneto",
-                "Treviso": "Veneto",
-                "Venezia": "Veneto",
-                "Verona": "Veneto",
-                "Vicenza": "Veneto"
-            };
 
             provinciaSelect.addEventListener('change', () => {
                 const provincia = provinciaSelect.value;
@@ -247,131 +246,24 @@
                 }
             });
         });
+        
+        
+        function setProvincia() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const provincia = urlParams.get('provincia');
 
-        /*document.addEventListener('DOMContentLoaded', () => {
-            const dropdown = document.getElementById('settore-dropdown');
-            const input = dropdown.querySelector('#settore-input');
-            const list = dropdown.querySelector('.dropdown-menu');
-            const items = Array.from(list.querySelectorAll('li'));
-            let currentFocus = -1;
-            input.addEventListener('focus', () => {
-                list.style.display = 'block';
-                input.setAttribute('aria-expanded', 'true');
-            });
+        console.log(provincia);
 
-            document.addEventListener('click', (e) => {
-                if (!dropdown.contains(e.target)) {
-                    list.style.display = 'none';
-                    input.setAttribute('aria-expanded', 'false');
-                    currentFocus = -1;
-                    removeActive();
-                }
-            });
-
-            input.addEventListener('input', () => {
-                const filter = input.value.toLowerCase();
-                let visibleCount = 0;
-                items.forEach(item => {
-                    if (item.textContent.toLowerCase().includes(filter)) {
-                        item.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                if (visibleCount > 0) {
-                    list.style.display = 'block';
-                    input.setAttribute('aria-expanded', 'true');
-                } else {
-                    list.style.display = 'none';
-                    input.setAttribute('aria-expanded', 'false');
-                }
-                currentFocus = -1;
-                removeActive();
-            });
-
-            items.forEach(item => {
-                item.addEventListener('click', () => {
-                    input.value = item.textContent;
-                    list.style.display = 'none';
-                    input.setAttribute('aria-expanded', 'false');
-                    currentFocus = -1;
-                    removeActive();
-                });
-
-                item.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        item.click();
-                    }
-                });
-            });
-
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    currentFocus++;
-                    addActive();
-                } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    currentFocus--;
-                    addActive();
-                } else if (e.key === 'Enter') {
-                    e.preventDefault();
-                    if (currentFocus > -1) {
-                        items[currentFocus].click();
-                    }
-                }
-            });
-
-            function addActive() {
-                if (currentFocus >= items.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = items.length - 1;
-                removeActive();
-                items[currentFocus].classList.add('active');
-                items[currentFocus].scrollIntoView({ block: 'nearest' });
-            }
-
-            function removeActive() {
-                items.forEach(item => item.classList.remove('active'));
-            }
-
-            const regioneSelect = document.getElementById('regione-input');
-            const provinciaSelect = document.getElementById('provincia-input');
-
-            function handleProvinciaChange() {
-                if (provinciaSelect.value) {
-                    updateRegione();
-                } else {
-                    regioneSelect.value = "";
-                    regioneSelect.disabled = false;
-                }
-            }
-
-            provinciaSelect.addEventListener('change', handleProvinciaChange);
-
-            function initializeRegione() {
-                var selectedRegione = '<c:out value="${selectedRegione}" />';
-                if (selectedRegione && selectedRegione !== "") {
-                    regioneSelect.value = selectedRegione;
-                    regioneSelect.disabled = true;
-                } else {
-                    regioneSelect.value = "";
-                    regioneSelect.disabled = false;
-                }
-            }
-
-            initializeRegione();
-
-            const deleteButtons = document.querySelectorAll('.delete-btn');
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const li = e.target.closest('li');
-                    li.remove();
-                });
-            });
-        });*/
-
+        const provinciaSelect = document.getElementById('provincia-input');
+        
+        if (provincia && provinciaSelect) {
+        	provinciaSelect.value=provincia;
+        	const regioneSelect = document.getElementById('regione-input');
+        	regioneSelect.value = provinciaToRegioneMap[provincia];
+        } 
+        }
+        window.addEventListener('popstate', setProvincia);
+        window.addEventListener('load', setProvincia);
 
 
          function inviaPosizione() {
