@@ -363,4 +363,56 @@ select.form-input {
     margin: 0;
 
 }
+.alert-box {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: #f44336;
+    color: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    cursor: pointer;
+}
+
+.alert-box.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+.alert-box.success {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: #4CAF50; /* Verde per successo */
+    color: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    cursor: pointer;
+}
+
+.alert-box.success.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
 

@@ -179,10 +179,6 @@ justify-content: center;*/
     cursor: pointer;
 }
 
-.alert-box.success {
-    background-color: #4caf50;
-}
-
 .alert-box.show {
     display: block;
     opacity: 1;
