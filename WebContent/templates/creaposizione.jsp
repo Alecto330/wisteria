@@ -68,7 +68,7 @@
 			<div class="form-group">
 				<label class="form-label" for="settore-input">Settore:</label>
 				<div class="dropdown" id="settore-dropdown">
-					<input id="settore-input" type="text"
+					<input id="settore-input" type="text" name="settore"
 						class="form-input dropdown-toggle"
 						placeholder="Seleziona o digita un settore"
 						aria-haspopup="listbox" aria-expanded="false" autocomplete="off"
@@ -83,9 +83,9 @@
 			</div>
 			<div class="questions-section">
 				<h3 class="questions-title">Domande selezionate</h3>
-				<ul class="selected-questions">
+				<ul class="selected-questions" id="selected-questions-list">
 					<c:forEach var="domanda" items="${domande}">
-						<li>${domanda.domanda} <span class="delete-btn"
+						<li><input name="domanda" value="${domanda.id}">${domanda.domanda} <span class="delete-btn"
 							title="Elimina domanda">&times;</span>
 						</li>
 					</c:forEach>

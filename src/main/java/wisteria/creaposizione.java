@@ -75,15 +75,15 @@ public class creaposizione extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String titolo = request.getParameter("titolo");
         String descrizione = request.getParameter("descrizione");
-        String regione = request.getParameter("regione");
-        String provincia = request.getParameter("provincia-input");
+        String provincia = request.getParameter("provinciaupdateRegione");
         String settore = request.getParameter("settore");
+        String[] domande = request.getParameterValues("domanda");
         
         System.out.println(titolo);
         System.out.println(descrizione);
-        System.out.println(regione);
         System.out.println(provincia);
         System.out.println(settore);
+        System.out.println(domande[0]);
 
         /*Posizione posizione = new Posizione(0, titolo, descrizione, settore, provincia, regione);
 
