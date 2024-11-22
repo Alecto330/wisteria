@@ -60,13 +60,14 @@
                     <li>Collaborazione costante con i dipartimenti aziendali</li>
                 </ul>
             </div>
+            <a class="back-button" href="javascript:history.back();"> <i
+				class="fas fa-arrow-left"></i>
+			</a>
         </div>
         
-        <div class="btn-container">
-            <a href="/wisteria/home" class="btn btn-back" href="javascript:history.back();">
-                ← Torna Indietro
-            </a>
-        </div>
+
+
+        
 	</div>
 
     </div>
