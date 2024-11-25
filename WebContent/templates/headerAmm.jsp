@@ -23,7 +23,6 @@
 	href="${pageContext.request.contextPath}/static/style_nav.css">
 <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
-
 <header>
     <section>
         <!--############################ BARRA DI NAVIGAZIONE ####################################-->
@@ -48,15 +47,15 @@
                 </span>
             </a>
 
-            <div class="logout">
-                <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="acc2"> </div>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
-                </div>
-            </div>
+	     	<div class="logout">
+				<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
+				</a>
+	
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+					<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
+				</div>
+			</div>
 
         </nav>
     </section>
