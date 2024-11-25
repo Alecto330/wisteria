@@ -72,9 +72,7 @@
     function checkSelected() {
         console.log("Checking selected questions...");
         const params = new URLSearchParams(window.location.search);
-        const questions = params.getAll('question'); // Get all selected question IDs from the URL query
-
-        // Iterate through each checkbox and check if it matches a selected question
+        const questions = params.getAll('question');
         const checkboxes = document.querySelectorAll('.question-checkbox');
         checkboxes.forEach(checkbox => {
             if (questions.includes(checkbox.value)) {
@@ -84,7 +82,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Ensure checkboxes are selected if needed on page load
         checkSelected();
         
         const contents = document.querySelectorAll('.accordion-content');
@@ -183,22 +180,15 @@
                 credentials: 'same-origin'
             }) 
             .then(response => {
-                // Check if the response is a redirect
                 if (response.redirected) {
-                    // If server sent a redirect, follow it
                     window.location.href = response.url;
                     return;
                 }
-                
-                // Otherwise, process the response
                 return response.text();
             })
             .then(html => {
                 if (html) {
-                    // Update URL without page reload
                     history.pushState(null, '', url);
-                    
-                    // Update page content
                     document.open();
                     document.write(html);
                     document.close();
@@ -251,43 +241,30 @@
 
         window.addEventListener('popstate', setOptions);
         window.addEventListener('load', setOptions);
+        window.addEventListener('scroll', function() {
+            const footer = document.querySelector('footer');
+            const button = document.querySelector('.btn-add');
 
+            if (footer && button) {
+                const footerRect = footer.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
 
-
-window.addEventListener('scroll', function() {
-    const footer = document.querySelector('footer'); // Il tuo footer
-    const button = document.querySelector('.btn-add');
-
-    if (footer && button) {
-        const footerRect = footer.getBoundingClientRect(); // Ottieni la posizione del footer
-        const windowHeight = window.innerHeight; // Altezza della finestra di visualizzazione
-
-        // Se il footer è vicino al fondo della finestra
-        if (footerRect.top <= windowHeight && footerRect.top > 0) {
-            // Solo se il pulsante non è già in posizione assoluta, cambiamo la posizione
-            if (button.style.position !== 'absolute') {
-                button.style.position = 'absolute'; // Cambiamo a 'absolute'
-                button.style.bottom = (footerRect.height + 20) + 'px'; // Posizionalo sopra il footer
-                button.style.transition = 'none'; // Evitiamo transizioni rapide durante il cambio
+                // Se il footer è vicino al fondo della finestra
+                if (footerRect.top <= windowHeight && footerRect.top > 0) {
+                    if (button.style.position !== 'absolute') {
+                        button.style.position = 'absolute';
+                        button.style.bottom = (footerRect.height + 20) + 'px';
+                        button.style.transition = 'none';
+                    }
+                } else {
+                    if (button.style.position !== 'fixed') {
+                        button.style.position = 'fixed';
+                        button.style.bottom = '20px';
+                        button.style.transition = 'none';
+                    }
+                }
             }
-        } else {
-            // Quando il footer non è vicino, il bottone deve rimanere fisso
-            if (button.style.position !== 'fixed') {
-                button.style.position = 'fixed'; // Torniamo alla posizione 'fixed'
-                button.style.bottom = '20px'; // Mantienilo 20px sopra il fondo
-                button.style.transition = 'none';  // Transizione fluida per tornare
-            }
-        }
-    }
-});
-
-
-
-
-
-
-
-
+        });
     </script>
 </body>
 </html>

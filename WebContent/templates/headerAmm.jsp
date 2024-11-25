@@ -7,9 +7,6 @@
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- Font Awesome CDN -->
-
-<!-- Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -65,32 +62,24 @@
     document.addEventListener('DOMContentLoaded', function () {
         const hamburger = document.getElementById("hamburger");
         const menu = document.getElementById("menu");
-
-        // Funzione per aprire il menu
         function openMenu() {
             menu.classList.add("slide-in");
             menu.classList.remove("slide-out");
-            document.body.classList.add("no-scroll"); // Opzionale: impedisce lo scroll dello sfondo
+            document.body.classList.add("no-scroll");
         }
-
-        // Funzione per chiudere il menu
         function closeMenu() {
             menu.classList.remove("slide-in");
             menu.classList.add("slide-out");
-            document.body.classList.remove("no-scroll"); // Opzionale
+            document.body.classList.remove("no-scroll");
         }
-
-        // Toggle del menu al click sull'hamburger
         hamburger.addEventListener("click", function (e) {
-            e.stopPropagation(); // Previene che il click si propaghi al documento
+            e.stopPropagation();
             if (menu.classList.contains("slide-in")) {
                 closeMenu();
             } else {
                 openMenu();
             }
         });
-
-        // Chiudi il menu se si clicca fuori di esso
         document.addEventListener("click", function (e) {
             const isClickInsideMenu = menu.contains(e.target);
             const isClickOnHamburger = hamburger.contains(e.target);
@@ -99,23 +88,17 @@
                 closeMenu();
             }
         });
-
-        // Chiudi il menu quando si clicca su un link del menu
         const menuLinks = menu.querySelectorAll("a");
         menuLinks.forEach(function (link) {
             link.addEventListener("click", function () {
                 closeMenu();
             });
         });
-
-        // Chiudi il menu quando si preme il tasto Esc
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && menu.classList.contains("slide-in")) {
                 closeMenu();
             }
         });
-
-        // Funzione per la barra di scorrimento
         window.addEventListener("scroll", function () {
             const scrollLine = document.querySelector(".scroll-line");
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;

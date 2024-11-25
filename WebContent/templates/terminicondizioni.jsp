@@ -9,14 +9,11 @@
 <title>Termini e Condizioni - Wisteria</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Bootstrap per gli elementi -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- Font-Awesome per le icone (senz doverle scaricare) -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
 	rel="stylesheet">
-<!-- Per importare il font Poppins -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
@@ -26,15 +23,12 @@
 <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
 	<%@ include file="header.jsp"%>
-
 	<div class="container">
 		<h1>Termini e Condizioni d'Uso</h1>
 		<p>
 			<strong>Ultimo aggiornamento:</strong> 27 Aprile 2024
 		</p>
-
 		<div class="section">
 			<h2>1. Accettazione dei Termini</h2>
 			<p>Accedendo e utilizzando il Sito, accetti di essere vincolato
@@ -42,7 +36,6 @@
 				applicabili. Se non sei d'accordo con uno qualsiasi di questi
 				Termini, ti è vietato utilizzare o accedere al Sito.</p>
 		</div>
-
 		<div class="section">
 			<h2>2. Modifiche ai Termini</h2>
 			<p>Wisteria si riserva il diritto di modificare, aggiornare o
@@ -52,7 +45,6 @@
 				aggiornamenti. L'uso continuato del Sito dopo la pubblicazione delle
 				modifiche costituisce accettazione dei nuovi Termini.</p>
 		</div>
-
 		<div class="section">
 			<h2>3. Descrizione dei Servizi</h2>
 			<p>Il Sito offre una piattaforma per le aziende e i
@@ -68,7 +60,6 @@
 				<li>Accesso a risorse e strumenti per la carriera</li>
 			</ul>
 		</div>
-
 		<div class="section">
 			<h2>4. Requisiti di Registrazione</h2>
 			<p>Per utilizzare alcuni Servizi, è necessario registrarsi
@@ -79,7 +70,6 @@
 				immediatamente Wisteria in caso di uso non autorizzato del tuo
 				account.</p>
 		</div>
-
 		<div class="section">
 			<h2>5. Diritti e Responsabilità degli Utenti</h2>
 			<h3>Datori di Lavoro</h3>
@@ -101,7 +91,6 @@
 					tramite il Sito.</li>
 			</ul>
 		</div>
-
 		<div class="section">
 			<h2>6. Proprietà Intellettuale</h2>
 			<p>Tutti i contenuti presenti sul Sito, inclusi testi, grafica,
@@ -111,7 +100,6 @@
 				consentito copiare, modificare, distribuire o creare opere derivate
 				senza il previo consenso scritto di Wisteria.</p>
 		</div>
-
 		<div class="section">
 			<h2>7. Privacy</h2>
 			<p>
@@ -122,7 +110,6 @@
 				sulla Privacy.
 			</p>
 		</div>
-
 		<div class="section">
 			<h2>8. Limitazione di Responsabilità</h2>
 			<p>Wisteria non sarà responsabile per eventuali danni diretti,
@@ -131,7 +118,6 @@
 				il Sito sarà ininterrotto o privo di errori, né che i difetti
 				saranno corretti.</p>
 		</div>
-
 		<div class="section">
 			<h2>9. Link a Siti di Terzi</h2>
 			<p>Il Sito può contenere link a siti web di terzi. Non abbiamo
@@ -139,7 +125,6 @@
 				o pratiche. L'inclusione di link non implica approvazione o
 				affiliazione con i siti di terzi.</p>
 		</div>
-
 		<div class="section">
 			<h2>10. Terminazione</h2>
 			<p>Wisteria si riserva il diritto di sospendere o terminare il
@@ -147,7 +132,6 @@
 				preavviso, per qualsiasi motivo, inclusa la violazione di questi
 				Termini.</p>
 		</div>
-
 		<div class="section">
 			<h2>11. Legge Applicabile</h2>
 			<p>Questi Termini sono regolati e interpretati in conformità con
@@ -155,7 +139,6 @@
 				da o relativa a questi Termini sarà soggetta alla giurisdizione
 				esclusiva dei tribunali italiani.</p>
 		</div>
-
 		<div class="section">
 			<h2>12. Contatti</h2>
 			<p>
@@ -164,7 +147,6 @@
 				o tramite i nostri canali di supporto sul Sito.
 			</p>
 		</div>
-
 		<div class="section">
 			<h2>13. Clausola di Separabilità</h2>
 			<p>Se una qualsiasi disposizione di questi Termini dovesse essere
@@ -172,14 +154,12 @@
 				considerata separabile e non influirà sulla validità e applicabilità
 				delle restanti disposizioni.</p>
 		</div>
-
 		<div class="section">
 			<h2>14. Nessuna Rinuncia</h2>
 			<p>La mancata applicazione di qualsiasi diritto o disposizione di
 				questi Termini non costituirà una rinuncia a tale diritto o
 				disposizione.</p>
 		</div>
-
 		<div class="section">
 			<h2>15. Indennizzo</h2>
 			<p>Accetti di difendere, indennizzare e tenere indenne Wisteria,
@@ -188,7 +168,6 @@
 				derivanti dall'uso improprio del Sito o dalla violazione di questi
 				Termini.</p>
 		</div>
-
 		<div class="section">
 			<h2>16. Contenuti Generati dagli Utenti</h2>
 			<p>Gli Utenti possono avere la possibilità di caricare,
@@ -197,7 +176,6 @@
 				per farlo. Wisteria si riserva il diritto di rimuovere qualsiasi
 				contenuto che ritenga inappropriato o che violi questi Termini.</p>
 		</div>
-
 		<div class="section">
 			<h2>17. Clausola di Arbitrato</h2>
 			<p>Qualsiasi controversia derivante da o relativa a questi
@@ -206,7 +184,6 @@
 				[Città]. La decisione dell'arbitro sarà definitiva e vincolante per
 				entrambe le parti.</p>
 		</div>
-
 		<div class="section">
 			<h2>18. Clausola Anti-Spam</h2>
 			<p>Gli Utenti si impegnano a non utilizzare il Sito per inviare
@@ -214,7 +191,6 @@
 				clausola può comportare la sospensione o la terminazione del tuo
 				account.</p>
 		</div>
-
 		<div class="section">
 			<h2>19. Disposizioni Finali</h2>
 			<p>Questi Termini costituiscono l'intero accordo tra te e
@@ -224,7 +200,6 @@
 				limitare o escludere responsabilità per morte o lesioni personali
 				causate da negligenza, frode o altro comportamento illecito.</p>
 		</div>
-
 		<p>Grazie per aver scelto Wisteria. Speriamo che la tua esperienza
 			sia positiva e produttiva!</p>
 	</div>
