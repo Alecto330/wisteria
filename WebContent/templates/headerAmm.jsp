@@ -43,7 +43,7 @@
 
             <a href="${pageContext.request.contextPath}/home" class="logo-container">
                 <span>
-                    <img src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png" alt="Logo Wisteria" class="logo-img">
+                    <img src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO2.png" alt="Logo Wisteria" class="logo-img">
                 </span>
             </a>
 
