@@ -271,35 +271,38 @@ input[type="search"] {
 }
 
 .btn-add {
-    width: 100px;
+    width: 120px; /* Dimensioni più grandi per maggiore visibilità */
     position: fixed;
-    bottom: 20px; /* Inizialmente 20px dal fondo */
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(135deg, #b700ff, #552e81, #312e81);
+    background: linear-gradient(135deg, #d56bff, #9500ff, #6f00be); /* Gradiente vivace */
     color: white;
     border: none;
-    border-radius: 50px;
-    padding: 15px 25px;
-    font-size: 22px;
+    border-radius: 2vw;
+    padding: 1.2rem 1.8rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    box-shadow: 0 1px 20px #720eff;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 15px rgba(130, 40, 255, 0.7), 0 0 30px rgba(130, 40, 255, 0.5), 0 0 50px rgba(130, 40, 255, 0.3);
     cursor: pointer;
     z-index: 1000;
-    transition: bottom 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-
 .btn-add:hover {
-    background: linear-gradient(135deg, #b700ff, #552e81, #312e81);
-    box-shadow: 0 1px 20px #d400ff;
-    color: #d400ff;
+    background: linear-gradient(135deg, #b700ff, #720eff, #312e81); /* Colori più intensi al passaggio */
+    box-shadow: 0 0 20px rgba(114, 14, 255, 0.8), 0 0 40px rgba(114, 14, 255, 0.6), 0 0 60px rgba(114, 14, 255, 0.4);
+    transform: translateX(-50%) scale(1.1); /* Effetto ingrandimento maggiore */
 }
 
 .btn-add:active {
-    transform: translateX(-50%) scale(1);
-    box-shadow: 0 6px 12px rgba(162, 0, 255, 0.4);
+    transform: translateX(-50%) scale(0.95); /* Effetto pressione visibile */
+    box-shadow: 0 0 15px rgba(114, 14, 255, 0.7), 0 0 30px rgba(114, 14, 255, 0.5);
+    background: linear-gradient(135deg, #720eff, #48007d);
 }
+
+
 
 footer {
     position: relative;
