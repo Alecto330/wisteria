@@ -32,7 +32,7 @@ public class risultato extends HttpServlet {
 		}else {
 			request.setAttribute("risultato", risultato);
 			request.setAttribute("ndomande", ndomande);
-			request.setAttribute("title", "Risultatro Quiz");
+			request.setAttribute("title", "Risultato Quiz");
 			request.setAttribute("content", "risultato.jsp");
 			request.setAttribute("headerPath", user.getHeader());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
