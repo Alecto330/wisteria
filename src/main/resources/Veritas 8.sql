@@ -26,6 +26,11 @@ create table CV (
 	curriculum varbinary(max),
 	fotoProfilo image,
 	telefono varchar(14),
+	skill_1 bit default 0,
+	skill_2 bit default 0,
+	skill_3 bit default 0,
+	skill_4 bit default 0,
+	skill_5 bit default 0,
 	FK_Utente varchar (30),
 	foreign key (FK_Utente) references Utente (username)
 	on delete cascade
