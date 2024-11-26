@@ -137,7 +137,7 @@
         }
 
         function confirmDelete(confirm) {
-            if (confirm && deleteId !== null) {
+            if (confirm) {
                 const formData = new URLSearchParams();
                 formData.append('posizioneID', deleteId);
                 fetch('/wisteria/creaposizione', {

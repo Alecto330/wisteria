@@ -1,9 +1,11 @@
 package wisteria;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -96,34 +98,52 @@ public class creaposizione extends HttpServlet {
         	dao.insertDomandeForPosizione(Integer.parseInt(domanda), posizioneId);
         }
         
-        //response.sendRedirect("successoCreazione.jsp");
+        response.sendRedirect("home");
 	}
 	
-	/*@Override
+	@Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Recupera l'ID della posizione dai parametri della richiesta
-        String posizioneId = request.getParameter("posizioneId");
+        
+		
+		String body = new BufferedReader(request.getReader())
+				.lines()
+				.collect(Collectors.joining("\n"));
+
+		// Analizzare i parametri dal corpo della richiesta
+		String esperienzaId = null;
+		for (String param : body.split("&")) {
+			String[] keyValue = param.split("=");
+			if ("esperienzaId".equals(keyValue[0])) {
+				esperienzaId = keyValue.length > 1 ? keyValue[1] : null;
+				break;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*String posizioneId = request.getParameter("posizioneId");
  
         if (posizioneId != null) {
-            try {
                 // Istanzia il DAO per gestire le operazioni sul database
                 PosizioneDAO dao = new PosizioneDAO();
                
                 // Elimina la posizione dal database
-                dao.deletePosizione(Integer.parseInt(posizioneId));
+                //dao.deletePosizione(Integer.parseInt(posizioneId));
+                System.out.println(posizioneId);
  
                 // Imposta lo stato della risposta a 200 (successo)
                 response.setStatus(HttpServletResponse.SC_OK);
-            } catch (NumberFormatException e) {
-                // Se l'ID non è valido, restituisce un errore 400 (Bad Request)
-                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            } catch (Exception e) {
-                // In caso di errore generico, restituisce un errore 500 (Internal Server Error)
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            }
         } else {
             // Se l'ID non è stato fornito, restituisce un errore 400 (Bad Request)
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        }
-    }*/
+        }*/
+    }
 }
