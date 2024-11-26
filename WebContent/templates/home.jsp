@@ -31,9 +31,7 @@
 <body>
 
     <div class="home-main container mt-5">
-        <!-- Aggiungi align-items-end alla row -->
         <div class="row align-items-end">
-            <!-- Testo Introduttivo -->
             <div class="col-lg-8 col-md-7 col-sm-12">
                 <p class="introduction-title">We want you!</p>
                 <p class="introduction">
@@ -51,8 +49,6 @@
 
                 </p>
             </div>
-
-            <!-- Carousel Allineato in Basso -->
             <div class="col-lg-4 col-md-5 col-sm-12 d-flex flex-column justify-content-end align-items-center">
                 <div id="aboutUsCarousel" class="carousel slide" data-ride="carousel" data-interval="10000">
                     <ol class="carousel-indicators">
@@ -83,7 +79,6 @@
             </div>
         </div>
     </div>
-    <!-- Container delle posizioni aperte -->
     <div class="container">
 
         <div class="row mt-4">
@@ -138,8 +133,6 @@
             </c:forEach>
         </div>
     </div>
-
-    <!-- Riferimenti a Bootstrap JS e dipendenze -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script

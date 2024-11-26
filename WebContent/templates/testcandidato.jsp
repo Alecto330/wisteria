@@ -8,10 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<!-- Bootstrap per gli elementi -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- Font-Awesome per le icone (senz doverle scaricare) -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
 	rel="stylesheet">
@@ -24,12 +22,9 @@
 	href="${pageContext.request.contextPath}/static/style_testcandidato.css">
 </head>
 <body>
-
 	<div class="container-quiz">
 		<h1 class="title">Quiz per ${nomePosizione}</h1>
-
 		<div class="accordion">
-			<!-- Loop over the list of Domanda objects -->
 			<c:forEach var="domanda" items="${domande}">
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -52,26 +47,21 @@
                 </div>
             </c:forEach>
 		</div>
-
 		<div class="submit-container">
 			<button type="button" class="submit-button" onclick="submitAnswers()">Invia</button>
 		</div>
-
         <div class="btn-container">
             <button class="btn btn-back" onclick="javascript:history.back();">
                 ← Torna Indietro
             </button>
         </div>
 	</div>
-
 	<script>
         // ##################### SUBMIT #########################
 
 	function submitAnswers() {
 	    const formData = new URLSearchParams();
-	    // Collect selected answers
 	    const selectedButtons = document.querySelectorAll('.answer-item.selected');
-
 	    selectedButtons.forEach(button => {
 	        const domandaId = button.getAttribute("data-domanda-id"); 
 	        const rispostaId = button.getAttribute("data-risposta-id"); 
@@ -81,17 +71,15 @@
 
 	    //console.log(formData);
 
-	    // Send the formData using fetch
 	    fetch('/wisteria/test', {
 	        method: 'POST', 
 	        headers: {
 	            'Content-Type': 'application/x-www-form-urlencoded'
 	        },
-	        body: formData.toString() // Serialize the formData
+	        body: formData.toString()
 	    })
 	    .then(response => {
 	    	if (response.redirected) {
-	            // Redirect if the server sends a redirect response
 	            window.location.href = response.url;
 	        }
 	    })
@@ -103,41 +91,26 @@
 	    });
 	}
 
-
-
-
     // ############################  ACCORDION ##############################
         function toggleAccordion(header) {
-            // Trova tutti gli accordion
             const allContents = document.querySelectorAll('.accordion-content');
             const allIcons = document.querySelectorAll('.accordion-icon');
-            
-            // Trova il content e l'icona associati all'header cliccato
             const content = header.nextElementSibling;
             const icon = header.querySelector('.accordion-icon');
-            
-            // Se il content è già aperto, chiudilo
             if (content.style.height && content.style.height !== '0px') {
                 content.style.height = '0px';
                 icon.style.transform = 'rotate(0deg)';
             } else {
-                // Altrimenti, apri l'accordion
                 content.style.height = content.scrollHeight + 'px';
                 icon.style.transform = 'rotate(180deg)';
             }
         }
-
-        // Inizializza tutti gli accordion come aperti di default
         document.addEventListener('DOMContentLoaded', function() {
             const allContents = document.querySelectorAll('.accordion-content');
             const allIcons = document.querySelectorAll('.accordion-icon');
-            
-            // Imposta tutti gli accordion come aperti
             allContents.forEach(content => {
                 content.style.height = content.scrollHeight + 'px';
             });
-            
-            // Ruota tutte le icone degli accordion per indicare che sono aperti
             allIcons.forEach(icon => {
                 icon.style.transform = 'rotate(180deg)';
             });
@@ -148,29 +121,19 @@
         // #################### RISPOSTE #########################
 
          function selectAnswer(button) {
-            // Ottieni l'ID della risposta selezionata
             const rispostaId = button.getAttribute("data-risposta-id");
             const domandaId = button.getAttribute("data-domanda-id");
 
             console.log("ID della domanda selezionata:", domandaId);
             console.log("ID della risposta selezionata:", rispostaId);
-
-            // Trova tutti i pulsanti di risposta
+            
             const buttons = document.querySelectorAll('.answer-item');
-
-            // Filtra solo i pulsanti per la domanda corrente
             const buttonsForDomanda = Array.from(buttons).filter(btn => btn.getAttribute("data-domanda-id") === domandaId.toString());
             console.log("Pulsanti trovati per la domanda:", buttonsForDomanda);
-
-            // Rimuovi la classe "selected" da tutti i pulsanti per quella domanda
             buttonsForDomanda.forEach(btn => {
                 btn.classList.remove("selected");
-            });
 
-            // Aggiungi la classe "selected" al pulsante cliccato
             button.classList.add("selected");
-
-            // Stampa l'ID della risposta selezionata per debug
             console.log("Risposta selezionata ID:", rispostaId);
         }
     </script>

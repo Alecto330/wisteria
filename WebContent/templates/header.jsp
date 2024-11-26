@@ -1,4 +1,4 @@
-<!-- header.jsp -->
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,11 +6,8 @@
 
 <head>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<!-- Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -55,11 +52,11 @@
             
                 hamburger.addEventListener("click", () => {
                     if (menu.classList.contains("slide-in")) {
-                        // Se il menu è aperto, aggiunge la classe per lo slide-out
+                        // menu aperto
                         menu.classList.remove("slide-in");
                         menu.classList.add("slide-out");
                     } else {
-                        // Se il menu è chiuso, lo apre
+                        // menu chiuso
                         menu.classList.remove("slide-out");
                         menu.classList.add("slide-in");
                     }
@@ -74,7 +71,7 @@
 
 			<c:choose>
 				
-				<c:when test="${pageContext.request.servletPath == '/templates/login.jsp'}"> <!-- Condizione: se siamo sulla pagina di login -->
+				<c:when test="${pageContext.request.servletPath == '/templates/login.jsp'}"> 
 					<div class="acc">
 						<span class="hidden"><p>Accedi</p></span>
 					</div>
@@ -83,7 +80,7 @@
 				<c:otherwise>
 
 					<c:if test="${not empty user}">
-						<!-- Se l'utente è autenticato, mostra l'icona -->
+						<!-- utente autenticato -->
 						<div class="logout">
 							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
@@ -96,7 +93,7 @@
 						</div>
 					</c:if>
 					
-					<c:if test="${empty user}"> <!-- Se l'utente non è autenticato, mostra il link per il login -->
+					<c:if test="${empty user}"> <!-- utente non autenticato -->
 						<div class="acc">
 							<a class="btn btn-primary" href="${pageContext.request.contextPath}/login">Accedi</a>
 						</div>
@@ -115,7 +112,7 @@
 <script> // ########################## FUNZIONI IN JAVASCRIPT ######################################
         document.getElementById('hamburger').addEventListener('click', function() {
             const menu = document.getElementById('menu');
-            menu.classList.toggle('show'); // Toggle the 'show' class
+            menu.classList.toggle('show');
         });
 
 		function scrollToBottom() {
@@ -130,7 +127,6 @@
 		    const menu = document.getElementById("menu");
 		    const hamburger = document.getElementById("hamburger");
 
-		    // Controlla se il clic è avvenuto fuori dalla sidebar e dall'hamburger
 		    if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
 		        if (menu.classList.contains("slide-in")) {
 		            menu.classList.remove("slide-in");
@@ -148,7 +144,7 @@
         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrollPercentage = (scrollTop / scrollHeight) * 100;
-        scrollLine.style.width = scrollPercentage + "%"; // Aggiorna la larghezza della barra
+        scrollLine.style.width = scrollPercentage + "%";
     });
 </script>
 

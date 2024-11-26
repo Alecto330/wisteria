@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Bootstrap per gli elementi -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Font-Awesome per le icone (senza doverle scaricare) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet"
@@ -23,15 +21,12 @@
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
     <div class="content-container contenuto">
-        <!-- Popup Personalizzato -->
         <div id="custom-alert" class="alert-box">
             Sei sicuro di voler eliminare questa posizione lavorativa?<br>
             <button class="btn btn-danger" onclick="confirmDelete(true)">Conferma</button>
             <button class="btn btn-secondary" onclick="confirmDelete(false)">Annulla</button>
         </div>
-
         <div class="card">
             <div class="scroll-wrapper-classifica">
                 <div class="job-header" style="margin-top: 5px">
@@ -50,33 +45,27 @@
                         <span>${posizione.settore}</span>
                     </div>
                 </div>
-
-                <!-- Resto del contenuto -->
                 <h2 class="section-title">Descrizione azienda</h2>
                 <div class="job-description">
                     Lantech Longwave, società del Gruppo Zucchetti, prima software house in Europa con più di 8000 addetti, si occupa della
                     progettazione e dell'implementazione di soluzioni e servizi tecnologici innovativi, sicuri e performanti negli ambiti
                     Security, Networking, Datacenter & Cloud, Collaboration & AVI e Sviluppo Software.
                 </div>
-
                 <div class="company-location">
                     È presente in tredici sedi dislocate in nove città italiane e una in Svizzera: Reggio Emilia, Bologna, Padova, Verona,
                     Milano, Besana Brianza, Roma, Modena, Parma e Chiasso.
                 </div>
-
                 <div class="job-description">
                     Il Team di oltre 300 collaboratori opera con l'obiettivo di rendere la tecnologia alla portata di tutti. Ogni soluzione ICT
                     viene pensata e progettata partendo dalle persone e, attraverso uno studio di fattibilità, viene definita la tecnologia più
                     adeguata alla specifica esigenza, in termini di performance, affidabilità e sicurezza.
                 </div>
-
                 <div class="job-description">
                     Ha ingegnerizzato una suite di servizi gestiti - LION® - erogati h24 7*7 per garantire un monitoraggio real-time e una gestione
                     continua in massima sicurezza dell'intera infrastruttura ICT delle aziende.
                     <br><br>
                     <a href="http://www.lantechlongwave.it" class="website-link">www.lantechlongwave.it</a>
                 </div>
-
                 <div class="job-position">
                     <h2 class="section-title">Posizione</h2>
                     <div class="job-description">
@@ -86,7 +75,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card">
             <div class="scroll-wrapper-classifica">
                 <h2 class="ranking-title">Classifica</h2>
@@ -102,7 +90,6 @@
                         </c:if>
                     </c:forEach>
                 </div>
-
                 <div class="ranking-list">
                     <c:forEach var="candidate" items="${candidates}" varStatus="loopStatus">
                         <c:if test="${loopStatus.index >= 3}">
@@ -123,10 +110,8 @@
                         </c:if>
                     </c:forEach>
                 </div>
-
             </div>
         </div>
-
     </div>
     <div class="btn-container">
         <button class="btn btn-back" onclick="history.back()">← Torna Indietro</button>

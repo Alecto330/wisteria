@@ -3,7 +3,6 @@
 
 <footer class="footer">
     <div class="footer-content">
-        <!-- Logo e Descrizione -->
         <div class="footer-branding">
             <div class="footer-logo-container">
                 <img src="${pageContext.request.contextPath}/assets/WISTERIA - NO SFONDO.png" alt="Logo Wisteria" class="footer-logo">
@@ -21,8 +20,6 @@
                 </a>
             </div>
         </div>
-
-        <!-- Links Section -->
         <div class="footer-links">
             <div class="footer-column">
                 <h3 class="footer-heading">Link Utili</h3>
