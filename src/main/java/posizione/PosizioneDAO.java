@@ -15,7 +15,7 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT id, titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione"
+			String query = "SELECT id, titolo, descrizione, settore, chiusa, utente_scelto, Localita.provincia, Localita.regione FROM posizione"
 					+ " join Localita on posizione.FK_Localita=Localita.provincia";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -30,8 +30,10 @@ public class PosizioneDAO {
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
 				String regione=resultSet.getString("regione");
+				boolean chiusa=resultSet.getBoolean("chiusa");
+				String utenteScelto=resultSet.getString("utente_scelto");
 
-				Posizione posizione=new Posizione(id, titolo, descrizione, settore, provincia, regione);
+				Posizione posizione=new Posizione(id, titolo, descrizione, settore, provincia, regione, chiusa, utenteScelto);
 				posizioni.add(posizione);
 			}
 			connection.close();
@@ -51,7 +53,7 @@ public class PosizioneDAO {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 
-			StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
+			StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, chiusa, utente_scelto, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
 			ArrayList<String> whereConditions = new ArrayList<>();
 
 			if (descrizione != null && !descrizione.isEmpty()) {
@@ -97,7 +99,10 @@ public class PosizioneDAO {
 				String settore = resultSet.getString("settore");
 				String provinciaVal = resultSet.getString("provincia");
 				String regioneVal = resultSet.getString("regione");
-				Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal);
+				boolean chiusa=resultSet.getBoolean("chiusa");
+				String utenteScelto=resultSet.getString("utente_scelto");
+
+				Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal, chiusa, utenteScelto);
 				posizioni.add(posizione);
 			}
 
@@ -114,7 +119,7 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT titolo, descrizione, settore, Localita.provincia, Localita.regione FROM posizione"
+			String query = "SELECT titolo, descrizione, settore, chiusa, utente_scelto, Localita.provincia, Localita.regione FROM posizione"
 					+ " join Localita on posizione.FK_Localita=Localita.provincia where id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(id));
@@ -126,9 +131,12 @@ public class PosizioneDAO {
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
 				String regione=resultSet.getString("regione");
+				boolean chiusa=resultSet.getBoolean("chiusa");
+				String utenteScelto=resultSet.getString("utente_scelto");
 
+				Posizione posizione=new Posizione(Integer.parseInt(id), titolo, descrizione, settore, provincia, regione, chiusa, utenteScelto);
 				connection.close();
-				return new Posizione(Integer.parseInt(id), titolo, descrizione, settore, provincia, regione);
+				return posizione;
 			}
 
 		}catch(Exception e) {
@@ -211,6 +219,31 @@ public class PosizioneDAO {
 		}
 		return null;
 	}
+	
+	public String getRegioneFromProvincia(String provincia) {
+
+		String regione="";
+
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "select regione from Localita where provincia = ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, provincia);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while(resultSet.next()) {
+				regione=resultSet.getString("regione");
+			}
+			connection.close();
+			return regione;
+
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public void insertPosizione(Posizione posizione, String username) {
 
@@ -228,26 +261,6 @@ public class PosizioneDAO {
 			e.printStackTrace();
 		}
 	}
-
-	public String getRegioneByProvincia(String provincia) {
-		String regione = "";
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
-			String query = "SELECT regione FROM Localita WHERE provincia = ?";
-			PreparedStatement stmt = connection.prepareStatement(query);
-			stmt.setString(1, provincia);
-			ResultSet rs = stmt.executeQuery();
-			if (rs.next()) {
-				regione = rs.getString("regione");
-			}
-			connection.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return regione;
-	}
-
 
 	public void deletePosizione(int posizioneId) throws Exception {
 		try {
