@@ -125,15 +125,15 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #8328FF;    
+    background-color: #9448ff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #D6B5FF;
+    background-color: #8328FF;
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background-color: #7b1fff;
+    background-color: #6e07ff;
 }
 
 /* ####### SCROLL OPTIONS ########*/
@@ -187,7 +187,24 @@ body {
     margin-top: 10vh;
 }
 
+select::-webkit-scrollbar {
+    width: 10px;
+}
 
+select::-webkit-scrollbar-track {
+    background: #c5c5c5;
+}
+
+select::-webkit-scrollbar-thumb {
+    background-color: #9448ff;
+}
+
+select::-webkit-scrollbar-thumb:hover {
+    background-color: #8328FF;
+}
+select::-webkit-scrollbar-thumb:active {
+    background-color: #6e07ff;
+}
 
 
 /*################### HAMBURGER MENU ####################### */

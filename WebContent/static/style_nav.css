@@ -20,6 +20,9 @@
     color:black;
     box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
 }
+.acc .btn-primary{
+    width: auto;
+}
 .scroll-line {
     background: linear-gradient(217deg, #8228ff, #c398ff 70.71%),
                 linear-gradient(127deg, #c398ff, #c398ff 70.71%),
