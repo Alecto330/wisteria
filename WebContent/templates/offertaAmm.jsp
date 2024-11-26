@@ -32,7 +32,7 @@
                 <div class="job-header" style="margin-top: 5px">
                     <h1 class="job-title">${posizione.titolo}</h1>
                     <button class="btn-del" onclick="handleDelete(${posizione.id})" title="Cancella">
-                        <i class="far fa-trash-alt" style="color: black; font-size: 1.5rem;"></i>
+                        <i class="far fa-trash-alt" style="font-size: 1.5rem;"></i>
                     </button>
                 </div>
                 <div class="job-meta">

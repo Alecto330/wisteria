@@ -292,6 +292,11 @@ body {
 	border: none; 
 	outline: none; 
 	appearance: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-del i{
+    color: black; /* Sfondo rosso */
 }
 
 .btn-del:focus {
@@ -299,8 +304,8 @@ body {
 	box-shadow: none;
 }
 
-.btn-del:hover .far.fa-trash-alt {
-	color: red;
+.btn-del:hover i {
+    color: red;
 }
 
 /* Stili del Podio */
