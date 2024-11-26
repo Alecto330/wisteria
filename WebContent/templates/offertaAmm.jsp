@@ -140,7 +140,9 @@
             if (confirm) {
                 const formData = new URLSearchParams();
                 formData.append('posizioneID', deleteId);
-                fetch('/wisteria/creaposizione', {
+                
+                console.log(formData.toString());
+                fetch('/wisteria/offerta', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
