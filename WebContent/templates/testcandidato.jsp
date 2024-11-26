@@ -62,14 +62,20 @@
 	function submitAnswers() {
 	    const formData = new URLSearchParams();
 	    const selectedButtons = document.querySelectorAll('.answer-item.selected');
+	    
+	    const params = new URLSearchParams(window.location.search);
+	    const idPosizione=params.get('idPosizione');
+	    
 	    selectedButtons.forEach(button => {
 	        const domandaId = button.getAttribute("data-domanda-id"); 
 	        const rispostaId = button.getAttribute("data-risposta-id"); 
 	        
 	        formData.append(domandaId, rispostaId);
 	    });
+	    
+        formData.append('idPosizione', idPosizione);
 
-	    //console.log(formData);
+	    console.log(formData.toString());
 
 	    fetch('/wisteria/test', {
 	        method: 'POST', 
@@ -132,7 +138,7 @@
             console.log("Pulsanti trovati per la domanda:", buttonsForDomanda);
             buttonsForDomanda.forEach(btn => {
                 btn.classList.remove("selected");
-
+            });
             button.classList.add("selected");
             console.log("Risposta selezionata ID:", rispostaId);
         }

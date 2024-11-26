@@ -56,7 +56,7 @@ public class test extends HttpServlet {
 				DomandaDAO domandaDAO=new DomandaDAO();
 				int ndomande=domandaDAO.getNumeroDomande(Integer.parseInt(idPosizione));
 				int risultato=candidaturaDao.getRisultato(Integer.parseInt(idPosizione), user.getUsername());
-				
+
 				response.sendRedirect("risultato?risultato="+risultato+"&ndomande="+ndomande);
 			}
 
@@ -65,27 +65,29 @@ public class test extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		DomandaDAO dao=new DomandaDAO();
+		String idPosizione="";
 		int result=0;
 		Map<String, String[]> parameterMap = request.getParameterMap();	    
 
 		for(Map.Entry<String, String[]> entry: parameterMap.entrySet()) {
-			DomandaDAO dao=new DomandaDAO();
-			boolean check=dao.checkRisposta(Integer.valueOf(entry.getKey()), Integer.valueOf(entry.getValue()[0]));
 
-			if(check) {
-				result++;
+			if(!entry.getKey().equals("idPosizione")) {
+				boolean check=dao.checkRisposta(Integer.valueOf(entry.getKey()), Integer.valueOf(entry.getValue()[0]));
+
+				if(check) {
+					result++;
+				}
+			}else {
+				idPosizione=entry.getValue()[0];
 			}
 		}
 
 		HttpSession session = request.getSession();
 		User user=(User)session.getAttribute("user");
 
-		DomandaDAO dao=new DomandaDAO();
-		int posizione=dao.getPosizione(Integer.valueOf(parameterMap.keySet().iterator().next()));
+		dao.insertSiCandida(Integer.parseInt(idPosizione), user.getUsername(), result);
 
-		dao.insertSiCandida(posizione, user.getUsername(), result);
-		
 		response.sendRedirect("risultato?risultato="+result+"&ndomande="+parameterMap.values().size());
 
 	}

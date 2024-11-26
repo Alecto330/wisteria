@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import utils.DatabaseConnection;
 
@@ -18,7 +19,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda group by domanda,  Domanda.id, FK_Posizione, Risposta.id, risposta, VoF, FK_Domanda order by Domanda.id";
+			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, Risposta.id as rispostaId, risposta, VoF FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda group by domanda, Domanda.id, Risposta.id, risposta, VoF, FK_Domanda order by Domanda.id";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -27,9 +28,9 @@ public class DomandaDAO {
 				int domandaId=resultSet.getInt("domandaId");
 				if(!domande.containsKey(domandaId)) {
 					String domandaTesto=resultSet.getString("domanda");
-					int FK_Posizione=resultSet.getInt("FK_Posizione");
+					//int FK_Posizione=resultSet.getInt("FK_Posizione");
 
-					Domanda domanda=new Domanda(domandaId, domandaTesto, FK_Posizione);
+					Domanda domanda=new Domanda(domandaId, domandaTesto);
 
 
 					int rispostaId=resultSet.getInt("rispostaId");
@@ -67,7 +68,10 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda where FK_Posizione=? order by Domanda.id";
+			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, Risposta.id as rispostaId, risposta, VoF FROM Domanda \r\n"
+					+ "join Risposta on Domanda.id=Risposta.FK_domanda\r\n"
+					+ "join ListaDomande on Domanda.id=ListaDomande.FK_Domanda\r\n"
+					+ "where FK_Posizione=? order by Domanda.id";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, idPosizione);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -77,9 +81,8 @@ public class DomandaDAO {
 				int domandaId=resultSet.getInt("domandaId");
 				if(!domande.containsKey(domandaId)) {
 					String domandaTesto=resultSet.getString("domanda");
-					int FK_Posizione=resultSet.getInt("FK_Posizione");
 
-					Domanda domanda=new Domanda(domandaId, domandaTesto, FK_Posizione);
+					Domanda domanda=new Domanda(domandaId, domandaTesto);
 
 
 					int rispostaId=resultSet.getInt("rispostaId");
@@ -143,7 +146,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT FK_Posizione from Domanda where id=?";
+			String query = "SELECT FK_Posizione from ListaDomande where FK_Domanda=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, domanda);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -192,7 +195,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT count(*) as ndomande from Domanda join ListaDomande on Domanda.id=ListaDomande.FK_Domanda where ListaDomande.FK_Posizione=? group by ListaDomande.FK_Posizione";
+			String query = "SELECT count(*) as ndomande from ListaDomande where ListaDomande.FK_Posizione=? group by ListaDomande.FK_Posizione";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, idPosizione);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -211,16 +214,16 @@ public class DomandaDAO {
 	}
 
 
-	public HashMap<Integer, Domanda> getDomandeFromIds(String[] ids){
+	public ArrayList<Domanda> getDomandeFromIds(String[] ids){
 
-		HashMap<Integer, Domanda> domande=new HashMap<Integer, Domanda>();
+		ArrayList<Domanda> domande=new ArrayList<Domanda>();
 
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
 
 			for(String id: ids) {
-				String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, ListaDomande.FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda join ListaDomande on ListaDomande.FK_Domanda=Domanda.id where Domanda.id =? order by Domanda.id";
+				String query = "SELECT DISTINCT Domanda.id as domandaId, domanda FROM Domanda where Domanda.id = ? order by Domanda.id";
 				PreparedStatement preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setInt(1, Integer.parseInt(id));
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -228,32 +231,10 @@ public class DomandaDAO {
 				while (resultSet.next()) {
 
 					int domandaId=resultSet.getInt("domandaId");
-					if(!domande.containsKey(domandaId)) {
-						String domandaTesto=resultSet.getString("domanda");
-						int FK_Posizione=resultSet.getInt("FK_Posizione");
+					String domandaTesto=resultSet.getString("domanda");
 
-						Domanda domanda=new Domanda(domandaId, domandaTesto, FK_Posizione);
-
-
-						int rispostaId=resultSet.getInt("rispostaId");
-						String risposta=resultSet.getString("risposta");
-						boolean vof=resultSet.getBoolean("VoF");
-
-						Risposta primaRisposta=new Risposta(rispostaId, risposta, vof);
-
-						domanda.getRisposte().add(primaRisposta);
-
-						domande.put(domandaId, domanda);
-					}else {
-
-						int rispostaId=resultSet.getInt("rispostaId");
-						String risposta=resultSet.getString("risposta");
-						boolean vof=resultSet.getBoolean("VoF");
-
-						Risposta rispostaSuccessiva=new Risposta(rispostaId, risposta, vof);
-
-						domande.get(domandaId).getRisposte().add(rispostaSuccessiva);
-					}
+					Domanda domanda=new Domanda(domandaId, domandaTesto);
+					domande.add(domanda);
 				}
 			}
 			connection.close();
@@ -265,10 +246,10 @@ public class DomandaDAO {
 
 		return domande;
 	}
-	
-	
+
+
 	public Domanda insertDomandaRisposte(String domanda, String[] risposte, int corretta){
-		
+
 		int domandaId=0;
 		int rispostaId=0;
 		boolean vof=false;
@@ -280,16 +261,16 @@ public class DomandaDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, domanda);
 			preparedStatement.executeUpdate();
-			
+
 			ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
 			if (generatedKeys.next()) {
 				domandaId = generatedKeys.getInt(1);
 
 			}
-			
-			
-			domandaOggetto=new Domanda(domandaId, domanda, 0);
-			
+
+
+			domandaOggetto=new Domanda(domandaId, domanda);
+
 			for(int i=0; i<risposte.length; i++) {
 				query = "INSERT INTO Risposta (risposta, VoF, FK_Domanda) VALUES (?, ?, ?)";
 				preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -304,19 +285,19 @@ public class DomandaDAO {
 				preparedStatement.setInt(3, domandaId);
 				preparedStatement.executeUpdate();
 
-			
+
 				generatedKeys = preparedStatement.getGeneratedKeys();
 				if (generatedKeys.next()) {
 					rispostaId = generatedKeys.getInt(1);
 
 				}
-				
+
 				Risposta risposta=new Risposta(rispostaId, risposte[i], vof);
 				domandaOggetto.getRisposte().add(risposta);
 			}
 
 			connection.close();
-			
+
 			return domandaOggetto;
 		} catch (Exception e) {
 			e.printStackTrace();

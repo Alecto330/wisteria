@@ -3,6 +3,7 @@ package posizione;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import utils.DatabaseConnection;
 
@@ -245,17 +246,40 @@ public class PosizioneDAO {
 		return null;
 	}
 
-	public void insertPosizione(Posizione posizione, String username) {
-
+	public int insertPosizione(Posizione posizione, String username) {
+		int generatedId=0;
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 			String query ="INSERT INTO Posizione (titolo, descrizione, settore, FK_Localita) VALUES (?, ?, ?, ?)";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			preparedStatement.setString(1, posizione.getTitolo());
 			preparedStatement.setString(2, posizione.getDescrizione());
 			preparedStatement.setString(3, posizione.getSettore());
 			preparedStatement.setString(4, posizione.getProvincia());
+			preparedStatement.executeUpdate();
+			
+			ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				generatedId = generatedKeys.getInt(1);
+
+			}
+			return generatedId;
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return generatedId;
+	}
+	
+	public void insertDomandeForPosizione(int domandaId, int posizioneId) {
+
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="INSERT INTO ListaDomande (FK_Domanda, FK_Posizione) VALUES (?, ?)";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, domandaId);
+			preparedStatement.setInt(2, posizioneId);
 			preparedStatement.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();

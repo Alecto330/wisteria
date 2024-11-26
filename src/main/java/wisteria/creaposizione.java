@@ -49,8 +49,7 @@ public class creaposizione extends HttpServlet {
 
 			if(selectedQuestions!=null) {
 				DomandaDAO daoDomande=new DomandaDAO();
-				HashMap<Integer, Domanda> domandeMap= daoDomande.getDomandeFromIds(selectedQuestions);
-				ArrayList<Domanda> domande=new  ArrayList<Domanda>(domandeMap.values());
+				ArrayList<Domanda> domande=daoDomande.getDomandeFromIds(selectedQuestions);
 				request.setAttribute("domande", domande);
 			}
 			
@@ -90,11 +89,13 @@ public class creaposizione extends HttpServlet {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        //PosizioneDAO dao=new PosizioneDAO();
-        //dao.insertPosizione(posizione, user.getUsername());
+        PosizioneDAO dao=new PosizioneDAO();
+        int posizioneId=dao.insertPosizione(posizione, user.getUsername());
         
+        for(String domanda: domande) {
+        	dao.insertDomandeForPosizione(Integer.parseInt(domanda), posizioneId);
+        }
         
-
         //response.sendRedirect("successoCreazione.jsp");
 	}
 	
