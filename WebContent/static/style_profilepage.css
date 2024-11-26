@@ -405,3 +405,41 @@ select.form-input {
     transform: translateX(-50%) translateY(0);
 }
 
+.soft-skills-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.soft-skills-test-button {
+    padding: 10px 20px;
+    background-color: #6e41e2; /* Viola coerente con il design */
+    color: #fff; /* Testo bianco per contrasto */
+    border: none;
+    border-radius: 30px; /* Bordo arrotondato per un look moderno */
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.soft-skills-test-button:hover {
+    background-color: #4c2bb0; /* Colore più scuro al passaggio del mouse */
+}
+.soft-skills-banner {
+    background-color: #FFC300;
+    color: #fff; /* Testo bianco */
+    padding: 10px 15px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    /* max-width:80%; */
+}
+
+
+

@@ -25,10 +25,15 @@
     <title>Profilo e personalizzazione</title>
 </head>
 <body>
+ 	<button id="softSkillsTestButton" class="soft-skills-test-button" onclick="startSoftSkillsTest()">bep</button>
     <%@ include file="header.jsp"%>
     <div class="alert-box success" id="successBox" onclick="hideSuccess()">Esperienza aggiunta con successo!</div>
     <div class="alert-box" id="alertBox" onclick="hideAlert()">Compila tutti i campi!</div>
     <div class="main-container-profilepage">
+    
+    <div class="soft-skills-banner">
+	    ⚠️ Completa il test sulle Soft Skills per attirare l'attenzione dei recruiter!
+	</div>
         <div class="user-profile">
             <div class="profile-image" onclick="triggerImageInput()">
                 <input type="file" id="imageInput" accept="image/*"
@@ -42,6 +47,12 @@
                     <i class="fa-solid fa-plus"></i>
                 </div>
             </div>
+		    <div class="soft-skills-button-container">
+			    <button id="softSkillsTestButton" class="soft-skills-test-button" onclick="startSoftSkillsTest()">
+			        Completa il Test Soft Skills
+			    </button>
+			</div>
+    
         </div>
         <h2 class="form-title">Informazioni di contatto:</h2>
         <div class="form-grid">
@@ -450,9 +461,9 @@
                     <textarea id="descrizione-esperienza"
                         class="form-input textarea-input" placeholder="Descrizione..."></textarea>
                 </div>
-                <button class="add-experience-btn" onclick="aggiungiEsperienza()">
-                    <i class="fas fa-plus"></i>
-                </button>
+	                <button class="add-experience-btn" onclick="aggiungiEsperienza()">
+	                    <i class="fas fa-plus"></i>
+	                </button>
 
                 <div class="experience-list">
                     <c:forEach var="esperienza" items="${esperienze}">
