@@ -82,7 +82,8 @@
                 <div class="podium-container">
                     <c:forEach var="candidate" items="${candidates}" varStatus="loopStatus">
                         <c:if test="${loopStatus.index < 3}">
-                            <div class="podium-item podium-position-${loopStatus.index + 1}">
+                            <div class="podium-item podium-position-${loopStatus.index + 1}" onclick="window.location.href='${pageContext.request.contextPath}/visualizzacandidato?id=${candidate.utente}'"
+                                style="cursor: pointer">
                                 <span class="podium-rank">${loopStatus.index + 1}°</span>
                                 <span class="podium-name">${candidate.utente}</span>
                                 <span class="podium-score">${candidate.punteggio}/10</span>
