@@ -8,8 +8,11 @@ public class Posizione {
 	private String settore;
 	private String provincia;
 	private String regione;
+	private boolean chiusa;
+	private String utenteScelto;
 	
-	public Posizione(int id, String titolo, String descrizione, String settore, String provincia, String regione) {
+	public Posizione(int id, String titolo, String descrizione, String settore, String provincia, String regione,
+			boolean chiusa, String utenteScelto) {
 		super();
 		this.id = id;
 		this.titolo = titolo;
@@ -17,6 +20,8 @@ public class Posizione {
 		this.settore = settore;
 		this.provincia = provincia;
 		this.regione = regione;
+		this.chiusa = chiusa;
+		this.utenteScelto = utenteScelto;
 	}
 	
 	public int getId() {
@@ -55,4 +60,18 @@ public class Posizione {
 	public void setRegione(String regione) {
 		this.regione = regione;
 	}
+	public boolean isChiusa() {
+		return chiusa;
+	}
+	public void setChiusa(boolean chiusa) {
+		this.chiusa = chiusa;
+	}
+	public String getUtenteScelto() {
+		return utenteScelto;
+	}
+	public void setUtenteScelto(String utenteScelto) {
+		this.utenteScelto = utenteScelto;
+	}
+	
+	
 }

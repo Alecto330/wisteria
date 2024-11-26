@@ -192,7 +192,7 @@ public class DomandaDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT count(*) as ndomande from Domanda where FK_Posizione=? group by FK_Posizione";
+			String query = "SELECT count(*) as ndomande from Domanda join ListaDomande on Domanda.id=ListaDomande.FK_Domanda where ListaDomande.FK_Posizione=? group by ListaDomande.FK_Posizione";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, idPosizione);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -220,7 +220,7 @@ public class DomandaDAO {
 			Connection connection = database.getConnection(); 
 
 			for(String id: ids) {
-				String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda where Domanda.id =? order by Domanda.id";
+				String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, FK_Posizione, Risposta.id as rispostaId, risposta, VoF, ListaDomande.FK_Domanda FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda join ListaDomande on ListaDomande.FK_Domanda=Domanda.id where Domanda.id =? order by Domanda.id";
 				PreparedStatement preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setInt(1, Integer.parseInt(id));
 				ResultSet resultSet = preparedStatement.executeQuery();

@@ -19,7 +19,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
         rel="stylesheet">
-    <!-- Per importare il font Poppins -->
     <link rel="stylesheet"
         href="${pageContext.request.contextPath}/static/style.css">
     <link rel="stylesheet"
@@ -28,13 +27,9 @@
         href="${pageContext.request.contextPath}/static/style_nav.css">
 
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
-
-    <!-- CSS per la alert box personalizzata -->
 </head>
 
 <body>
-
-    <!-- Alert Box Personalizzata -->
 	    <div class="alert-box" id="alertBox"></div>
 	
 	    <%@ include file="header.jsp"%>
@@ -91,19 +86,14 @@
                 alertBox.classList.remove('success');
             }
             alertBox.classList.add('show');
-
-            // Nasconde l'alert dopo 5 secondi
             setTimeout(() => {
                 alertBox.classList.remove('show');
             }, 5000);
-
-            // Permette di chiudere l'alert cliccandoci sopra
             alertBox.addEventListener('click', () => {
                 alertBox.classList.remove('show');
             }, { once: true });
         }
     </script>
-
 
     <%@ include file="footer.jsp"%>
 
