@@ -1,3 +1,4 @@
+drop table if exists ListaDomande;
 drop table if exists Risposta;
 drop table if exists Domanda;
 drop table if exists SiCandida;
@@ -78,8 +79,16 @@ create table SiCandida (
 
 create table Domanda (
 	id int primary key identity (1, 1),
-	domanda varchar (500) not null unique,
+	domanda varchar (500) not null unique
+);
+
+create table ListaDomande (
+	FK_Domanda int,
 	FK_Posizione int,
+	primary key (FK_Domanda, FK_Posizione),
+	foreign key (FK_Domanda) references Domanda (id)
+	on delete cascade
+	on update cascade,
 	foreign key (FK_Posizione) references Posizione (id)
 	on delete cascade
 	on update cascade
@@ -267,22 +276,50 @@ insert into SiCandida (FK_Posizione, FK_Utente, punteggio, data) values
 select *
 from SiCandida;
 
-insert into Domanda (domanda, FK_Posizione) values
-('Quale linguaggio di programmazione è comunemente usato per lo sviluppo front-end?', 1),
-('Quale framework è popolare per lo sviluppo back-end in Node.js?', 1),
-('Qual è la principale funzione di un firewall?', 2),
-('Che cos''è il phishing?', 2),
-('Qual è l''obiettivo principale di un Sales Manager?', 3),
-('Quale KPI è fondamentale per un Sales Manager?', 3),
-('Qual è la metodologia più comune per la gestione dei progetti IT?', 4),
-('Qual è un documento chiave in un progetto IT?', 4),
-('Quale strumento è spesso usato per l''analisi dei dati?',5),
-('Che cosa rappresenta un "dataset"?',5),
-('Qual è il ruolo principale di un consulente tecnico?', 6),
-('Quale competenza è fondamentale per un consulente tecnico?', 6);
+insert into Domanda (domanda) values
+('Quale linguaggio di programmazione è comunemente usato per lo sviluppo front-end?'),
+('Quale framework è popolare per lo sviluppo back-end in Node.js?'),
+('Qual è la principale funzione di un firewall?'),
+('Che cos''è il phishing?'),
+('Qual è l''obiettivo principale di un Sales Manager?'),
+('Quale KPI è fondamentale per un Sales Manager?'),
+('Qual è la metodologia più comune per la gestione dei progetti IT?'),
+('Qual è un documento chiave in un progetto IT?'),
+('Quale strumento è spesso usato per l''analisi dei dati?'),
+('Che cosa rappresenta un "dataset"?'),
+('Qual è il ruolo principale di un consulente tecnico?'),
+('Quale competenza è fondamentale per un consulente tecnico?');
 
 select *
 from Domanda;
+
+insert into ListaDomande values
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 2),
+(5, 2),
+(6, 2),
+(7, 2),
+(8, 3),
+(9, 3),
+(10, 3),
+(11, 4),
+(12, 4),
+(1, 4),
+(2, 5),
+(3, 5),
+(4, 5),
+(5, 5),
+(6, 6),
+(7, 6),
+(8, 6),
+(9, 6),
+(10, 6),
+(11, 6);
+
+select *
+from ListaDomande;
 
 insert into Risposta (risposta, VoF, FK_Domanda) values
 ('Python', 0, 1),
