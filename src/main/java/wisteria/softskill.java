@@ -1,8 +1,9 @@
 package wisteria;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import softskill.SoftSkillDAO;
 import softskill.SoftSkillEnum;
 import user.User;
 
@@ -47,15 +48,22 @@ public class softskill extends HttpServlet{
 		
 		Map<String, String[]> parameterMap = request.getParameterMap();	    
 
+		List<Boolean> risposte=new ArrayList<Boolean>();
+		
 		for(Map.Entry<String, String[]> entry: parameterMap.entrySet()) {
 
 			SoftSkillEnum domanda=SoftSkillEnum.valueOf(entry.getKey());
 			if(domanda.getRisposta()==Integer.valueOf(entry.getValue()[0])) {
-				System.out.println("giusto");
+				risposte.add(true);
 			}else {
-				System.out.println("sbagliato");
+				risposte.add(false);
 			}
 		}
+		
+		SoftSkillDAO dao=new SoftSkillDAO();
+		dao.insertSoftSkill(user.getUsername(), risposte);
+		
+		response.sendRedirect("profilepage");
 	}
 
 }

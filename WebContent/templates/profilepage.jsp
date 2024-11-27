@@ -48,9 +48,12 @@
 				</div>
 			</div>
 			<div class="soft-skills-button-container">
-				<button id="softSkillsTestButton" class="soft-skills-test-button"
-					onclick="window.location.href='${pageContext.request.contextPath}/softskill?user=${username}'">
-					Completa il Test Soft Skills</button>
+				<c:if test="${softskill == false}">
+					<button id="softSkillsTestButton" class="soft-skills-test-button"
+						onclick="window.location.href='${pageContext.request.contextPath}/softskill?user=${username}'">
+						Completa il Test Soft Skills</button>
+				</c:if>
+
 
 			</div>
 

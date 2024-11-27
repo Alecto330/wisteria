@@ -5,9 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
-
-import javax.servlet.http.Part;
-
 import utils.DatabaseConnection;
 
 public class CvDAO {
@@ -17,8 +14,10 @@ public class CvDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT cf, nome, cognome, DataDiNascita, Residenza, TitoloDiStudio, curriculum, fotoProfilo, telefono, email, FK_Utente FROM CV"
-					+ " join Utente on CV.FK_Utente=Utente.username where CV.FK_Utente= ?";
+			String query = "SELECT cf, nome, cognome, DataDiNascita, Residenza, TitoloDiStudio, curriculum, fotoProfilo, telefono, email, CV.FK_Utente, SoftSkill.FK_Utente as softskill FROM CV\n"
+					+ "join Utente on CV.FK_Utente=Utente.username\n"
+					+ "join SoftSkill on CV.FK_Utente=SoftSkill.FK_Utente\n"
+					+ "where CV.FK_Utente= ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, username);
 			ResultSet resultSet = preparedStatement.executeQuery();
@@ -35,8 +34,13 @@ public class CvDAO {
 			byte[] fotoProfilo=resultSet.getBytes("fotoProfilo");
 			String telefono=resultSet.getString("telefono");
 			String email=resultSet.getString("email");
-			//String FK_Utente=resultSet.getString("FK_Utente");
-			CV cv=new CV(username, cf, nome, cognome, dataDiNascita, residenza, titoloDiStudio, curriculum, fotoProfilo, telefono, email);
+			String softskillString=resultSet.getString("softskill");
+			boolean softSkill=false;
+			if(softskillString!=null) {
+				softSkill=true;
+			}
+			
+			CV cv=new CV(username, cf, nome, cognome, dataDiNascita, residenza, titoloDiStudio, curriculum, fotoProfilo, telefono, email, softSkill);
 
 			connection.close();
 			return cv;
