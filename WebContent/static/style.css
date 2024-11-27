@@ -419,7 +419,7 @@ select::-webkit-scrollbar-thumb:active {
     align-items: center;
     justify-content: center;
     color: #fff;
-    text-decoration: none;
+    text-decoration: none; /* Rimuove la sottolineatura */
     transition: all 0.3s ease;
 }
 
@@ -428,8 +428,11 @@ select::-webkit-scrollbar-thumb:active {
     color: white;
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(130, 40, 255, 0.3);
+    text-decoration: none; /* Rimuove la sottolineatura anche quando si passa sopra */
 }
-
+.footer-social .social-link:hover {
+    text-decoration: none;
+}
 /* Links Section */
 .footer-links {
     display: grid;
