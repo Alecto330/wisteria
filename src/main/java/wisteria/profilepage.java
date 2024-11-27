@@ -62,8 +62,12 @@ public class profilepage extends HttpServlet{
 			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
 
 			request.setAttribute("esperienze", esperienze);
+			
+			request.setAttribute("title", "Profile - "+user.getUsername());
+			request.setAttribute("content", "profilepage.jsp");
+			request.setAttribute("headerPath", user.getHeader());
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/profilepage.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			response.sendRedirect("login");
@@ -84,7 +88,7 @@ public class profilepage extends HttpServlet{
 		String cf = request.getParameter("CF");
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
-
+		
 		String titoloEsperienza = request.getParameter("titolo");
 		String descrizioneEsperienza = request.getParameter("esperienza");
 

@@ -1,3 +1,4 @@
+drop table if exists SoftSkill;
 drop table if exists ListaDomande;
 drop table if exists Risposta;
 drop table if exists Domanda;
@@ -26,17 +27,23 @@ create table CV (
 	curriculum varbinary(max),
 	fotoProfilo image,
 	telefono varchar(14),
-	skill_1 bit default 0,
-	skill_2 bit default 0,
-	skill_3 bit default 0,
-	skill_4 bit default 0,
-	skill_5 bit default 0,
 	FK_Utente varchar (30),
 	foreign key (FK_Utente) references Utente (username)
 	on delete cascade
 	on update cascade
 );
 
+create table SoftSkill (
+	FK_Utente varchar (30) primary key,
+	skill_1 bit default 0,
+	skill_2 bit default 0,
+	skill_3 bit default 0,
+	skill_4 bit default 0,
+	skill_5 bit default 0,
+	foreign key (FK_Utente) references Utente (username)
+	on delete cascade
+	on update cascade
+);
 
 create table Esperienza (
 	id int primary key identity (1, 1),

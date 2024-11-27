@@ -10,14 +10,14 @@
 }
 .custom-navbar .navbar-brand,
 .custom-navbar .btn {
-    color: rgb(0, 0, 0);
+    color: white;
 }
 .btn-primary {
-    background-color: #D6B5FF;
+    background-color: #6e41e2; 
     border: solid 2px #8228ff;
     border: none;
     border-radius: 2vw;
-    color:black;
+    color:white;
     box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
 }
 .acc .btn-primary{
@@ -43,9 +43,7 @@
     padding: 15px;
 }
 .btn-primary:hover{
-    color:#fff;
-    background-color:#8228ff;
-    border-color:#8228ff
+	 background-color: #4c2bb0;
 }
 #logo-btn, .btn-outline-secondary {
     background-color: #D6B5FF;
@@ -112,6 +110,44 @@
 .logout .fa-user:before {
     color: rgb(123, 31, 255);
 }
+
+.profile-alert {
+    display: none;
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Rimuove la sottolineatura */
+    cursor: pointer; /* Mostra il puntatore come "cliccabile" */
+    z-index: 100;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.profile-alert:hover {
+    background-color: #f5c6cb; /* Cambia il colore di sfondo al passaggio del mouse */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: inherit; /* Usa il colore del contenitore (di default #721c24) */
+}
+
+.profile-alert::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #f8d7da transparent;
+}
+
 
 /* Media query per schermi fino a 768px (tablet e mobile) */
 @media screen and (max-width: 768px) {

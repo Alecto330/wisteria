@@ -62,7 +62,12 @@
 	function submitAnswers() {
 	    const formData = new URLSearchParams();
 	    const selectedButtons = document.querySelectorAll('.answer-item.selected');
+	     const totalQuestions = document.querySelectorAll('.accordion-item').length;
 	    
+        if (selectedButtons.length < totalQuestions) {
+            alert("Per favore, rispondi a tutte le domande prima di inviare.");
+            return; // Blocca l'invio
+        }
 	    const params = new URLSearchParams(window.location.search);
 	    const idPosizione=params.get('idPosizione');
 	    
