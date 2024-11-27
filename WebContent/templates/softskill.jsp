@@ -32,16 +32,16 @@
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
-                        <button class="answer-item" data-domanda-id="1" data-risposta="1" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="uno" data-risposta="1" onclick="selectAnswer(this)">
                             <p class="answer-text">a) Parlare senza pause per mostrare sicurezza.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="1" data-risposta="2" onclick="selectAnswer(this)"> <!--CORRETTA -->
+                        <button class="answer-item" data-domanda-id="uno" data-risposta="2" onclick="selectAnswer(this)"> <!--CORRETTA -->
                             <p class="answer-text">b) Ascoltare attivamente e adattare il messaggio al pubblico.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="1" data-risposta="3" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="uno" data-risposta="3" onclick="selectAnswer(this)">
                             <p class="answer-text">c) Utilizzare un linguaggio tecnico per sembrare più esperti.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="1" data-risposta="4" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="uno" data-risposta="4" onclick="selectAnswer(this)">
                             <p class="answer-text">d) Condividere solo informazioni personali.</p>
                         </button>
                     </ul>
@@ -55,16 +55,16 @@
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
-                        <button class="answer-item" data-domanda-id="2" data-risposta="1" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="due" data-risposta="1" onclick="selectAnswer(this)">
                             <p class="answer-text">a) Ignori l'idea e proponi la tua.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="2" data-risposta="2" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="due" data-risposta="2" onclick="selectAnswer(this)">
                             <p class="answer-text">b) Critichi apertamente il collega davanti a tutti.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="2" data-risposta="3" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="due" data-risposta="3" onclick="selectAnswer(this)">
                             <p class="answer-text">c) Proponi un confronto costruttivo per discutere le differenze.</p>  <!--CORRETTA -->
                         </button>
-                        <button class="answer-item" data-domanda-id="2" data-risposta="4" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="due" data-risposta="4" onclick="selectAnswer(this)">
                             <p class="answer-text">d) Rimani in silenzio per evitare conflitti.</p>
                         </button>
                     </ul>
@@ -78,16 +78,16 @@
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
-                        <button class="answer-item" data-domanda-id="3" data-risposta="1" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="tre" data-risposta="1" onclick="selectAnswer(this)">
                             <p class="answer-text">a) Lavori su tutte nello stesso momento senza priorità.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="3" data-risposta="2" onclick="selectAnswer(this)"> 
+                        <button class="answer-item" data-domanda-id="tre" data-risposta="2" onclick="selectAnswer(this)"> 
                             <p class="answer-text">b) Delego tutto ai colleghi.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="3" data-risposta="3" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="tre" data-risposta="3" onclick="selectAnswer(this)">
                             <p class="answer-text">c) Stabilisci priorità e pianifichi il tempo per ogni attività.</p> <!--CORRETTA -->
                         </button>
-                        <button class="answer-item" data-domanda-id="3" data-risposta="4" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="tre" data-risposta="4" onclick="selectAnswer(this)">
                             <p class="answer-text">d) Rimandi tutto all'ultimo momento.</p>
                         </button>
                     </ul>
@@ -101,16 +101,16 @@
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
-                        <button class="answer-item" data-domanda-id="4" data-risposta="1" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="quattro" data-risposta="1" onclick="selectAnswer(this)">
                             <p class="answer-text">a) Agire immediatamente, senza analizzare la situazione.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="4" data-risposta="2" onclick="selectAnswer(this)"> <!--CORRETTA -->
+                        <button class="answer-item" data-domanda-id="quattro" data-risposta="2" onclick="selectAnswer(this)"> <!--CORRETTA -->
                             <p class="answer-text">b) Identificare chiaramente il problema.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="4" data-risposta="3" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="quattro" data-risposta="3" onclick="selectAnswer(this)">
                             <p class="answer-text">c) Chiedere a qualcun altro di risolverlo.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="4" data-risposta="4" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="quattro" data-risposta="4" onclick="selectAnswer(this)">
                             <p class="answer-text">d) Concentrarsi sulle difficoltà personali legate al problema.</p>
                         </button>
                     </ul>
@@ -124,16 +124,16 @@
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
-                        <button class="answer-item" data-domanda-id="5" data-risposta="1" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="cinque" data-risposta="1" onclick="selectAnswer(this)">
                             <p class="answer-text">a) Gli fai sapere che sei disponibile per ascoltarlo.</p><!--CORRETTA -->
                         </button>
-                        <button class="answer-item" data-domanda-id="5" data-risposta="2" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="cinque" data-risposta="2" onclick="selectAnswer(this)">
                             <p class="answer-text">b) Lo ignori per non interferire.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="5" data-risposta="3" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="cinque" data-risposta="3" onclick="selectAnswer(this)">
                             <p class="answer-text">c) Gli suggerisci di lavorare di più per superare lo stress.</p>
                         </button>
-                        <button class="answer-item" data-domanda-id="5" data-risposta="4" onclick="selectAnswer(this)">
+                        <button class="answer-item" data-domanda-id="cinque" data-risposta="4" onclick="selectAnswer(this)">
                             <p class="answer-text">d) Eviti il problema finché non lo risolve da solo.</p>
                         </button>
                     </ul>
@@ -170,8 +170,6 @@
 	        
 	        formData.append(domandaId, rispostaId);
 	    });
-	    
-        formData.append('idPosizione', idPosizione);
 
 	    console.log(formData.toString());
 
