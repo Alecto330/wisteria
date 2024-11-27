@@ -10,14 +10,14 @@
 }
 .custom-navbar .navbar-brand,
 .custom-navbar .btn {
-    color: rgb(0, 0, 0);
+    color: white;
 }
 .btn-primary {
-    background-color: #D6B5FF;
+    background-color: #6e41e2; 
     border: solid 2px #8228ff;
     border: none;
     border-radius: 2vw;
-    color:black;
+    color:white;
     box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
 }
 .acc .btn-primary{
@@ -43,9 +43,7 @@
     padding: 15px;
 }
 .btn-primary:hover{
-    color:#fff;
-    background-color:#8228ff;
-    border-color:#8228ff
+	 background-color: #4c2bb0;
 }
 #logo-btn, .btn-outline-secondary {
     background-color: #D6B5FF;

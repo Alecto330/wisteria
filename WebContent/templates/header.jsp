@@ -73,7 +73,7 @@
 				
 				<c:when test="${pageContext.request.servletPath == '/templates/login.jsp'}"> 
 					<div class="acc">
-						<span class="hidden"><p>Accedi</p></span>
+						<span class="hidden" style="color:white !important;"><p>Accedi</p></span>
 					</div>
 					
 				</c:when>
