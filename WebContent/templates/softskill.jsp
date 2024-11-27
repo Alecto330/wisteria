@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div class="container-quiz">
-		<h1 class="title">Quiz per ${nomePosizione}</h1>
+		<h1 class="title">Quiz soft skill</h1>
 		<div class="accordion">
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
@@ -175,7 +175,7 @@
 
 	    console.log(formData.toString());
 
-	    fetch('/wisteria/test', {
+	    fetch('/wisteria/softskill', {
 	        method: 'POST', 
 	        headers: {
 	            'Content-Type': 'application/x-www-form-urlencoded'

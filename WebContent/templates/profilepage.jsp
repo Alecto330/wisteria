@@ -25,7 +25,7 @@
     <title>Profilo e personalizzazione</title>
 </head>
 <body>
- 	<button id="softSkillsTestButton" class="soft-skills-test-button" onclick="startSoftSkillsTest()">bep</button>
+ 	<button id="softSkillsTestButton" class="soft-skills-test-button" href="${pageContext.request.contextPath}/softskill?user=${username}">bep</button>
     <%@ include file="header.jsp"%>
     <div class="alert-box success" id="successBox" onclick="hideSuccess()">Esperienza aggiunta con successo!</div>
     <div class="alert-box" id="alertBox" onclick="hideAlert()">Compila tutti i campi!</div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
 		    <div class="soft-skills-button-container">
-			    <button id="softSkillsTestButton" class="soft-skills-test-button" onclick="startSoftSkillsTest()">
+			    <button id="softSkillsTestButton" class="soft-skills-test-button" href="${pageContext.request.contextPath}/softskill?user=${username}">
 			        Completa il Test Soft Skills
 			    </button>
 			</div>
