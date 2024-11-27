@@ -170,6 +170,7 @@ body {
 }
 
 .search-container {
+	height: 1.5vw;
     max-width: 100%;
     display: flex;
     justify-content: flex-start;

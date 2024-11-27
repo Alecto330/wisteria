@@ -22,19 +22,17 @@
     <div class="container">
         <h1 class="title">Lista Domande</h1>
         <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="custom-container">
-                    <div class="d-flex justify-content-start search-container">
-                        <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
-                            placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
-                        <button class="btn btn-primary" onclick="performSearch()">Cerca</button>
-                        <button class="btn btn-primary" style="margin-left: 41.7%; width:auto;" onclick="nuovaDomanda()">
-                            Nuova
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+		    <div class="col-md-12">
+		        <div class="custom-container">
+		            <div class="d-flex justify-content-start align-items-center search-container">
+		                <input class="form-control mr-2 cercaOfferte" type="search" id="job-search"
+		                    placeholder="Cerca offerte di lavoro" style="background-color: #e3e3e3;">
+		                <button class="btn btn-primary mx-2" onclick="performSearch()">Cerca</button>
+		                <button class="btn btn-primary"  style="margin-left: 41.7%; width:auto;" onclick="nuovaDomanda()">Nuova</button>
+		            </div>
+		        </div>
+		    </div>
+		</div>
         <div class="accordion">
             <form id="questionsForm">
                 <c:forEach var="question" items="${questions}" varStatus="status">
