@@ -15,6 +15,7 @@ import cv.CV;
 import cv.CvDAO;
 import cv.Esperienza;
 import cv.EsperienzaDAO;
+import posizione.PosizioneDAO;
 import user.User;
 
 @WebServlet("/visualizzacandidato")
@@ -28,6 +29,10 @@ public class visualizzacandidato extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id=request.getParameter("id");
+		String posizioneId=request.getParameter("idPosizione");
+		
+		System.out.println(id);
+		System.out.println(posizioneId);
 
 		if(id != null) {
 			CvDAO dao=new CvDAO();
@@ -70,6 +75,20 @@ public class visualizzacandidato extends HttpServlet{
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
 		}		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String username=request.getParameter("username");
+		String posizioneId=request.getParameter("idPosizione");
+		
+		PosizioneDAO dao=new PosizioneDAO();
+		dao.chiudiPosizione(Integer.parseInt(posizioneId), username);
+		
+		
+		response.sendRedirect("home");
+		
 	}
 
 
