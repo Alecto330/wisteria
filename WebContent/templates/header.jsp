@@ -152,7 +152,7 @@
 
 		// ########################## DA COMPLETARE ###################################
 		document.addEventListener('DOMContentLoaded', () => {
-		const isProfileComplete = ${softskill};
+		const isProfileComplete = false;
 		
 		if (!isProfileComplete) {
 			const alertElement = document.getElementById('profile-alert');
