@@ -37,16 +37,6 @@
             <div class="details-section">
                 <h5>Descrizione Lavoro</h5>
                 <p>${posizione.descrizione}</p>
-                <h5>Posizione</h5>
-                <p>Il/la candidato/a, che risponderà alla Direzione aziendale sarà inserito/a nell’organizzazione...</p>
-                <h5>La risorsa si occuperà delle seguenti attività:</h5>
-                <ul>
-                    <li>Analisi e pianificazione finanziaria dell’azienda</li>
-                    <li>Monitoraggio e definizione di costi, ricavi e predisposizione dei budget</li>
-                    <li>Analisi degli scostamenti, analisi di cash flow</li>
-                    <li>Collaborazione per l’impostazione dei sistemi di contabilità analitica</li>
-                    <li>Collaborazione costante con i dipartimenti aziendali</li>
-                </ul>
             </div>
             <a class="back-button" href="javascript:history.back();"> <i
 				class="fas fa-arrow-left"></i>

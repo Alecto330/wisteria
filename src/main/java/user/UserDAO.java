@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
-
 import org.mindrot.jbcrypt.BCrypt;
 import utils.DatabaseConnection;
 
@@ -26,7 +23,7 @@ public class UserDAO {
 
 			if (resultSet.next() && BCrypt.checkpw(password, resultSet.getString(1))==true) {
 
-				query = "SELECT * FROM Utente WHERE email = ?";
+				query = "SELECT Utente.username, pw, email, ruolo, SoftSkill.FK_Utente as softskill FROM Utente left join SoftSkill on Utente.username=SoftSkill.FK_Utente WHERE email = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, email);
 				resultSet = preparedStatement.executeQuery();
@@ -36,9 +33,15 @@ public class UserDAO {
 					String username = resultSet.getString("username");
 					String role = resultSet.getString("ruolo");
 
+					String softskillString=resultSet.getString("softskill");
+					boolean softSkill=false;
+					if(softskillString!=null) {
+						softSkill=true;
+					}
+
 					Class <? > userClass = Class.forName(role);
-					user= (User)userClass.getDeclaredConstructor(String.class, String.class, String.class, String.class)
-							.newInstance(username, null, email, role);
+					user= (User)userClass.getDeclaredConstructor(String.class, String.class, String.class, String.class, boolean.class)
+							.newInstance(username, null, email, role, softSkill);
 
 					connection.close();
 					return user;
@@ -112,7 +115,34 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean isProfileComplete(String username) {
 
+		boolean isProfileComplete=false;
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT CV.Residenza, CV.TitoloDiStudio, CV.curriculum, CV.fotoProfilo, CV.telefono, SoftSkill.FK_Utente FROM Utente\n"
+					+ "join CV on Utente.username=CV.FK_Utente\n"
+					+ "left join SoftSkill on Utente.username=SoftSkill.FK_Utente\n"
+					+ "where CV.Residenza IS NOT NULL AND CV.TitoloDiStudio IS NOT NULL AND CV.curriculum IS NOT NULL AND CV.fotoProfilo IS NOT NULL AND CV.telefono IS NOT NULL\n"
+					+ "AND SoftSkill.FK_Utente IS NOT NULL AND Utente.username=?\n"
+					+ "";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			isProfileComplete=resultSet.next();
+
+			connection.close();
+
+			return isProfileComplete;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isProfileComplete;
+	}
 
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate

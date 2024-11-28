@@ -31,9 +31,10 @@
 	<div class="alert-box" id="alertBox" onclick="hideAlert()">Compila
 		tutti i campi!</div>
 	<div class="main-container-profilepage">
-
-		<div class="soft-skills-banner">⚠️ Completa il test sulle Soft
-			Skills per attirare l'attenzione dei recruiter!</div>
+        <c:if test="${softskill == false}">
+            <div class="soft-skills-banner">⚠️ Completa il test sulle Soft
+                Skills per attirare l'attenzione dei recruiter!</div>
+        </c:if>
 		<div class="user-profile">
 			<div class="profile-image" onclick="triggerImageInput()">
 				<input type="file" id="imageInput" accept="image/*"
@@ -48,9 +49,12 @@
 				</div>
 			</div>
 			<div class="soft-skills-button-container">
-				<button id="softSkillsTestButton" class="soft-skills-test-button"
-					onclick="window.location.href='${pageContext.request.contextPath}/softskill?user=${username}'">
-					Completa il Test Soft Skills</button>
+				<c:if test="${softskill == false}">
+					<button id="softSkillsTestButton" class="soft-skills-test-button"
+						onclick="window.location.href='${pageContext.request.contextPath}/softskill?user=${username}'">
+						Completa il Test Soft Skills</button>
+				</c:if>
+
 
 			</div>
 
@@ -237,12 +241,9 @@
                         body: formData
                     })
                     .then(response => {
-                        if (!response.ok) {
-                            return response.text().then(err => {
-                                throw new Error(`Errore nel server: ${err}`);
-                            });
-                        }
-                        return response.text();
+                    	 if (response.redirected) {
+                             window.location.href = response.url;
+                         }
                     })
                     .then(data => {
                         console.log('File caricato con successo:', data);
@@ -306,12 +307,9 @@
                         body: formData
                     })
                     .then(response => {
-                        if (!response.ok) {
-                            return response.text().then(err => {
-                                throw new Error(`Errore nel server: ${err}`);
-                            });
-                        }
-                        return response.text();
+                    	 if (response.redirected) {
+                             window.location.href = response.url;
+                         }
                     })
                     .then(data => {
                         console.log('Immagine caricata con successo:', data);

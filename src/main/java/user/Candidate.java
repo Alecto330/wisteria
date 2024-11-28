@@ -1,12 +1,12 @@
 package user;
 
 public class Candidate extends User{
-
-	public Candidate(String username, String password, String email, String role) {
-		super(username, password, email, role);
+	
+	public Candidate(String username, String password, String email, String role, boolean softSkill) {
+		super(username, password, email, role, softSkill);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public String getHeader() {		
 		return "header.jsp";
@@ -21,4 +21,12 @@ public class Candidate extends User{
 	public boolean eseguiTest() {
 		return true;
 	}
+
+	@Override
+	public boolean isProfileComplete() {
+		UserDAO dao=new UserDAO();
+		boolean isProfileComplete=dao.isProfileComplete(this.getUsername());
+		return isProfileComplete;
+	}
+	
 }

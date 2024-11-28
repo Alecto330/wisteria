@@ -208,26 +208,19 @@ input[type="search"] {
     font-size: 1rem;
 }
 
-.btn-primary {
-    background-color: #D6B5FF;
+.offer-card .btn-apply {
+    background-color: #6e41e2;
     border: solid 2px #8228ff;
     border: none;
     border-radius: 2vw;
-    color:black;
+    color:white;
     box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
-    width: 78.89px; /* stessa larghezza del pulsante */
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
 }
-.btn {
-    color: rgb(0, 0, 0);
+.offer-card .btn-apply:hover {
+    background-color: #4c2bb0; 
 }
-.btn-primary:hover
-{
-    color:#fff;
-    background-color:#8228ff;
-    border-color:#8228ff;
-}
+
+
 .btn-primary.focus,
 .btn-primary:focus{
     color:#fff;

@@ -214,16 +214,20 @@ body {
 }
 
 .job-header {
-	display: flex;
-	align-items: center;
-	gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuisce lo spazio tra titolo e pulsanti */
 }
 
 .job-title {
 	margin: 0;
 	width: auto;
 }
-
+.btn-group {
+    display: flex;
+    gap: 1.2vw; /* Spazio tra i pulsanti, regola secondo necessità */
+    margin-right: 1vw;
+}
 .btn-back {
 	background-color: transparent;
 	color: rgb(0, 0, 0);
@@ -284,9 +288,9 @@ body {
 
 .btn-del {
 	margin-left: auto; 
-	margin-right: 10px; 
-	width: 3rem; 
-	height: 3rem; 
+	margin-right: 1px; 
+	width: 1vw; 
+	height: 1vw; 
 	padding: 0; 
 	background: none; 
 	border: none; 

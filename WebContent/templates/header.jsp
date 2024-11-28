@@ -150,14 +150,15 @@
 
 
 
-
+		// ########################## DA COMPLETARE ###################################
 		document.addEventListener('DOMContentLoaded', () => {
-		// Simula una condizione per controllare se il profilo è completo
-		const isProfileComplete = false; // Cambia a `true` se il profilo è completo
+		const isProfileComplete = ${user.isProfileComplete()};
 		
-		if (!isProfileComplete) {
+		console.log(isProfileComplete);
+		
+		if (isProfileComplete==false) {
 			const alertElement = document.getElementById('profile-alert');
-			alertElement.style.display = 'block'; // Mostra l'avviso
+			alertElement.style.display = 'block';
 		}
 	});
 

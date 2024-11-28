@@ -107,6 +107,11 @@
     height: 75px;
     padding: 15px;
 }
+
+.logout {
+    position: relative; /* Necessario per il posizionamento assoluto dell'alert */
+}
+
 .logout .fa-user:before {
     color: rgb(123, 31, 255);
 }
@@ -114,10 +119,10 @@
 .profile-alert {
     display: none;
     position: absolute;
-    top: 120%;
+    top: 90%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #f8d7da;
+    background-color: #ffb1b8;
     color: #721c24;
     padding: 5px 10px;
     border-radius: 5px;
@@ -126,13 +131,13 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-decoration: none; /* Rimuove la sottolineatura */
     cursor: pointer; /* Mostra il puntatore come "cliccabile" */
-    z-index: 100;
+    z-index: 1002;
     transition: background-color 0.3s ease-in-out;
 }
 
 
 .profile-alert:hover {
-    background-color: #f5c6cb; /* Cambia il colore di sfondo al passaggio del mouse */
+    background-color: #ff98a0; /* Cambia il colore di sfondo al passaggio del mouse */
     text-decoration: none; /* Rimuove la sottolineatura */
     color: inherit; /* Usa il colore del contenitore (di default #721c24) */
 }
@@ -140,12 +145,12 @@
 .profile-alert::after {
     content: '';
     position: absolute;
-    top: -5px;
-    left: 50%;
+    top: -16px;
+    left: 76%;
     transform: translateX(-50%);
-    border-width: 5px;
+    border-width: 9px;
     border-style: solid;
-    border-color: transparent transparent #f8d7da transparent;
+    border-color: transparent transparent #ffb1b8 transparent;
 }
 
 

@@ -1,9 +1,5 @@
 package user;
 
-import java.util.ArrayList;
-
-import posizione.Candidatura;
-
 public abstract class User implements Permessi{
 	
 	private String username;
@@ -11,17 +7,22 @@ public abstract class User implements Permessi{
 	private String email;
 	private String role;
 	
-	public User(String username, String password, String email, String role) {
+	private boolean softSkill;
+	
+	public User(String username, String password, String email, String role, boolean softSkill) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.role = role;
+		this.softSkill=softSkill;
 	}
 	
 	public abstract String getHeader();
 	
 	public abstract String getOfferta();
+	
+	public abstract boolean isProfileComplete();
 
 	public String getUsername() {
 		return username;
@@ -54,4 +55,15 @@ public abstract class User implements Permessi{
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public boolean getSoftSkill() {
+		return softSkill;
+	}
+
+	public void setSoftSkill(boolean softSkill) {
+		this.softSkill = softSkill;
+	}
+	
+	
+	
 }
