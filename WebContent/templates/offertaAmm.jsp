@@ -52,19 +52,6 @@
                 <div class="job-description">
                     ${posizione.descrizione}
                 </div>
-                <div class="company-location">
-                </div>
-                <div class="job-description">
-                </div>
-                <div class="job-description">
-                    <br><br>
-                    <a href="http://www.lantechlongwave.it" class="website-link"></a>
-                </div>
-                <div class="job-position">
-                    <h2 class="section-title"></h2>
-                    <div class="job-description">
-                    </div>
-                </div>
             </div>
         </div>
         <div class="card">
