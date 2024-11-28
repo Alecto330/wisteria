@@ -27,22 +27,22 @@
 		<div class="accordion">
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h2 class="accordion-title">Quale di queste opzioni descrive meglio una comunicazione efficace?</h2>
+                    <h2 class="accordion-title"><b>Quale di queste opzioni descrive meglio una comunicazione efficace?</h2>
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
                         <button class="answer-item" data-domanda-id="uno" data-risposta="1" onclick="selectAnswer(this)">
-                            <p class="answer-text">a) Parlare senza pause per mostrare sicurezza.</p>
+                            <p class="answer-text"><b>a)</b> Parlare senza pause per mostrare sicurezza.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="uno" data-risposta="2" onclick="selectAnswer(this)"> <!--CORRETTA -->
-                            <p class="answer-text">b) Ascoltare attivamente e adattare il messaggio al pubblico.</p>
+                            <p class="answer-text"><b>b)</b> Ascoltare attivamente e adattare il messaggio al pubblico.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="uno" data-risposta="3" onclick="selectAnswer(this)">
-                            <p class="answer-text">c) Utilizzare un linguaggio tecnico per sembrare più esperti.</p>
+                            <p class="answer-text"><b>c)</b> Utilizzare un linguaggio tecnico per sembrare più esperti.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="uno" data-risposta="4" onclick="selectAnswer(this)">
-                            <p class="answer-text">d) Condividere solo informazioni personali.</p>
+                            <p class="answer-text"><b>d)</b> Condividere solo informazioni personali.</p>
                         </button>
                     </ul>
                 </div>
@@ -50,22 +50,22 @@
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h2 class="accordion-title">Un collega presenta un'idea che non condividi. Come rispondi?</h2>
+                    <h2 class="accordion-title"><b>Un collega presenta un'idea che non condividi. Come rispondi?</b></h2>
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
                         <button class="answer-item" data-domanda-id="due" data-risposta="1" onclick="selectAnswer(this)">
-                            <p class="answer-text">a) Ignori l'idea e proponi la tua.</p>
+                            <p class="answer-text"><b>a)</b> Ignori l'idea e proponi la tua.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="due" data-risposta="2" onclick="selectAnswer(this)">
-                            <p class="answer-text">b) Critichi apertamente il collega davanti a tutti.</p>
+                            <p class="answer-text"><b>b)</b> Critichi apertamente il collega davanti a tutti.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="due" data-risposta="3" onclick="selectAnswer(this)">
-                            <p class="answer-text">c) Proponi un confronto costruttivo per discutere le differenze.</p>  <!--CORRETTA -->
+                            <p class="answer-text"><b>c)</b> Proponi un confronto costruttivo per discutere le differenze.</p>  <!--CORRETTA -->
                         </button>
                         <button class="answer-item" data-domanda-id="due" data-risposta="4" onclick="selectAnswer(this)">
-                            <p class="answer-text">d) Rimani in silenzio per evitare conflitti.</p>
+                            <p class="answer-text"><b>d)</b> Rimani in silenzio per evitare conflitti.</p>
                         </button>
                     </ul>
                 </div>
@@ -73,22 +73,22 @@
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h2 class="accordion-title">Se hai molte scadenze contemporaneamente, cosa fai per gestirle?</h2>
+                    <h2 class="accordion-title"><b>Se hai molte scadenze contemporaneamente, cosa fai per gestirle?</b></h2>
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
                         <button class="answer-item" data-domanda-id="tre" data-risposta="1" onclick="selectAnswer(this)">
-                            <p class="answer-text">a) Lavori su tutte nello stesso momento senza priorità.</p>
+                            <p class="answer-text"><b>a)</b> Lavori su tutte nello stesso momento senza priorità.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="tre" data-risposta="2" onclick="selectAnswer(this)"> 
-                            <p class="answer-text">b) Delego tutto ai colleghi.</p>
+                            <p class="answer-text"><b>b)</b> Delego tutto ai colleghi.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="tre" data-risposta="3" onclick="selectAnswer(this)">
-                            <p class="answer-text">c) Stabilisci priorità e pianifichi il tempo per ogni attività.</p> <!--CORRETTA -->
+                            <p class="answer-text"><b>c)</b> Stabilisci priorità e pianifichi il tempo per ogni attività.</p> <!--CORRETTA -->
                         </button>
                         <button class="answer-item" data-domanda-id="tre" data-risposta="4" onclick="selectAnswer(this)">
-                            <p class="answer-text">d) Rimandi tutto all'ultimo momento.</p>
+                            <p class="answer-text"><b>d)</b> Rimandi tutto all'ultimo momento.</p>
                         </button>
                     </ul>
                 </div>
@@ -96,22 +96,22 @@
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h2 class="accordion-title">Qual è il primo passo per risolvere un problema complesso?</h2>
+                    <h2 class="accordion-title"><b>Qual è il primo passo per risolvere un problema complesso?</b></h2>
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
                         <button class="answer-item" data-domanda-id="quattro" data-risposta="1" onclick="selectAnswer(this)">
-                            <p class="answer-text">a) Agire immediatamente, senza analizzare la situazione.</p>
+                            <p class="answer-text"><b>a)</b> Agire immediatamente, senza analizzare la situazione.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="quattro" data-risposta="2" onclick="selectAnswer(this)"> <!--CORRETTA -->
-                            <p class="answer-text">b) Identificare chiaramente il problema.</p>
+                            <p class="answer-text"><b>b)</b> Identificare chiaramente il problema.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="quattro" data-risposta="3" onclick="selectAnswer(this)">
-                            <p class="answer-text">c) Chiedere a qualcun altro di risolverlo.</p>
+                            <p class="answer-text"><b>c)</b> Chiedere a qualcun altro di risolverlo.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="quattro" data-risposta="4" onclick="selectAnswer(this)">
-                            <p class="answer-text">d) Concentrarsi sulle difficoltà personali legate al problema.</p>
+                            <p class="answer-text"><b>d)</b> Concentrarsi sulle difficoltà personali legate al problema.</p>
                         </button>
                     </ul>
                 </div>
@@ -119,22 +119,22 @@
 
             <div class="accordion-item">
                 <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <h2 class="accordion-title">Un collega sembra stressato sul lavoro. Come ti comporti?</h2>
+                    <h2 class="accordion-title">Un collega sembra stressato sul lavoro. Come ti comporti?</b></h2>
                     <i class="fas fa-chevron-down accordion-icon"></i>
                 </div>
                 <div class="accordion-content">
                     <ul class="answer-list">
                         <button class="answer-item" data-domanda-id="cinque" data-risposta="1" onclick="selectAnswer(this)">
-                            <p class="answer-text">a) Gli fai sapere che sei disponibile per ascoltarlo.</p><!--CORRETTA -->
+                            <p class="answer-text"><b>a)</b> Gli fai sapere che sei disponibile per ascoltarlo.</p><!--CORRETTA -->
                         </button>
                         <button class="answer-item" data-domanda-id="cinque" data-risposta="2" onclick="selectAnswer(this)">
-                            <p class="answer-text">b) Lo ignori per non interferire.</p>
+                            <p class="answer-text"><b>b)</b> Lo ignori per non interferire.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="cinque" data-risposta="3" onclick="selectAnswer(this)">
-                            <p class="answer-text">c) Gli suggerisci di lavorare di più per superare lo stress.</p>
+                            <p class="answer-text"><b>c)</b> Gli suggerisci di lavorare di più per superare lo stress.</p>
                         </button>
                         <button class="answer-item" data-domanda-id="cinque" data-risposta="4" onclick="selectAnswer(this)">
-                            <p class="answer-text">d) Eviti il problema finché non lo risolve da solo.</p>
+                            <p class="answer-text"><b>d)</b> Eviti il problema finché non lo risolve da solo.</p>
                         </button>
                     </ul>
                 </div>
