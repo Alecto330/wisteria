@@ -9,46 +9,35 @@ import utils.DatabaseConnection;
 
 public class CvDAO {
 
-	public CV getCV(String username) {
+	public CV getCV(String username) throws Exception {
 
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection(); 
-			String query = "SELECT cf, nome, cognome, DataDiNascita, Residenza, TitoloDiStudio, curriculum, fotoProfilo, telefono, email, CV.FK_Utente, SoftSkill.FK_Utente as softskill FROM CV\n"
-					+ "join Utente on CV.FK_Utente=Utente.username\n"
-					+ "left join SoftSkill on CV.FK_Utente=SoftSkill.FK_Utente\n"
-					+ "where CV.FK_Utente= ?";
-			PreparedStatement preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, username);
-			ResultSet resultSet = preparedStatement.executeQuery();
+		DatabaseConnection database = new DatabaseConnection();
+		Connection connection = database.getConnection(); 
+		String query = "SELECT cf, nome, cognome, DataDiNascita, Residenza, TitoloDiStudio, curriculum, fotoProfilo, telefono, email, CV.FK_Utente, SoftSkill.FK_Utente as softskill FROM CV\n"
+				+ "join Utente on CV.FK_Utente=Utente.username\n"
+				+ "left join SoftSkill on CV.FK_Utente=SoftSkill.FK_Utente\n"
+				+ "where CV.FK_Utente= ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(query);
+		preparedStatement.setString(1, username);
+		ResultSet resultSet = preparedStatement.executeQuery();
 
-			resultSet.next();
+		resultSet.next();
 
-			String cf=resultSet.getString("cf");
-			String nome=resultSet.getString("nome");
-			String cognome=resultSet.getString("cognome");
-			LocalDate dataDiNascita=resultSet.getDate("DataDiNascita").toLocalDate();;
-			String residenza=resultSet.getString("Residenza");
-			String titoloDiStudio=resultSet.getString("TitoloDiStudio");
-			byte[] curriculum=resultSet.getBytes("curriculum");
-			byte[] fotoProfilo=resultSet.getBytes("fotoProfilo");
-			String telefono=resultSet.getString("telefono");
-			String email=resultSet.getString("email");
-			String softskillString=resultSet.getString("softskill");
-			boolean softSkill=false;
-			if(softskillString!=null) {
-				softSkill=true;
-			}
-			
-			CV cv=new CV(username, cf, nome, cognome, dataDiNascita, residenza, titoloDiStudio, curriculum, fotoProfilo, telefono, email, softSkill);
+		String cf=resultSet.getString("cf");
+		String nome=resultSet.getString("nome");
+		String cognome=resultSet.getString("cognome");
+		LocalDate dataDiNascita=resultSet.getDate("DataDiNascita").toLocalDate();;
+		String residenza=resultSet.getString("Residenza");
+		String titoloDiStudio=resultSet.getString("TitoloDiStudio");
+		byte[] curriculum=resultSet.getBytes("curriculum");
+		byte[] fotoProfilo=resultSet.getBytes("fotoProfilo");
+		String telefono=resultSet.getString("telefono");
+		String email=resultSet.getString("email");
 
-			connection.close();
-			return cv;
+		CV cv=new CV(username, cf, nome, cognome, dataDiNascita, residenza, titoloDiStudio, curriculum, fotoProfilo, telefono, email);
 
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		connection.close();
+		return cv;
 	}
 
 	public void updateNome(String username, String nome) {
@@ -146,16 +135,16 @@ public class CvDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public void updateCV(String username, InputStream inputStream, long size) {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 			String query ="UPDATE CV SET curriculum = ? WHERE FK_Utente= ?";
-			
+
 			//InputStream inputStream = cv.getInputStream();
-			
+
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setBinaryStream(1, inputStream, size);
 			preparedStatement.setString(2, username);
@@ -166,15 +155,15 @@ public class CvDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void updateImage(String username, InputStream inputStream, long size) {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 			String query ="UPDATE CV SET fotoProfilo = ? WHERE FK_Utente= ?";
-			
+
 			//InputStream inputStream = cv.getInputStream();
-			
+
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setBinaryStream(1, inputStream, size);
 			preparedStatement.setString(2, username);
@@ -185,7 +174,7 @@ public class CvDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String getCf(String username) {
 		String cf="";
 		try {

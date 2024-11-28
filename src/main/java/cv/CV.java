@@ -15,11 +15,10 @@ public class CV {
 	private byte[] fotoProfilo;
 	private String telefono;
 	private String email;
-	private boolean softSkill;
+
 	
 	public CV(String username, String cf, String nome, String cognome, LocalDate dataDiNascita, String residenza,
-			String titoloDiStudio, byte[] curriculum, byte[] fotoProfilo, String telefono, String email,
-			boolean softSkill) {
+			String titoloDiStudio, byte[] curriculum, byte[] fotoProfilo, String telefono, String email) {
 		super();
 		this.username = username;
 		this.cf = cf;
@@ -32,7 +31,6 @@ public class CV {
 		this.fotoProfilo = fotoProfilo;
 		this.telefono = telefono;
 		this.email = email;
-		this.softSkill = softSkill;
 	}
 
 	public String getUsername() {
@@ -122,13 +120,4 @@ public class CV {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public boolean getSoftSkill() {
-		return softSkill;
-	}
-
-	public void setSoftSkill(boolean softSkill) {
-		this.softSkill = softSkill;
-	}
-
 }
