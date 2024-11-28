@@ -21,6 +21,8 @@ public abstract class User implements Permessi{
 	public abstract String getHeader();
 	
 	public abstract String getOfferta();
+	
+	public abstract boolean isProfileComplete();
 
 	public String getUsername() {
 		return username;

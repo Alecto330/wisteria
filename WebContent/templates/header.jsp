@@ -152,9 +152,11 @@
 
 		// ########################## DA COMPLETARE ###################################
 		document.addEventListener('DOMContentLoaded', () => {
-		const isProfileComplete = ${user.softSkill};
+		const isProfileComplete = ${user.isProfileComplete()};
 		
-		if (!isProfileComplete) {
+		console.log(isProfileComplete);
+		
+		if (isProfileComplete==false) {
 			const alertElement = document.getElementById('profile-alert');
 			alertElement.style.display = 'block';
 		}
