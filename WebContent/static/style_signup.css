@@ -32,7 +32,7 @@ body {
 }
 /* Contenitore principale del form di login */
 .login-container {
-    background-color: #d8aef7;
+    background-color: #d7bbff;
     width: 50%;
     padding: 40px;
     border-radius: 20px;
@@ -79,7 +79,7 @@ body {
     margin-bottom: 1vw;
     width: 100%;
     padding: 12px;
-    background-color: #a560e5;
+    background-color: #6e41e2;
     color: white;
     font-size: 1em;
     border: none;
@@ -90,43 +90,66 @@ body {
 }
 
 .login-container button:hover {
-    background-color: #954bd9;
+    background-color: #4c2bb0;
 }
-
-/* Link per la registrazione */
-.login-container .register-link {
+.finepagina{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 15px;
+}
+.back-button{
+    display: inline-block;
+    padding-top: 15px;
+	background: none;
+	border: none;
+	color: #8228ff;
+	cursor: pointer;
+	font-size: 1.5rem;
+    transition: transform 0.3s ease-in-out;
+    left: 0;
+    bottom: 0
+}
+.back-button:hover {
+	color: #4c2bb0;
+    transform: translateX(-5px);
+}
+.register-link {
     font-size: 1em;
-    color: #6b38d1;
+    color: #8228ff;
     text-decoration: none;
     display: inline-block;
-    margin-top: 15px;
+    transition: all 0.3s ease;
+    margin: 0;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+    padding-top: 7.5px;
 }
-
-.login-container .register-link:hover {
+.register-link:hover {
+    color: #4c2bb0;
     text-decoration: underline;
+    transform: translateY(-2px);
 }
-
-/* Bottone Torna Indietro */
 .btn-back {
-    display: inline-block;
-    background-color: transparent;
-    color: rgb(0, 0, 0);
+    width: auto;
+    padding: 15px 30px;
+    font-size: 20px;
     font-weight: bold;
-    transition: background-color 0.3s ease, text-shadow 0.3s ease;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    border: none;
+    background-color: transparent;
+    color: #6e41e2;
+    border: 1px;
+    border-radius: 10px;
     cursor: pointer;
-    padding-left: 0px;
-    margin: auto;
     transition: background-color 0.3s, transform 0.3s ease-in-out;
+    text-transform: uppercase;
 }
 
 .btn-back:hover {
-    color: rgb(123, 31, 255);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
-    transform: translateX(-5px);
+    color: #4c2bb0;
+    transform: scale(1.05);
 }
-
 .btn-container {
     display: flex;
     justify-content: center;

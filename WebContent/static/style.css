@@ -12,7 +12,7 @@ body {
 }
 .btn-primary{
     color:#000000;
-    background-color:#D6B5FF;
+    background-color:#6e41e2;
     border-color:#8228ff;
 }
 .btn-primary:hover
@@ -61,7 +61,7 @@ body {
 
 .job-card {
     margin-bottom: 1vw;
-    background-color: #d8aef7;
+    background-color: #d7bbff;
     border: solid 2px #8228ff;
     border-radius: 1vw;
     padding: 1vw 1.5vw;
