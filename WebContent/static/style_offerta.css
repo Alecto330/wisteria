@@ -76,9 +76,11 @@ body {
     margin-top: 13px;
     margin-bottom: 0;
 }
+.dettagli-offerta{
+    margin-top: 7px;
+}
 .p-posizione, .p-settore{
     margin: 0%;
-    font-weight: bold;
 }
 .back-button {
     display: inline-block;

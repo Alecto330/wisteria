@@ -32,23 +32,23 @@
             <div class="scroll-wrapper-classifica">
 				<div class="job-header" style="margin-top: 5px">
 				    <h1 class="job-title">${posizione.titolo}</h1>
-				    <div class="btn-group">			    
-						<button class="btn-del" onclick="handleClosure(${posizione.id})" title="Chiudi Posizione">
-						    <i class="far fa-times-circle" style="font-size: 1.5rem; color: black;"></i>
-						</button>
+				    <div class="btn-group">
 						<button class="btn-del" onclick="handleDelete(${posizione.id})" title="Cancella">
 						    <i class="far fa-trash-alt" style="font-size: 1.5rem;"></i>
 						</button>
 				    </div>
 				</div>
                 <div class="job-meta">
-                    <div class="meta-item">
-                        <span class="meta-icon">📍</span>
-                        <span>${posizione.provincia} - ${posizione.regione}</span>
+                    <div class="dettagli-offerta">
+                        <p class="p-posizione">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ${posizione.provincia} - ${posizione.regione}
+                        </p>
                     </div>
-                    <div class="meta-item">
-                        <span class="meta-icon">🏢</span>
-                        <span>${posizione.settore}</span>
+                    <div class="dettagli-offerta">
+                        <p class="p-settore">
+                        <i class="fas fa-briefcase">
+                        </i> ${posizione.settore}</p>
                     </div>
                 </div>
                 <h2 class="section-title"></h2>
@@ -110,7 +110,9 @@
         </div>
     </div>
     <div class="btn-container">
-        <button class="btn btn-back" onclick="history.back()">← Torna Indietro</button>
+        <a class="btn btn-back" href="javascript:history.back();">
+        	Torna alla Home
+        </a>
     </div>
 
     <script>
