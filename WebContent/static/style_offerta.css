@@ -31,6 +31,7 @@ body {
 }
 .offer-card {
     width: 100%; /* Imposta una larghezza massima per la card */
+    min-height: 35vh;
     height: 100%;
     padding: 2vw;
     background-color: #d8aef7;

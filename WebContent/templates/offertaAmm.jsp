@@ -51,32 +51,21 @@
                         <span>${posizione.settore}</span>
                     </div>
                 </div>
-                <h2 class="section-title">Descrizione azienda</h2>
+                <h2 class="section-title"></h2>
                 <div class="job-description">
-                    Lantech Longwave, società del Gruppo Zucchetti, prima software house in Europa con più di 8000 addetti, si occupa della
-                    progettazione e dell'implementazione di soluzioni e servizi tecnologici innovativi, sicuri e performanti negli ambiti
-                    Security, Networking, Datacenter & Cloud, Collaboration & AVI e Sviluppo Software.
+                    ${posizione.descrizione}
                 </div>
                 <div class="company-location">
-                    È presente in tredici sedi dislocate in nove città italiane e una in Svizzera: Reggio Emilia, Bologna, Padova, Verona,
-                    Milano, Besana Brianza, Roma, Modena, Parma e Chiasso.
                 </div>
                 <div class="job-description">
-                    Il Team di oltre 300 collaboratori opera con l'obiettivo di rendere la tecnologia alla portata di tutti. Ogni soluzione ICT
-                    viene pensata e progettata partendo dalle persone e, attraverso uno studio di fattibilità, viene definita la tecnologia più
-                    adeguata alla specifica esigenza, in termini di performance, affidabilità e sicurezza.
                 </div>
                 <div class="job-description">
-                    Ha ingegnerizzato una suite di servizi gestiti - LION® - erogati h24 7*7 per garantire un monitoraggio real-time e una gestione
-                    continua in massima sicurezza dell'intera infrastruttura ICT delle aziende.
                     <br><br>
-                    <a href="http://www.lantechlongwave.it" class="website-link">www.lantechlongwave.it</a>
+                    <a href="http://www.lantechlongwave.it" class="website-link"></a>
                 </div>
                 <div class="job-position">
-                    <h2 class="section-title">Posizione</h2>
+                    <h2 class="section-title"></h2>
                     <div class="job-description">
-                        Il/La candidato/a, che risponderà alla Direzione aziendale sarà inserito/a nell'organizzazione per gestire e
-                        monitorare i budget aziendali occupandosi del monitoraggio e analisi delle performance...
                     </div>
                 </div>
             </div>
