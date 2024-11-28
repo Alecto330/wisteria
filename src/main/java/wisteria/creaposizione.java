@@ -79,13 +79,7 @@ public class creaposizione extends HttpServlet {
         String provincia = request.getParameter("provinciaupdateRegione");
         String settore = request.getParameter("settore");
         String[] domande = request.getParameterValues("domanda");
-        
-        System.out.println(titolo);
-        System.out.println(descrizione);
-        System.out.println(provincia);
-        System.out.println(settore);
-        System.out.println(domande[0]);
-        
+
         Posizione posizione = new Posizione(0, titolo, descrizione, settore, provincia, "", false, "");
 
         HttpSession session = request.getSession();

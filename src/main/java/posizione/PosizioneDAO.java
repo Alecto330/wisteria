@@ -286,11 +286,11 @@ public class PosizioneDAO {
 		}
 	}
 
-	public void deletePosizione(int posizioneId) throws Exception {
+	public void deletePosizione(int posizioneId) {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
-			String query = "DELETE FROM posizioni WHERE id = ?";
+			String query = "DELETE FROM Posizione WHERE id = ?";
 
 			PreparedStatement stmt = connection.prepareStatement(query);
 			stmt.setInt(1, posizioneId);
