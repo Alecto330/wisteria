@@ -229,16 +229,7 @@ body {
     gap: 1.2vw; /* Spazio tra i pulsanti, regola secondo necessità */
     margin-right: 1vw;
 }
-.btn-back {
-	background-color: #6e41e2;
-	font-weight: bold;
-	transition: background-color 0.3s ease, text-shadow 0.3s ease;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-	border: none;
-	cursor: pointer;
-	padding-left: 0px;
-	font-size: 20px;
-}
+
 
 .btn-back:hover {
 	color: #7b1fff;
@@ -428,7 +419,7 @@ body {
     padding: 15px 30px; /* Aumentato il padding per dare più spazio al pulsante */
     font-size: 20px; /* Aumentato il font per migliorare la leggibilità */
     font-weight: bold;
-    background-color: #7b1fff;
+    background-color: #6e41e2;
     color: #eeeeee;
     border: 1px;
     border-radius: 10px; /* Angoli arrotondati */
