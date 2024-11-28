@@ -23,18 +23,24 @@
 <body>
     <div class="content-container contenuto">
         <div id="custom-alert" class="alert-box">
-            Sei sicuro di voler eliminare questa posizione lavorativa?<br>
-            <button class="btn btn-danger" onclick="confirmDelete(true)">Conferma</button>
-            <button class="btn btn-secondary" onclick="confirmDelete(false)">Annulla</button>
-        </div>
+		    <span id="alert-message">Sei sicuro di voler eliminare questa posizione lavorativa?</span><br>
+		    <button class="btn btn-danger" onclick="confirmAction(true)">Conferma</button>
+		    <button class="btn btn-secondary" onclick="confirmAction(false)">Annulla</button>
+		</div>
+
         <div class="card">
             <div class="scroll-wrapper-classifica">
-                <div class="job-header" style="margin-top: 5px">
-                    <h1 class="job-title">${posizione.titolo}</h1>
-                    <button class="btn-del" onclick="handleDelete(${posizione.id})" title="Cancella">
-                        <i class="far fa-trash-alt" style="font-size: 1.5rem;"></i>
-                    </button>
-                </div>
+				<div class="job-header" style="margin-top: 5px">
+				    <h1 class="job-title">${posizione.titolo}</h1>
+				    <div class="btn-group">			    
+						<button class="btn-del" onclick="handleClosure(${posizione.id})" title="Chiudi Posizione">
+						    <i class="far fa-times-circle" style="font-size: 1.5rem; color: black;"></i>
+						</button>
+						<button class="btn-del" onclick="handleDelete(${posizione.id})" title="Cancella">
+						    <i class="far fa-trash-alt" style="font-size: 1.5rem;"></i>
+						</button>
+				    </div>
+				</div>
                 <div class="job-meta">
                     <div class="meta-item">
                         <span class="meta-icon">📍</span>
@@ -119,29 +125,45 @@
     </div>
 
     <script>
-        let deleteId = null;
+    let actionType = null; // 'delete' o 'closure'
+    let actionId = null;
 
-        function handleDelete(id) {
-            deleteId = id;
-            showAlert();
-        }
+    // Funzione per gestire l'eliminazione
+    function handleDelete(id) {
+        actionType = 'delete';
+        actionId = id;
+        document.getElementById('alert-message').innerText = 'Sei sicuro di voler eliminare questa posizione lavorativa?';
+        showAlert();
+    }
 
-        function showAlert() {
-            const alertBox = document.getElementById('custom-alert');
-            alertBox.classList.add('show');
-        }
+    // Funzione per gestire la chiusura
+    function handleClosure(id) {
+        actionType = 'closure';
+        actionId = id;
+        document.getElementById('alert-message').innerText = 'Sei sicuro di voler chiudere questa posizione lavorativa?';
+        showAlert();
+    }
 
-        function hideAlert() {
-            const alertBox = document.getElementById('custom-alert');
-            alertBox.classList.remove('show');
-        }
+    // Funzione per mostrare la finestra di dialogo
+    function showAlert() {
+        const alertBox = document.getElementById('custom-alert');
+        alertBox.classList.add('show');
+    }
 
-        function confirmDelete(confirm) {
-            if (confirm) {
+    // Funzione per nascondere la finestra di dialogo
+    function hideAlert() {
+        const alertBox = document.getElementById('custom-alert');
+        alertBox.classList.remove('show');
+    }
+
+    // Funzione per confermare l'azione
+    function confirmAction(confirm) {
+        if (confirm) {
+            if (actionType === 'delete') {
+                // Logica per l'eliminazione
                 const formData = new URLSearchParams();
-                formData.append('posizioneID', deleteId);
+                formData.append('posizioneID', actionId);
                 
-                console.log(formData.toString());
                 fetch('/wisteria/offerta', {
                     method: 'DELETE',
                     headers: {
@@ -160,9 +182,34 @@
                     console.error("Errore:", error);
                     alert('Si è verificato un errore. Riprova più tardi.');
                 });
+            } else if (actionType === 'closure') {
+                // Logica per la chiusura
+                const formData = new URLSearchParams();
+                formData.append('posizioneID', actionId);
+                
+                fetch('/wisteria/offerta/closure', { // Assicurati che questo sia l'endpoint corretto per la chiusura
+                    method: 'POST', // Usa il metodo appropriato (POST, PUT, ecc.)
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formData.toString()
+                })
+                .then(response => {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        alert('Errore durante la chiusura della posizione.');
+                    }
+                })
+                .catch(error => {
+                    console.error("Errore:", error);
+                    alert('Si è verificato un errore. Riprova più tardi.');
+                });
             }
-            hideAlert();
         }
+        hideAlert();
+    }
+
     </script>
 </body>
 </html>
