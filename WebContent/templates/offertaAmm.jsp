@@ -109,13 +109,6 @@
         showAlert();
     }
 
-    // Funzione per gestire la chiusura
-    function handleClosure(id) {
-        actionType = 'closure';
-        actionId = id;
-        document.getElementById('alert-message').innerText = 'Sei sicuro di voler chiudere questa posizione lavorativa?';
-        showAlert();
-    }
 
     // Funzione per mostrare la finestra di dialogo
     function showAlert() {
