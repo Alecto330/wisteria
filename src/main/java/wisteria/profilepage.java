@@ -193,6 +193,7 @@ public class profilepage extends HttpServlet{
 						System.err.println("Failed to delete temporary file: " + e.getMessage());
 					}
 				}
+				response.sendRedirect("profilepage");
 				return;
 			}
 		} catch (Exception e) {
@@ -219,16 +220,13 @@ public class profilepage extends HttpServlet{
 						System.err.println("Errore durante la cancellazione del file temporaneo dell'immagine: " + e.getMessage());
 					}
 				}
+				response.sendRedirect("profilepage");
 				return;
 			}
 		} catch (Exception e) {
 			// Handle any error for image processing
 			System.err.println("Errore durante l'aggiornamento dell'immagine: " + e.getMessage());
 		}
-
-		//TODO aggiungere aggiornamento profilePage qui
-
-
 	}
 
 

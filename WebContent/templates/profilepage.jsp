@@ -241,12 +241,9 @@
                         body: formData
                     })
                     .then(response => {
-                        if (!response.ok) {
-                            return response.text().then(err => {
-                                throw new Error(`Errore nel server: ${err}`);
-                            });
-                        }
-                        return response.text();
+                    	 if (response.redirected) {
+                             window.location.href = response.url;
+                         }
                     })
                     .then(data => {
                         console.log('File caricato con successo:', data);
@@ -310,12 +307,9 @@
                         body: formData
                     })
                     .then(response => {
-                        if (!response.ok) {
-                            return response.text().then(err => {
-                                throw new Error(`Errore nel server: ${err}`);
-                            });
-                        }
-                        return response.text();
+                    	 if (response.redirected) {
+                             window.location.href = response.url;
+                         }
                     })
                     .then(data => {
                         console.log('Immagine caricata con successo:', data);
