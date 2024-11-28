@@ -34,7 +34,7 @@ body {
     min-height: 35vh;
     height: 100%;
     padding: 2vw;
-    background-color: #d8aef7;
+    background-color: #d7bbff;
     border-radius: 20px;
     color: black;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Aggiungi ombreggiatura per dare un po' di profondità */
@@ -80,7 +80,6 @@ body {
     margin: 0%;
     font-weight: bold;
 }
-/* Stile personalizzato per il pulsante Indietro */
 .back-button {
     display: inline-block;
 	left: 25px;
@@ -91,14 +90,11 @@ body {
 	cursor: pointer;
 	font-size: 1.5rem;
 	padding: 0.5rem;
-	/*display: flex;
-	align-items: center;
-	justify-content: center;*/
 	transition: transform 0.3s ease;
 }
 
 .back-button:hover {
-	color: #a560e5;
+	color: #4c2bb0;
 	transform: translateX(-5px);
 }
 .btn-container {
@@ -119,7 +115,7 @@ body {
 }
 
 .btn-primary {
-    background-color: #D6B5FF;
+    background-color: #6e41e2;
     border: solid 2px #8228ff;
     border: none;
     border-radius: 2vw;

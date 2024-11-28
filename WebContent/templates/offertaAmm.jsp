@@ -161,11 +161,9 @@
                     body: formData.toString()
                 })
                 .then(response => {
-                    if (response.ok) {
-                        location.reload();
-                    } else {
-                        alert('Errore durante l\'eliminazione della posizione.');
-                    }
+                  	 if (response.redirected) {
+                         window.location.href = response.url;
+                     }
                 })
                 .catch(error => {
                     console.error("Errore:", error);
@@ -184,11 +182,9 @@
                     body: formData.toString()
                 })
                 .then(response => {
-                    if (response.ok) {
-                        location.reload();
-                    } else {
-                        alert('Errore durante la chiusura della posizione.');
-                    }
+               	 if (response.redirected) {
+                     window.location.href = response.url;
+                 }
                 })
                 .catch(error => {
                     console.error("Errore:", error);

@@ -51,10 +51,11 @@
 	            class="register-link">Registrati</a>
 	            <br>
 	            <br>
-	            <br>
-	            <a class="back-button"href="${pageContext.request.contextPath}/home"> <i
-					class="fas fa-arrow-left"></i>
-				</a>
+                <div class="back-button-div">
+                    <a class="back-button"href="${pageContext.request.contextPath}/home"> <i
+                        class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
 	        </form>
 	
 	    </div>

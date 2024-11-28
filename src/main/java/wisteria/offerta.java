@@ -78,8 +78,10 @@ public class offerta extends HttpServlet{
 			}
 		}
 		if(esperienzaId!=null) {
-			//TODO QUERY
-			response.setStatus(HttpServletResponse.SC_OK);
+			PosizioneDAO dao=new PosizioneDAO();
+			dao.deletePosizione(Integer.parseInt(esperienzaId));
+			
+			response.sendRedirect("home");
 		}
 	
     }

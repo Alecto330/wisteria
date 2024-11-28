@@ -25,7 +25,7 @@ body {
 .title {
     color: #8228ff;
     font-size: 3rem;
-    font-weight: 600;
+    font-weight: bolder;
     margin-bottom: 2rem;
     text-shadow: 0 0 10px rgba(130, 40, 255, 0.2);
 }
@@ -54,7 +54,7 @@ body {
 }
 
 .accordion-title {
-    font-size: 1.1rem;
+    font-size: 20px;
     color: #333;
     font-weight: 500;
     margin: 0;

@@ -82,12 +82,14 @@
 			<button type="submit" class="btn btn-primary btn-block"
 				id="submitBtn">Registrati</button>
 		</form>
-		<a href="${pageContext.request.contextPath}/login"
-			class="register-link">Hai già un account? Accedi</a>
-	</div>
-	<div class="btn-container">
-		<button class="btn btn-back" onclick="history.back()">← Torna
-			Indietro</button>
+		<div class="finepagina">
+			<a class="back-button" href="${pageContext.request.contextPath}/home">
+				<i class="fas fa-arrow-left"></i>
+			</a>
+			<a href="${pageContext.request.contextPath}/login" class="register-link">
+				Hai già un account? Accedi
+			</a>
+		</div>
 	</div>
 	<%@ include file="footer.jsp"%>
 	<script>
