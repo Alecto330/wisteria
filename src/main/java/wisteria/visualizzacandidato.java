@@ -15,6 +15,7 @@ import cv.CV;
 import cv.CvDAO;
 import cv.Esperienza;
 import cv.EsperienzaDAO;
+import posizione.CandidaturaDAO;
 import posizione.PosizioneDAO;
 import user.User;
 
@@ -83,9 +84,11 @@ public class visualizzacandidato extends HttpServlet{
 		String username=request.getParameter("username");
 		String posizioneId=request.getParameter("idPosizione");
 		
-		PosizioneDAO dao=new PosizioneDAO();
-		dao.chiudiPosizione(Integer.parseInt(posizioneId), username);
+		PosizioneDAO posizioneDAO=new PosizioneDAO();
+		posizioneDAO.chiudiPosizione(Integer.parseInt(posizioneId), username);
 		
+		CandidaturaDAO candidaturaDAO=new CandidaturaDAO();
+		candidaturaDAO.deleteSiCandida(Integer.parseInt(posizioneId));
 		
 		response.sendRedirect("home");
 		

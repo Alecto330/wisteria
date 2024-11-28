@@ -9,7 +9,6 @@ import utils.DatabaseConnection;
 
 public class CandidaturaDAO {
 
-
 	public ArrayList<Candidatura> getCandidature(int id) {
 		ArrayList<Candidatura> candidature=new ArrayList<Candidatura>();
 
@@ -93,5 +92,22 @@ public class CandidaturaDAO {
 		}
 		
 		return risultato;
+	}
+	
+	
+	public void deleteSiCandida(int posizioneId) {
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query = "DELETE FROM SiCandida WHERE FK_Posizione = ?";
+
+			PreparedStatement stmt = connection.prepareStatement(query);
+			stmt.setInt(1, posizioneId);
+			stmt.executeUpdate();
+
+			connection.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
