@@ -21,5 +21,12 @@ public class Candidate extends User{
 	public boolean eseguiTest() {
 		return true;
 	}
+
+	@Override
+	public boolean isProfileComplete() {
+		UserDAO dao=new UserDAO();
+		boolean isProfileComplete=dao.isProfileComplete(this.getUsername());
+		return isProfileComplete;
+	}
 	
 }

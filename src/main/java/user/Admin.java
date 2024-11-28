@@ -35,4 +35,10 @@ public class Admin extends User{
 	public boolean accediACreaPosizione() {
 		return true;
 	}
+
+	@Override
+	public boolean isProfileComplete() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

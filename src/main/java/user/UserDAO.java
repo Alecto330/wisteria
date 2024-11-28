@@ -115,6 +115,34 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean isProfileComplete(String username) {
+
+		boolean isProfileComplete=false;
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT CV.Residenza, CV.TitoloDiStudio, CV.curriculum, CV.fotoProfilo, CV.telefono, SoftSkill.FK_Utente FROM Utente\n"
+					+ "join CV on Utente.username=CV.FK_Utente\n"
+					+ "left join SoftSkill on Utente.username=SoftSkill.FK_Utente\n"
+					+ "where CV.Residenza IS NOT NULL AND CV.TitoloDiStudio IS NOT NULL AND CV.curriculum IS NOT NULL AND CV.fotoProfilo IS NOT NULL AND CV.telefono IS NOT NULL\n"
+					+ "AND SoftSkill.FK_Utente IS NOT NULL AND Utente.username=?\n"
+					+ "";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			isProfileComplete=resultSet.next();
+
+			connection.close();
+
+			return isProfileComplete;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isProfileComplete;
+	}
 
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
