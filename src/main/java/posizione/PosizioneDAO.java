@@ -298,4 +298,20 @@ public class PosizioneDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void chiudiPosizione(int posizioneId, String username) {
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection();
+			String query ="UPDATE Posizione SET utente_scelto = ? WHERE id= ?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, username);
+			preparedStatement.setInt(2, posizioneId);
+			preparedStatement.executeUpdate();
+
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
