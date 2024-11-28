@@ -63,6 +63,8 @@ public class softskill extends HttpServlet{
 		SoftSkillDAO dao=new SoftSkillDAO();
 		dao.insertSoftSkill(user.getUsername(), risposte);
 		
+		user.setSoftSkill(true);
+		
 		response.sendRedirect("profilepage");
 	}
 
