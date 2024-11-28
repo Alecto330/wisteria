@@ -65,7 +65,6 @@ create table Posizione (
 	titolo varchar (50) not null,
 	descrizione varchar (5000) not null,
 	settore varchar (50) not null,
-	chiusa bit not null default 0,
 	utente_scelto varchar (30),
 	FK_Localita varchar (25),
 	foreign key (FK_Localita) references Localita (provincia)
