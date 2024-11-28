@@ -67,85 +67,92 @@
       }
 
       function validateForm() {
-        const questionInput = document.getElementById("question-input");
-        const answerInputs = document.querySelectorAll(".answer-input");
-        const radioButtons = document.querySelectorAll(".radio-input");
+    	  const questionInput = document.getElementById("question-input");
+    	  const answerInputs = document.querySelectorAll(".answer-input");
+    	  const radioButtons = document.querySelectorAll(".radio-input");
 
-        let isValid = true;
+    	  let isValid = true;
 
-        // Controllo se il campo della domanda è vuoto
-        if (questionInput.value.trim() === "") {
-          showAlert("Attenzione: il campo della domanda non può essere vuoto.");
-          questionInput.focus();
-          isValid = false;
-          return;
-        }
+    	  // Controllo se il campo della domanda è vuoto
+    	  if (questionInput.value.trim() === "") {
+    	    showAlert("Attenzione: il campo della domanda non può essere vuoto.");
+    	    questionInput.focus();
+    	    isValid = false;
+    	    return;
+    	  }
 
-        let selectedAnswer = null;
-        radioButtons.forEach((radio, index) => {
-          if (radio.checked) {
-            selectedAnswer = index; // Puoi passare l'indice del radio selezionato
-          }
-        });
+    	  // Controllo che almeno una risposta sia selezionata
+    	  let selectedAnswer = null;
+    	  radioButtons.forEach((radio, index) => {
+    	    if (radio.checked) {
+    	      selectedAnswer = index; // Puoi passare l'indice del radio selezionato
+    	    }
+    	  });
 
-        // Controllo che tutte le risposte siano presenti
-        for (let input of answerInputs) {
-          if (input.value.trim() === "") {
-            showAlert("Attenzione: tutte le risposte devono essere compilate.");
-            input.focus();
-            isValid = false;
-            return;
-          }
-        }
+    	  if (selectedAnswer === null) {
+    	    showAlert("Attenzione: devi selezionare almeno una risposta come corretta.");
+    	    isValid = false;
+    	    return;
+    	  }
 
-        // Se il form è valido
-        if (isValid) {
-          // Estrai il testo della domanda e le risposte
-          const questionText = questionInput.value.trim();
-          const answers = Array.from(answerInputs).map((input) => input.value.trim());
+    	  // Controllo che tutte le risposte siano compilate
+    	  let emptyAnswers = Array.from(answerInputs).filter((input) => input.value.trim() === "");
+    	  if (emptyAnswers.length > 0) {
+    	    showAlert("Attenzione: tutte le risposte devono essere compilate.");
+    	    emptyAnswers[0].focus();
+    	    isValid = false;
+    	    return;
+    	  }
 
-          const params = new URLSearchParams(window.location.search);
-          const titolo = params.get("titolo");
-          const descrizione = params.get("descrizione");
-          const provincia = params.get("provincia");
-          const settore = params.get("settore");
-          const domande = params.getAll("question");
+    	  // Se il form è valido
+    	  if (isValid) {
+    	    // Estrai il testo della domanda e le risposte
+    	    const questionText = questionInput.value.trim();
+    	    const answers = Array.from(answerInputs).map((input) => input.value.trim());
 
-          const formData = new URLSearchParams({
-            question: questionText,
-            answers: answers,
-            selectedAnswer: selectedAnswer,
-            titolo: titolo,
-            descrizione: descrizione,
-            domande: domande,
-            provincia: provincia,
-            settore: settore
-          });
+    	    const params = new URLSearchParams(window.location.search);
+    	    const titolo = params.get("titolo");
+    	    const descrizione = params.get("descrizione");
+    	    const provincia = params.get("provincia");
+    	    const settore = params.get("settore");
+    	    const domande = params.getAll("question");
 
-          // Invia i dati tramite POST
-          fetch("${pageContext.request.contextPath}/creadomanda", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-Requested-With": "XMLHttpRequest",
-            },
-            body: formData.toString(),
-          })
-            .then((response) => {
-              if (response.redirected) {
-                // If server sent a redirect, follow it
-                window.location.href = response.url;
-                return;
-              }
-            })
-            .then((data) => {})
-            .catch((error) => {
-              // Aggiungi qui la logica in caso di errore
-              console.error("Errore durante l'invio della domanda:", error);
-              showAlert("Errore durante l'invio della domanda.");
-            });
-        }
-      }
+    	    const formData = new URLSearchParams({
+    	      question: questionText,
+    	      answers: answers,
+    	      selectedAnswer: selectedAnswer,
+    	      titolo: titolo,
+    	      descrizione: descrizione,
+    	      domande: domande,
+    	      provincia: provincia,
+    	      settore: settore
+    	    });
+
+    	    // Invia i dati tramite POST
+    	    fetch("${pageContext.request.contextPath}/creadomanda", {
+    	      method: "POST",
+    	      headers: {
+    	        "Content-Type": "application/x-www-form-urlencoded",
+    	        "X-Requested-With": "XMLHttpRequest",
+    	      },
+    	      body: formData.toString(),
+    	    })
+    	      .then((response) => {
+    	        if (response.redirected) {
+    	          // If server sent a redirect, follow it
+    	          window.location.href = response.url;
+    	          return;
+    	        }
+    	      })
+    	      .then((data) => {})
+    	      .catch((error) => {
+    	        // Aggiungi qui la logica in caso di errore
+    	        console.error("Errore durante l'invio della domanda:", error);
+    	        showAlert("Errore durante l'invio della domanda.");
+    	      });
+    	  }
+    	}
+
 
       // Seleziona automaticamente il radio button quando si clicca su un campo di input risposta
       document.querySelectorAll(".answer-input").forEach((input) => {

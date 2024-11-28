@@ -55,19 +55,6 @@
                 <div class="job-description">
                     ${posizione.descrizione}
                 </div>
-                <div class="company-location">
-                </div>
-                <div class="job-description">
-                </div>
-                <div class="job-description">
-                    <br><br>
-                    <a href="http://www.lantechlongwave.it" class="website-link"></a>
-                </div>
-                <div class="job-position">
-                    <h2 class="section-title"></h2>
-                    <div class="job-description">
-                    </div>
-                </div>
             </div>
         </div>
         <div class="card">
@@ -77,7 +64,7 @@
                 <div class="podium-container">
                     <c:forEach var="candidate" items="${candidates}" varStatus="loopStatus">
                         <c:if test="${loopStatus.index < 3}">
-                            <div class="podium-item podium-position-${loopStatus.index + 1}" onclick="window.location.href='${pageContext.request.contextPath}/visualizzacandidato?id=${candidate.utente}'"
+                            <div class="podium-item podium-position-${loopStatus.index + 1}" onclick="window.location.href='${pageContext.request.contextPath}/visualizzacandidato?id=${candidate.utente}&idPosizione=${posizione.id}'"
                                 style="cursor: pointer">
                                 <span class="podium-rank">${loopStatus.index + 1}°</span>
                                 <span class="podium-name">${candidate.utente}</span>
@@ -127,13 +114,6 @@
         showAlert();
     }
 
-    // Funzione per gestire la chiusura
-    function handleClosure(id) {
-        actionType = 'closure';
-        actionId = id;
-        document.getElementById('alert-message').innerText = 'Sei sicuro di voler chiudere questa posizione lavorativa?';
-        showAlert();
-    }
 
     // Funzione per mostrare la finestra di dialogo
     function showAlert() {

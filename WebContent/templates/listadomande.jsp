@@ -19,6 +19,7 @@
 	type="image/x-icon">
 </head>
 <body>
+	<div class="alert-box" id="alertBox" onclick="hideAlert()">Compila tutti i campi!</div>
     <div class="container">
         <h1 class="title">Lista Domande</h1>
         <div class="row mt-4">
@@ -66,7 +67,20 @@
     </div>
 
 	<script>
-    
+	function showAlert(message) {
+	    const alertBox = document.getElementById('alertBox');
+	    alertBox.textContent = message; // Imposta il messaggio personalizzato
+	    alertBox.classList.add('show');
+	    setTimeout(() => {
+	        alertBox.classList.remove('show');
+	    }, 3000); // Nasconde l'avviso dopo 3 secondi
+	}
+
+	function hideAlert() {
+	    const alertBox = document.getElementById('alertBox');
+	    alertBox.classList.remove('show');
+	}
+
     function checkSelected() {
         console.log("Checking selected questions...");
         const params = new URLSearchParams(window.location.search);
@@ -156,20 +170,20 @@
         
         function submitSelectedQuestions() { 
             const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
-         
+             
             if (selectedCheckboxes.length === 0) { 
-                alert('Seleziona almeno una domanda prima di inviare.'); 
+                showAlert('Seleziona almeno una domanda prima di inviare!'); // Mostra avviso
                 return; 
             } 
-         
-            const selectedQuestions = []; 
              
+            const selectedQuestions = []; 
+                 
             selectedCheckboxes.forEach(checkbox => { 
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
-         
+
             const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&')+'&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}'; 
-         
+                 
             fetch(url, { 
                 method: 'GET',
                 headers: {
@@ -194,7 +208,7 @@
             })
             .catch(error => { 
                 console.error('Errore:', error); 
-                alert('Si è verificato un errore durante l\'invio: ' + error.message); 
+                showAlert('Si è verificato un errore durante l\'invio: ' + error.message); 
             }); 
         }
 
