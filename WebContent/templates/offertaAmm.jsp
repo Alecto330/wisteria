@@ -33,9 +33,6 @@
 				<div class="job-header" style="margin-top: 5px">
 				    <h1 class="job-title">${posizione.titolo}</h1>
 				    <div class="btn-group">			    
-						<button class="btn-del" onclick="handleClosure(${posizione.id})" title="Chiudi Posizione">
-						    <i class="far fa-times-circle" style="font-size: 1.5rem; color: black;"></i>
-						</button>
 						<button class="btn-del" onclick="handleDelete(${posizione.id})" title="Cancella">
 						    <i class="far fa-trash-alt" style="font-size: 1.5rem;"></i>
 						</button>
