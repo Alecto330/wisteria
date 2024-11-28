@@ -53,7 +53,7 @@ public class PosizioneDAO {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection();
 
-			StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, chiusa, utente_scelto, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
+			StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, utente_scelto, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
 			ArrayList<String> whereConditions = new ArrayList<>();
 
 			if (descrizione != null && !descrizione.isEmpty()) {
@@ -99,10 +99,9 @@ public class PosizioneDAO {
 				String settore = resultSet.getString("settore");
 				String provinciaVal = resultSet.getString("provincia");
 				String regioneVal = resultSet.getString("regione");
-				boolean chiusa=resultSet.getBoolean("chiusa");
 				String utenteScelto=resultSet.getString("utente_scelto");
 
-				Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal, chiusa, utenteScelto);
+				Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal, utenteScelto);
 				posizioni.add(posizione);
 			}
 
@@ -119,7 +118,7 @@ public class PosizioneDAO {
 		try {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
-			String query = "SELECT titolo, descrizione, settore, chiusa, utente_scelto, Localita.provincia, Localita.regione FROM posizione"
+			String query = "SELECT titolo, descrizione, settore, utente_scelto, Localita.provincia, Localita.regione FROM posizione"
 					+ " join Localita on posizione.FK_Localita=Localita.provincia where id=?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setInt(1, Integer.parseInt(id));
@@ -131,10 +130,9 @@ public class PosizioneDAO {
 				String settore=resultSet.getString("settore");
 				String provincia=resultSet.getString("provincia");
 				String regione=resultSet.getString("regione");
-				boolean chiusa=resultSet.getBoolean("chiusa");
 				String utenteScelto=resultSet.getString("utente_scelto");
 
-				Posizione posizione=new Posizione(Integer.parseInt(id), titolo, descrizione, settore, provincia, regione, chiusa, utenteScelto);
+				Posizione posizione=new Posizione(Integer.parseInt(id), titolo, descrizione, settore, provincia, regione, utenteScelto);
 				connection.close();
 				return posizione;
 			}

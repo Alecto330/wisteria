@@ -49,6 +49,7 @@ body {
 	justify-content: space-between;
 	margin-bottom: 1rem;
 	padding-left: 4vw;
+	padding-right: 4vw;
 	padding-top: 5vh;
 }
 
@@ -251,8 +252,29 @@ body {
 	background: #4c2bb0;
 }
 
+.chiudi-posizione {
+    padding: 10px 20px;
+    background-color: #6e41e2;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+	height: auto;
+}
 
+.chiudi-posizione:hover {
+    background-color: #4c2bb0;
+}
 
+.chiudi-posizione-container {
+    text-align: center;
+    margin-top: 20px;
+}
 
 
 

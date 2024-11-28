@@ -32,6 +32,9 @@
 					<i class="fa-solid fa-user"></i>
 				</div>
 			</div>
+			<div class="chiudi-posizione-container">
+				<button class="chiudi-posizione" onclick="chiusura(>${username})">Chiudi posizione</button>
+			</div>
 		</div>
 
 		<div class="content-grid">
