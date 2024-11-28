@@ -35,44 +35,46 @@ public class profilepage extends HttpServlet{
 
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
+		try {
+			if (user != null) {
 
-		if (user != null) {
+				CvDAO dao=new CvDAO();
+				CV cv=dao.getCV(user.getUsername());
+				request.setAttribute("username", user.getUsername());
+				request.setAttribute("email", user.getEmail());
+				request.setAttribute("cf", cv.getCf());
+				request.setAttribute("nome", cv.getNome());
+				request.setAttribute("cognome", cv.getCognome());
+				request.setAttribute("dataDiNascita", cv.getDataDiNascita());
+				request.setAttribute("residenza", cv.getResidenza());
+				request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
+				request.setAttribute("softskill", user.getSoftSkill());
+				if (cv.getCurriculum() != null) {
+					String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
+					request.setAttribute("pdfData", base64PDF);
+				}
+				if (cv.getFotoProfilo() != null) {
+					String base64Image = Base64.getEncoder().encodeToString(cv.getFotoProfilo());
+					request.setAttribute("fotoProfiloData", base64Image);
+				}
+				request.setAttribute("telefono", cv.getTelefono());
 
-			CvDAO dao=new CvDAO();
-			CV cv=dao.getCV(user.getUsername());
-			request.setAttribute("username", user.getUsername());
-			request.setAttribute("email", user.getEmail());
-			request.setAttribute("cf", cv.getCf());
-			request.setAttribute("nome", cv.getNome());
-			request.setAttribute("cognome", cv.getCognome());
-			request.setAttribute("dataDiNascita", cv.getDataDiNascita());
-			request.setAttribute("residenza", cv.getResidenza());
-			request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-			request.setAttribute("softskill", cv.getSoftSkill());
-			System.out.println(cv.getSoftSkill());
-			if (cv.getCurriculum() != null) {
-				String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
-				request.setAttribute("pdfData", base64PDF);
+				EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
+				ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
+
+				request.setAttribute("esperienze", esperienze);
+
+				request.setAttribute("title", "Profile - "+user.getUsername());
+				request.setAttribute("content", "profilepage.jsp");
+				request.setAttribute("headerPath", user.getHeader());
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				response.sendRedirect("login");
 			}
-			if (cv.getFotoProfilo() != null) {
-		        String base64Image = Base64.getEncoder().encodeToString(cv.getFotoProfilo());
-		        request.setAttribute("fotoProfiloData", base64Image);
-		    }
-			request.setAttribute("telefono", cv.getTelefono());
-
-			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
-			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
-
-			request.setAttribute("esperienze", esperienze);
-			
-			request.setAttribute("title", "Profile - "+user.getUsername());
-			request.setAttribute("content", "profilepage.jsp");
-			request.setAttribute("headerPath", user.getHeader());
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-			dispatcher.forward(request, response);
-		} else {
-			response.sendRedirect("login");
+		}catch (Exception e) {
+			response.sendRedirect("home");
 		}
 	}
 
@@ -90,7 +92,7 @@ public class profilepage extends HttpServlet{
 		String cf = request.getParameter("CF");
 		String telefono = request.getParameter("Telefono");
 		String titolo = request.getParameter("Titolo");
-		
+
 		String titoloEsperienza = request.getParameter("titolo");
 		String descrizioneEsperienza = request.getParameter("esperienza");
 
@@ -195,37 +197,37 @@ public class profilepage extends HttpServlet{
 			}
 		} catch (Exception e) {
 		}
-		
+
 		try {
 			Part image = request.getPart("profileImage");
 			if (image != null) {
-		        InputStream imageInputStream = null;
-		        try {
-		            long imageSize = image.getSize();
-		            imageInputStream = image.getInputStream();
-		            cvDao.updateImage(user.getUsername(), imageInputStream, imageSize);
+				InputStream imageInputStream = null;
+				try {
+					long imageSize = image.getSize();
+					imageInputStream = image.getInputStream();
+					cvDao.updateImage(user.getUsername(), imageInputStream, imageSize);
 
-		            System.out.println("Immagine aggiornata correttamente.");
-		        } finally {
-		            if (imageInputStream != null) {
-		                imageInputStream.close();
-		            }
+					System.out.println("Immagine aggiornata correttamente.");
+				} finally {
+					if (imageInputStream != null) {
+						imageInputStream.close();
+					}
 
-		            try {
-		                image.delete(); // Deletes the temporary file if no longer needed.
-		            } catch (IOException e) {
-		                System.err.println("Errore durante la cancellazione del file temporaneo dell'immagine: " + e.getMessage());
-		            }
-		        }
-		        return;
-		    }
+					try {
+						image.delete(); // Deletes the temporary file if no longer needed.
+					} catch (IOException e) {
+						System.err.println("Errore durante la cancellazione del file temporaneo dell'immagine: " + e.getMessage());
+					}
+				}
+				return;
+			}
 		} catch (Exception e) {
-		    // Handle any error for image processing
-		    System.err.println("Errore durante l'aggiornamento dell'immagine: " + e.getMessage());
+			// Handle any error for image processing
+			System.err.println("Errore durante l'aggiornamento dell'immagine: " + e.getMessage());
 		}
-		
+
 		//TODO aggiungere aggiornamento profilePage qui
-		
+
 
 	}
 
@@ -246,7 +248,7 @@ public class profilepage extends HttpServlet{
 				break;
 			}
 		}
-		
+
 		if(esperienzaId!=null) {
 			EsperienzaDAO dao=new EsperienzaDAO();
 			dao.deleteEsperienza(Integer.parseInt(esperienzaId));

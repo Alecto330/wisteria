@@ -7,8 +7,8 @@ import posizione.CandidaturaDAO;
 
 public class Admin extends User{
 
-	public Admin(String username, String password, String email, String role) {
-		super(username, password, email, role);
+	public Admin(String username, String password, String email, String role, boolean softSkill) {
+		super(username, password, email, role, softSkill);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -31,7 +31,12 @@ public class visualizzacandidato extends HttpServlet{
 
 		if(id != null) {
 			CvDAO dao=new CvDAO();
-			CV cv=dao.getCV(id);
+			CV cv=null;
+			try {
+				cv = dao.getCV(id);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
 			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());

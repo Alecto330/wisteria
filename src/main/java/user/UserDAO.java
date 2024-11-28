@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
-
 import org.mindrot.jbcrypt.BCrypt;
 import utils.DatabaseConnection;
 
@@ -26,7 +23,7 @@ public class UserDAO {
 
 			if (resultSet.next() && BCrypt.checkpw(password, resultSet.getString(1))==true) {
 
-				query = "SELECT * FROM Utente WHERE email = ?";
+				query = "SELECT Utente.username, pw, email, ruolo, SoftSkill.FK_Utente as softskill FROM Utente left join SoftSkill on Utente.username=SoftSkill.FK_Utente WHERE email = ?";
 				preparedStatement = connection.prepareStatement(query);
 				preparedStatement.setString(1, email);
 				resultSet = preparedStatement.executeQuery();
@@ -36,9 +33,15 @@ public class UserDAO {
 					String username = resultSet.getString("username");
 					String role = resultSet.getString("ruolo");
 
+					String softskillString=resultSet.getString("softskill");
+					boolean softSkill=false;
+					if(softskillString!=null) {
+						softSkill=true;
+					}
+
 					Class <? > userClass = Class.forName(role);
-					user= (User)userClass.getDeclaredConstructor(String.class, String.class, String.class, String.class)
-							.newInstance(username, null, email, role);
+					user= (User)userClass.getDeclaredConstructor(String.class, String.class, String.class, String.class, boolean.class)
+							.newInstance(username, null, email, role, softSkill);
 
 					connection.close();
 					return user;
@@ -112,7 +115,6 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-
 
 	/*public static void main(String[] args) {
 		System.out.println(Candidate.class.getName()); //user.Candidate
