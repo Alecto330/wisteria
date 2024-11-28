@@ -16,7 +16,7 @@ public class CvDAO {
 			Connection connection = database.getConnection(); 
 			String query = "SELECT cf, nome, cognome, DataDiNascita, Residenza, TitoloDiStudio, curriculum, fotoProfilo, telefono, email, CV.FK_Utente, SoftSkill.FK_Utente as softskill FROM CV\n"
 					+ "join Utente on CV.FK_Utente=Utente.username\n"
-					+ "join SoftSkill on CV.FK_Utente=SoftSkill.FK_Utente\n"
+					+ "left join SoftSkill on CV.FK_Utente=SoftSkill.FK_Utente\n"
 					+ "where CV.FK_Utente= ?";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			preparedStatement.setString(1, username);

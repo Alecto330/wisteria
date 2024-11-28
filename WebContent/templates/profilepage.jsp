@@ -31,9 +31,10 @@
 	<div class="alert-box" id="alertBox" onclick="hideAlert()">Compila
 		tutti i campi!</div>
 	<div class="main-container-profilepage">
-
-		<div class="soft-skills-banner">⚠️ Completa il test sulle Soft
-			Skills per attirare l'attenzione dei recruiter!</div>
+        <c:if test="${softskill == false}">
+            <div class="soft-skills-banner">⚠️ Completa il test sulle Soft
+                Skills per attirare l'attenzione dei recruiter!</div>
+        </c:if>
 		<div class="user-profile">
 			<div class="profile-image" onclick="triggerImageInput()">
 				<input type="file" id="imageInput" accept="image/*"
