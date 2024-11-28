@@ -63,7 +63,7 @@ create table Localita (
 create table Posizione (
 	id int primary key identity (1, 1),
 	titolo varchar (50) not null,
-	descrizione varchar (3000) not null,
+	descrizione varchar (5000) not null,
 	settore varchar (50) not null,
 	chiusa bit not null default 0,
 	utente_scelto varchar (30),
