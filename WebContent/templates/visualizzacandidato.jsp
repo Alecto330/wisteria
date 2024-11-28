@@ -33,7 +33,7 @@
 				</div>
 			</div>
 			<div class="chiudi-posizione-container">
-				<button class="chiudi-posizione" onclick="chiusura(>${username})">Chiudi posizione</button>
+				<button class="chiudi-posizione" onclick="chiusura()">Chiudi posizione</button>
 			</div>
 		</div>
 
@@ -95,4 +95,37 @@
 	</div>
 
 </body>
+
+<script>
+	 function chiusura() {
+        const urlParams = new URLSearchParams(window.location.search);
+    	const idPosizione = urlParams.get('idPosizione');
+		const username = urlParams.get('id');
+
+        const formData = new URLSearchParams();
+        formData.append('username', username);
+        formData.append('idPosizione', idPosizione);
+
+        console.log(formData.toString());
+
+        fetch('/wisteria/visualizzacandidato', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: formData.toString()
+        })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        })
+        .then(data => {
+            console.log('Esperienza aggiunta:', data);
+        })
+        .catch(error => {
+            console.error('Errore aggiunta esperienza:', error);
+        });
+    }
+</script>
 </html>
