@@ -278,3 +278,13 @@
         width: 10px;
     }
 }
+
+
+
+.logo-img {
+    transition: transform 0.3s ease-in-out; /* Definisce una transizione fluida */
+}
+
+.logo-container:hover .logo-img {
+    transform: scale(1.1); /* Effetto ingrandimento */
+}
