@@ -214,12 +214,12 @@ select::-webkit-scrollbar-thumb:active {
     font-size: 30px;
     padding: 15px;
     background: none;
-    color: #8328FF;
     Z-INDEX: 101;
     user-select: none; /* Prevent text selection */
     width: 135.88px;
     height: 75px;
-} 
+}
+
 .menu {
     background-color: #686868;
     color: white;
@@ -232,7 +232,6 @@ select::-webkit-scrollbar-thumb:active {
     opacity: 0;
     pointer-events: none;
 }
- 
 .menu ul {
     list-style: none;
     margin: 0;
@@ -245,7 +244,7 @@ select::-webkit-scrollbar-thumb:active {
 .menu li {
     padding: 15px;
     width: 20vh;
-    border-bottom: 1px solid rgb(184, 78, 255);
+    border-bottom: 1px solid #6e41e2;
     text-align: center;
     color: white;
 }

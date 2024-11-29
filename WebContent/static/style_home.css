@@ -3,9 +3,11 @@
     background-color: #6e41e2;
     border-color:#8228ff;
     width: 70px;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 .btn-primary:hover{
 	background-color: #4c2bb0;
+    transform: scale(1.1);
 }
 
 .btn-primary.focus,
@@ -79,6 +81,7 @@ body {
 }
 
 .introduction-title {
+    width: 440px;
     font-weight: bolder;
     font-size: 3vw;
     text-align: left;
@@ -90,6 +93,10 @@ body {
         0 0 1px rgba(255, 255, 255, 0.5),
         0 0 2px rgba(0, 0, 0, 0.4);
     animation: glowing infinite;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+.introduction-title:hover{
+    transform: scale(1.06);
 }
 
 .introduction {
@@ -97,8 +104,11 @@ body {
     text-align: left;
     margin-top: 4vh;
     padding-right: 7rem;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
-
+.introduction:hover{
+    transform: scale(1.02);
+}
 .highlight {
     color: #8328FF;
     font-weight: bold;
@@ -112,8 +122,11 @@ body {
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
-
+.carousel:hover{
+    transform: scale(1.02);
+}
 
 .carousel-item {
     height: 100%;

@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -28,7 +27,7 @@
 
 		<nav class="navbar custom-navbar justify-content-between fixed-top">
 
-			<div class="hamburger" id="hamburger">&#9776;</div>
+			<div class="hamburger" id="hamburger"><div class="bmenu">&#9776;</div></div>
 
 			<nav class="menu" id="menu">
 				<ul style="margin-top:1vw; height:87%; display: flex; flex-direction: column;">
@@ -143,16 +142,9 @@
 			scrollLine.style.width = scrollPercentage + "%";
 		});
 
-
-
-
-
-
-
-
-		// ########################## DA COMPLETARE ###################################
+		
 		document.addEventListener('DOMContentLoaded', () => {
-		const isProfileComplete = ${user.isProfileComplete()};
+		var isProfileComplete = ${user.isProfileComplete()}
 		
 		console.log(isProfileComplete);
 		

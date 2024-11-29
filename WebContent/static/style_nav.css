@@ -65,8 +65,14 @@
         padding-right: 57px;
 }
 
-
-
+.bmenu{
+    width: 35px;
+    height: 45px;
+    color: #6e41e2;
+}
+.bmenu:hover{
+    color: #4c2bb0;
+}
 
 .menu ul {
     list-style: none; /* Removes bullet points */
