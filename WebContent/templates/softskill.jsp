@@ -144,10 +144,10 @@
 			<button type="button" class="submit-button" onclick="submitAnswers()">Invia</button>
 		</div>
         <div class="btn-container">
-            <button class="btn btn-back" onclick="javascript:history.back();">
-                ← Torna Indietro
-            </button>
-        </div>
+        <a class="btn btn-back" href="/wisteria/home">
+        	Torna alla Home
+        </a>
+    </div>
 	</div>
 	<script>
         // ##################### SUBMIT #########################

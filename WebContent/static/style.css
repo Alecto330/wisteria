@@ -244,13 +244,12 @@ select::-webkit-scrollbar-thumb:active {
 .menu li {
     padding: 15px;
     width: 20vh;
-    border-bottom: 1px solid #6e41e2;
+    border-bottom: 1px solid #c7c7c7;
     text-align: center;
     color: white;
 }
- 
 .menu a {
-    color: white;
+    color: #cba0ff;
     text-decoration: none;
     display: block;
     text-align: center;

@@ -82,12 +82,11 @@
 
 .menu ul li {
     display: inline; /* Displays items in a row */
-    margin-right: 20px; /* Adds space between menu items */
 }
 
 .menu ul li  {
     text-decoration: none; /* Removes underline from links */
-    color: #fff; /* Text color */
+    color: #d7bbff; /* Text color */
 }
 
 .menu ul li  i {
@@ -95,12 +94,11 @@
 }
 
 .menu ul :hover {
-    color: #D6B5FF; /* Change color on hover */
+    color: #b077ff;
 }
 .contact{
     cursor: pointer;
 }
-
 .usernav{
     font-size: 30px;
     color: #6e41e2;
@@ -277,4 +275,14 @@
         font-size: 13px;
         width: 10px;
     }
+}
+
+
+
+.logo-img {
+    transition: transform 0.3s ease-in-out; /* Definisce una transizione fluida */
+}
+
+.logo-container:hover .logo-img {
+    transform: scale(1.1); /* Effetto ingrandimento */
 }

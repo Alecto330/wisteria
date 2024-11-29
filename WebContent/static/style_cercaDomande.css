@@ -330,3 +330,25 @@ footer {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+/* Hover per le risposte */
+.accordion-content .answer-item:hover {
+    background-color: #e3e3e3;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Hover per le domande con effetto zoom */
+.accordion-item:hover {
+    transform: scale(1.02); /* Effetto zoom leggero */
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Per mantenere un aspetto pulito senza sfasare layout */
+.accordion-item {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    transform-origin: center;
+}
+
