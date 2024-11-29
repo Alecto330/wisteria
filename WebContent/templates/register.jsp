@@ -21,8 +21,15 @@
 </head>
 <body onload="checkError()">
 	<%@ include file="header.jsp"%>
+		<% String errorMessage = (String) request.getAttribute("error"); %>
+		<% if (errorMessage != null && !errorMessage.trim().isEmpty()) { %>
+			<div class="alert alert-danger" role="alert" id="customAlert">
+				<%= errorMessage %>
+			</div>
+		<% } %>
 	<div class="login-container">
 		<h2>Registrati!</h2>
+
 		<form id="signupForm"
 			action="${pageContext.request.contextPath}/register" method="POST">
 			<div class="form-row">
@@ -111,14 +118,13 @@
             password.addEventListener('input', validatePassword);
             confirmPassword.addEventListener('input', validatePassword);
 
-        });       
-        
-       function checkError(){
-            const error = "<%= request.getAttribute("error") != null ? request.getAttribute("error") : "" %>";
-            if (error && error.trim() !== "") {
-                alert(error);
+            const customAlert = document.getElementById('customAlert');
+            if (customAlert) {
+                setTimeout(() => {
+                    customAlert.style.display = 'none';
+                }, 3000);
             }
-        }
+        });       
         
     </script>
 

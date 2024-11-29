@@ -159,3 +159,33 @@ body {
 .footer{
     margin-top: 200px;
 }
+.alert-box {
+    display: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: #f44336;
+    color: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    cursor: pointer;
+}
+
+.alert-box.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+#customAlert {
+    margin-top: 2vw; /* Regola la distanza verticale */
+    position: relative; /* Assicurati che sia posizionato rispetto al flusso normale della pagina */
+    z-index: 100; /* Evita che si sovrapponga a elementi */
+}
