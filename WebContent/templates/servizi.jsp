@@ -5,13 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-    rel="stylesheet">
-<link rel="stylesheet"
     href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
     href="${pageContext.request.contextPath}/static/style_servizi.css">
@@ -75,7 +68,7 @@
         <div class="cta-content">
             <h2>Pronto a trasformare la tua attività?</h2>
             <p>Contattaci oggi stesso per una consulenza gratuita e scopri come possiamo aiutarti a crescere.</p>
-            <a href="mailto:info@wisteria.com" class="btn btn-primary">Contattaci</a>
+            <a href="mailto:info@wisteria.com" class="btn btn-back">Contattaci</a>
         </div>
     </section>
 </body>

@@ -107,18 +107,27 @@ body {
     margin-bottom: 30px;
 }
 
-.btn-primary {
-    background-color: #7b1fff;
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    text-transform: uppercase;
+.btn-back {
+    width: auto;
+    margin-top: 10vh;
+    padding: 15px 30px; /* Aumentato il padding per dare più spazio al pulsante */
+    font-size: 20px; /* Aumentato il font per migliorare la leggibilità */
     font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    background-color: #6e41e2; /* Colore di sfondo simile al tema */
+    color: #eeeeee;
+    border: 1px;
+    border-radius: 10px; /* Angoli arrotondati */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
+    text-transform: uppercase; /* Aggiunto testo maiuscolo per migliorare l'aspetto */
 }
 
-.btn-primary:hover {
-    background-color: #5f13e3;
-    transform: scale(1.05);
+.btn-back:hover {
+    background-color: #312e81; /* Colore al passaggio del mouse */
+    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
+    color: #eeeeee;
+}
+
+.footer {
+    margin-top: 0;
 }
