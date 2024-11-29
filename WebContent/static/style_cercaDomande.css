@@ -56,11 +56,6 @@ body {
     margin-right: 1rem;
 }
 
-.question-checkbox {
-    width: 1.2rem;
-    height: 1.2rem;
-    cursor: pointer;
-}
 
 .accordion-title {
     flex-grow: 1;
@@ -258,11 +253,7 @@ input[type="search"] {
     align-items: center;
 }
 
-.question-checkbox {
-    width: 1.2rem;
-    height: 1.2rem;
-    cursor: pointer;
-}
+
 
 .btn-add {
     width: 140px;
@@ -352,3 +343,43 @@ footer {
     transform-origin: center;
 }
 
+
+/* Checkbox base */
+.question-checkbox {
+    appearance: none; /* Rimuove lo stile predefinito */
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc; /* Bordo di default */
+    border-radius: 4px; /* Angoli arrotondati */
+    background-color: #fff; /* Sfondo iniziale */
+    display: inline-block;
+    vertical-align: middle; /* Allineamento verticale */
+    position: relative; /* Per gestire il contenuto interno */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Stato hover della checkbox */
+.question-checkbox:hover {
+    border-color: #a29bfe; /* Viola chiaro durante hover */
+}
+
+/* Checkbox selezionata */
+.question-checkbox:checked {
+    background-color: #7e57c2; /* Viola */
+    border-color: #7e57c2; /* Stesso viola */
+}
+
+/* Icona di spunta personalizzata */
+.question-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px; /* Dimensioni della spunta */
+    height: 6px;
+    border: solid white;
+    border-width: 0 0 2px 2px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: center;
+}
