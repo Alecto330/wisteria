@@ -45,7 +45,7 @@
                     ti supporta e ti incoraggia a crescere. Se vuoi fare parte di una realtà che mette al centro le persone 
                     e la loro crescita, <span class="highlight">esplora</span> le posizioni aperte e <span class="highlight">candidati</span> oggi stesso!</br></br></p>
 
-                    <p class="introduction">Inizia la tua carriera con noi e <span class="highlight">costruisci</span> insieme a noi il <span class="highlight">futuro</span>.
+                    <p class="introduction" style="width: 750px">Inizia la tua carriera con noi e <span class="highlight">costruisci</span> insieme a noi il <span class="highlight">futuro</span>.
 
                 </p>
             </div>
