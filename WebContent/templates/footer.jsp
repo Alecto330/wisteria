@@ -27,10 +27,9 @@
                 <h3 class="footer-heading">Link Utili</h3>
                 <ul class="footer-list">
                     <li><a href="${pageContext.request.contextPath}/about">Chi Siamo</a></li>
-                    <li><a href="/servizi">Servizi</a></li>
+                    <li><a href="${pageContext.request.contextPath}/servizi">Servizi</a></li>
                     <li><a href="${pageContext.request.contextPath}/home">Lavora con noi</a></li>
                     <li><a href="https://wisteria.blogspot.com">Blog</a></li>
-                    <li><a href="/contatti">Contatti</a></li>
                 </ul>
             </div>
 
