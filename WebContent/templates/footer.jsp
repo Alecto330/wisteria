@@ -26,10 +26,10 @@
             <div class="footer-column">
                 <h3 class="footer-heading">Link Utili</h3>
                 <ul class="footer-list">
-                    <li><a href="/chi-siamo">Chi Siamo</a></li>
+                    <li><a href="${pageContext.request.contextPath}/about">Chi Siamo</a></li>
                     <li><a href="/servizi">Servizi</a></li>
-                    <li><a href="/carriere">Lavora con noi</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home">Lavora con noi</a></li>
+                    <li><a href="https://wisteri.blogspot.com">Blog</a></li>
                     <li><a href="/contatti">Contatti</a></li>
                 </ul>
             </div>

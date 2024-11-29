@@ -18,7 +18,7 @@
     border: none;
     border-radius: 2vw;
     color:white;
-    box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+    box-shadow: 0 0 2px rgb(130, 40, 255), 0 0 2px rgba(131, 40, 255, 0.6);
 }
 .acc .btn-primary{
     width: auto;
