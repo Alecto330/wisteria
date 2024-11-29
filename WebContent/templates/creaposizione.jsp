@@ -87,7 +87,8 @@
 					<h3 class="questions-title">Domande selezionate</h3>
 					<ul class="selected-questions" id="selected-questions-list">
 						<c:forEach var="domanda" items="${domande}">
-							<li><input name="domanda" value="${domanda.id}">${domanda.domanda}
+							<li><input class="hide-value" name="domanda" value="${domanda.id}">
+                                <span class="domanda-testo">${domanda.domanda}</span>
 								<span class="delete-btn" title="Elimina domanda"
 								onclick="removeDomanda(${domanda.id})">&times;</span></li>
 						</c:forEach>
