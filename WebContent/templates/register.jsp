@@ -87,7 +87,13 @@
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary btn-block"
-				id="submitBtn">Registrati</button>
+			        id="submitBtn" 
+			        style="transition: transform 0.2s ease-in-out;"
+			        onmouseover="this.style.transform='scale(1.05)'" 
+			        onmouseout="this.style.transform='scale(1)'">
+			    Registrati
+			</button>
+
 		</form>
 		<div class="finepagina">
 			<a class="back-button" href="${pageContext.request.contextPath}/home">
