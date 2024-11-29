@@ -26,7 +26,7 @@
 
         <nav class="navbar custom-navbar justify-content-between fixed-top">
 
-            <div class="hamburger" id="hamburger">&#9776;</div>
+            <div class="hamburger" id="hamburger"><div class="bmenu">&#9776;</div></div>
             <nav class="menu" id="menu">
                 <ul style="margin-top:1vw; height:87%; display: flex; flex-direction: column; justify-content: space-between;">
                     <li><a href="${pageContext.request.contextPath}/home"><i class="fas fa-home"></i> Home</a></li>

@@ -81,16 +81,15 @@
 				<c:otherwise>
 
 					<c:if test="${not empty user}">
-						<!-- utente autenticato -->
 						<div class="logout">
-							<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
-							</a>
-							<a id="profile-alert" class="profile-alert" href="${pageContext.request.contextPath}/profilepage">Completa il profilo</a>
-							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-								<a class="dropdown-item" href="${pageContext.request.contextPath}/profilepage">Profilo</a>
-								<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
-							</div>
+						<a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div class="acc2"><i class="fa-solid fa-user usernav"></i></div>
+						</a>
+						<a id="profile-alert" class="profile-alert" href="${pageContext.request.contextPath}/profilepage">Completa il profilo</a>
+						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/profilepage">Profilo</a>
+							<a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
+						</div>
 						</div>
 					</c:if>
 					
@@ -155,6 +154,5 @@
 			alertElement.style.display = 'block';
 		}
 	});
-
 </script>
 

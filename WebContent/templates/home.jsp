@@ -29,7 +29,6 @@
 </head>
 
 <body>
-
     <div class="home-main container mt-5">
         <div class="row align-items-end">
             <div class="col-lg-8 col-md-7 col-sm-12">
