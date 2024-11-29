@@ -1,0 +1,118 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #c5c5c5;
+    background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.8), rgba(230, 230, 230, 0.8), rgba(165, 48, 255, 0.8)), url("../assets/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    color: #333;
+    margin: 0;
+}
+
+.intro-section {
+    margin-top: 9.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(90deg, #7b1fff, #c195ff);
+    color: white;
+    padding: 50px;
+}
+
+.text-content h4 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.text-content h1 {
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 18px;
+}
+
+.image-content img {
+    width: 35vh;
+    height: auto;
+}
+
+.services-section {
+    background: linear-gradient(90deg, #e6e6e6, #eaceff);
+    padding: 50px;
+    text-align: center;
+}
+
+.services-section h2 {
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: #7b1fff;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.service-item {
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 500px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    font-size: 40px;
+    color: #7b1fff;
+    margin-bottom: 20px;
+}
+
+.cta-section {
+    background: linear-gradient(90deg, #c195ff, #7b1fff);
+    padding: 50px;
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #7b1fff;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #5f13e3;
+    transform: scale(1.05);
+}
