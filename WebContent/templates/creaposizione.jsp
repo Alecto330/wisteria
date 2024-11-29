@@ -87,7 +87,8 @@
 					<h3 class="questions-title">Domande selezionate</h3>
 					<ul class="selected-questions" id="selected-questions-list">
 						<c:forEach var="domanda" items="${domande}">
-							<li><input name="domanda" value="${domanda.id}">${domanda.domanda}
+							<li><input class="hide-value" name="domanda" value="${domanda.id}">
+                                <span class="domanda-testo">${domanda.domanda}</span>
 								<span class="delete-btn" title="Elimina domanda"
 								onclick="removeDomanda(${domanda.id})">&times;</span></li>
 						</c:forEach>
@@ -358,11 +359,11 @@
         window.addEventListener('load', setProvincia);
         
         function removeDomanda(domandaId){
-        	const params = new URLSearchParams(window.location.search);
-    	    const titolo = params.get("titolo");
-    	    const descrizione = params.get("descrizione");
-    	    const provincia = params.get("provincia");
-    	    const settore = params.get("settore");
+        	var params = new URLSearchParams(window.location.search);
+    	    var titolo = params.get("titolo");
+    	    var descrizione = params.get("descrizione");
+    	    var provincia = params.get("provincia");
+    	    var settore = params.get("settore");
     	    
     	    if(!titolo){
     	    	 titolo = encodeURIComponent(document.getElementById('titolo-input').value);
@@ -381,10 +382,10 @@
             	settore = encodeURIComponent(document.getElementById('settore-input').value);
             }
 
-    	    const domande = params.getAll("question");
+    	    var domande = params.getAll("question");
 
-    	    const baseUrl = '${pageContext.request.contextPath}/creaposizione';
-            const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
+    	    var baseUrl = '${pageContext.request.contextPath}/creaposizione';
+            var urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
             console.log(urlWithParams);
             
             location.href = urlWithParams;

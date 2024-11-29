@@ -215,3 +215,28 @@ body {
     background-color: #e9ecef;
     cursor: not-allowed;
 }
+
+.hide-value {
+    border: none;       /* Rimuove i bordi */
+    outline: none;      /* Rimuove il contorno */
+    color: transparent; /* Rende invisibile il testo */
+    background: none;   /* Rende trasparente lo sfondo */
+    pointer-events: none; /* Impedisce interazioni */
+    width: 0;           /* Riduce la larghezza */
+    height: 0;          /* Riduce l'altezza */
+    padding: 0;         /* Elimina il padding */
+    margin: 0;          /* Elimina il margine */
+}
+
+.domanda-item {
+    display: flex;           /* Usa il layout flexbox */
+    align-items: center;     /* Centra verticalmente gli elementi */
+    justify-content: space-between; /* Distribuisce gli elementi */
+}
+
+.domanda-testo {
+    flex-grow: 1; /* Occupa tutto lo spazio disponibile a sinistra */
+    text-align: left; /* Assicura che il testo sia allineato a sinistra */
+    margin-right: 10px; /* Aggiunge spazio tra il testo e il pulsante */
+    margin-left: 10px;
+}
