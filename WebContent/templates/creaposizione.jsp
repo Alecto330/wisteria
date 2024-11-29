@@ -359,11 +359,11 @@
         window.addEventListener('load', setProvincia);
         
         function removeDomanda(domandaId){
-        	const params = new URLSearchParams(window.location.search);
-    	    const titolo = params.get("titolo");
-    	    const descrizione = params.get("descrizione");
-    	    const provincia = params.get("provincia");
-    	    const settore = params.get("settore");
+        	var params = new URLSearchParams(window.location.search);
+    	    var titolo = params.get("titolo");
+    	    var descrizione = params.get("descrizione");
+    	    var provincia = params.get("provincia");
+    	    var settore = params.get("settore");
     	    
     	    if(!titolo){
     	    	 titolo = encodeURIComponent(document.getElementById('titolo-input').value);
@@ -382,10 +382,10 @@
             	settore = encodeURIComponent(document.getElementById('settore-input').value);
             }
 
-    	    const domande = params.getAll("question");
+    	    var domande = params.getAll("question");
 
-    	    const baseUrl = '${pageContext.request.contextPath}/creaposizione';
-            const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
+    	    var baseUrl = '${pageContext.request.contextPath}/creaposizione';
+            var urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
             console.log(urlWithParams);
             
             location.href = urlWithParams;
