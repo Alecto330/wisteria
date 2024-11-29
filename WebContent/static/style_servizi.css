@@ -20,6 +20,11 @@ body {
     padding: 50px;
 }
 
+
+.text-content {
+    margin-left: 200px;
+}
+
 .text-content h4 {
     font-size: 20px;
     text-transform: uppercase;
@@ -40,6 +45,7 @@ body {
 .image-content img {
     width: 35vh;
     height: auto;
+    margin-right: 200px;
 }
 
 .services-section {

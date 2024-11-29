@@ -27,7 +27,7 @@
             <p>Offriamo una gamma completa di servizi tecnologici per supportarti nel tuo percorso verso il successo digitale.</p>
         </div>
         <div class="image-content">
-            <img src="${pageContext.request.contextPath}/assets/technology.png" class="persona">
+            <img src="${pageContext.request.contextPath}/assets/services.gif" class="persona">
         </div>
     </section>
 
