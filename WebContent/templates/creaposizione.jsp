@@ -13,7 +13,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" 
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_creaposizione.css">
@@ -27,78 +27,82 @@
 <body>
 
 	<div class="main-container-creaposizione">
-		<h1 class="form-title" style="font-size:2.5vw;">Crea una posizione</h2>
-		<form action="${pageContext.request.contextPath}/creaposizione" method="POST">
-			<div class="form-group">
-				<label class="form-label" for="titolo-input">Titolo:</label> <input
-					name="titolo" type="text" class="form-input" id="titolo-input"
-					value="${titolo}" placeholder="Inserisci il titolo della posizione" required>
-			</div>
-
-			<div class="form-group">
-				<label class="form-label" for="descrizione-input">Descrizione:</label>
-				<textarea name="descrizione" class="form-input"
-					placeholder="Inserisci la descrizione" id="descrizione-input"
-					rows="4" required>${descrizione}</textarea>
-			</div>
-
-			<div class="form-group">
-				<label class="form-label" for="localita-input">Località:</label>
-				<div class="location-group">
-					<select id="provincia-input" name="provinciaupdateRegione" class="form-select"
-						required>
-						<option value="">-- Seleziona Provincia --</option>
-						<c:forEach var="province" items="${provinceList}">
-							<option value="${province}"
-								${province == selectedProvincia ? 'selected' : ''}>${province}</option>
-						</c:forEach>
-					</select>
-					
-					<select id="regione-input" name="regione" class="form-select"
-						disabled style="appearance: none; -webkit-appearance: none; -moz-appearance: none;">
-                        <option value="">-- Regione --</option>
-                        <c:forEach var="region" items="${regionList}">
-                            <option value="${region}" ${region == selectedRegione ? 'selected' : ''}>${region}</option>
-                        </c:forEach>
-                    </select>
+		<h1 class="form-title" style="font-size: 2.5vw;">
+			Crea una posizione
+			</h2>
+			<form action="${pageContext.request.contextPath}/creaposizione"
+				method="POST">
+				<div class="form-group">
+					<label class="form-label" for="titolo-input">Titolo:</label> <input
+						name="titolo" type="text" class="form-input" id="titolo-input"
+						value="${titolo}"
+						placeholder="Inserisci il titolo della posizione" required>
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="form-label" for="settore-input">Settore:</label>
-				<div class="dropdown" id="settore-dropdown">
-					<input id="settore-input" type="text" name="settore"
-						class="form-input dropdown-toggle"
-						placeholder="Seleziona o digita un settore"
-						aria-haspopup="listbox" aria-expanded="false" autocomplete="off"
-						required>
-					<ul class="dropdown-menu" role="listbox"
-						aria-labelledby="settore-input">
-						<c:forEach var="settore" items="${professionList}">
-							<li role="option" tabindex="0">${settore}</li>
+
+				<div class="form-group">
+					<label class="form-label" for="descrizione-input">Descrizione:</label>
+					<textarea name="descrizione" class="form-input"
+						placeholder="Inserisci la descrizione" id="descrizione-input"
+						rows="4" required>${descrizione}</textarea>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label" for="localita-input">Località:</label>
+					<div class="location-group">
+						<select id="provincia-input" name="provinciaupdateRegione"
+							class="form-select" required>
+							<option value="">-- Seleziona Provincia --</option>
+							<c:forEach var="province" items="${provinceList}">
+								<option value="${province}"
+									${province == selectedProvincia ? 'selected' : ''}>${province}</option>
+							</c:forEach>
+						</select> <select id="regione-input" name="regione" class="form-select"
+							disabled
+							style="appearance: none; -webkit-appearance: none; -moz-appearance: none;">
+							<option value="">-- Regione --</option>
+							<c:forEach var="region" items="${regionList}">
+								<option value="${region}"
+									${region == selectedRegione ? 'selected' : ''}>${region}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="settore-input">Settore:</label>
+					<div class="dropdown" id="settore-dropdown">
+						<input id="settore-input" type="text" name="settore"
+							class="form-input dropdown-toggle"
+							placeholder="Seleziona o digita un settore"
+							aria-haspopup="listbox" aria-expanded="false" autocomplete="off"
+							required>
+						<ul class="dropdown-menu" role="listbox"
+							aria-labelledby="settore-input">
+							<c:forEach var="settore" items="${professionList}">
+								<li role="option" tabindex="0">${settore}</li>
+							</c:forEach>
+						</ul>
+					</div>
+				</div>
+				<div class="questions-section">
+					<h3 class="questions-title">Domande selezionate</h3>
+					<ul class="selected-questions" id="selected-questions-list">
+						<c:forEach var="domanda" items="${domande}">
+							<li><input name="domanda" value="${domanda.id}">${domanda.domanda}
+								<span class="delete-btn" title="Elimina domanda"
+								onclick="removeDomanda(${domanda.id})">&times;</span></li>
 						</c:forEach>
 					</ul>
+					<button type="button" class="manage-questions-btn"
+						onclick="goToListaDomande()" title="Aggiungi Domande">
+						<i class="fas fa-plus"></i>
+					</button>
 				</div>
-			</div>
-			<div class="questions-section">
-				<h3 class="questions-title">Domande selezionate</h3>
-				<ul class="selected-questions" id="selected-questions-list">
-					<c:forEach var="domanda" items="${domande}">
-						<li><input name="domanda" value="${domanda.id}">${domanda.domanda} <span class="delete-btn"
-							title="Elimina domanda">&times;</span>
-						</li>
-					</c:forEach>
-				</ul>
-				<button type="button" class="manage-questions-btn"
-					onclick="goToListaDomande()"
-					title="Aggiungi Domande">
-					<i class="fas fa-plus"></i>
-				</button>
-			</div>
-			<div style="display: flex; justify-content: center; align-items: center; height:4vw;">
-			    <button class="btn btn-primary" type="submit">Crea</button>
-			</div>
+				<div
+					style="display: flex; justify-content: center; align-items: center; height: 4vw;">
+					<button class="btn btn-primary" type="submit">Crea</button>
+				</div>
 
-		</form>
+			</form>
 	</div>
 
 	<script>
@@ -352,6 +356,39 @@
         }
         window.addEventListener('popstate', setProvincia);
         window.addEventListener('load', setProvincia);
+        
+        function removeDomanda(domandaId){
+        	const params = new URLSearchParams(window.location.search);
+    	    const titolo = params.get("titolo");
+    	    const descrizione = params.get("descrizione");
+    	    const provincia = params.get("provincia");
+    	    const settore = params.get("settore");
+    	    
+    	    if(!titolo){
+    	    	 titolo = encodeURIComponent(document.getElementById('titolo-input').value);
+    	    }
+	    
+    	    if(!descrizione){
+    	    	descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
+    	    }
+    	    
+            if(!provincia){
+                const provinciaSelect = document.getElementById('provincia-input');
+                provincia = provinciaSelect.value;
+            }
+
+            if(!settore){
+            	settore = encodeURIComponent(document.getElementById('settore-input').value);
+            }
+
+    	    const domande = params.getAll("question");
+
+    	    const baseUrl = '${pageContext.request.contextPath}/creaposizione';
+            const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
+            console.log(urlWithParams);
+            
+            location.href = urlWithParams;
+        }
 
     </script>
 </body>
