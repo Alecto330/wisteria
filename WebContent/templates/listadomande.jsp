@@ -67,6 +67,13 @@
     </div>
 
 	<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    const contents = document.querySelectorAll('.accordion-content');
+	    contents.forEach(content => {
+	        content.style.height = '0px';
+	    });
+	});
+
 	function showAlert(message) {
 	    const alertBox = document.getElementById('alertBox');
 	    alertBox.textContent = message; // Imposta il messaggio personalizzato
