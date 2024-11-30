@@ -31,10 +31,7 @@ public class visualizzacandidato extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id=request.getParameter("id");
-		String posizioneId=request.getParameter("idPosizione");
-		
-		System.out.println(id);
-		System.out.println(posizioneId);
+		//String posizioneId=request.getParameter("idPosizione");
 
 		if(id != null) {
 			CvDAO dao=new CvDAO();
@@ -63,6 +60,8 @@ public class visualizzacandidato extends HttpServlet{
 			request.setAttribute("headerPath", header);
 			
 			request.setAttribute("username", id);
+			request.setAttribute("nome", cv.getNome());
+			request.setAttribute("cognome", cv.getCognome());
 			request.setAttribute("email", cv.getEmail());
 			request.setAttribute("cf", cv.getCf());
 			request.setAttribute("nome", cv.getNome());
@@ -70,12 +69,14 @@ public class visualizzacandidato extends HttpServlet{
 			request.setAttribute("dataDiNascita", cv.getDataDiNascita());
 			request.setAttribute("residenza", cv.getResidenza());
 			request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-			//request.setAttribute("curriculum", cv.getCurriculum());
 			if (cv.getCurriculum() != null) {
 				String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
 				request.setAttribute("pdfData", base64PDF);
 			}
-			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
+			if (cv.getFotoProfilo() != null) {
+				String base64Image = Base64.getEncoder().encodeToString(cv.getFotoProfilo());
+				request.setAttribute("fotoProfiloData", base64Image);
+			}
 			request.setAttribute("telefono", cv.getTelefono());
 			request.setAttribute("esperienze", esperienze);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");

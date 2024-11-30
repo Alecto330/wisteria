@@ -70,11 +70,11 @@ body {
 }
 
 .profile-icon-vc {
-	width: 2vw;
-	height: 2vw;
+	width: 2.5vw;
+	height: 2.5vw;
 	background-color: #6e41e2;
 	color: white; /* Makes the icon white */
-	border-radius: 20px;
+	border-radius: 30px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -164,7 +164,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	margin: 2rem 0;
-	max-width: 80%;
+	max-width: 90%;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	text-align: center;
@@ -185,7 +185,7 @@ body {
 	background-color: rgba(110, 65, 226, 0.1);
 	border-radius: 15px;
 	padding: 1.5rem;
-	height: 80vh;
+	height: 82.5vh;
 	overflow-y: auto;
 }
 
@@ -264,7 +264,7 @@ body {
 	font-weight: 600;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+	/*box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);*/
 	height: auto;
 }
 
@@ -294,7 +294,25 @@ body {
 	color: black;
 }
 
+.informazioni-title{
+	color: black;
+	margin-bottom: 10px;
+}
+
 p {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.deatils-section{
+	background-color: rgba(110, 65, 226, 0.1);
+	border-radius: 15px;
+	padding: 1.5rem;
+	display: grid;
+	gap: 1rem;
+	max-width: 90%;
+}
+
+.profile-icon-vc .fa-user {
+    font-size: 23px;
 }

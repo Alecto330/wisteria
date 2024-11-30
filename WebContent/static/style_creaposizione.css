@@ -240,3 +240,19 @@ body {
     margin-right: 10px; /* Aggiunge spazio tra il testo e il pulsante */
     margin-left: 10px;
 }
+
+.create-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #6e41e2;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

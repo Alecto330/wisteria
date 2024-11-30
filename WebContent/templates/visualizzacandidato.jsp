@@ -28,7 +28,9 @@
 	<div class="main-container-visualizzacandidator">
 		<div class="user-profile">
 			<div class="profile-image">
-				<div class="profile-icon-vc">
+				<img id="profilePicture" src="" alt="Profile Picture"
+					style="display: none; border-radius: 50%; width: 100%; height: 100%;">
+				<div class="profile-icon-vc" id="profileIcon">
 					<i class="fa-solid fa-user"></i>
 				</div>
 			</div>
@@ -40,46 +42,104 @@
 
 		<div class="content-grid">
 			<div class="info-section">
-				<h2 class="section-title">Informazioni dell'utente:</h2>
+				<div class="deatils-section">
 
-				<div class="info-group">
-					<div class="info-label">
-						<i class="fas fa-envelope"></i> Email:
+						
+											<div class="info-group">
+						<div class="info-label">
+							<i class="fa-solid fa-user"></i> Nome
+						</div>
+						<div class="info-value">${nome} ${cognome}</div>
 					</div>
-					<div class="info-value">${email}</div>
-				</div>
+						
+						
 
-				<div class="info-group">
-					<div class="info-label">
-						<i class="fas fa-phone"></i> Telefono:
+					<div class="info-group">
+						<div class="info-label">
+							<i class="fas fa-envelope"></i> Email
+						</div>
+						<div class="info-value">
+							<c:choose>
+								<c:when test="${not empty email}">
+                ${email}
+            </c:when>
+								<c:otherwise>
+                Email non inserita
+            </c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-					<div class="info-value">${telefono}</div>
-				</div>
 
-				<div class="info-group">
-					<div class="info-label">
-						<i class="fas fa-calendar-alt"></i> Data di nascita:
+					<div class="info-group">
+						<div class="info-label">
+							<i class="fas fa-phone"></i> Telefono
+						</div>
+						<div class="info-value">
+							<c:choose>
+								<c:when test="${not empty telefono}">
+                ${telefono}
+            </c:when>
+								<c:otherwise>
+                Telefono non inserito
+            </c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-					<div class="info-value">${dataDiNascita}</div>
-				</div>
 
-				<div class="info-group">
-					<div class="info-label">
-						<i class="fas fa-id-card"></i> Codice Fiscale:
+					<div class="info-group">
+						<div class="info-label">
+							<i class="fas fa-calendar-alt"></i> Data di nascita
+						</div>
+						<div class="info-value">
+							<c:choose>
+								<c:when test="${not empty dataDiNascita}">
+                ${dataDiNascita}
+            </c:when>
+								<c:otherwise>
+                Data di nascita non inserita
+            </c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-					<div class="info-value">${cf}</div>
-				</div>
 
-				<div class="info-group">
-					<div class="info-label">
-						<i class="fas fa-graduation-cap"></i> Titolo di Studio:
+					<div class="info-group">
+						<div class="info-label">
+							<i class="fas fa-id-card"></i> Codice Fiscale
+						</div>
+						<div class="info-value">
+							<c:choose>
+								<c:when test="${not empty cf}">
+                ${cf}
+            </c:when>
+								<c:otherwise>
+                Codice fiscale non inserito
+            </c:otherwise>
+							</c:choose>
+						</div>
 					</div>
-					<div class="info-value">${titoloDiStudio}</div>
+
+					<div class="info-group">
+						<div class="info-label">
+							<i class="fas fa-graduation-cap"></i> Titolo di Studio
+						</div>
+						<div class="info-value">
+							<c:choose>
+								<c:when test="${not empty titoloDiStudio}">
+               						 ${titoloDiStudio}
+            </c:when>
+								<c:otherwise>
+                Titolo di Studio non inserito
+            </c:otherwise>
+							</c:choose>
+						</div>
+					</div>
+
+
 				</div>
 
 				<div class="cv-section" onclick="handleClick()">
 					<div class="folder-icon" id="icon">🚫</div>
-					<div id="uploadText">CV Non caricato</div>
+					<div id="uploadText">CV non caricato</div>
 				</div>
 			</div>
 
@@ -93,7 +153,7 @@
 
 						<c:forEach var="esperienza" items="${esperienze}">
 							<div class="experience-item">
-								<h3 class="experience-title">${esperienza.titolo}:</h3>
+								<h3 class="experience-title">${esperienza.titolo}</h3>
 								<p class="experience-description">${esperienza.esperienza}</p>
 							</div>
 						</c:forEach>
@@ -122,6 +182,18 @@ if (base64PDF) {
     
     document.getElementById('icon').textContent = "📄";  // Change icon
     document.getElementById('uploadText').textContent = "Apri CV";  // Change text
+}
+
+const base64Image = '<%= request.getAttribute("fotoProfiloData") != null ? request.getAttribute("fotoProfiloData") : "" %>';
+
+if (base64Image) {
+    const imageBlob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], { type: 'image/jpeg' }); // Può essere 'image/png' o altro tipo di immagine
+    const imageURL = URL.createObjectURL(imageBlob);
+    const profilePicture = document.getElementById('profilePicture');
+    profilePicture.src = imageURL;
+    profilePicture.style.display = 'block';
+    document.getElementById('profileIcon').style.display = 'none';
+    document.querySelector('.camera-icon').style.display = 'none';
 }
 
 

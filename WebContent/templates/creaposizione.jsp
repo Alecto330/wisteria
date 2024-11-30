@@ -100,7 +100,7 @@
 				</div>
 				<div
 					style="display: flex; justify-content: center; align-items: center; height: 4vw;">
-					<button class="btn btn-primary" type="submit">Crea</button>
+					<button class="create-btn" type="submit">Crea</button>
 				</div>
 
 			</form>
