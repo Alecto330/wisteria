@@ -123,6 +123,13 @@
 								</c:forEach>
 							</select>
 						</div>
+						<div class="select-wrapper mr-2">
+							<select class="form-control" id="apertoChiuso">
+								<option value="Aperte" selected>Aperte</option>
+								<option value="Chiuse">Chiuse</option>
+								<option value="Tutte">Tutte</option>
+							</select>
+						</div>
 						<div>
 							<input class="form-control mr-2 cercaOfferte" type="search"
 								id="job-search" placeholder="Cerca offerte di lavoro"
@@ -186,6 +193,7 @@
         function performSearch() {
             const regionElem = document.getElementById("regioni");
             const professionElem = document.getElementById("professioni");
+            const apertoChiusoElem = document.getElementById("apertoChiuso");
             const searchElem = document.getElementById("job-search");
 
             if (!regionElem || !professionElem || !searchElem) {
@@ -195,11 +203,14 @@
 
             const selectedRegion = regionElem.value;
             const selectedProfession = professionElem.value;
+            const selectedApertoChiuso = apertoChiusoElem.value;
+            console.log(selectedApertoChiuso);
             const searchQuery = searchElem.value;
 
             let searchUrl = '/wisteria/home?region='
                 + encodeURIComponent(selectedRegion) + '&profession='
-                + encodeURIComponent(selectedProfession) + '&search='
+                + encodeURIComponent(selectedProfession) + '&ac='
+                + encodeURIComponent(selectedApertoChiuso) + '&search='
                 + encodeURIComponent(searchQuery);
 
             window.location.href = searchUrl;
@@ -209,7 +220,8 @@
             const urlParams = new URLSearchParams(window.location.search);
             const region = urlParams.get('region');
             const profession = urlParams.get('profession');
-
+            const apertoChiuso = urlParams.get('ac');
+            
             const regionSelect = document.getElementById('regioni');
             if (region && regionSelect) {
                 const regionOption = regionSelect.querySelector(`option[value="${region}"]`);
@@ -232,6 +244,11 @@
                 }
             } else if (professionSelect) {
                 professionSelect.selectedIndex = 0;
+            }
+            
+            const apertoChiusoSelect = document.getElementById("apertoChiuso");
+            if(apertoChiuso){
+            apertoChiusoSelect.value=apertoChiuso;
             }
         }
 

@@ -17,7 +17,7 @@ public class PosizioneDAO {
 			DatabaseConnection database = new DatabaseConnection();
 			Connection connection = database.getConnection(); 
 			String query = "SELECT id, titolo, descrizione, settore, utente_scelto, Localita.provincia, Localita.regione FROM posizione"
-					+ " join Localita on posizione.FK_Localita=Localita.provincia";
+					+ " join Localita on posizione.FK_Localita=Localita.provincia where utente_scelto IS NULL";
 			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -45,73 +45,81 @@ public class PosizioneDAO {
 		return null;
 	}
 
-	public ArrayList<Posizione> getFilteredPosizioni(String descrizione, String regione, String professione) {
+	public ArrayList<Posizione> getFilteredPosizioni(String descrizione, String regione, String professione, String utenteSceltoCondition) {
+	    ArrayList<Posizione> posizioni = new ArrayList<>();
 
-		ArrayList<Posizione> posizioni = new ArrayList<>();
+	    try {
+	        DatabaseConnection database = new DatabaseConnection();
+	        Connection connection = database.getConnection();
 
-		try {
-			DatabaseConnection database = new DatabaseConnection();
-			Connection connection = database.getConnection();
+	        StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, utente_scelto, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
+	        ArrayList<String> whereConditions = new ArrayList<>();
 
-			StringBuilder queryBuilder = new StringBuilder("SELECT id, titolo, descrizione, settore, utente_scelto, Localita.provincia, Localita.regione FROM posizione JOIN Localita ON posizione.FK_Localita = Localita.provincia");
-			ArrayList<String> whereConditions = new ArrayList<>();
+	        if (descrizione != null && !descrizione.isEmpty()) {
+	            whereConditions.add("descrizione LIKE ? or titolo LIKE ? or settore LIKE ?");
+	        }
+	        if (regione != null && !regione.isEmpty()) {
+	            whereConditions.add("Localita.regione = ?");
+	        }
+	        if (professione != null && !professione.isEmpty()) {
+	            whereConditions.add("settore = ?");
+	        }
 
-			if (descrizione != null && !descrizione.isEmpty()) {
-				whereConditions.add("descrizione LIKE ? or titolo LIKE ? or settore LIKE ?");
-			}
-			if (regione != null && !regione.isEmpty()) {
-				whereConditions.add("Localita.regione = ?");
-			}
-			if (professione != null && !professione.isEmpty()) {
-				whereConditions.add("settore = ?");
-			}
+	        if(utenteSceltoCondition.equals("Aperte")) {
+	        	 whereConditions.add("utente_scelto IS NULL");
+	        }else if(utenteSceltoCondition.equals("Chiuse")) {
+		        whereConditions.add("utente_scelto IS NOT NULL");
+	        }
 
-			if (!whereConditions.isEmpty()) {
-				queryBuilder.append(" WHERE ").append(String.join(" AND ", whereConditions));
-			}
+	        if (!whereConditions.isEmpty()) {
+	            queryBuilder.append(" WHERE ").append(String.join(" AND ", whereConditions));
+	        }
 
-			PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.toString());
-			int parameterIndex = 1;
+	        PreparedStatement preparedStatement = connection.prepareStatement(queryBuilder.toString());
+	        int parameterIndex = 1;
 
-			if (descrizione != null && !descrizione.isEmpty()) {
-				String likePattern = "%" + descrizione + "%";
-				preparedStatement.setString(parameterIndex++, likePattern); // for descrizione LIKE ?
-				preparedStatement.setString(parameterIndex++, likePattern); // for titolo LIKE ?
-				preparedStatement.setString(parameterIndex++, likePattern); // for titolo LIKE ?
-			}
+	        if (descrizione != null && !descrizione.isEmpty()) {
+	            String likePattern = "%" + descrizione + "%";
+	            preparedStatement.setString(parameterIndex++, likePattern); // for descrizione LIKE ?
+	            preparedStatement.setString(parameterIndex++, likePattern); // for titolo LIKE ?
+	            preparedStatement.setString(parameterIndex++, likePattern); // for settore LIKE ?
+	        }
 
-			if (regione != null && !regione.isEmpty()) {
-				preparedStatement.setString(parameterIndex++, regione);
-			}
-			if (professione != null && !professione.isEmpty()) {
-				preparedStatement.setString(parameterIndex++, professione);
-			}
+	        if (regione != null && !regione.isEmpty()) {
+	            preparedStatement.setString(parameterIndex++, regione);
+	        }
+	        if (professione != null && !professione.isEmpty()) {
+	            preparedStatement.setString(parameterIndex++, professione);
+	        }
 
-			ResultSet resultSet = preparedStatement.executeQuery();
+	        // No need to set parameter for utente_scelto, as it is checked in the query directly
 
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				String titolo = resultSet.getString("titolo");
-				String descrizioneVal = resultSet.getString("descrizione");
-				if(descrizioneVal.length()>=200) {
-					descrizioneVal=descrizioneVal.substring(0, 200).concat("...");
-				}				
-				String settore = resultSet.getString("settore");
-				String provinciaVal = resultSet.getString("provincia");
-				String regioneVal = resultSet.getString("regione");
-				String utenteScelto=resultSet.getString("utente_scelto");
+	        ResultSet resultSet = preparedStatement.executeQuery();
 
-				Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal, utenteScelto);
-				posizioni.add(posizione);
-			}
+	        while (resultSet.next()) {
+	            int id = resultSet.getInt("id");
+	            String titolo = resultSet.getString("titolo");
+	            String descrizioneVal = resultSet.getString("descrizione");
+	            if (descrizioneVal.length() >= 200) {
+	                descrizioneVal = descrizioneVal.substring(0, 200).concat("...");
+	            }
+	            String settore = resultSet.getString("settore");
+	            String provinciaVal = resultSet.getString("provincia");
+	            String regioneVal = resultSet.getString("regione");
+	            String utenteSceltoVal = resultSet.getString("utente_scelto");
 
-			connection.close();
-			return posizioni;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	            Posizione posizione = new Posizione(id, titolo, descrizioneVal, settore, provinciaVal, regioneVal, utenteSceltoVal);
+	            posizioni.add(posizione);
+	        }
+
+	        connection.close();
+	        return posizioni;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return null;
 	}
+
 
 	public Posizione getPosizione(String id) {
 

@@ -30,10 +30,11 @@ public class home extends HttpServlet {
 		ArrayList<Posizione> jobOffers=null;
 		String profession = request.getParameter("profession");
 		String region = request.getParameter("region");
+		String ac = request.getParameter("ac");
 		String search = request.getParameter("search");
 
-		if(profession!=null || region!=null || search !=null) {
-			jobOffers=dao.getFilteredPosizioni(search, region, profession);
+		if(profession!=null || region!=null || search !=null || (ac!=null && !ac.equals("Aperte"))) {
+			jobOffers=dao.getFilteredPosizioni(search, region, profession, ac);
 			request.setAttribute("profession", profession);
 			request.setAttribute("region", region);
 			request.setAttribute("search", search);

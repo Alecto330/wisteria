@@ -54,7 +54,7 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-#regioni, #professioni {
+#regioni, #professioni, #apertoChiuso {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -186,6 +186,15 @@ body {
     text-align: left;
     left: -19,2px;
 }
+
+#apertoChiuso {
+    cursor: pointer;
+    width: 200px;
+    height: 48px;
+    text-align: left;
+    left: -19,2px;
+}
+
 .form-control {
     border-radius: 2vw;
     height: 48px;
