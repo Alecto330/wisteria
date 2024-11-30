@@ -38,7 +38,15 @@ public class listadomande extends HttpServlet{
 			String settore=request.getParameter("settore");	
 			
 			DomandaDAO dao=new DomandaDAO();
-			HashMap<Integer, Domanda> domande=dao.getDomande();
+			HashMap<Integer, Domanda> domande=null;
+			
+			String filter=request.getParameter("filter");
+			if(filter!=null && !filter.isEmpty() && !filter.trim().isEmpty()) {
+				domande=dao.getFilteredDomande(filter);
+			}else {
+				 domande=dao.getDomande();
+			}
+
 			ArrayList<Domanda> questions=new  ArrayList<Domanda>(domande.values());
 			request.setAttribute("questions", questions);
 			request.setAttribute("titolo", titolo);

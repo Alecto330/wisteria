@@ -305,5 +305,59 @@ public class DomandaDAO {
 		return domandaOggetto;
 
 	}
+	
+	public HashMap<Integer, Domanda> getFilteredDomande(String filter) {
+		String filterWithWildcards = "%" + filter + "%";
+		HashMap<Integer, Domanda> domande=new HashMap<Integer, Domanda>();
+
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT DISTINCT Domanda.id as domandaId, domanda, Risposta.id as rispostaId, risposta, VoF\r\n"
+					+ "FROM Domanda join Risposta on Domanda.id=Risposta.FK_domanda\r\n"
+					+ "group by domanda, Domanda.id, Risposta.id, risposta, VoF, FK_Domanda\r\n"
+					+ "having domanda like ? order by Domanda.id;";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setString(1, filterWithWildcards);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+
+				int domandaId=resultSet.getInt("domandaId");
+				if(!domande.containsKey(domandaId)) {
+					String domandaTesto=resultSet.getString("domanda");
+					//int FK_Posizione=resultSet.getInt("FK_Posizione");
+
+					Domanda domanda=new Domanda(domandaId, domandaTesto);
+
+
+					int rispostaId=resultSet.getInt("rispostaId");
+					String risposta=resultSet.getString("risposta");
+					boolean vof=resultSet.getBoolean("VoF");
+
+					Risposta primaRisposta=new Risposta(rispostaId, risposta, vof);
+
+					domanda.getRisposte().add(primaRisposta);
+
+					domande.put(domandaId, domanda);
+				}else {
+
+					int rispostaId=resultSet.getInt("rispostaId");
+					String risposta=resultSet.getString("risposta");
+					boolean vof=resultSet.getBoolean("VoF");
+
+					Risposta rispostaSuccessiva=new Risposta(rispostaId, risposta, vof);
+
+					domande.get(domandaId).getRisposte().add(rispostaSuccessiva);
+				}
+			}
+			connection.close();
+			return domande;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

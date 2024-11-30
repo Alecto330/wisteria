@@ -253,5 +253,21 @@ input[type="search"] {
     }
 }
 
+.selected-job{
+	background-color: #c5c1cc;
+	cursor: default;
+}
 
+.lock-icon{
+	display: flex;
+	align-items: center;
+	padding-right: 10px;
+	/*padding-bottom: 3px;*/
+}
+
+.closed-header{
+	display: flex;
+	align-items: center; 
+	padding-bottom: 12px;
+}
 

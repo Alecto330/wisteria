@@ -222,22 +222,35 @@
 
         // ############################### RICERCA ##############################
         function performSearch() {
-            const settore = document.getElementById("professioni");
             const searchElem = document.getElementById("job-search");
-
-            if (!settore || !searchElem) {
+            
+            if (!searchElem) {
                 console.error("Uno degli elementi di ricerca non è stato trovato.");
                 return;
             }
 
-            const selectedProfession = settore.value;
             const searchQuery = searchElem.value;
+            
+            
+            const params = new URLSearchParams(window.location.search);
+       		const titolo=params.get('titolo');
+       		const descrizione=params.get('descrizione');
+       		const provincia=params.get('provincia');
+       		const settore=params.get('settore');
+            
+       		const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+            
+            const selectedQuestions = []; 
+             
+            selectedCheckboxes.forEach(checkbox => { 
+                selectedQuestions.push(encodeURIComponent(checkbox.value)); 
+            });
+            
+            const baseUrl = '${pageContext.request.contextPath}/listadomande';
+            const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&filter='+searchQuery+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+            console.log(urlWithParams);
 
-            let searchUrl = '/wisteria/home?settore='
-                + encodeURIComponent(selectedProfession) + '&search='
-                + encodeURIComponent(searchQuery);
-
-            window.location.href = searchUrl;
+            location.href = urlWithParams;
         }
 
         function setOptions() {

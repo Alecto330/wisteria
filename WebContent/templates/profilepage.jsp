@@ -62,7 +62,7 @@
 		<h2 class="form-title">Informazioni di contatto:</h2>
 		<div class="form-grid">
 			<div class="form-group">
-				<label class="form-label">Nome:</label>
+				<label class="form-label">Nome</label>
 				<div class="form-input-wrapper">
 					<input id="input-nome" type="text" class="form-input"
 						value="${nome}" disabled> <span id="modifica-nome"
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Username:</label>
+				<label class="form-label">Username</label>
 				<div class="form-input-wrapper">
 					<input id="input-username" type="text" class="form-input"
 						value="${username}" disabled> <span id="modifica-username"
@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Cognome:</label>
+				<label class="form-label">Cognome</label>
 				<div class="form-input-wrapper">
 					<input id="input-cognome" type="text" class="form-input"
 						value="${cognome}" disabled> <span id="modifica-cognome"
@@ -107,7 +107,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Data di nascita:</label>
+				<label class="form-label">Data di nascita</label>
 				<div class="form-input-wrapper">
 					<input id="input-datadinascita" type="date" class="form-input"
 						value="${dataDiNascita}" disabled> <span
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Email:</label>
+				<label class="form-label">Email</label>
 				<div class="form-input-wrapper">
 					<input id="input-email" type="email" class="form-input"
 						value="${email}" disabled> <span id="modifica-email"
@@ -137,7 +137,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Codice Fiscale:</label>
+				<label class="form-label">Codice Fiscale</label>
 				<div class="form-input-wrapper">
 					<input id="input-cf" type="text" class="form-input" value="${cf}"
 						disabled> <span id="modifica-cf" class="edit-icon"
@@ -152,7 +152,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Telefono:</label>
+				<label class="form-label">Telefono</label>
 				<div class="form-input-wrapper">
 					<input id="input-telefono" type="tel" class="form-input"
 						value="${telefono}" disabled> <span id="modifica-telefono"
@@ -167,7 +167,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="form-label">Titolo di studio:</label>
+				<label class="form-label">Titolo di studio</label>
 				<div class="form-input-wrapper">
 					<input id="input-titolo" type="text" class="form-input"
 						value="${titoloDiStudio}" disabled> <span
