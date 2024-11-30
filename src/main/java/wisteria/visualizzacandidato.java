@@ -2,6 +2,7 @@ package wisteria;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -69,7 +70,11 @@ public class visualizzacandidato extends HttpServlet{
 			request.setAttribute("dataDiNascita", cv.getDataDiNascita());
 			request.setAttribute("residenza", cv.getResidenza());
 			request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-			request.setAttribute("curriculum", cv.getCurriculum());
+			//request.setAttribute("curriculum", cv.getCurriculum());
+			if (cv.getCurriculum() != null) {
+				String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
+				request.setAttribute("pdfData", base64PDF);
+			}
 			request.setAttribute("fotoProfilo", cv.getFotoProfilo());
 			request.setAttribute("telefono", cv.getTelefono());
 			request.setAttribute("esperienze", esperienze);

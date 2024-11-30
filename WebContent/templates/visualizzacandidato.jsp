@@ -28,12 +28,13 @@
 	<div class="main-container-visualizzacandidator">
 		<div class="user-profile">
 			<div class="profile-image">
-				<div class="profile-icon">
+				<div class="profile-icon-vc">
 					<i class="fa-solid fa-user"></i>
 				</div>
 			</div>
 			<div class="chiudi-posizione-container">
-				<button class="chiudi-posizione" onclick="chiusura()">Chiudi posizione</button>
+				<button class="chiudi-posizione" onclick="chiusura()">Chiudi
+					posizione</button>
 			</div>
 		</div>
 
@@ -42,38 +43,51 @@
 				<h2 class="section-title">Informazioni dell'utente:</h2>
 
 				<div class="info-group">
-					<div class="info-label">Email:</div>
+					<div class="info-label">
+						<i class="fas fa-envelope"></i> Email:
+					</div>
 					<div class="info-value">${email}</div>
 				</div>
 
 				<div class="info-group">
-					<div class="info-label">Telefono:</div>
+					<div class="info-label">
+						<i class="fas fa-phone"></i> Telefono:
+					</div>
 					<div class="info-value">${telefono}</div>
 				</div>
 
 				<div class="info-group">
-					<div class="info-label">Data di nascita:</div>
+					<div class="info-label">
+						<i class="fas fa-calendar-alt"></i> Data di nascita:
+					</div>
 					<div class="info-value">${dataDiNascita}</div>
 				</div>
 
 				<div class="info-group">
-					<div class="info-label">Codice Fiscale:</div>
+					<div class="info-label">
+						<i class="fas fa-id-card"></i> Codice Fiscale:
+					</div>
 					<div class="info-value">${cf}</div>
 				</div>
 
 				<div class="info-group">
-					<div class="info-label">Titolo:</div>
+					<div class="info-label">
+						<i class="fas fa-graduation-cap"></i> Titolo di Studio:
+					</div>
 					<div class="info-value">${titoloDiStudio}</div>
 				</div>
 
-				<div class="cv-section">
-					<div class="folder-icon">📁</div>
-					<div>Visualizza CV</div>
+				<div class="cv-section" onclick="handleClick()">
+					<div class="folder-icon" id="icon">🚫</div>
+					<div id="uploadText">CV Non caricato</div>
 				</div>
 			</div>
 
 			<div class="experiences-section">
-				<h2 class="section-title">Esperienze</h2>
+				<div class="section-header">
+					<i class="fas fa-briefcase"></i>
+					<h2 class="section-title esperienze-title">Esperienze</h2>
+				</div>
 				<div class="scrollable-experiences">
 					<div class="experience-list">
 
@@ -97,6 +111,27 @@
 </body>
 
 <script>
+
+let pdfURL = null;
+
+const base64PDF = '<%=request.getAttribute("pdfData") != null ? request.getAttribute("pdfData") : ""%>';
+
+if (base64PDF) {
+    const pdfBlob = new Blob([Uint8Array.from(atob(base64PDF), c => c.charCodeAt(0))], { type: 'application/pdf' });
+    pdfURL = URL.createObjectURL(pdfBlob);
+    
+    document.getElementById('icon').textContent = "📄";  // Change icon
+    document.getElementById('uploadText').textContent = "Apri CV";  // Change text
+}
+
+
+function handleClick() {
+    if (pdfURL) {
+        window.open(pdfURL, '_blank');
+    }
+}
+
+
 	 function chiusura() {
         const urlParams = new URLSearchParams(window.location.search);
     	const idPosizione = urlParams.get('idPosizione');
