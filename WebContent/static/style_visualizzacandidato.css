@@ -175,8 +175,8 @@ body {
   background-color: rgba(110, 65, 226, 0.1);
   border-radius: 15px;
   padding: 1.5rem;
-  height: 82.5vh;
   overflow-y: auto;
+  margin-bottom: 2rem;
 }
 
 .experience-list {
