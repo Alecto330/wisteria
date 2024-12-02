@@ -1,221 +1,222 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    background-image: linear-gradient(130deg, 
-        rgba(255, 255, 255, 0.8),
-        rgba(230, 230, 230, 0.8),
-        rgba(165, 48, 255, 0.8)
-    ), url("../assets/bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background-image: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(230, 230, 230, 0.8),
+      rgba(165, 48, 255, 0.8)
+    ),
+    url("../assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container-quiz {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    margin: 10vw;
-    max-width: 90%;
-    padding: 0 1vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  margin: 10vw;
+  max-width: 90%;
+  padding: 0 1vw;
 }
 
 .title {
-    color: #8228ff;
-    font-size: 3rem;
-    font-weight: bolder;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 10px rgba(130, 40, 255, 0.2);
+  color: #8228ff;
+  font-size: 3rem;
+  font-weight: bolder;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(130, 40, 255, 0.2);
 }
 
 .accordion-item {
-    margin-bottom: 1rem;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(130, 40, 255, 0.1);
-    border: 1px solid #d7bbff;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(130, 40, 255, 0.1);
+  border: 1px solid #d7bbff;
 }
 
 .accordion-header {
-    padding: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(214, 181, 255, 1);
-    transition: background-color 0.3s ease;
-    user-select: none;
-    border: none;
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(214, 181, 255, 1);
+  transition: background-color 0.3s ease;
+  user-select: none;
+  border: none;
 }
 
 .accordion-header:hover {
-    background: rgba(201, 157, 255, 1);
+  background: rgba(201, 157, 255, 1);
 }
 
 .accordion-title {
-    font-size: 20px;
-    color: #333;
-    font-weight: 500;
-    margin: 0;
+  font-size: 20px;
+  color: #333;
+  font-weight: 500;
+  margin: 0;
 }
 
 .accordion-icon {
-    color: #8228ff;
-    transition: transform 0.3s ease;
+  color: #8228ff;
+  transition: transform 0.3s ease;
 }
 
 .accordion-content {
-    height: auto;
-    overflow: visible;
-    transition: height 0.3s ease-out;
-    background-color: white;
+  height: auto;
+  overflow: visible;
+  transition: height 0.3s ease-out;
+  background-color: white;
 }
 
 .accordion-item.active .accordion-content {
-    height: auto; /* Garantisce che il contenuto sia visibile */
+  height: auto;
 }
 
 .answer-list {
-    list-style: none;
-    padding: 1.5rem;
-    margin: 0;
+  list-style: none;
+  padding: 1.5rem;
+  margin: 0;
 }
 
 .answer-item {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 10px;
-    margin-bottom: 5px;
-    border: 1px solid rgba(214, 181, 255, 1);
-    color: #495057;
-    transition: background-color 0.3s;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  border: 1px solid rgba(214, 181, 255, 1);
+  color: #495057;
+  transition: background-color 0.3s;
 }
 
 .answer-item:hover {
-    background-color: rgba(226, 208, 248, 1);
+  background-color: rgba(226, 208, 248, 1);
 }
 
 .answer-item.selected {
-    background-color: rgba(179, 116, 255, 1);
-    color: #eeeeee;
-    border: 1px solid rgba(139, 44, 255, 1); /* bordo viola */
+  background-color: #b374ff;
+  color: #eeeeee;
+  border: 1px solid #8b2cff; /* bordo viola */
 }
 
 .answer-item:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
-
 .answer-icon {
-    margin-right: 1rem;
-    color: #8228ff;
-    font-size: 1.1rem;
+  margin-right: 1rem;
+  color: #8228ff;
+  font-size: 1.1rem;
 }
 
 .answer-text {
-    margin: 0;
+  margin: 0;
 }
 
 .submit-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 .submit-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    width: 100%; /* Fa sì che il contenitore del pulsante prenda tutta la larghezza disponibile */
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .submit-button {
-    width: 100%; /* Larghezza al 100% */
-    padding: 15px 30px; /* Aumentato il padding per dare più spazio al pulsante */
-    font-size: 20px; /* Aumentato il font per migliorare la leggibilità */
-    font-weight: bold;
-    background-color: #6e41e2; /* Colore di sfondo simile al tema */
-    color: white;
-    border: none;
-    border-radius: 10px; /* Angoli arrotondati */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
-    text-transform: uppercase; /* Aggiunto testo maiuscolo per migliorare l'aspetto */
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #6e41e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  text-transform: uppercase;
 }
 
 .submit-button:hover {
-    background-color: #312e81; /* Colore al passaggio del mouse */
-    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
-    color: #eeeeee;
+  background-color: #312e81;
+  transform: scale(1.05);
+  color: #eeeeee;
 }
 
 .submit-button:active {
-    transform: scale(1); /* Ripristina la dimensione normale quando il pulsante viene premuto */
+  transform: scale(1);
 }
-
 
 .submit-button:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(139, 44, 255, 1); /* Effetto di focus con sfumatura viola */
+  outline: none;
+  box-shadow: 0 0 10px rgba(139, 44, 255, 1);
 }
 .btn-back {
-    width: auto;
-    padding: 15px 30px; /* Aumentato il padding per dare più spazio al pulsante */
-    font-size: 20px; /* Aumentato il font per migliorare la leggibilità */
-    font-weight: bold;
-    background-color: #6e41e2;
-    color: #eeeeee;
-    border: 1px;
-    border-radius: 10px; /* Angoli arrotondati */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
-    text-transform: uppercase; /* Aggiunto testo maiuscolo per migliorare l'aspetto */
+  width: auto;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #6e41e2;
+  color: #eeeeee;
+  border: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  text-transform: uppercase;
 }
 
 .btn-back:hover {
-    background-color: #312e81; /* Colore al passaggio del mouse */
-    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
-    color: #eeeeee;
+  background-color: #312e81;
+  transform: scale(1.05);
+  color: #eeeeee;
 }
+
 .btn-back:active {
-    transform: scale(1); /* Ripristina la dimensione normale quando il pulsante viene premuto */
+  transform: scale(1);
 }
+
 .btn-back:focus {
-    outline: none;
-    box-shadow: 0 0 10px #8b2cff; /* Effetto di focus con sfumatura viola */
+  outline: none;
+  box-shadow: 0 0 10px #8b2cff;
 }
+
 .btn-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
 }
-
-
 
 @media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-        margin-top: 70px;
-    }
+  .container {
+    padding: 1rem;
+    margin-top: 70px;
+  }
 
-    .title {
-        font-size: 2rem;
-    }
+  .title {
+    font-size: 2rem;
+  }
 
-    .accordion-header {
-        padding: 1rem;
-    }
+  .accordion-header {
+    padding: 1rem;
+  }
 
-    .answer-list {
-        padding: 1rem;
-    }
+  .answer-list {
+    padding: 1rem;
+  }
 }

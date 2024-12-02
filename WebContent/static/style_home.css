@@ -1,290 +1,302 @@
 .btn-primary {
-    color:#fff;
-    background-color: #6e41e2;
-    border-color:#8228ff;
-    width: 70px;
-    transition: background-color 0.3s, transform 0.3s ease-in-out;
+  color: #fff;
+  background-color: #6e41e2;
+  border-color: #8228ff;
+  width: 70px;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
-.btn-primary:hover{
-	background-color: #4c2bb0;
-    transform: scale(1.1);
+
+.btn-primary:hover {
+  background-color: #4c2bb0;
+  transform: scale(1.1);
 }
 
 .btn-primary.focus,
 .btn-primary:focus {
-    color: #fff;
-    background-color: #720effa5;
-    border-color: #720effa5;
+  color: #fff;
+  background-color: #720effa5;
+  border-color: #720effa5;
 }
 
 .btn-primary.disabled,
 .btn-primary:disabled {
-    color: #fff;
-    background-color: #720eff;
-    border-color: #720eff;
+  color: #fff;
+  background-color: #720eff;
+  border-color: #720eff;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #720eff;
-    border-color: #720eff;
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #720eff;
+  border-color: #720eff;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem #720eff;
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #720eff;
 }
 
 .home-main {
-    margin-top: 150px;
+  margin-top: 150px;
 }
+
 body {
-    background-image: linear-gradient(130deg, 
-        rgba(255, 255, 255, 0.8),
-        rgba(230, 230, 230, 0.8),
-        rgba(165, 48, 255, 0.8)
-    ), url("../assets/bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(230, 230, 230, 0.8),
+      rgba(165, 48, 255, 0.8)
+    ),
+    url("../assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Poppins", sans-serif;
 }
 
-#regioni, #professioni, #apertoChiuso {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='gray' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 25px;
+#regioni,
+#professioni,
+#apertoChiuso {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='gray' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 25px;
 }
-
 
 .barra {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .cerca {
-    margin-left: 19vw;
+  margin-left: 19vw;
 }
 
 .footer {
-    margin-top: 250px;
+  margin-top: 250px;
 }
 
 .introduction-title {
-    width: 100%;
-    font-weight: bolder;
-    font-size: 3vw;
-    text-align: left;
-    margin-top: 8vh;
-    color: rgb(123, 31, 255);
-    text-shadow: 
-        0 0 2px #7c1fff,
-        0 0 2px #ffffff99,
-        0 0 1px rgba(255, 255, 255, 0.5),
-        0 0 2px rgba(0, 0, 0, 0.4);
-    animation: glowing infinite;
-    transition: background-color 0.3s, transform 0.3s ease-in-out;
+  width: 100%;
+  font-weight: bolder;
+  font-size: 3vw;
+  text-align: left;
+  margin-top: 8vh;
+  color: rgb(123, 31, 255);
+  text-shadow: 0 0 2px #7c1fff, 0 0 2px #ffffff99,
+    0 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.4);
+  animation: glowing infinite;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
-.introduction-title:hover{
-    transform: scale(1.06);
+
+.introduction-title:hover {
+  transform: scale(1.06);
 }
 
 .introduction {
-    font-size: 1vw;
-    text-align: left;
-    margin-top: 4vh;
-    padding-right: 7rem;
-    transition: background-color 0.3s, transform 0.3s ease-in-out;
+  font-size: 1vw;
+  text-align: left;
+  margin-top: 4vh;
+  padding-right: 7rem;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
-.introduction:hover{
-    transform: scale(1.02);
+
+.introduction:hover {
+  transform: scale(1.02);
 }
+
 .highlight {
-    color: #8328FF;
-    font-weight: bold;
+  color: #8328ff;
+  font-weight: bold;
 }
 
 .carousel {
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.3s ease-in-out;
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
-.carousel:hover{
-    transform: scale(1.02);
+.carousel:hover {
+  transform: scale(1.02);
 }
 
 .carousel-item {
-    height: 100%;
+  height: 100%;
 }
 
 .carousel-item img {
-    border-radius: 0px;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+  border-radius: 0px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
 .carousel-indicators {
-    bottom: 20px;
+  bottom: 20px;
 }
 
 .carousel-indicators li {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin: 0 5px;
-    background-color: rgba(255,255,255,0.5);
-    transition: all 0.3s ease;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
 }
 
 .carousel-indicators li.active {
-    background-color: #D6B5FF;
-    transform: scale(1.2);
+  background-color: #d6b5ff;
+  transform: scale(1.2);
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: #8228ffab;
-    border-radius: 50%;
-    padding: 20px;
-    background-size: 15px;
+  background-color: #8228ffab;
+  border-radius: 50%;
+  padding: 20px;
+  background-size: 15px;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 10%;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  width: 10%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-.carousel-control-prev-icon{
-    width: 1px;
+.carousel-control-prev-icon {
+  width: 1px;
 }
+
 #aboutUsCarousel:hover .carousel-control-prev,
 #aboutUsCarousel:hover .carousel-control-next {
-    opacity: 1;
+  opacity: 1;
 }
-#regioni, #professioni {
-    cursor: pointer;
-    width: 345.6px;
-    height: 48px;
-    text-align: left;
-    left: -19,2px;
+
+#regioni,
+#professioni {
+  cursor: pointer;
+  width: 345.6px;
+  height: 48px;
+  text-align: left;
+  left: -19, 2px;
 }
 
 #apertoChiuso {
-    cursor: pointer;
-    width: 200px;
-    height: 48px;
-    text-align: left;
-    left: -19,2px;
+  cursor: pointer;
+  width: 200px;
+  height: 48px;
+  text-align: left;
+  left: -19, 2px;
 }
 
 .form-control {
-    border-radius: 2vw;
-    height: 48px;
+  border-radius: 2vw;
+  height: 48px;
 }
-.form-control:focus { 
-    border-color: #D6B5FF;
-    box-shadow: 0 0 8px #D6B5FF;
-    outline: none;
+
+.form-control:focus {
+  border-color: #d6b5ff;
+  box-shadow: 0 0 8px #d6b5ff;
+  outline: none;
 }
+
 input[type="search"] {
-    width: 385.6px;
+  width: 385.6px;
 }
+
 .cercaOfferte:focus {
-    border-color: #D6B5FF;
-    box-shadow: 0 0 8px #D6B5FF;
-    outline: none;
+  border-color: #d6b5ff;
+  box-shadow: 0 0 8px #d6b5ff;
+  outline: none;
 }
+
 .job-card {
-    margin-bottom: 1vw;
-    background-color: #d7bbff;
-    border: solid 2px #8228ff;
-    border-radius: 1vw;
-    padding: 1vw 1.5vw;
-    width: 100%;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    position: relative; /* Per gestire il contenuto */
+  margin-bottom: 1vw;
+  background-color: #d7bbff;
+  border: solid 2px #8228ff;
+  border-radius: 1vw;
+  padding: 1vw 1.5vw;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
   z-index: 0;
 }
+
 .job-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
 .row:hover > .col-md-6:not(:hover) .job-card {
-    filter: blur(3px);
+  filter: blur(3px);
 }
 
-
-
-.card-location, .card-category {
-    color: #555;
+.card-location,
+.card-category {
+  color: #555;
 }
 
-.card-text{
-	height: 80px;
+.card-text {
+  height: 80px;
 }
 
 @media (max-width: 767.98px) {
-    .home-main .row {
-        flex-direction: column;
-    }
+  .home-main .row {
+    flex-direction: column;
+  }
 
-    .carousel {
-        margin-top: 2rem;
-        max-width: 80%;
-        height: 100%;
-    }
-    .carousel-inner img{
-        height: auto;
-    }
+  .carousel {
+    margin-top: 2rem;
+    max-width: 80%;
+    height: 100%;
+  }
+  .carousel-inner img {
+    height: auto;
+  }
 
-    .carousel-item img {
-        height: 100%;
-    }
+  .carousel-item img {
+    height: 100%;
+  }
 
-    .introduction {
-        font-size: 16px;
-    }
-}
-@media (max-width: 1400px) { /*media query per incolonnare i box dei servizi su righe multiple*/
-    .container {
-      font-size: 12px;
-    }
+  .introduction {
+    font-size: 16px;
+  }
 }
 
-.selected-job{
-	background-color: #c5c1cc;
-	cursor: default;
+@media (max-width: 1400px) {
+  .container {
+    font-size: 12px;
+  }
 }
 
-.lock-icon{
-	display: flex;
-	align-items: center;
-	padding-right: 10px;
-	/*padding-bottom: 3px;*/
+.selected-job {
+  background-color: #c5c1cc;
+  cursor: default;
 }
 
-.closed-header{
-	display: flex;
-	align-items: center; 
-	padding-bottom: 12px;
+.lock-icon {
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
 }
 
+.closed-header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+}

@@ -18,13 +18,12 @@
 </head>
 
 
-<body>
-	<jsp:include page="${headerPath}" />
+	<body>
+		<jsp:include page="${headerPath}" />
 
-	<jsp:include page="${content}" />
+		<jsp:include page="${content}" />
 
-	<%@ include file="footer.jsp"%>
-</body>
-
+		<%@ include file="footer.jsp"%>
+	</body>
 
 </html>

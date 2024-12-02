@@ -1,106 +1,110 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Centra il contenuto verticalmente e orizzontalmente */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /*background-color: #d3d3d3;*/
-    flex-direction: column;
-    background-image: linear-gradient(130deg, rgba(255, 255, 255, 0.8), rgba(230, 230, 230, 0.8), rgba(165, 48, 255, 0.8)), url("../assets/bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    top: 9.5vh;
-    background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: linear-gradient(
+      130deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(230, 230, 230, 0.8),
+      rgba(165, 48, 255, 0.8)
+    ),
+    url("../assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  top: 9.5vh;
+  background-attachment: fixed;
 }
 
 .risultato-container {
-    background-color: #d8aef7;
-    width: 45%;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    margin-bottom: 5vh; /* Spazio sotto il form per il bottone indietro */
-    margin-top: 15vh;
-    height: 55vh;
+  background-color: #d8aef7;
+  width: 45%;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-bottom: 5vh;
+  margin-top: 15vh;
+  height: 55vh;
 }
 
-.congrats{
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+.congrats {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }
 
 .contenuto-risultato {
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    font-size: 10vh;
-    height: 10vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: 10vh;
+  height: 10vh;
 }
 
 .home-link {
-    font-size: 20px;
-    color: #6b38d1;
-    display: inline-block;
-    margin-top: 7vh;
-    transition: background-color 0.3s, transform 0.3s ease-in-out; /* Transizioni fluide per il colore e la trasformazione */
-    font-weight: bold;
+  font-size: 20px;
+  color: #6b38d1;
+  display: inline-block;
+  margin-top: 7vh;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  font-weight: bold;
 }
 
 .home-link:hover {
-    transform: translateX(-5px);
-    color: #7b1fff;
-    text-decoration: none;
+  transform: translateX(-5px);
+  color: #7b1fff;
+  text-decoration: none;
 }
 
-/* Progress bar */
 .progress {
-    width: 100%;
-    height: 30px;  /* Altezza della progress bar */
-    background-color: #e1d1f3; /* Colore di sfondo più chiaro */
-    border-radius: 15px; /* Bordo arrotondato */
-    margin-bottom: 30px;  /* Spazio sotto la barra di progresso */
+  width: 100%;
+  height: 30px;
+  background-color: #e1d1f3;
+  border-radius: 15px;
+  margin-bottom: 30px;
 }
 
 .progress-bar {
-    height: 100%;
-    border-radius: 15px;
-    width: 0%; /* Impostazione iniziale della larghezza */
-    transition: width 1s ease-in-out;  /* Animazione della larghezza con transizione fluida */
+  height: 100%;
+  border-radius: 15px;
+  width: 0%;
+  transition: width 1s ease-in-out;
 
-    position: relative;
-    overflow: hidden;
-    transition: width 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  transition: width 0.2s ease-in-out;
 
-    background: radial-gradient(circle, #312e81, #7e22ce);
-    animation: glow-pulse 2s infinite;
-    pointer-events: none;
-    z-index: 1;
+  background: radial-gradient(circle, #312e81, #7e22ce);
+  animation: glow-pulse 2s infinite;
+  pointer-events: none;
+  z-index: 1;
 
-    background-size: 300% 100%;
-    animation: gradient-move 5s linear infinite;
-    pointer-events: none;
+  background-size: 300% 100%;
+  animation: gradient-move 5s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes glow-pulse {
-    0%, 100% {
-        opacity: 0.8;
-    }
-    50% {
-        opacity: 0.5;
-    }
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 @keyframes gradient-move {
-    from {
-        background-position: 0% 50%;
-    }
-    to {
-        background-position: 150% 50%;
-    }
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 150% 50%;
+  }
 }
