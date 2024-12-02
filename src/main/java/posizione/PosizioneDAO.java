@@ -322,4 +322,25 @@ public class PosizioneDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getTotaleDoamndeFromPosizione(int posizioneId) {
+		try {
+			DatabaseConnection database = new DatabaseConnection();
+			Connection connection = database.getConnection(); 
+			String query = "SELECT count(*) as tot from ListaDomande where FK_Posizione=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
+			preparedStatement.setInt(1, posizioneId);;
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			resultSet.next();
+			
+			int totale=resultSet.getInt("tot");
+			connection.close();
+			return totale;
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
