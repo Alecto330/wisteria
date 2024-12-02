@@ -245,10 +245,6 @@ input[type="search"] {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.row:hover > .col-md-6:not(:hover) .job-card {
-  filter: blur(2px);
-}
-
 .card-location,
 .card-category {
   color: #555;

@@ -46,7 +46,7 @@
 	            <input type="password" id="password" name="password" value="${password}"
 	                placeholder="Inserisci la tua password" required>
 	
-	            <button type="submit" style="font-weight: 700;">ACCEDI</button>
+	            <button type="submit" style="font-weight: 700;">Accedi</button>
 	            <a href="${pageContext.request.contextPath}/register"
 	            class="register-link">Registrati</a>
 	            <br>

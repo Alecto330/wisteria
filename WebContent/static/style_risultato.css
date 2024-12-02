@@ -85,7 +85,7 @@ body {
   animation: glow-pulse 2s infinite;
   pointer-events: none;
   z-index: 1;
-
+  
   background-size: 300% 100%;
   animation: gradient-move 5s linear infinite;
   pointer-events: none;
