@@ -42,7 +42,7 @@
 					<li><a href="${pageContext.request.contextPath}/servizi" class="services"><i
 							class="fas fa-tools"></i> Services</a></li>
 					<c:if test="${not empty user}">
-						<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-person" style="color: red;"></i> Logout</a></li>
+						<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
 					</c:if>
 				</ul>
 			</nav>
