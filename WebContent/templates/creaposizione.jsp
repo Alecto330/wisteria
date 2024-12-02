@@ -31,7 +31,7 @@
 			Crea una posizione
 			</h2>
 			<form action="${pageContext.request.contextPath}/creaposizione"
-				method="POST">
+				method="POST" onsubmit="validate(event)">
 				<div class="form-group">
 					<label class="form-label" for="titolo-input">Titolo:</label> <input
 						name="titolo" type="text" class="form-input" id="titolo-input"
@@ -316,7 +316,7 @@
         const questions=params.getAll('question');
         
         const baseUrl = '${pageContext.request.contextPath}/listadomande';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+questions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl +'?titolo=' + encodeURIComponent(titolo) +'&descrizione=' + encodeURIComponent(descrizione) +'&provincia=' + encodeURIComponent(provincia) + '&settore=' + encodeURIComponent(settore) +'&'+questions.map(q => 'question=' + encodeURIComponent(q)).join('&');
         
         location.href = urlWithParams;
     }
@@ -389,6 +389,18 @@
             console.log(urlWithParams);
             
             location.href = urlWithParams;
+        }
+
+        function validate(event) {
+            const domandaList = document.getElementById("selected-questions-list");
+            const items = domandaList.querySelectorAll("li");
+
+            if (items.length==0) {
+                alert("Devi selezionare almeno una domanda.");
+                event.preventDefault(); 
+                return false;
+            }
+            return true; 
         }
 
     </script>
