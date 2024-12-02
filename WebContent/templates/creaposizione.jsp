@@ -316,7 +316,7 @@
         const questions=params.getAll('question');
         
         const baseUrl = '${pageContext.request.contextPath}/listadomande';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+questions.map(q => 'question=' + q).join('&');
+        const urlWithParams = baseUrl +'?titolo=' + encodeURIComponent(titolo) +'&descrizione=' + encodeURIComponent(descrizione) +'&provincia=' + encodeURIComponent(provincia) + '&settore=' + encodeURIComponent(settore) +'&'+questions.map(q => 'question=' + encodeURIComponent(q)).join('&');
         
         location.href = urlWithParams;
     }
