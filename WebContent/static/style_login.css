@@ -44,11 +44,11 @@ body {
 
 /* Titolo di benvenuto */
 .login-container h2 {
-    font-size: 1.7em;
+    font-size: 1.9em;
     margin-top: 1vw;
     margin-bottom: 3vw;
-    color: #333;
-    font-weight: 700;
+    color: #6e41e2;
+    font-weight: bolder;
 }
 
 /* Stile per le etichette */
@@ -82,7 +82,7 @@ body {
     margin-bottom: 1vw;
     width: 100%;
     padding: 12px;
-    background-color: #8228ff;
+    background-color: #6e41e2;
     color: white;
     font-size: 1em;
     border: none;
@@ -116,7 +116,7 @@ body {
 }
 
 .btn-back:hover {
-    color: #7b1fff;
+    color: #4c2bb0;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Ombra per il testo */
     transform: translateX(-5px);
 }
@@ -132,7 +132,7 @@ body {
 }
 .register-link {
     font-size: 1em;
-    color: #8228ff;
+    color: #6e41e2;
     text-decoration: none;
     display: inline-block;
     transition: all 0.3s ease;

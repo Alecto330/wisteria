@@ -1,9 +1,9 @@
 .custom-navbar {
-    background-color: #e6e6e6 !important;
-    height: 9.5vh; /* Altezza fissa per la navbar */
+    background-color: #e6e6e6;
+    height: 9.5vh;
     width: 100%;
     vertical-align: middle;
-    border-bottom: solid 2px #8328FF;
+    border: 0;
     display: flex;
     justify-content: space-between;
     z-index: 1000;
@@ -30,7 +30,7 @@
                 linear-gradient(336deg, #8228ff, #c398ff 70.71%);
     height: 5px;
     position: fixed;
-    top: 8.9vh;
+    top: 9vh;
     left: 0;
     width: 0%;
     transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
@@ -279,10 +279,3 @@
 
 
 
-.logo-img {
-    transition: transform 0.3s ease-in-out; /* Definisce una transizione fluida */
-}
-
-.logo-container:hover .logo-img {
-    transform: scale(1.1); /* Effetto ingrandimento */
-}

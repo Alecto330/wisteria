@@ -86,18 +86,15 @@
 						style="display: none;">Le password non corrispondono.</small>
 				</div>
 			</div>
-			<button type="submit" class="btn btn-primary btn-block"
-			        id="submitBtn" 
-			        style="transition: transform 0.2s ease-in-out;"
-			        onmouseover="this.style.transform='scale(1.05)'" 
-			        onmouseout="this.style.transform='scale(1)'">
+			<button type="submit" class="btn btn-primary signup-button"
+			        id="submitBtn">
 			    Registrati
 			</button>
 
 		</form>
 		<div class="finepagina">
 			<a class="back-button" href="${pageContext.request.contextPath}/home">
-				<i class="fas fa-arrow-left"></i>
+				<i class="fas fa-home"></i>
 			</a>
 			<a href="${pageContext.request.contextPath}/login" class="register-link">
 				Hai già un account? Accedi
