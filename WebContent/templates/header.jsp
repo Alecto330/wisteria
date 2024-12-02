@@ -42,7 +42,7 @@
 					<li><a onclick="scrollToBottom() " class="contact"><i
 							class="fas fa-envelope"></i> Contact</a></li>
 					<c:if test="${not empty user}">
-						<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-person" style="color: red;"></i> Logout</a></li>
+						<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-right-from-bracket"></i> Logout</a></li>
 					</c:if>
 				</ul>
 			</nav>
