@@ -93,11 +93,10 @@ body {
     margin-top: 8vh;
     color: rgb(123, 31, 255);
     text-shadow: 
-        0 0 2px #7c1fff,
-        0 0 2px #ffffff99,
+        0 0 1px #7c1fff,
+        0 0 1px #ffffff99,
         0 0 1px rgba(255, 255, 255, 0.5),
-        0 0 2px rgba(0, 0, 0, 0.4);
-    animation: glowing infinite;
+        0 0 1px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
