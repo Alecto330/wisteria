@@ -146,35 +146,35 @@
 		<div class="row mt-4">
 			<c:forEach var="job" items="${jobOffers}">
 				<div class="col-md-6 mb-4">
-					<c:choose>
-						<c:when test="${job.utenteScelto != null}">
-							<div class="card job-card selected-job">
-								<div class="card-body">
-									<div class="closed-header">
-										<i class="fas fa-lock lock-icon" title="Posizione Chiusa"></i>
-										<h5 class="card-title" style="margin: 0 8px 0 0;">${job.titolo}</h5>
-									</div>
-						</c:when>
-						<c:otherwise>
-							<div class="card job-card"
-								onclick="location.href='offerta?id=${job.id}';">
-								<div class="card-body">
-									<h5 class="card-title">${job.titolo}</h5>
-						</c:otherwise>
-					</c:choose>
+				<c:choose>
+					<c:when test="${job.utenteScelto != null}">
+					<div class="card job-card animate-on-scroll selected-job">
+						<div class="card-body">
+						<div class="closed-header">
+							<i class="fas fa-lock lock-icon" title="Posizione Chiusa"></i>
+							<h5 class="card-title" style="margin: 0 8px 0 0;">${job.titolo}</h5>
+						</div>
+					</c:when>
+					<c:otherwise>
+					<div class="card job-card animate-on-scroll"
+						onclick="location.href='offerta?id=${job.id}';">
+						<div class="card-body">
+						<h5 class="card-title">${job.titolo}</h5>
+					</c:otherwise>
+				</c:choose>
 
-					<p class="card-text">${job.descrizione}</p>
-					<p class="card-location">
-						<i class="fas fa-map-marker-alt"></i> ${job.provincia} -
-						${job.regione}
-					</p>
-					<p class="card-category">
-						<i class="fas fa-briefcase"></i> ${job.settore}
-					</p>
+				<p class="card-text">${job.descrizione}</p>
+				<p class="card-location">
+					<i class="fas fa-map-marker-alt"></i> ${job.provincia} -
+					${job.regione}
+				</p>
+				<p class="card-category">
+					<i class="fas fa-briefcase"></i> ${job.settore}
+				</p>
 				</div>
+			</div>
 		</div>
-	</div>
-	</c:forEach>
+			</c:forEach>
 	</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -262,5 +262,30 @@
             });
         });
     </script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const jobCards = document.querySelectorAll(".job-card");
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+					entry.target.classList.add("visible");
+					} else {
+					entry.target.classList.remove("visible");
+					}
+				});
+				},
+				{ threshold: 0.1 } // Attiva l'animazione quando il 10% è visibile
+			);
+
+			jobCards.forEach((card) => {
+				card.classList.add("animate-on-scroll"); // Aggiunge lo stato iniziale
+				observer.observe(card); // Osserva ogni card
+			});
+			});
+
+	</script>
 </body>
 </html>

@@ -226,6 +226,37 @@ input[type="search"] {
   outline: none;
 }
 
+/* Stato iniziale */
+.animate-on-scroll {
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 1.2s ease-out, filter 1.2s ease-out;
+  transition-delay: 0.5s; /* Ritardo fisso per tutte le card */
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+
+
+/* Animazione di caricamento iniziale */
+.job-card.initial-load {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(10px);
+  transition: opacity 1.6s ease-out, transform 1.6s ease-out, filter 1.6s ease-out;
+}
+
+/* Stato visibile al caricamento iniziale */
+.job-card.initial-load.visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+
 .job-card {
   margin-bottom: 1vw;
   background-color: #d7bbff;
