@@ -163,7 +163,7 @@
 						</c:otherwise>
 					</c:choose>
 
-					<p class="card-text">${job.descrizione}</p>
+					<pre class="card-text">${job.descrizione}</pre>
 					<p class="card-location">
 						<i class="fas fa-map-marker-alt"></i> ${job.provincia} -
 						${job.regione}
