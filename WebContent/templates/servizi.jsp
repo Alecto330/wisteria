@@ -71,5 +71,122 @@
             <a href="mailto:info@wisteria.com" class="btn btn-back">Contattaci</a>
         </div>
     </section>
+
+     <section class="recensioni-section">
+        <h2>Recensioni dei Nostri Clienti</h2>
+        <div class="carousel">
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"Wisteria Services ha fatto la differenza per il nostro business. La loro consulenza strategica ci ha permesso di ottimizzare i nostri processi e migliorare l'efficienza operativa." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Giulia Tosi, CEO di Innovatech</span>
+            </div>
+
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"Con Wisteria Services, abbiamo finalmente trovato un partner tecnologico su cui possiamo fare affidamento. Le soluzioni IT personalizzate che ci hanno fornito sono state cruciali per il nostro successo." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Marco Ferri, CTO di WebSolutions</span>
+            </div>
+
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"La loro expertise nel Cloud ci ha permesso di scalare il nostro business senza intoppi. Il team di Wisteria Services è davvero un punto di riferimento per l'innovazione." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Francesca Rossi, Direttore IT di FutureCom</span>
+            </div>
+
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"Abbiamo collaborato con Wisteria Services per l'implementazione di soluzioni software avanzate. La loro capacità di comprendere le nostre necessità aziendali ha portato a risultati straordinari." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Paolo Neri, Fondatore di NextGen Software</span>
+            </div>
+
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"Grazie a Wisteria Services, la nostra azienda è riuscita a ridurre i costi operativi e a migliorare l'affidabilità dei nostri sistemi IT. Consiglio vivamente i loro servizi a chi cerca soluzioni innovative e su misura." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Laura Conti, Responsabile Operations di GreenTech</span>
+            </div>
+
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"La partnership con Wisteria Services ci ha permesso di evolvere digitalmente e restare competitivi sul mercato. Un team di professionisti preparati e attenti alle esigenze del cliente." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Alessio Moretti, Direttore Commerciale di Tech Innovators</span>
+            </div>
+
+            <div class="carousel-item">
+                <i class="fas fa-quote-left icon"></i>
+                <p class="quote">"Il team di Wisteria Services ha reso l'implementazione delle soluzioni IT per la nostra azienda facile e senza stress. Hanno sempre risposto alle nostre esigenze con prontezza e precisione." </p>
+                <i class="fas fa-quote-right icon"></i>
+                <span class="author">- Luigi Carli, Chief Marketing Officer di Global Corp</span>
+            </div>
+        </div>
+        <button class="prev-btn">&lt;</button>
+        <button class="next-btn">&gt;</button>
+    </section>
+
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentIndex = 0;
+    const itemWidth = 800; // Larghezza di ogni elemento
+    const gap = 20; // Spazio tra gli elementi
+    const totalItemWidth = itemWidth + gap; // Larghezza totale di ogni item con il gap
+
+    console.log("Carosello e pulsanti trovati:", carousel, prevBtn, nextBtn, items);
+    console.log("Indice corrente iniziale:", currentIndex); // Log iniziale
+
+    function updateCarousel() {
+        console.log("Aggiornamento carosello...");
+        console.log("Indice corrente durante update:", currentIndex); // Log prima dell'aggiornamento
+
+        const offset = -currentIndex * totalItemWidth; // Calcola l'offset in base alla larghezza totale dell'item
+        console.log("Spostamento del carosello a: " + offset + "px");
+
+        carousel.style.transform = 'translateX(' + offset + 'px)'; // Sposta il carosello
+    }
+
+    prevBtn.addEventListener('click', () => {
+        console.log("Pulsante precedente cliccato.");
+        // Ciclo tra gli item: se è il primo, torna all'ultimo
+        currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
+        console.log("Indice corrente (precedente):", currentIndex);
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        console.log("Pulsante successivo cliccato.");
+        // Ciclo tra gli item: se è l'ultimo, torna al primo
+        currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
+        console.log("Indice corrente (successivo):", currentIndex);
+        updateCarousel();
+    });
+
+    // Inizializza il carosello
+    updateCarousel();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
 </body>
 </html>

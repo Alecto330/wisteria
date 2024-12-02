@@ -68,7 +68,7 @@
                                 style="cursor: pointer">
                                 <span class="podium-rank">${loopStatus.index + 1}°</span>
                                 <span class="podium-name">${candidate.utente}</span>
-                                <span class="podium-score">${candidate.punteggio}/10</span>
+                                <span class="podium-score">${candidate.punteggio}/${tot}</span>
                             </div>
                         </c:if>
                     </c:forEach>
@@ -88,7 +88,7 @@
                                     </span>
                                     <span class="candidate-name">${candidate.utente}</span>
                                 </div>
-                                <span class="candidate-score">${candidate.punteggio}/10</span>
+                                <span class="candidate-score">${candidate.punteggio}/${tot}</span>
                             </div>
                         </c:if>
                     </c:forEach>

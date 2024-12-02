@@ -81,7 +81,7 @@ body {
 }
 
 .introduction-title {
-    width: 440px;
+    width: 100%;
     font-weight: bolder;
     font-size: 3vw;
     text-align: left;
@@ -258,10 +258,6 @@ input[type="search"] {
 
     .carousel-item img {
         height: 100%;
-    }
-
-    .introduction-title {
-        font-size: 32px;
     }
 
     .introduction {
