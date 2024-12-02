@@ -20,9 +20,14 @@
     color:white;
     /*box-shadow: 0 0 2px rgb(130, 40, 255), 0 0 2px rgba(131, 40, 255, 0.6);*/
     transition: background-color 0.3s, transform 0.3s ease-in-out;
+    font-weight: 700 !important;
+    
 }
 .acc .btn-primary{
     width: auto;
+    font-size: 0.7vw;
+    font-weight: 700 !important;
+    padding: 0.5vw 1vw;
 }
 .scroll-line {
     background: linear-gradient(217deg, #8228ff, #c398ff 70.71%),

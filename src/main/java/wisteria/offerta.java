@@ -48,6 +48,9 @@ public class offerta extends HttpServlet{
 			}else {
 				header=user.getHeader();
 				offerta=user.getOfferta();
+
+				int tot=dao.getTotaleDoamndeFromPosizione(Integer.parseInt(id));
+				request.setAttribute("tot", tot);
 				request.setAttribute("candidates", user.getCandidatiFromPosizione(posizione.getId()));
 			}
 
