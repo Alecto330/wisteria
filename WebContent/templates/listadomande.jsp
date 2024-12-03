@@ -128,7 +128,7 @@
          });
          
         const baseUrl = "${pageContext.request.contextPath}/creadomanda";
-        const urlWithParams = baseUrl+"?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+"&settore="+settore+"&"+selectedQuestions.map(q => "question=" + q).join("&");
+        const urlWithParams = baseUrl+"?titolo="+titolo+"&descrizione="+encodeURIComponent(descrizione)+"&provincia="+provincia+"&settore="+settore+"&"+selectedQuestions.map(q => "question=" + q).join("&");
         
         console.log(urlWithParams);
          
@@ -246,7 +246,7 @@
             });
             
             const baseUrl = "${pageContext.request.contextPath}/listadomande";
-            const urlWithParams = baseUrl+"?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+"&settore="+settore+"&filter="+searchQuery+"&"+selectedQuestions.map(q => "question=" + q).join("&");
+            const urlWithParams = baseUrl+"?titolo="+encodeURIComponent(titolo)+"&descrizione="+encodeURIComponent(descrizione)+"&provincia="+encodeURIComponent(provincia)+"&settore="+encodeURIComponent(settore)+"&filter="+searchQuery+"&"+selectedQuestions.map(q => "question=" + q).join("&");
             console.log(urlWithParams);
 
             location.href = urlWithParams;

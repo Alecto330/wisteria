@@ -1,6 +1,9 @@
 package wisteria;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -62,7 +65,7 @@ public class creadomanda extends HttpServlet{
 		}
 		builder.append("&question="+newDomanda.getId());
 
-		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+"&settore="+settore+builder.toString());
+		response.sendRedirect("creaposizione?titolo="+titolo+"&descrizione="+URLEncoder.encode(descrizione)+"&provincia="+provincia+"&settore="+settore+builder.toString());
 	}
 
 }
