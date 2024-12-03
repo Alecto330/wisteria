@@ -88,7 +88,7 @@ public class test extends HttpServlet {
 
 		dao.insertSiCandida(Integer.parseInt(idPosizione), user.getUsername(), result);
 
-		response.sendRedirect("risultato?risultato="+result+"&ndomande="+parameterMap.values().size());
+		response.sendRedirect("risultato?risultato="+result+"&ndomande="+ (parameterMap.values().size() - 1));
 
 	}
 
