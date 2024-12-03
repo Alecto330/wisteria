@@ -161,24 +161,33 @@ body {
 }
 
 .carousel-indicators li.active {
-  background-color: #d6b5ff;
+  background-color: #8228ff;
   transform: scale(1.2);
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #8228ffab;
+  background-color: #8228ff;
   border-radius: 50%;
   padding: 20px;
   background-size: 15px;
 }
 
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: #312e81;
+}
+.carousel-control-prev-icon:active,
+.carousel-control-next-icon:active {
+  border: none;
+}
 .carousel-control-prev,
 .carousel-control-next {
   width: 10%;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 .carousel-control-prev-icon {
   width: 1px;
 }
@@ -226,12 +235,21 @@ input[type="search"] {
   outline: none;
 }
 
-/* Stato iniziale */
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.animate-on-scroll.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
 .animate-on-scroll {
   opacity: 0;
   filter: blur(10px);
-  transition: opacity 1.2s ease-out, filter 1.2s ease-out;
-  transition-delay: 0.5s; /* Ritardo fisso per tutte le card */
+  transition: opacity 0.6s ease-out, filter 0.6s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -239,23 +257,18 @@ input[type="search"] {
   filter: blur(0px);
 }
 
-
-
-/* Animazione di caricamento iniziale */
 .job-card.initial-load {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateX(20px);
   filter: blur(10px);
-  transition: opacity 1.6s ease-out, transform 1.6s ease-out, filter 1.6s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 1.6s ease-out;
 }
 
-/* Stato visibile al caricamento iniziale */
 .job-card.initial-load.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
   filter: blur(0px);
 }
-
 
 .job-card {
   margin-bottom: 1vw;

@@ -20,7 +20,7 @@
 
 
    <div class="offerta-container">
-        <div class="offer-card container-custom mt-5">
+        <div class="offer-card container-custom mt-5 animate-on-scroll loader">
             <div class="row align-items-start">
                 <div class="col-sm-8">
                     <h1>${posizione.titolo}</h1>
@@ -45,5 +45,48 @@
 	</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const elements = document.querySelectorAll(".animate-on-scroll");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible"); // Applica l'animazione
+								observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+							}
+						});
+					},
+					{ threshold: 0.0 } // Inizia l'animazione quando il 10% dell'elemento è visibile
+				);
+
+				elements.forEach((element) => observer.observe(element));
+			});
+
+	</script>
+	<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const loader = document.querySelectorAll(".loader");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+						entry.target.classList.add("visible");
+						} else {
+						entry.target.classList.remove("visible");
+						}
+					});
+					},
+					{ threshold: 0.1 } // Attiva l'animazione quando il 40% è visibile
+				);
+
+				loader.forEach((card) => {
+					card.classList.add("animate-on-scroll"); // Aggiunge lo stato iniziale
+					observer.observe(card); // Osserva ogni card
+				});
+			});
+	</script>
 </body>
 </html>

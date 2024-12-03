@@ -33,7 +33,7 @@
 	    <div class="alert-box" id="alertBox"></div>
 	
 	    <%@ include file="header.jsp"%>
-	    <div class="login-container">
+	    <div class="login-container animate-on-scroll">
 	        <h2>Bentornato!</h2>
 	        <form id="loginForm" action="${pageContext.request.contextPath}/login"
 	            method="POST">
@@ -95,7 +95,26 @@
             }, { once: true });
         }
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll(".animate-on-scroll");
 
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible"); // Applica l'animazione
+                            observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+                        }
+                    });
+                },
+                { threshold: 0.0 }
+            );
+
+            elements.forEach((element) => observer.observe(element));
+        });
+
+    </script>
     <%@ include file="footer.jsp"%>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>

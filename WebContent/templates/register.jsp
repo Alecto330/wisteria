@@ -27,7 +27,7 @@
 				<%= errorMessage %>
 			</div>
 		<% } %>
-	<div class="login-container">
+	<div class="login-container animate-on-scroll">
 		<h2>Registrati!</h2>
 
 		<form id="signupForm"
@@ -130,6 +130,25 @@
         });       
         
     </script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const elements = document.querySelectorAll(".animate-on-scroll");
 
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("visible"); // Applica l'animazione
+							observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+						}
+					});
+				},
+				{ threshold: 0.0 } // Inizia l'animazione quando il 10% dell'elemento è visibile
+			);
+
+			elements.forEach((element) => observer.observe(element));
+		});
+
+	</script>
 </body>
 </html>

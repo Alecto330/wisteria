@@ -16,6 +16,41 @@ body {
   margin: 0;
 }
 
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.animate-on-scroll.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.4s ease-out, filter 0.4s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.loader.initial-load {
+  opacity: 0;
+  transform: translateX(20px);
+  filter: blur(10px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+.loader.initial-load.visible {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0px);
+}
+
 .intro-section {
   margin-top: 9.5vh;
   display: flex;
@@ -28,6 +63,8 @@ body {
 
 .text-content {
   margin-left: 200px;
+  margin-top: 150px;
+  margin-bottom: 150px;
 }
 
 .text-content h4 {
@@ -58,7 +95,11 @@ body {
   padding: 50px;
   text-align: center;
 }
-
+.margin{
+  margin-top: 150px;
+  margin-bottom: 150px;
+  border: none;
+}
 .services-section h2 {
   font-size: 35px;
   margin-bottom: 30px;
@@ -111,10 +152,13 @@ body {
   font-size: 18px;
   margin-bottom: 30px;
 }
-
+.cta-content{
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
 .btn-back {
   width: auto;
-  margin-top: 10vh;
+  margin-top: 3vh;
   padding: 15px 30px;
   font-size: 20px;
   font-weight: bold;
@@ -147,7 +191,7 @@ body {
 
 .recensioni-section h2 {
   font-size: 35px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   color: #7b1fff;
 }
 
@@ -220,7 +264,7 @@ body {
 
 .prev-btn:hover,
 .next-btn:hover {
-  background-color: #c195ff;
+  background-color: #312e81;
 }
 
 .prev-btn {

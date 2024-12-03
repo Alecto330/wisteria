@@ -30,7 +30,7 @@
 	<body>
 
 		<section class="intro-section">
-			<div class="text-content">
+			<div class="text-content animate-on-scroll loader">
 				<h4>CHI SIAMO</h4>
 				<h1>
 					Connettiamo il presente,<br> progettiamo il futuro.
@@ -40,7 +40,7 @@
 			</div>
 			<div class="image-content">
 				<img src="${pageContext.request.contextPath}/assets/persona.png"
-					class="persona">
+					class="persona animate-on-scroll loader">
 			</div>
 		</section>
 
@@ -48,10 +48,10 @@
 			<div class="p-storia">
 				<div class="logo-wisteria">
 					<img src="${pageContext.request.contextPath}/assets/WISTERIA.png"
-						class="wisteria-png">
+						class="wisteria-png animate-on-scroll loader">
 				</div>
 				<div class="storia-container">
-					<div class="storia">
+					<div class="storia animate-on-scroll loader">
 						Wisteria nasce con una <span class="highlight">visione chiara</span>: utilizzare la <span class="highlight">tecnologia</span> per migliorare la vita 
 						quotidiana delle persone e delle aziende. Fin dall'inizio, Wisteria ha investito nell'<span class="highlight">innovazione continua</span>, 
 						creando soluzioni digitali capaci di adattarsi alle esigenze di un mercato in costante evoluzione.<br> 
@@ -63,13 +63,11 @@
 						tecnologico</span> diventa accessibile oggi, aprendo nuove strade verso il <span class="highlight">successo</span> nel mondo digitale.
 					</div>
 					<img src="${pageContext.request.contextPath}/assets/strettamano.png"
-							class="persona2-png" alt="persona2">
+							class="persona2-png animate-on-scroll loader" alt="persona2">
 					<div class="number-container">
-						<div class="number-inner">
-							<div class="number-text">oltre</div>
-							<div class="number-big">2300</div>
-							<div class="number-text">dipendenti</div>
-						</div>
+							<div class="number-text animate-on-scroll loader">oltre</div>
+							<div class="number-big animate-on-scroll loader">2300</div>
+							<div class="number-text animate-on-scroll loader">dipendenti</div>
 					</div>
 				</div>
 			</div>
@@ -79,9 +77,9 @@
 			<div class="image-content2">
 				<img
 					src="${pageContext.request.contextPath}/assets/business-woman.png"
-					class="persona">
+					class="persona animate-on-scroll loader">
 			</div>
-			<div class="text-content2">
+			<div class="text-content2 animate-on-scroll loader">
 				<h4>SUPPORTO</h4>
 				<h1>
 					Sempre connessi, sempre presenti.<br> Soluzioni in tempo reale,
@@ -98,20 +96,63 @@
 			<div class="italia-container2">
 				<div class="number-container2">
 					<div class="number-inner2">
-						<div class="number-big2">Puoi trovarci in tutta Italia!</div>
+						<div class="number-big2 animate-on-scroll loader">Puoi trovarci in tutta Italia!</div>
 					</div>
 				</div>
 				<div class="image-italia">
 					<img src="${pageContext.request.contextPath}/assets/italia.png"
-						class="italia">
+						class="italia animate-on-scroll loader">
 				</div>
 			</div>
 			<div class="btn-container">
-				<a href="/wisteria/home" class="btn btn-back" href="javascript:history.back();">
+				<a href="/wisteria/home" class="btn btn-back animate-on-scroll loader" href="javascript:history.back();">
 					Torna alla Home
 				</a>
 			</div>
 		</section>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const elements = document.querySelectorAll(".animate-on-scroll");
 
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible"); // Applica l'animazione
+								observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+							}
+						});
+					},
+					{ threshold: 0.0 } // Inizia l'animazione quando il 10% dell'elemento è visibile
+				);
+
+				elements.forEach((element) => observer.observe(element));
+			});
+
+		</script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const loader = document.querySelectorAll(".loader");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+						entry.target.classList.add("visible");
+						} else {
+						entry.target.classList.remove("visible");
+						}
+					});
+					},
+					{ threshold: 0.1 } // Attiva l'animazione quando il 40% è visibile
+				);
+
+				loader.forEach((card) => {
+					card.classList.add("animate-on-scroll"); // Aggiunge lo stato iniziale
+					observer.observe(card); // Osserva ogni card
+				});
+				});
+
+		</script>
 	</body>
 </html>

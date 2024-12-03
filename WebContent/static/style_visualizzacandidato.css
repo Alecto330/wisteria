@@ -154,7 +154,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 0;
   max-width: 90%;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -175,7 +176,7 @@ body {
   background-color: rgba(110, 65, 226, 0.1);
   border-radius: 15px;
   padding: 1.5rem;
-  height: 82.5vh;
+  height: 771px;
   overflow-y: auto;
 }
 
@@ -201,9 +202,12 @@ body {
   line-height: 1.4;
   font-size: 0.95rem;
 }
+.back-button-arrow{
+  width: 900;
+  height: 40px;
 
+}
 .back-button {
-  position: absolute;
   left: 25px;
   bottom: 9px;
   background: none;
