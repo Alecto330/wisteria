@@ -178,6 +178,7 @@ body {
   padding: 1.5rem;
   height: 771px;
   overflow-y: auto;
+  margin-bottom: 2rem;
 }
 
 .experience-list {
