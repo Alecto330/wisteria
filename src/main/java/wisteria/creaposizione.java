@@ -81,6 +81,7 @@ public class creaposizione extends HttpServlet {
         String[] domande = request.getParameterValues("domanda");
 
         Posizione posizione = new Posizione(0, titolo, descrizione, settore, provincia, "", "");
+        System.out.println(descrizione);
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");

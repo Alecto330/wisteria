@@ -31,9 +31,9 @@
 </head>
 
 <body>
-	<div class="home-main container mt-5">
-		<div class="row align-items-end">
-			<div class="col-lg-8 col-md-7 col-sm-12">
+	<div class="home-main container mt-5 animate-on-scroll">
+		<div class="row align-items-end animate-on-scroll">
+			<div class="col-lg-8 col-md-7 col-sm-12 animate-on-scroll">
 				<p class="introduction-title">We want you!</p>
 				<p class="introduction">
 
@@ -61,7 +61,7 @@
 				</p>
 			</div>
 			<div
-				class="col-lg-4 col-md-5 col-sm-12 d-flex flex-column justify-content-end align-items-center">
+				class="col-lg-4 col-md-5 col-sm-12 d-flex flex-column justify-content-end align-items-center animate-on-scroll">
 				<div id="aboutUsCarousel" class="carousel slide"
 					data-ride="carousel" data-interval="10000">
 					<ol class="carousel-indicators">
@@ -100,7 +100,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container animate-on-scroll">
 
 		<div class="row mt-4">
 			<div class="col-md-12">
@@ -163,20 +163,21 @@
 					</c:otherwise>
 				</c:choose>
 
-				<p class="card-text">${job.descrizione}</p>
-				<p class="card-location">
-					<i class="fas fa-map-marker-alt"></i> ${job.provincia} -
-					${job.regione}
-				</p>
-				<p class="card-category">
-					<i class="fas fa-briefcase"></i> ${job.settore}
-				</p>
+					<pre class="card-text">${job.descrizione}</pre>
+					<p class="card-location">
+						<i class="fas fa-map-marker-alt"></i> ${job.provincia} -
+						${job.regione}
+					</p>
+					<p class="card-category">
+						<i class="fas fa-briefcase"></i> ${job.settore}
+					</p>
 				</div>
 			</div>
 		</div>
 			</c:forEach>
 	</div>
 	</div>
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
@@ -277,7 +278,7 @@
 					}
 				});
 				},
-				{ threshold: 0.1 } // Attiva l'animazione quando il 10% è visibile
+				{ threshold: 0.4 } // Attiva l'animazione quando il 40% è visibile
 			);
 
 			jobCards.forEach((card) => {
@@ -285,6 +286,27 @@
 				observer.observe(card); // Osserva ogni card
 			});
 			});
+
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const elements = document.querySelectorAll(".animate-on-scroll");
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("visible"); // Applica l'animazione
+							observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+						}
+					});
+				},
+				{ threshold: 0.0 } // Inizia l'animazione quando il 10% dell'elemento è visibile
+			);
+
+			elements.forEach((element) => observer.observe(element));
+		});
 
 	</script>
 </body>
