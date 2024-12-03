@@ -1,199 +1,205 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/style.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/style_creaposizione.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/style_nav.css">
-<link rel="icon"
-	href="${pageContext.request.contextPath}/assets/favicon.ico"
-	type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/static/style.css">
+    <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/static/style_creaposizione.css">
+    <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/static/style_nav.css">
+    <link rel="icon"
+        href="${pageContext.request.contextPath}/assets/favicon.ico"
+        type="image/x-icon">
 </head>
-
 <body>
+    <!-- Alert Box Personalizzato -->
+    <div id="alert-box" class="alert-box"></div>
 
-	<div class="main-container-creaposizione">
-		<h1 class="form-title" style="font-size: 2.5vw;">
-			Crea una posizione
-			</h2>
-			<form action="${pageContext.request.contextPath}/creaposizione"
-				method="POST" onsubmit="validate(event)">
-				<div class="form-group">
-					<label class="form-label" for="titolo-input">Titolo:</label> <input
-						name="titolo" type="text" class="form-input" id="titolo-input"
-						value="${titolo}"
-						placeholder="Inserisci il titolo della posizione" required>
-				</div>
+    <div class="main-container-creaposizione">
+        <h1 class="form-title" style="font-size: 2.5vw;">
+            Crea una posizione
+        </h1>
+        <form action="${pageContext.request.contextPath}/creaposizione"
+            method="POST" onsubmit="validate(event)">
+            <div class="form-group">
+                <label class="form-label" for="titolo-input">Titolo:</label>
+                <input
+                    name="titolo" type="text" class="form-input" id="titolo-input"
+                    value="${titolo}"
+                    placeholder="Inserisci il titolo della posizione" required>
+            </div>
 
-				<div class="form-group">
-					<label class="form-label" for="descrizione-input">Descrizione:</label>
-					<textarea name="descrizione" class="form-input"
-						placeholder="Inserisci la descrizione" id="descrizione-input"
-						rows="4" required>${descrizione}</textarea>
-				</div>
+            <div class="form-group">
+                <label class="form-label" for="descrizione-input">Descrizione:</label>
+                <textarea name="descrizione" class="form-input"
+                    placeholder="Inserisci la descrizione" id="descrizione-input"
+                    rows="4" required>${descrizione}</textarea>
+            </div>
 
-				<div class="form-group">
-					<label class="form-label" for="localita-input">Località:</label>
-					<div class="location-group">
-						<select id="provincia-input" name="provinciaupdateRegione"
-							class="form-select" required>
-							<option value="">-- Seleziona Provincia --</option>
-							<c:forEach var="province" items="${provinceList}">
-								<option value="${province}"
-									${province == selectedProvincia ? 'selected' : ''}>${province}</option>
-							</c:forEach>
-						</select> <select id="regione-input" name="regione" class="form-select"
-							disabled
-							style="appearance: none; -webkit-appearance: none; -moz-appearance: none;">
-							<option value="">-- Regione --</option>
-							<c:forEach var="region" items="${regionList}">
-								<option value="${region}"
-									${region == selectedRegione ? 'selected' : ''}>${region}</option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="form-label" for="settore-input">Settore:</label>
-					<div class="dropdown" id="settore-dropdown">
-						<input id="settore-input" type="text" name="settore"
-							class="form-input dropdown-toggle"
-							placeholder="Seleziona o digita un settore"
-							aria-haspopup="listbox" aria-expanded="false" autocomplete="off"
-							required>
-						<ul class="dropdown-menu" role="listbox"
-							aria-labelledby="settore-input">
-							<c:forEach var="settore" items="${professionList}">
-								<li role="option" tabindex="0">${settore}</li>
-							</c:forEach>
-						</ul>
-					</div>
-				</div>
-				<div class="questions-section">
-					<h3 class="questions-title">Domande selezionate</h3>
-					<ul class="selected-questions" id="selected-questions-list">
-						<c:forEach var="domanda" items="${domande}">
-							<li><input class="hide-value" name="domanda" value="${domanda.id}">
-                                <span class="domanda-testo">${domanda.domanda}</span>
-								<span class="delete-btn" title="Elimina domanda"
-								onclick="removeDomanda(${domanda.id})">&times;</span></li>
-						</c:forEach>
-					</ul>
-					<button type="button" class="manage-questions-btn"
-						onclick="goToListaDomande()" title="Aggiungi Domande">
-						<i class="fas fa-plus"></i>
-					</button>
-				</div>
-				<div
-					style="display: flex; justify-content: center; align-items: center; height: 4vw;">
-					<button class="create-btn" type="submit">Crea</button>
-				</div>
+            <div class="form-group">
+                <label class="form-label" for="localita-input">Località:</label>
+                <div class="location-group">
+                    <select id="provincia-input" name="provinciaupdateRegione"
+                        class="form-select" required>
+                        <option value="">-- Seleziona Provincia --</option>
+                        <c:forEach var="province" items="${provinceList}">
+                            <option value="${province}"
+                                ${province == selectedProvincia ? 'selected' : ''}>${province}</option>
+                        </c:forEach>
+                    </select>
+                    <select id="regione-input" name="regione" class="form-select"
+                        disabled
+                        style="appearance: none; -webkit-appearance: none; -moz-appearance: none;">
+                        <option value="">-- Regione --</option>
+                        <c:forEach var="region" items="${regionList}">
+                            <option value="${region}"
+                                ${region == selectedRegione ? 'selected' : ''}>${region}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="settore-input">Settore:</label>
+                <div class="dropdown" id="settore-dropdown">
+                    <input id="settore-input" type="text" name="settore"
+                        class="form-input dropdown-toggle"
+                        placeholder="Seleziona o digita un settore"
+                        aria-haspopup="listbox" aria-expanded="false" autocomplete="off"
+                        required>
+                    <ul class="dropdown-menu" role="listbox"
+                        aria-labelledby="settore-input">
+                        <c:forEach var="settore" items="${professionList}">
+                            <li role="option" tabindex="0">${settore}</li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+            <div class="questions-section">
+                <h3 class="questions-title">Domande selezionate</h3>
+                <ul class="selected-questions" id="selected-questions-list">
+                    <c:forEach var="domanda" items="${domande}">
+                        <li>
+                            <input class="hide-value" name="domanda" value="${domanda.id}" type="hidden">
+                            <span class="domanda-testo">${domanda.domanda}</span>
+                            <span class="delete-btn" title="Elimina domanda"
+                                onclick="removeDomanda(${domanda.id})">&times;</span>
+                        </li>
+                    </c:forEach>
+                </ul>
+                <button type="button" class="manage-questions-btn"
+                    onclick="goToListaDomande()" title="Aggiungi Domande">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div
+                style="display: flex; justify-content: center; align-items: center; height: 4vw;">
+                <button class="create-btn" type="submit">Crea</button>
+            </div>
 
-			</form>
-	</div>
+        </form>
+    </div>
 
-	<script>
-	 const dropdown = document.getElementById('settore-dropdown');
-     const input = dropdown.querySelector('#settore-input');
-     const list = dropdown.querySelector('.dropdown-menu');
-     const items = Array.from(list.querySelectorAll('li'));
-     let currentFocus = -1;
-     input.addEventListener('focus', () => {
-         list.style.display = 'block';
-         input.setAttribute('aria-expanded', 'true');
-     });
+    <script>
+        const dropdown = document.getElementById('settore-dropdown');
+        const input = dropdown.querySelector('#settore-input');
+        const list = dropdown.querySelector('.dropdown-menu');
+        const items = Array.from(list.querySelectorAll('li'));
+        let currentFocus = -1;
+        input.addEventListener('focus', () => {
+            list.style.display = 'block';
+            input.setAttribute('aria-expanded', 'true');
+        });
 
-     document.addEventListener('click', (e) => {
-         if (!dropdown.contains(e.target)) {
-             list.style.display = 'none';
-             input.setAttribute('aria-expanded', 'false');
-             currentFocus = -1;
-             removeActive();
-         }
-     });
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                list.style.display = 'none';
+                input.setAttribute('aria-expanded', 'false');
+                currentFocus = -1;
+                removeActive();
+            }
+        });
 
-     input.addEventListener('input', () => {
-         const filter = input.value.toLowerCase();
-         let visibleCount = 0;
-         items.forEach(item => {
-             if (item.textContent.toLowerCase().includes(filter)) {
-                 item.style.display = 'block';
-                 visibleCount++;
-             } else {
-                 item.style.display = 'none';
-             }
-         });
-         if (visibleCount > 0) {
-             list.style.display = 'block';
-             input.setAttribute('aria-expanded', 'true');
-         } else {
-             list.style.display = 'none';
-             input.setAttribute('aria-expanded', 'false');
-         }
-         currentFocus = -1;
-         removeActive();
-     });
+        input.addEventListener('input', () => {
+            const filter = input.value.toLowerCase();
+            let visibleCount = 0;
+            items.forEach(item => {
+                if (item.textContent.toLowerCase().includes(filter)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            if (visibleCount > 0) {
+                list.style.display = 'block';
+                input.setAttribute('aria-expanded', 'true');
+            } else {
+                list.style.display = 'none';
+                input.setAttribute('aria-expanded', 'false');
+            }
+            currentFocus = -1;
+            removeActive();
+        });
 
-     items.forEach(item => {
-         item.addEventListener('click', () => {
-             input.value = item.textContent;
-             list.style.display = 'none';
-             input.setAttribute('aria-expanded', 'false');
-             currentFocus = -1;
-             removeActive();
-         });
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                input.value = item.textContent;
+                list.style.display = 'none';
+                input.setAttribute('aria-expanded', 'false');
+                currentFocus = -1;
+                removeActive();
+            });
 
-         item.addEventListener('keydown', (e) => {
-             if (e.key === 'Enter') {
-                 e.preventDefault();
-                 item.click();
-             }
-         });
-     });
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
 
-     input.addEventListener('keydown', (e) => {
-         if (e.key === 'ArrowDown') {
-             e.preventDefault();
-             currentFocus++;
-             addActive();
-         } else if (e.key === 'ArrowUp') {
-             e.preventDefault();
-             currentFocus--;
-             addActive();
-         } else if (e.key === 'Enter') {
-             e.preventDefault();
-             if (currentFocus > -1) {
-                 items[currentFocus].click();
-             }
-         }
-     });
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                currentFocus++;
+                addActive();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                currentFocus--;
+                addActive();
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (currentFocus > -1) {
+                    items[currentFocus].click();
+                }
+            }
+        });
 
-     function addActive() {
-         if (currentFocus >= items.length) currentFocus = 0;
-         if (currentFocus < 0) currentFocus = items.length - 1;
-         removeActive();
-         items[currentFocus].classList.add('active');
-         items[currentFocus].scrollIntoView({ block: 'nearest' });
-     }
+        function addActive() {
+            if (currentFocus >= items.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = items.length - 1;
+            removeActive();
+            items[currentFocus].classList.add('active');
+            items[currentFocus].scrollIntoView({ block: 'nearest' });
+        }
 
-     function removeActive() {
-         items.forEach(item => item.classList.remove('active'));
-     }
-    const provinciaToRegioneMap = {
+        function removeActive() {
+            items.forEach(item => item.classList.remove('active'));
+        }
+
+        const provinciaToRegioneMap = {
             "Chieti": "Abruzzo",
             "L'Aquila": "Abruzzo",
             "Pescara": "Abruzzo",
@@ -302,31 +308,33 @@
             "Verona": "Veneto",
             "Vicenza": "Veneto"
         };
-	
-    function goToListaDomande() {
-        const titolo = encodeURIComponent(document.getElementById('titolo-input').value);
-        const descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
-        
-        const provinciaSelect = document.getElementById('provincia-input');
-        const provincia = provinciaSelect.value;
-        
-        const settore = encodeURIComponent(document.getElementById('settore-input').value);
 
-        const params = new URLSearchParams(window.location.search);
-        const questions=params.getAll('question');
-        
-        const baseUrl = '${pageContext.request.contextPath}/listadomande';
-        const urlWithParams = baseUrl +'?titolo=' + encodeURIComponent(titolo) +'&descrizione=' + encodeURIComponent(descrizione) +'&provincia=' + encodeURIComponent(provincia) + '&settore=' + encodeURIComponent(settore) +'&'+questions.map(q => 'question=' + encodeURIComponent(q)).join('&');
-        
-        location.href = urlWithParams;
-    }
+        function goToListaDomande() {
+            const titolo = encodeURIComponent(document.getElementById('titolo-input').value);
+            const descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
+
+            const provinciaSelect = document.getElementById('provincia-input');
+            const provincia = provinciaSelect.value;
+
+            const settore = encodeURIComponent(document.getElementById('settore-input').value);
+
+            const params = new URLSearchParams(window.location.search);
+            const questions = params.getAll('question');
+
+            const baseUrl = '${pageContext.request.contextPath}/listadomande';
+            const urlWithParams = baseUrl + '?titolo=' + titolo + '&descrizione=' + descrizione + '&provincia=' + encodeURIComponent(provincia) + '&settore=' + settore + '&' + questions.map(q => 'question=' + encodeURIComponent(q)).join('&');
+
+            location.href = urlWithParams;
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
-        	
-        	 const params = new URLSearchParams(window.location.search);
-             const settore = params.get("settore");
-             document.getElementById('settore-input').value=settore;
-        	
+
+            const params = new URLSearchParams(window.location.search);
+            const settore = params.get("settore");
+            if (settore) {
+                document.getElementById('settore-input').value = settore;
+            }
+
             const provinciaSelect = document.getElementById('provincia-input');
             const regioneSelect = document.getElementById('regione-input');
 
@@ -339,68 +347,90 @@
                 }
             });
         });
-        
-        
+
+
         function setProvincia() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const provincia = urlParams.get('provincia');
+            const urlParams = new URLSearchParams(window.location.search);
+            const provincia = urlParams.get('provincia');
 
-        console.log(provincia);
+            console.log(provincia);
 
-        const provinciaSelect = document.getElementById('provincia-input');
-        
-        if (provincia && provinciaSelect) {
-        	provinciaSelect.value=provincia;
-        	const regioneSelect = document.getElementById('regione-input');
-        	regioneSelect.value = provinciaToRegioneMap[provincia];
-        } 
+            const provinciaSelect = document.getElementById('provincia-input');
+
+            if (provincia && provinciaSelect) {
+                provinciaSelect.value = provincia;
+                const regioneSelect = document.getElementById('regione-input');
+                regioneSelect.value = provinciaToRegioneMap[provincia];
+            }
         }
         window.addEventListener('popstate', setProvincia);
         window.addEventListener('load', setProvincia);
-        
-        function removeDomanda(domandaId){
-        	var params = new URLSearchParams(window.location.search);
-    	    var titolo = params.get("titolo");
-    	    var descrizione = params.get("descrizione");
-    	    var provincia = params.get("provincia");
-    	    var settore = params.get("settore");
-    	    
-    	    if(!titolo){
-    	    	 titolo = encodeURIComponent(document.getElementById('titolo-input').value);
-    	    }
-	    
-    	    if(!descrizione){
-    	    	descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
-    	    }
-    	    
-            if(!provincia){
+
+        function removeDomanda(domandaId) {
+            var params = new URLSearchParams(window.location.search);
+            var titolo = params.get("titolo");
+            var descrizione = params.get("descrizione");
+            var provincia = params.get("provincia");
+            var settore = params.get("settore");
+
+            if (!titolo) {
+                titolo = encodeURIComponent(document.getElementById('titolo-input').value);
+            }
+
+            if (!descrizione) {
+                descrizione = encodeURIComponent(document.getElementById('descrizione-input').value);
+            }
+
+            if (!provincia) {
                 const provinciaSelect = document.getElementById('provincia-input');
                 provincia = provinciaSelect.value;
             }
 
-            if(!settore){
-            	settore = encodeURIComponent(document.getElementById('settore-input').value);
+            if (!settore) {
+                settore = encodeURIComponent(document.getElementById('settore-input').value);
             }
 
-    	    var domande = params.getAll("question");
+            var domande = params.getAll("question");
 
-    	    var baseUrl = '${pageContext.request.contextPath}/creaposizione';
-            var urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
+            var baseUrl = '${pageContext.request.contextPath}/creaposizione';
+            var urlWithParams = baseUrl + '?titolo=' + titolo + '&descrizione=' + descrizione + '&provincia=' + provincia + '&settore=' + settore + '&' + domande.filter(q => q.toString() !== domandaId.toString()).map(q => 'question=' + q).join('&');
             console.log(urlWithParams);
-            
+
             location.href = urlWithParams;
+        }
+
+        function showAlert(message, type = "error") {
+            const alertBox = document.getElementById("alert-box");
+            alertBox.textContent = message;
+
+            // Aggiunge una classe per il tipo di messaggio
+            if (type === "success") {
+                alertBox.classList.add("success");
+                alertBox.classList.remove("error");
+            } else {
+                alertBox.classList.add("error");
+                alertBox.classList.remove("success");
+            }
+
+            // Mostra l'alert con animazione
+            alertBox.classList.add("show");
+
+            // Nasconde l'alert dopo 2 secondi
+            setTimeout(() => {
+                alertBox.classList.remove("show");
+            }, 2000);
         }
 
         function validate(event) {
             const domandaList = document.getElementById("selected-questions-list");
             const items = domandaList.querySelectorAll("li");
 
-            if (items.length==0) {
-                alert("Devi selezionare almeno una domanda.");
-                event.preventDefault(); 
+            if (items.length == 0) {
+                showAlert("Devi selezionare almeno una domanda.");
+                event.preventDefault();
                 return false;
             }
-            return true; 
+            return true;
         }
 
     </script>
