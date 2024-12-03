@@ -31,7 +31,7 @@ body {
   border-radius: 25px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding: 2vh 2vw 2vh 2vw;
+  padding: 20px 30px 20px 30px;
   display: flex;
   flex-direction: column;
 }
@@ -40,9 +40,9 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
-  padding-left: 4vw;
-  padding-right: 4vw;
-  padding-top: 5vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
 }
 
 .profile-image {
@@ -108,15 +108,16 @@ body {
 .content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-bottom: 4vh;
-  padding-top: 4vh;
-  padding-left: 4vw;
-  padding-right: 4vw;
+  padding-bottom: 0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .info-section {
   display: grid;
   gap: 1rem;
+  position: relative;
 }
 
 .section-title {
@@ -176,9 +177,8 @@ body {
   background-color: rgba(110, 65, 226, 0.1);
   border-radius: 15px;
   padding: 1.5rem;
-  height: 771px;
+  height: auto;
   overflow-y: auto;
-  margin-bottom: 2rem;
 }
 
 .experience-list {
@@ -200,28 +200,23 @@ body {
 
 .experience-description {
   color: #444;
-  line-height: 1.4;
-  font-size: 0.95rem;
+  font-size: 17px;
 }
-.back-button-arrow{
-  width: 900;
-  height: 40px;
 
-}
-.back-button {
-  left: 25px;
-  bottom: 9px;
+.back-button2 {
+  width: fit-content;
+  margin-top: 10px;
   background: none;
   border: none;
   color: #6e41e2;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 30px;
   padding: 0.5rem;
   transition: transform 0.3s ease;
 }
 
-.back-button:hover {
-  color: #a560e5;
+.back-button2:hover {
+  color: #4c2bb0;
   transform: translateX(-5px);
 }
 

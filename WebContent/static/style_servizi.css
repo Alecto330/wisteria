@@ -50,7 +50,7 @@ body {
   transform: translateX(0);
   filter: blur(0px);
 }
-
+  
 .intro-section {
   margin-top: 9.5vh;
   display: flex;
@@ -127,7 +127,7 @@ body {
 
 .service-item:hover {
   transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
 }
 
 .service-icon {
@@ -205,20 +205,26 @@ body {
   max-width: 800px;
   min-height: 100px;
   height: auto;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0);
 }
 
 .carousel-item {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
   flex: 0 0 100%;
   max-width: 100%;
   padding: 20px;
   background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin: 0 auto;
   text-align: center;
   visibility: visible;
   opacity: 1;
   display: block;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.carousel-item.active-shadow {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .carousel-item .icon {

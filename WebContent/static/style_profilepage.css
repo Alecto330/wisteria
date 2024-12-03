@@ -192,7 +192,7 @@ body {
 }
 
 .experience-title {
-  font-size: 1rem;
+  font-size: 20px;
   color: #6e41e2;
 }
 
@@ -277,7 +277,7 @@ select.form-input {
 }
 
 .experience-item p {
-  font-size: 0.9rem;
+  font-size: 17px;
   color: #555;
 }
 

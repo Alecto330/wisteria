@@ -160,9 +160,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="back-button-arrow">
-			<a class="back-button" href="javascript:history.back();"> <i
+			<a class="back-button2" href="javascript:history.back();"> <i
 				class="fas fa-arrow-left"></i>
 			</a>
 		</div>

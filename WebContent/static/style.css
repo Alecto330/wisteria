@@ -227,12 +227,7 @@ select::-webkit-scrollbar-thumb:active {
   color: white;
 }
 
-.menu a {
-  color: #d7bbff;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-}
+
 
 .menu.slide-in {
   left: 0;

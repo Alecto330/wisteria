@@ -74,7 +74,7 @@
         </div>
     </section>
 
-     <section class="recensioni-section">
+    <section class="recensioni-section">
         <div class="margin">
             <h2 class="animate-on-scroll loader">Recensioni dei Nostri Clienti</h2>
             <div class="carousel animate-on-scroll">
@@ -141,26 +141,37 @@
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
             let currentIndex = 0;
-            const itemWidth = 800; // Larghezza di ogni elemento
-            const gap = 20; // Spazio tra gli elementi
-            const totalItemWidth = itemWidth + gap; // Larghezza totale di ogni item con il gap
+            const itemWidth = 800;
+            const gap = 20;
+            const totalItemWidth = itemWidth + gap;
 
             console.log("Carosello e pulsanti trovati:", carousel, prevBtn, nextBtn, items);
-            console.log("Indice corrente iniziale:", currentIndex); // Log iniziale
+            console.log("Indice corrente iniziale:", currentIndex);
+
+            function updateActiveShadow() {
+                items.forEach((item, index) => {
+                    if (index === currentIndex) {
+                        item.classList.add('active-shadow');
+                    } else {
+                        item.classList.remove('active-shadow');
+                    }
+                });
+            }
 
             function updateCarousel() {
                 console.log("Aggiornamento carosello...");
-                console.log("Indice corrente durante update:", currentIndex); // Log prima dell'aggiornamento
+                console.log("Indice corrente durante update:", currentIndex);
 
-                const offset = -currentIndex * totalItemWidth; // Calcola l'offset in base alla larghezza totale dell'item
+                const offset = -currentIndex * totalItemWidth;
                 console.log("Spostamento del carosello a: " + offset + "px");
 
-                carousel.style.transform = 'translateX(' + offset + 'px)'; // Sposta il carosello
+                carousel.style.transform = 'translateX(' + offset + 'px)';
+
+                updateActiveShadow();
             }
 
             prevBtn.addEventListener('click', () => {
                 console.log("Pulsante precedente cliccato.");
-                // Ciclo tra gli item: se è il primo, torna all'ultimo
                 currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
                 console.log("Indice corrente (precedente):", currentIndex);
                 updateCarousel();
@@ -168,15 +179,14 @@
 
             nextBtn.addEventListener('click', () => {
                 console.log("Pulsante successivo cliccato.");
-                // Ciclo tra gli item: se è l'ultimo, torna al primo
                 currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
                 console.log("Indice corrente (successivo):", currentIndex);
                 updateCarousel();
             });
 
-            // Inizializza il carosello
             updateCarousel();
         });
+
     </script>
 
     <script>
