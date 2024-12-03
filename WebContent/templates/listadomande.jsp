@@ -67,32 +67,32 @@
     </div>
 
 	<script>
-	document.addEventListener('DOMContentLoaded', function() {
-	    const contents = document.querySelectorAll('.accordion-content');
+	document.addEventListener("DOMContentLoaded", function() {
+	    const contents = document.querySelectorAll(".accordion-content");
 	    contents.forEach(content => {
-	        content.style.height = '0px';
+	        content.style.height = "0px";
 	    });
 	});
 
 	function showAlert(message) {
-	    const alertBox = document.getElementById('alertBox');
+	    const alertBox = document.getElementById("alertBox");
 	    alertBox.textContent = message; // Imposta il messaggio personalizzato
-	    alertBox.classList.add('show');
+	    alertBox.classList.add("show");
 	    setTimeout(() => {
-	        alertBox.classList.remove('show');
+	        alertBox.classList.remove("show");
 	    }, 3000); // Nasconde l'avviso dopo 3 secondi
 	}
 
 	function hideAlert() {
-	    const alertBox = document.getElementById('alertBox');
-	    alertBox.classList.remove('show');
+	    const alertBox = document.getElementById("alertBox");
+	    alertBox.classList.remove("show");
 	}
 
     function checkSelected() {
         console.log("Checking selected questions...");
         const params = new URLSearchParams(window.location.search);
-        const questions = params.getAll('question');
-        const checkboxes = document.querySelectorAll('.question-checkbox');
+        const questions = params.getAll("question");
+        const checkboxes = document.querySelectorAll(".question-checkbox");
         checkboxes.forEach(checkbox => {
             if (questions.includes(checkbox.value)) {
                 checkbox.checked = true;
@@ -100,26 +100,26 @@
         });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener("DOMContentLoaded", function() {
         checkSelected();
         
-        const contents = document.querySelectorAll('.accordion-content');
+        const contents = document.querySelectorAll(".accordion-content");
         contents.forEach(content => {
-            content.style.height = '0px';
+            content.style.height = "0px";
         });
     });
     
     function nuovaDomanda(){
     	 const params = new URLSearchParams(window.location.search);
-    	 const titolo=params.get('titolo');
-    	 const descrizione=params.get('descrizione');
-    	 const provincia=params.get('provincia');
-    	 const settore=params.get('settore');
+    	 const titolo=params.get("titolo");
+    	 const descrizione=params.get("descrizione");
+    	 const provincia=params.get("provincia");
+    	 const settore=params.get("settore");
     	 
     	 console.log(titolo);
     	 console.log(descrizione);
     	 
-    	 const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+    	 const selectedCheckboxes = document.querySelectorAll(".question-checkbox:checked"); 
       
          const selectedQuestions = []; 
           
@@ -127,8 +127,8 @@
              selectedQuestions.push(encodeURIComponent(checkbox.value)); 
          });
          
-        const baseUrl = '${pageContext.request.contextPath}/creadomanda';
-        const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+        const baseUrl = "${pageContext.request.contextPath}/creadomanda";
+        const urlWithParams = baseUrl+"?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+"&settore="+settore+"&"+selectedQuestions.map(q => "question=" + q).join("&");
         
         console.log(urlWithParams);
          
@@ -138,48 +138,48 @@
     
     
         function toggleAccordion(header) {
-            if (event.target.type === 'checkbox') {
+            if (event.target.type === "checkbox") {
                 event.stopPropagation();
                 return;
             }
 
-            const allHeaders = document.querySelectorAll('.accordion-header');
-            const allContents = document.querySelectorAll('.accordion-content');
-            const allIcons = document.querySelectorAll('.accordion-icon');
+            const allHeaders = document.querySelectorAll(".accordion-header");
+            const allContents = document.querySelectorAll(".accordion-content");
+            const allIcons = document.querySelectorAll(".accordion-icon");
             
             const content = header.nextElementSibling;
-            const icon = header.querySelector('.accordion-icon');
+            const icon = header.querySelector(".accordion-icon");
             
-            if (content.style.height && content.style.height !== '0px') {
-                content.style.height = '0px';
-                icon.style.transform = 'rotate(0deg)';
+            if (content.style.height && content.style.height !== "0px") {
+                content.style.height = "0px";
+                icon.style.transform = "rotate(0deg)";
             } else {
-              
+              	
                 allContents.forEach(c => {
-                    c.style.height = '0px';
+                    c.style.height = "0px";
                 });
                 allIcons.forEach(i => {
-                    i.style.transform = 'rotate(0deg)';
+                    i.style.transform = "rotate(0deg)";
                 });
                 
-                content.style.height = content.scrollHeight + 'px';
-                icon.style.transform = 'rotate(180deg)';
+                content.style.height = content.scrollHeight + "px";
+                icon.style.transform = "rotate(180deg)";
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const contents = document.querySelectorAll('.accordion-content');
+        document.addEventListener("DOMContentLoaded", function() {
+            const contents = document.querySelectorAll(".accordion-content");
             contents.forEach(content => {
-                content.style.height = '0px';
+                content.style.height = "0px";
             });
         });
 
         
         function submitSelectedQuestions() { 
-            const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+            const selectedCheckboxes = document.querySelectorAll(".question-checkbox:checked"); 
              
             if (selectedCheckboxes.length === 0) { 
-                showAlert('Seleziona almeno una domanda prima di inviare!'); // Mostra avviso
+                showAlert("Seleziona almeno una domanda prima di inviare!"); // Mostra avviso
                 return; 
             } 
              
@@ -189,14 +189,14 @@
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
 
-            const url = '/wisteria/creaposizione?' + selectedQuestions.map(q => 'question=' + q).join('&')+'&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}'; 
+            const url = "/wisteria/creaposizione?" + selectedQuestions.map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
                  
             fetch(url, { 
-                method: 'GET',
+                method: "GET",
                 headers: {
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
                 },
-                credentials: 'same-origin'
+                credentials: "same-origin"
             }) 
             .then(response => {
                 if (response.redirected) {
@@ -207,15 +207,15 @@
             })
             .then(html => {
                 if (html) {
-                    history.pushState(null, '', url);
+                    history.pushState(null, "", url);
                     document.open();
                     document.write(html);
                     document.close();
                 }
             })
             .catch(error => { 
-                console.error('Errore:', error); 
-                showAlert('Si è verificato un errore durante l\'invio: ' + error.message); 
+                console.error("Errore:", error); 
+                showAlert("Si è verificato un errore durante l'invio: " + error.message); 
             }); 
         }
 
@@ -231,14 +231,13 @@
 
             const searchQuery = searchElem.value;
             
-            
             const params = new URLSearchParams(window.location.search);
-       		const titolo=params.get('titolo');
-       		const descrizione=params.get('descrizione');
-       		const provincia=params.get('provincia');
-       		const settore=params.get('settore');
+       		const titolo=params.get("titolo");
+       		const descrizione=params.get("descrizione");
+       		const provincia=params.get("provincia");
+       		const settore=params.get("settore");
             
-       		const selectedCheckboxes = document.querySelectorAll('.question-checkbox:checked'); 
+       		const selectedCheckboxes = document.querySelectorAll(".question-checkbox:checked"); 
             
             const selectedQuestions = []; 
              
@@ -246,8 +245,8 @@
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
             
-            const baseUrl = '${pageContext.request.contextPath}/listadomande';
-            const urlWithParams = baseUrl+'?titolo='+titolo+'&descrizione='+descrizione+'&provincia='+provincia+'&settore='+settore+'&filter='+searchQuery+'&'+selectedQuestions.map(q => 'question=' + q).join('&');
+            const baseUrl = "${pageContext.request.contextPath}/listadomande";
+            const urlWithParams = baseUrl+"?titolo="+titolo+"&descrizione="+descrizione+"&provincia="+provincia+"&settore="+settore+"&filter="+searchQuery+"&"+selectedQuestions.map(q => "question=" + q).join("&");
             console.log(urlWithParams);
 
             location.href = urlWithParams;
@@ -255,9 +254,9 @@
 
         function setOptions() {
             const urlParams = new URLSearchParams(window.location.search);
-            const region = urlParams.get('settore');
+            const region = urlParams.get("settore");
 
-            const regionSelect = document.getElementById('professioni');
+            const regionSelect = document.getElementById("professioni");
             if (region && regionSelect) {
                 const regionOption = regionSelect.querySelector(`option[value="${settore}"]`);
                 if (regionOption) {
@@ -271,11 +270,11 @@
 
         }
 
-        window.addEventListener('popstate', setOptions);
-        window.addEventListener('load', setOptions);
-        window.addEventListener('scroll', function() {
-            const footer = document.querySelector('footer');
-            const button = document.querySelector('.btn-add');
+        window.addEventListener("popstate", setOptions);
+        window.addEventListener("load", setOptions);
+        window.addEventListener("scroll", function() {
+            const footer = document.querySelector("footer");
+            const button = document.querySelector(".btn-add");
 
             if (footer && button) {
                 const footerRect = footer.getBoundingClientRect();
@@ -283,16 +282,16 @@
 
                 // Se il footer è vicino al fondo della finestra
                 if (footerRect.top <= windowHeight && footerRect.top > 0) {
-                    if (button.style.position !== 'absolute') {
-                        button.style.position = 'absolute';
-                        button.style.bottom = (footerRect.height + 20) + 'px';
-                        button.style.transition = 'none';
+                    if (button.style.position !== "absolute") {
+                        button.style.position = "absolute";
+                        button.style.bottom = (footerRect.height + 20) + "px";
+                        button.style.transition = "none";
                     }
                 } else {
-                    if (button.style.position !== 'fixed') {
-                        button.style.position = 'fixed';
-                        button.style.bottom = '20px';
-                        button.style.transition = 'none';
+                    if (button.style.position !== "fixed") {
+                        button.style.position = "fixed";
+                        button.style.bottom = "20px";
+                        button.style.transition = "none";
                     }
                 }
             }
