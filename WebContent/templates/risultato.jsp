@@ -24,15 +24,16 @@
 <body>
 
     <div class="risultato-container animate-on-scroll loader">
-		<h1 class="congrats">Test completato</h1>
+		<h1 class="congrats">Test completato!</h1>
         <div class="progress">
             <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="${risultato}" aria-valuemin="0" aria-valuemax="${ndomande}"></div>
         </div>
         <div class="contenuto-risultato">
             ${risultato}/${ndomande}
         </div>
-		<a href="${pageContext.request.contextPath}/home"
-			class="home-link">← Torna alla home</a>
+		<a class="back-button" href="javascript:history.back();"> <i
+			class="fas fa-arrow-left"></i>
+		</a>
 	</div>
     <script>
         window.onload = function() {

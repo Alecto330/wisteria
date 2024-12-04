@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="alert-box" id="alertBox" onclick="hideAlert()">Compila tutti i campi!</div>
-    <div class="container">
+    <div class="container animate-on-scroll loader">
         <h1 class="title">Lista Domande</h1>
         <div class="row mt-4">
 		    <div class="col-md-12">
@@ -61,11 +61,11 @@
                 </c:forEach>
             </form>
         </div>
-        <div class="actions-container">
+        
+    </div>
+<div class="actions-container">
             <button class="btn btn-primary btn-add" onclick="submitSelectedQuestions()">✔</button>
         </div>
-    </div>
-
 	<script>
 	document.addEventListener("DOMContentLoaded", function() {
 	    const contents = document.querySelectorAll(".accordion-content");
@@ -297,5 +297,48 @@
             }
         });
     </script>
+    <script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const elements = document.querySelectorAll(".animate-on-scroll");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible"); // Applica l'animazione
+								observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+							}
+						});
+					},
+					{ threshold: 0.0 } // Inizia l'animazione quando il 10% dell'elemento è visibile
+				);
+
+				elements.forEach((element) => observer.observe(element));
+			});
+
+	</script>
+	<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const loader = document.querySelectorAll(".loader");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+						entry.target.classList.add("visible");
+						} else {
+						entry.target.classList.remove("visible");
+						}
+					});
+					},
+					{ threshold: 0.1 } // Attiva l'animazione quando il 40% è visibile
+				);
+
+				loader.forEach((card) => {
+					card.classList.add("animate-on-scroll"); // Aggiunge lo stato iniziale
+					observer.observe(card); // Osserva ogni card
+				});
+			});
+	</script>
 </body>
 </html>

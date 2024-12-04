@@ -27,7 +27,7 @@
     <!-- Alert Box Personalizzato -->
     <div id="alert-box" class="alert-box"></div>
 
-    <div class="main-container-creaposizione">
+    <div class="main-container-creaposizione animate-on-scroll loader">
         <h1 class="form-title" style="font-size: 2.5vw;">
             Crea una posizione
         </h1>
@@ -103,8 +103,10 @@
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
-            <div
-                style="display: flex; justify-content: center; align-items: center; height: 4vw;">
+            <div class="create-div">
+                <a class="back-button" href="/wisteria/home"> <i
+			        class="fas fa-arrow-left"></i>
+		        </a>
                 <button class="create-btn" type="submit">Crea</button>
             </div>
 
@@ -434,5 +436,48 @@
         }
 
     </script>
+    <script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const elements = document.querySelectorAll(".animate-on-scroll");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("visible"); // Applica l'animazione
+								observer.unobserve(entry.target); // Smetti di osservarlo dopo l'animazione
+							}
+						});
+					},
+					{ threshold: 0.0 } // Inizia l'animazione quando il 10% dell'elemento è visibile
+				);
+
+				elements.forEach((element) => observer.observe(element));
+			});
+
+	</script>
+	<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const loader = document.querySelectorAll(".loader");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+						entry.target.classList.add("visible");
+						} else {
+						entry.target.classList.remove("visible");
+						}
+					});
+					},
+					{ threshold: 0.1 } // Attiva l'animazione quando il 40% è visibile
+				);
+
+				loader.forEach((card) => {
+					card.classList.add("animate-on-scroll"); // Aggiunge lo stato iniziale
+					observer.observe(card); // Osserva ogni card
+				});
+			});
+	</script>
 </body>
 </html>

@@ -20,7 +20,7 @@
   border: none;
   border-radius: 2vw;
   color: white;
-  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
   font-weight: 700 !important;
 }
 
@@ -194,9 +194,7 @@
   color: red;
   transition: transform 0.1s ease-in-out;
 }
-.menu a.logout-menu:hover {
-  transform: scale(1.07);
-}
+
 i.fa-right-from-bracket:hover {
   color: red;
 }
