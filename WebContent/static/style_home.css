@@ -248,8 +248,8 @@ input[type="search"] {
 
 .animate-on-scroll {
   opacity: 0;
-  filter: blur(10px);
-  transition: opacity 0.6s ease-out, filter 0.6s ease-out;
+  filter: blur(3px);
+  transition: opacity 0.2s ease-out, filter 0.2s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -260,8 +260,8 @@ input[type="search"] {
 .job-card.initial-load {
   opacity: 0;
   transform: translateX(20px);
-  filter: blur(10px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, filter 1.6s ease-out;
+  filter: blur(3px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out;
 }
 
 .job-card.initial-load.visible {
