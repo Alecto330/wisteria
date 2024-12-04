@@ -88,17 +88,7 @@
 	    alertBox.classList.remove("show");
 	}
 
-    function checkSelected() {
-        console.log("Checking selected questions...");
-        const params = new URLSearchParams(window.location.search);
-        const questions = params.getAll("question");
-        const checkboxes = document.querySelectorAll(".question-checkbox");
-        checkboxes.forEach(checkbox => {
-            if (questions.includes(checkbox.value)) {
-                checkbox.checked = true;
-            }
-        });
-    }
+
 
     document.addEventListener("DOMContentLoaded", function() {
         checkSelected();
@@ -174,7 +164,21 @@
             });
         });
 
+        function checkSelected() {
+            console.log("Checking selected questions...");
+            const params = new URLSearchParams(window.location.search);
+            const questions = params.getAll("question");
+            const checkboxes = document.querySelectorAll(".question-checkbox");
+            checkboxes.forEach(checkbox => {
+                if (questions.includes(checkbox.value)) {
+                    checkbox.checked = true;
+                }
+            });
+        }
+
         
+
+
         function submitSelectedQuestions() { 
             const selectedCheckboxes = document.querySelectorAll(".question-checkbox:checked"); 
              
@@ -189,7 +193,25 @@
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
 
-            const url = "/wisteria/creaposizione?" + selectedQuestions.map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
+            const params = new URLSearchParams(window.location.search);
+            let temp = params.getAll("question");
+
+
+
+            console.log(selectedQuestions.toString());
+            console.log(temp.toString());
+
+
+            for (let i=0; i<temp.length; i++) {
+                selectedQuestions.push(temp[i]);
+            }
+
+            // #################################################### DA FARE #################################################################################################################
+
+
+            console.log(selectedQuestions.toString());
+
+            const url = "/wisteria/creaposizione?" + selectedQuestions.filter(q => !Array.from(temp).includes(q)).map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
                  
             fetch(url, { 
                 method: "GET",
