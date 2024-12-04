@@ -278,7 +278,7 @@
 					}
 				});
 				},
-				{ threshold: 0.30 } // Attiva l'animazione quando il 40% è visibile
+				{ threshold: 0.10 } // Attiva l'animazione quando il 40% è visibile
 			);
 
 			jobCards.forEach((card) => {
