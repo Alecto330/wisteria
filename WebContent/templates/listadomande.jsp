@@ -189,7 +189,7 @@
                 return; 
             } 
              
-            const selectedQuestions = []; 
+            let selectedQuestions = []; 
                  
             selectedCheckboxes.forEach(checkbox => { 
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
@@ -197,9 +197,7 @@
 
            
             let filter=params.get("filter");
-            
-
-            
+ 
             let temp = params.getAll("question");
 
 
@@ -215,14 +213,12 @@
 
             }
             
-            
-
-            // #################################################### DA FARE #################################################################################################################
+            selectedQuestions=new Set(selectedQuestions);
+            selectedQuestions=Array.from(selectedQuestions);
 
 
             console.log(selectedQuestions.toString());
-            const url = "/wisteria/creaposizione?" + selectedQuestions.map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}";
-            //const url = "/wisteria/creaposizione?" + selectedQuestions.filter(q => !Array.from(temp).includes(q)).map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
+            const url = "/wisteria/creaposizione?" + selectedQuestions.map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
                  
             fetch(url, { 
                 method: "GET",
@@ -272,11 +268,39 @@
             
        		const selectedCheckboxes = document.querySelectorAll(".question-checkbox:checked"); 
             
-            const selectedQuestions = []; 
+            /*const selectedQuestions = []; 
              
             selectedCheckboxes.forEach(checkbox => { 
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
+            });*/
+            
+            let selectedQuestions = []; 
+            
+            selectedCheckboxes.forEach(checkbox => { 
+                selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
+
+           
+            let filter=params.get("filter");
+ 
+            let temp = params.getAll("question");
+
+
+
+            console.log(selectedQuestions.toString());
+            console.log(temp.toString());
+
+
+            if(filter){
+                for (let i=0; i<temp.length; i++) {
+                    selectedQuestions.push(temp[i]);
+                }
+
+            }
+            
+            selectedQuestions=new Set(selectedQuestions);
+            selectedQuestions=Array.from(selectedQuestions);
+
             
             const baseUrl = "${pageContext.request.contextPath}/listadomande";
             const urlWithParams = baseUrl+"?titolo="+encodeURIComponent(titolo)+"&descrizione="+encodeURIComponent(descrizione)+"&provincia="+encodeURIComponent(provincia)+"&settore="+encodeURIComponent(settore)+"&filter="+searchQuery+"&"+selectedQuestions.map(q => "question=" + q).join("&");
