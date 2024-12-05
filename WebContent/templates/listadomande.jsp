@@ -180,6 +180,8 @@
 
 
         function submitSelectedQuestions() { 
+        	const params = new URLSearchParams(window.location.search);
+        	
             const selectedCheckboxes = document.querySelectorAll(".question-checkbox:checked"); 
              
             if (selectedCheckboxes.length === 0) { 
@@ -193,7 +195,11 @@
                 selectedQuestions.push(encodeURIComponent(checkbox.value)); 
             });
 
-            const params = new URLSearchParams(window.location.search);
+           
+            let filter=params.get("filter");
+            
+
+            
             let temp = params.getAll("question");
 
 
@@ -202,16 +208,21 @@
             console.log(temp.toString());
 
 
-            for (let i=0; i<temp.length; i++) {
-                selectedQuestions.push(temp[i]);
+            if(filter){
+                for (let i=0; i<temp.length; i++) {
+                    selectedQuestions.push(temp[i]);
+                }
+
             }
+            
+            
 
             // #################################################### DA FARE #################################################################################################################
 
 
             console.log(selectedQuestions.toString());
-
-            const url = "/wisteria/creaposizione?" + selectedQuestions.filter(q => !Array.from(temp).includes(q)).map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
+            const url = "/wisteria/creaposizione?" + selectedQuestions.map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}";
+            //const url = "/wisteria/creaposizione?" + selectedQuestions.filter(q => !Array.from(temp).includes(q)).map(q => "question=" + q).join("&")+"&titolo=${titolo}&descrizione=${descrizione}&provincia=${provincia}&settore=${settore}"; 
                  
             fetch(url, { 
                 method: "GET",
