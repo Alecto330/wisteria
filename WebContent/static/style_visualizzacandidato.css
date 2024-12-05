@@ -151,7 +151,7 @@ body {
 .cv-section {
   background-color: #e8e8e8;
   border-radius: 15px;
-  height: 20vh;
+  height: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -299,4 +299,11 @@ p {
 
 .profile-icon-vc .fa-user {
   font-size: 23px;
+}
+
+.skill-label {
+  font-size: 18px;
+  color: #6e41e2;
+  margin-bottom: 0.3rem;
+  display: inline-block;
 }
