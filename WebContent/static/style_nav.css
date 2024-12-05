@@ -33,6 +33,8 @@
   font-size: 0.7vw;
   font-weight: 700 !important;
   padding: 0.5vw 1vw;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .scroll-line {

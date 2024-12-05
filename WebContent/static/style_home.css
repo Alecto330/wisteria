@@ -4,6 +4,9 @@
   border-color: #8228ff;
   width: 70px;
   transition: background-color 0.3s, transform 0.3s ease-in-out;
+
+  transform-origin: center;
+  will-change: transform;
 }
 
 .btn-primary:hover {
@@ -98,6 +101,9 @@ body {
         0 0 1px rgba(255, 255, 255, 0.5),
         0 0 1px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s ease-in-out;
+
+    transform-origin: center;
+    will-change: transform;
 }
 
 .introduction-title:hover {
@@ -284,6 +290,9 @@ input[type="search"] {
   position: relative;
   z-index: 0;
   height: 300px;
+
+  transform-origin: center;
+  will-change: transform;
 }
 
 .job-card:hover {
@@ -291,9 +300,16 @@ input[type="search"] {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
+.card-title {
+  font-weight: bold;
+  transform-origin: center;
+  will-change: transform;
+}
 .card-location,
 .card-category {
   color: #555;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .card-text {
@@ -303,6 +319,9 @@ input[type="search"] {
     overflow-wrap: break-word; /* Permette al testo di andare a capo */
     word-break: break-word; /* Supporto per browser più vecchi */
     white-space: normal; /* Permette al testo di andare a capo */
+
+    transform-origin: center;
+    will-change: transform;
 }
 
 @media (max-width: 767.98px) {

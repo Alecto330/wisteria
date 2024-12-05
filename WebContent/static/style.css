@@ -66,10 +66,6 @@ body {
   gap: 0.2vw;
 }
 
-.card-title {
-  font-weight: bold;
-}
-
 .card-location,
 .card-category {
   font-size: 14px;
