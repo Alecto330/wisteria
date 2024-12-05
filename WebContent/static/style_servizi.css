@@ -19,7 +19,7 @@ body {
 .animate-on-scroll {
 	opacity: 0;
 	transform: translateY(20px);
-	transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+	transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -30,7 +30,7 @@ body {
 .animate-on-scroll {
   opacity: 0;
   filter: blur(10px);
-  transition: opacity 0.4s ease-out, filter 0.4s ease-out;
+  transition: opacity 0.2s ease-out, filter 0.2s ease-out;
 }
 
 .animate-on-scroll.visible {
@@ -42,7 +42,7 @@ body {
   opacity: 0;
   transform: translateX(20px);
   filter: blur(10px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out, filter 0.4s ease-out;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out;
 }
 
 .loader.initial-load.visible {
@@ -220,11 +220,12 @@ body {
   visibility: visible;
   opacity: 1;
   display: block;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .carousel-item.active-shadow {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transform: translateY(-10px);
 }
 
 .carousel-item .icon {
