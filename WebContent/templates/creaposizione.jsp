@@ -28,7 +28,7 @@
     <div id="alert-box" class="alert-box"></div>
 
     <div class="main-container-creaposizione animate-on-scroll loader">
-        <h1 class="form-title" style="font-size: 2.5vw;">
+        <h1 class="form-title">
             Crea una posizione
         </h1>
         <form action="${pageContext.request.contextPath}/creaposizione"

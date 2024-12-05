@@ -110,6 +110,8 @@ body {
   margin-top: 4vh;
   padding-right: 7rem;
   transition: background-color 0.3s, transform 0.3s ease-in-out;
+  transform-origin: center;
+  will-change: transform;
 }
 
 .introduction:hover {

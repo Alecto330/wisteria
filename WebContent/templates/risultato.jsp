@@ -29,7 +29,8 @@
             <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="${risultato}" aria-valuemin="0" aria-valuemax="${ndomande}"></div>
         </div>
         <div class="contenuto-risultato">
-            ${risultato}/${ndomande}
+            <span class="risultato">${risultato}</span><span class="ndomande">/${ndomande}</span>
+			<div class="punti">punti</div>
         </div>
 		<a class="back-button" href="javascript:history.back();"> <i
 			class="fas fa-arrow-left"></i>

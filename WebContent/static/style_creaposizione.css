@@ -62,8 +62,8 @@ body {
   width: 90%;
 }
 
-.form-title {
-  font-size: 1.8rem;
+.form-title{
+  font-size: 1.7rem;
   color: #6e41e2;
   margin-bottom: 2rem;
   text-align: center;
@@ -208,25 +208,23 @@ textarea::placeholder {
 }
 
 .create-btn {
-  display: block;
-  width: 100%;
-  max-width: 200px;
-  margin: 0;
-  padding: 1rem;
+  box-shadow: 0 0 5px #8228ff, 0 0 10px #8328ff99;
+  float: right;
+  margin-top: 9px;
   background-color: #6e41e2;
-  color: white;
+  border: solid 2px #8228ff;
   border: none;
-  border-radius: 25px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  border-radius: 2vw;
+  color: white;
+  font-weight: 700 !important;
+  padding: 0.5vw 1vw;
+  font-size: 1vw;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
 .create-btn:hover {
-  background-color: #5a35c8;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(110, 65, 226, 0.2);
+  background-color: #4c2bb0;
+  transform: scale(1.04);
 }
 
 .dropdown {

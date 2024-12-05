@@ -15,14 +15,14 @@ body {
   background-repeat: no-repeat;
 }
 .animate-on-scroll {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 }
 
 .animate-on-scroll.visible {
-	opacity: 1;
-	transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .animate-on-scroll {
@@ -40,7 +40,8 @@ body {
   opacity: 0;
   transform: translateX(20px);
   filter: blur(3px);
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out;
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out,
+    filter 0.2s ease-out;
 }
 
 .loader.initial-load.visible {
@@ -71,14 +72,13 @@ body {
 }
 
 .offer-card {
+  min-height: 40vh;
   width: 100%;
-  min-height: 35vh;
   height: 100%;
-  padding: 2vw;
+  padding: 30px;
   background-color: #d7bbff;
   border-radius: 20px;
   color: black;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .offer-card h1 {
@@ -87,16 +87,23 @@ body {
 }
 
 .offer-card .btn-apply {
+  box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+  float: right;
+  margin-top: 9px;
   background-color: #6e41e2;
   border: solid 2px #8228ff;
   border: none;
   border-radius: 2vw;
   color: white;
-  box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
+  font-weight: 700 !important;
+  padding: 0.5vw 1vw;
+  font-size: 0.8vw;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
 .offer-card .btn-apply:hover {
   background-color: #4c2bb0;
+  transform: scale(1.04);
 }
 
 .offer-card .row {
@@ -114,11 +121,6 @@ body {
   line-height: 1.6;
 }
 
-.btn-apply {
-  float: right;
-  margin-top: 9px;
-}
-
 .p-azienda {
   margin-top: 13px;
   margin-bottom: 0;
@@ -131,19 +133,24 @@ body {
 .p-posizione,
 .p-settore {
   margin: 0%;
+  transform-origin: center;
+  will-change: transform;
+  text-rendering: optimizeLegibility;
 }
 
 .back-button {
+  position: absolute;
   display: inline-block;
   left: 25px;
-  bottom: 9px;
   background: none;
   border: none;
   color: #6e41e2;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 30px;
   padding: 0.5rem;
+  padding-bottom: 0;
   transition: transform 0.3s ease;
+  margin-left: 7px;
 }
 
 .back-button:hover {
@@ -151,17 +158,33 @@ body {
   transform: translateX(-5px);
 }
 
-.btn-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
+.back-btn-container{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  height: 4vw;
 }
 
 .offerta-container {
+  min-height: 40vh;
+  border-radius: 20px;
   margin-top: 185px;
   max-width: 60%;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s ease-in-out,
+    box-shadow 0.3s ease;
+  transform-origin: center;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  text-rendering: optimizeLegibility;
+}
+
+.offerta-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.4);
 }
 
 .footer {

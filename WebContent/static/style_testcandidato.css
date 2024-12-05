@@ -14,6 +14,41 @@ body {
   background-attachment: fixed;
 }
 
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.animate-on-scroll.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.2s ease-out, filter 0.2s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  filter: blur(0px);
+}
+
+.loader.initial-load {
+  opacity: 0;
+  transform: translateX(20px);
+  filter: blur(10px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out;
+}
+
+.loader.initial-load.visible {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0px);
+}
+
 .container-quiz {
   max-width: 1200px;
   margin: 0 auto;

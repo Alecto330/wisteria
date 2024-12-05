@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 text-end">
-                    <button class="btn btn-apply" onclick="location.href='test?idPosizione=${posizione.id}&nomePosizione=${posizione.titolo}';">Candidati subito!</button>
+                    <button class="btn btn-apply" onclick="location.href='test?idPosizione=${posizione.id}&nomePosizione=${posizione.titolo}';">Candidati ora!</button>
                 </div>
             </div>
             <hr>
@@ -38,12 +38,13 @@
                 <h5>Descrizione Lavoro</h5>
                 <p>${posizione.descrizione}</p>
             </div>
-            <a class="back-button" href="javascript:history.back();"> <i
-				class="fas fa-arrow-left"></i>
-			</a>
+			<div class="back-btn-container">
+				<a class="back-button" href="javascript:history.back();"> <i
+					class="fas fa-arrow-left"></i>
+				</a>
+			</div>
         </div>
 	</div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
 			document.addEventListener("DOMContentLoaded", function () {

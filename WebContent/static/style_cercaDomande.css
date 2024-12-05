@@ -315,13 +315,14 @@ input[type="search"] {
   box-shadow: 0 0 15px rgba(130, 40, 255, 0.4), 0 0 30px rgba(130, 40, 255, 0.3);
   cursor: pointer;
   z-index: 1000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  will-change: transform;
 }
 
 .btn-add:hover {
+  transform: translateX(-50%) scale(1.1);
   background: linear-gradient(135deg, #9d6bff, #844eff, #6f3be0);
   box-shadow: 0 0 20px rgba(130, 40, 255, 0.5), 0 0 40px rgba(130, 40, 255, 0.4);
-  transform: translateX(-50%) scale(1.1);
 }
 
 .btn-add:active {
