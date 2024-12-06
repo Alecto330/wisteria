@@ -208,8 +208,9 @@ textarea::placeholder {
 }
 
 .create-btn {
-  box-shadow: 0 0 5px #8228ff, 0 0 10px #8328ff99;
   float: right;
+  width: 20%;
+  margin: 0 auto;
   margin-top: 9px;
   background-color: #6e41e2;
   border: solid 2px #8228ff;
@@ -217,7 +218,7 @@ textarea::placeholder {
   border-radius: 2vw;
   color: white;
   font-weight: 700 !important;
-  padding: 0.5vw 1vw;
+  padding: 1rem;
   font-size: 1vw;
   transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
