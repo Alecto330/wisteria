@@ -151,7 +151,7 @@ body {
 .cv-section {
   background-color: #e8e8e8;
   border-radius: 15px;
-  height: 20vh;
+  height: 28.7vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,6 +190,28 @@ body {
   padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(110, 65, 226, 0.2);
 }
+
+.softskill-item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add space between the icon and the text */
+}
+
+.fa-check{
+    font-size: 1.2rem; /* Adjust icon size if needed */
+    color: #4CAF50; /* Example color for the icon */
+}
+
+.fa-xmark{
+    font-size: 1.2rem; /* Adjust icon size if needed */
+    color: red; /* Example color for the icon */
+}
+
+.softskill-item p {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Adjust text size if needed */
+}
+
 
 .experience-title {
   font-size: 1.1rem;
@@ -299,4 +321,11 @@ p {
 
 .profile-icon-vc .fa-user {
   font-size: 23px;
+}
+
+.skill-label {
+  font-size: 18px;
+  color: #6e41e2;
+  margin-bottom: 0.3rem;
+  display: inline-block;
 }

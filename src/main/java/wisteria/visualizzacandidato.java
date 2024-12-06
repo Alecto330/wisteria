@@ -18,6 +18,8 @@ import cv.Esperienza;
 import cv.EsperienzaDAO;
 import posizione.CandidaturaDAO;
 import posizione.PosizioneDAO;
+import softskill.SoftSkill;
+import softskill.SoftSkillDAO;
 import user.User;
 
 @WebServlet("/visualizzacandidato")
@@ -44,6 +46,9 @@ public class visualizzacandidato extends HttpServlet{
 			
 			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
 			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
+			
+			SoftSkillDAO skillDao=new SoftSkillDAO();
+			SoftSkill skill=skillDao.getSoftSkills(id);
 
 			HttpSession session = request.getSession();
 			User user=(User)session.getAttribute("user");
@@ -79,6 +84,8 @@ public class visualizzacandidato extends HttpServlet{
 			}
 			request.setAttribute("telefono", cv.getTelefono());
 			request.setAttribute("esperienze", esperienze);
+			request.setAttribute("skill", skill);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
 			dispatcher.forward(request, response);
 		}		
