@@ -44,15 +44,15 @@
 			<div class="info-section">
 				<div class="deatils-section">
 
-						
-											<div class="info-group">
+
+					<div class="info-group">
 						<div class="info-label">
 							<i class="fa-solid fa-user"></i> Nome
 						</div>
-						<div class="info-value">${nome} ${cognome}</div>
+						<div class="info-value">${nome}${cognome}</div>
 					</div>
-						
-						
+
+
 
 					<div class="info-group">
 						<div class="info-label">
@@ -142,24 +142,62 @@
 					<div id="uploadText">CV non caricato</div>
 				</div>
 			</div>
+			<div>
+				<div class="experiences-section">
+					<div class="section-header">
+						<i class="fas fa-briefcase"></i>
+						<h2 class="section-title esperienze-title">Esperienze</h2>
+					</div>
+					<div class="scrollable-experiences">
+						<div class="experience-list">
 
-			<div class="experiences-section">
-				<div class="section-header">
-					<i class="fas fa-briefcase"></i>
-					<h2 class="section-title esperienze-title">Esperienze</h2>
-				</div>
-				<div class="scrollable-experiences">
-					<div class="experience-list">
-
-						<c:forEach var="esperienza" items="${esperienze}">
-							<div class="experience-item">
-								<h3 class="experience-title">${esperienza.titolo}</h3>
-								<p class="experience-description">${esperienza.esperienza}</p>
-							</div>
-						</c:forEach>
+							<c:forEach var="esperienza" items="${esperienze}">
+								<div class="experience-item">
+									<h3 class="experience-title">${esperienza.titolo}</h3>
+									<p class="experience-description">${esperienza.esperienza}</p>
+								</div>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
+
+
+				<div class="experiences-section" style="margin-top: 40px;">
+					<div class="section-header">
+						<i class="fa-solid fa-lightbulb"></i>
+						<h2 class="section-title esperienze-title">Soft-Skills</h2>
+					</div>
+					<div class="scrollable-experiences">
+						<div class="experience-item softskill-item">
+							<i
+								class="${skill.skillOne ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}"></i>
+							<p class="experience-description">Comunicazione</p>
+						</div>
+						<div class="experience-item softskill-item">
+							<i
+								class="${skill.skillTwo ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}"></i>
+							<p class="experience-description">Teamwork</p>
+						</div>
+						<div class="experience-item softskill-item">
+							<i
+								class="${skill.skillThree ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}"></i>
+							<p class="experience-description">Organizzazione</p>
+						</div>
+						<div class="experience-item softskill-item">
+							<i
+								class="${skill.skillFour ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}"></i>
+							<p class="experience-description">Problem Solving</p>
+						</div>
+						<div class="experience-item softskill-item">
+							<i
+								class="${skill.skillFive ? 'fa-solid fa-check' : 'fa-solid fa-xmark'}"></i>
+							<p class="experience-description">Competenze Sociali</p>
+						</div>
+					</div>
+				</div>
+
 			</div>
+
 			<a class="back-button2" href="javascript:history.back();"> <i
 				class="fas fa-arrow-left"></i>
 			</a>
@@ -182,7 +220,7 @@ if (base64PDF) {
     document.getElementById('uploadText').textContent = "Apri CV";  // Change text
 }
 
-const base64Image = '<%= request.getAttribute("fotoProfiloData") != null ? request.getAttribute("fotoProfiloData") : "" %>';
+const base64Image = '<%=request.getAttribute("fotoProfiloData") != null ? request.getAttribute("fotoProfiloData") : ""%>';
 
 if (base64Image) {
     const imageBlob = new Blob([Uint8Array.from(atob(base64Image), c => c.charCodeAt(0))], { type: 'image/jpeg' }); // Può essere 'image/png' o altro tipo di immagine
