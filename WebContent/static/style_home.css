@@ -325,11 +325,11 @@ input[type="search"] {
   cursor: pointer;
   color: #6e41e2;
 }
+
 .utente-scelto-title:hover{
   color: #4c2bb0;
   text-decoration: none;
 }
-
 
 .card-location,
 .card-category {
