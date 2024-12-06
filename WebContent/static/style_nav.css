@@ -26,6 +26,7 @@
   color: white;
   transition: color 0.3s ease-in-out;
   font-weight: 700 !important;
+  transition: background-color 0.3s, transform 0.3s ease-in-out;
 }
 
 .acc .btn-primary {
