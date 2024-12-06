@@ -142,7 +142,7 @@
 					<div id="uploadText">CV non caricato</div>
 				</div>
 			</div>
-			<div>
+			<div class="info-section">
 				<div class="experiences-section">
 					<div class="section-header">
 						<i class="fas fa-briefcase"></i>
@@ -162,7 +162,7 @@
 				</div>
 
 
-				<div class="experiences-section" style="margin-top: 40px;">
+				<div class="soft-section" >
 					<div class="section-header">
 						<i class="fa-solid fa-lightbulb"></i>
 						<h2 class="section-title esperienze-title">Soft-Skills</h2>
