@@ -305,6 +305,13 @@ input[type="search"] {
   transform-origin: center;
   will-change: transform;
 }
+
+.utente-scelto-title {
+  transform-origin: center;
+  will-change: transform;
+}
+
+
 .card-location,
 .card-category {
   color: #555;

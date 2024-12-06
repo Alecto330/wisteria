@@ -153,6 +153,7 @@
 						<div class="closed-header">
 							<i class="fas fa-lock lock-icon" title="Posizione Chiusa"></i>
 							<h5 class="card-title" style="margin: 0 8px 0 0;">${job.titolo}</h5>
+							<h5 class="utente-scelto-title" style="margin: 0 8px 0 0;">Vincitore: @${job.utenteScelto}</h5>
 						</div>
 					</c:when>
 					<c:otherwise>
