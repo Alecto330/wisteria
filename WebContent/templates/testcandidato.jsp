@@ -22,6 +22,11 @@
 	href="${pageContext.request.contextPath}/static/style_testcandidato.css">
 </head>
 <body>
+	<div id="custom-alert" class="alert-box">
+				<span id="alert-message">Sei sicuro di abbandonare il quiz?</span><br>
+				<button class="btn btn-danger" onclick="confirmAction(true)">Conferma</button>
+				<button class="btn btn-secondary" onclick="confirmAction(false)">Annulla</button>
+			</div>
 	<div class="container-quiz animate-on-scroll loader">
 		<h1 class="title">Quiz per ${nomePosizione}</h1>
 		<div class="accordion">
@@ -54,11 +59,6 @@
             <button class="btn btn-back" onclick="giangiovanni()">
                 ← Torna Indietro
             </button>
-			<div id="custom-alert" class="alert-box">
-				<span id="alert-message">Sei sicuro di abbandonare il quiz?</span><br>
-				<button class="btn btn-danger" onclick="confirmAction(true)">Conferma</button>
-				<button class="btn btn-secondary" onclick="confirmAction(false)">Annulla</button>
-			</div>
         </div>
 	</div>
 	<script>
@@ -199,12 +199,15 @@
 	
 
 	function giangiovanni(){
-		document.getElementById('alert-message').innerText = 'Sei sicuro di voler abbandonare il quiz?';
+		console.log("GIANGIOVANNI");
+		document.getElementById('alert-message').innerText = 'Sei sicuro di voler abbandonare il quiz?\nLe risposte selezionate non verranno salvate!';
         showAlert();
 	}
 
 	function showAlert() {
+		console.log("SHOWALERT");
         const alertBox = document.getElementById('custom-alert');
+		console.log(alertBox);
         alertBox.classList.add('show');
     }
 
@@ -217,7 +220,7 @@
 		const params = new URLSearchParams(window.location.search);
 		const id = params.get('idPosizione');
         if (confirm) {
-            window.location.href="${pageContext.request.contextPath}/offerta?idPosizione=" + id;
+            window.location.href="${pageContext.request.contextPath}/offerta?id=" + id;
         }
         hideAlert();
     }

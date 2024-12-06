@@ -21,12 +21,12 @@
     <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="content-container contenuto animate-on-scroll loader">
         <div id="custom-alert" class="alert-box">
 		    <span id="alert-message">Sei sicuro di voler eliminare questa posizione lavorativa?</span><br>
 		    <button class="btn btn-danger" onclick="confirmAction(true)">Conferma</button>
 		    <button class="btn btn-secondary" onclick="confirmAction(false)">Annulla</button>
 		</div>
+    <div class="content-container contenuto animate-on-scroll loader">
 
         <div class="card">
             <div class="scroll-wrapper-classifica">
