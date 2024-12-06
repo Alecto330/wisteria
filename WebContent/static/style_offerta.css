@@ -87,7 +87,6 @@ body {
 }
 
 .offer-card .btn-apply {
-  box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
   float: right;
   margin-top: 9px;
   background-color: #6e41e2;
@@ -192,15 +191,4 @@ body {
   margin-top: 200px;
 }
 
-.btn-primary {
-  background-color: #6e41e2;
-  border: solid 2px #8228ff;
-  border: none;
-  border-radius: 2vw;
-  color: white;
-  box-shadow: 0 0 5px rgb(130, 40, 255), 0 0 10px rgba(131, 40, 255, 0.6);
-}
 
-.btn-primary:hover {
-  background-color: #4c2bb0;
-}
