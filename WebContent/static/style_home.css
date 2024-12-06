@@ -300,15 +300,34 @@ input[type="search"] {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
+.closed-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+}
+
 .card-title {
   font-weight: bold;
   transform-origin: center;
   will-change: transform;
+  margin: 0;
 }
 
 .utente-scelto-title {
+  font-weight: 600;
+  position: absolute;
+  right: 0;
+  margin-left: auto;
   transform-origin: center;
   will-change: transform;
+  margin: 0;
+  cursor: pointer;
+  color: #6e41e2;
+}
+.utente-scelto-title:hover{
+  color: #4c2bb0;
+  text-decoration: none;
 }
 
 
@@ -369,10 +388,4 @@ input[type="search"] {
   display: flex;
   align-items: center;
   padding-right: 10px;
-}
-
-.closed-header {
-  display: flex;
-  align-items: center;
-  padding-bottom: 12px;
 }

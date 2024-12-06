@@ -43,7 +43,7 @@
     linear-gradient(336deg, #8228ff, #c398ff 70.71%);
   height: 5px;
   position: fixed;
-  top: 9vh;
+  top: 9.1vh;
   left: 0;
   width: 0%;
   transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
