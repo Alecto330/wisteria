@@ -97,6 +97,7 @@
 .menu ul {
   list-style: none;
   padding: 0;
+  transition: all 0.25s ease;
 }
 
 .menu ul li {
@@ -191,17 +192,115 @@
   border-color: transparent transparent #ffb1b8 transparent;
 }
 
+.hamburger {
+  cursor: pointer;
+  font-size: 30px;
+  padding: 15px;
+  background: none;
+  z-index: 101;
+  user-select: none;
+  width: 135.88px;
+  height: 75px;
+}
+
+.menu {
+  background: linear-gradient(180deg, #686868, #4a4a4a);
+  color: white;
+  position: absolute;
+  top: 9.5vh;
+  left: -30vh;
+  width: 30vh;
+  height: 90.5vh;
+  transition: left 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+  border-bottom-right-radius: 35px;
+
+  transform-origin: center;
+  will-change: transform;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transform-origin: center;
+  will-change: transform;
+}
+
+.menu li {
+  padding: 15px;
+  padding-left: 0;
+  padding-right: 0;
+  width: 25vh;
+  border-bottom: 1px solid #c45eff;
+  text-align: center;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 5px; /* Aggiunge un tocco arrotondato */
+  
+  transform-origin: center;
+  will-change: transform;
+}
+
+.menu li:hover{
+  background-color: #535353;
+  transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.menu.slide-in {
+  left: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.menu.slide-out {
+  left: -30vh;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+}
+
 .menu a {
   color: #d7bbff;
   text-decoration: none;
   display: block;
   text-align: center;
+  transition: all 0.3s ease;
+  font-weight: bold;
 }
 .menu a.logout-menu {
   color: red;
   transition: transform 0.1s ease-in-out;
 }
 
+.menu a:hover {
+  color: #d7bbff;/* Aggiunge un bagliore */
+}
+i.fas.fa-user:hover{
+  color: #d7bbff;
+}
+i.fa-solid.fa-question:hover{
+  color: #d7bbff;
+}
+i.fas.fa-home:hover{
+  color: #d7bbff;
+}
+i.fas.fa-tools:hover{
+  color: #d7bbff;
+}
+i.fas.fa-envelope:hover{
+  color: #d7bbff;
+}
 i.fa-right-from-bracket:hover {
   color: red;
 }
@@ -250,6 +349,7 @@ i.fa-right-from-bracket:hover {
     display: block;
     margin: 10px 0;
     padding: 10px 20px;
+    transition: all 0.25s ease;
   }
 
   .menu li a {
