@@ -144,14 +144,14 @@
 
 		
 		document.addEventListener('DOMContentLoaded', () => {
-		var isProfileComplete = ${user.isProfileComplete()}
-		
-		console.log(isProfileComplete);
-		
-		if (isProfileComplete==false) {
-			const alertElement = document.getElementById('profile-alert');
-			alertElement.style.display = 'block';
-		}
-	});
+			var isProfileComplete = ${user.isProfileComplete()}
+			
+			console.log(isProfileComplete);
+			
+			if (isProfileComplete==false && !window.location.pathname.endsWith("/profilepage")) {
+				const alertElement = document.getElementById('profile-alert');
+				alertElement.style.display = 'block';
+			}
+		});
 </script>
 

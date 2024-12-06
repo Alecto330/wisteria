@@ -51,9 +51,14 @@
 			<button type="button" class="submit-button" onclick="submitAnswers()">Invia</button>
 		</div>
         <div class="btn-container">
-            <button class="btn btn-back" onclick="javascript:history.back();">
+            <button class="btn btn-back" onclick="giangiovanni()">
                 ← Torna Indietro
             </button>
+			<div id="custom-alert" class="alert-box">
+				<span id="alert-message">Sei sicuro di abbandonare il quiz?</span><br>
+				<button class="btn btn-danger" onclick="confirmAction(true)">Conferma</button>
+				<button class="btn btn-secondary" onclick="confirmAction(false)">Annulla</button>
+			</div>
         </div>
 	</div>
 	<script>
@@ -190,6 +195,36 @@
 					observer.observe(card); // Osserva ogni card
 				});
 			});
+
+	
+
+	function giangiovanni(){
+		document.getElementById('alert-message').innerText = 'Sei sicuro di voler abbandonare il quiz?';
+        showAlert();
+	}
+
+	function showAlert() {
+        const alertBox = document.getElementById('custom-alert');
+        alertBox.classList.add('show');
+    }
+
+    function hideAlert() {
+        const alertBox = document.getElementById('custom-alert');
+        alertBox.classList.remove('show');
+    }
+
+    function confirmAction(confirm) {
+		const params = new URLSearchParams(window.location.search);
+		const id = params.get('idPosizione');
+        if (confirm) {
+            window.location.href="${pageContext.request.contextPath}/offerta?idPosizione=" + id;
+        }
+        hideAlert();
+    }
 	</script>
+
+
+
+
 </body>
 </html>

@@ -255,6 +255,7 @@ select.form-input {
   font-size: 30px;
   padding: 0.5rem;
   transition: transform 0.3s ease;
+  margin-left: 7px;
 }
 
 .back-button:hover {
