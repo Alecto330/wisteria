@@ -193,6 +193,42 @@
 					<div id="removePDF" onclick="removePDF(event)" title="Rimuovi">❌</div>
 				</div>
 			</div>
+
+			<div class="experience-section">
+				<div class="experience-header">
+					<h3 class="experience-title">Aggiungi esperienza</h3>
+				</div>
+				<div class="form-group">
+					<input id="titolo-esperienza" class="form-input"
+						placeholder="Titolo"></input>
+				</div>
+				<div class="form-group">
+					<textarea id="descrizione-esperienza"
+						class="form-input textarea-input" placeholder="Descrizione..."></textarea>
+				</div>
+				<button class="add-experience-btn" onclick="aggiungiEsperienza()">
+					<i class="fas fa-plus"></i>
+				</button>
+
+				<div class="experience-list">
+					<c:forEach var="esperienza" items="${esperienze}">
+						<div class="experience-item">
+							<div class="experience-header">
+								<h4>${esperienza.titolo}</h4>
+								<i class="fa fa-trash delete-icon"
+									onclick="handleDelete(${esperienza.id})" title="Rimuovi"></i>
+							</div>
+							<p>${esperienza.esperienza}</p>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+
+		<a class="back-button" href="/wisteria/home"> <i
+			class="fas fa-arrow-left"></i>
+		</a>
+	</div>
 			<script>
                 let pdfURL = null;
 
@@ -439,45 +475,7 @@
                     const alertBox = document.getElementById('alertBox');
                     alertBox.classList.remove('show');
                 }
-            </script>
-
-			<div class="experience-section">
-				<div class="experience-header">
-					<h3 class="experience-title">Aggiungi esperienza</h3>
-				</div>
-				<div class="form-group">
-					<input id="titolo-esperienza" class="form-input"
-						placeholder="Titolo"></input>
-				</div>
-				<div class="form-group">
-					<textarea id="descrizione-esperienza"
-						class="form-input textarea-input" placeholder="Descrizione..."></textarea>
-				</div>
-				<button class="add-experience-btn" onclick="aggiungiEsperienza()">
-					<i class="fas fa-plus"></i>
-				</button>
-
-				<div class="experience-list">
-					<c:forEach var="esperienza" items="${esperienze}">
-						<div class="experience-item">
-							<div class="experience-header">
-								<h4>${esperienza.titolo}</h4>
-								<i class="fa fa-trash delete-icon"
-									onclick="handleDelete(${esperienza.id})" title="Rimuovi"></i>
-							</div>
-							<p>${esperienza.esperienza}</p>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-
-		<a class="back-button" href="/wisteria/home"> <i
-			class="fas fa-arrow-left"></i>
-		</a>
-	</div>
-
-	<script>
+                
         function handleDelete(id) {
             const formData = new URLSearchParams();
             if (confirm("Sei sicuro di voler eliminare questo elemento?")) {
