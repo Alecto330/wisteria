@@ -90,6 +90,18 @@
 					observer.observe(card); // Osserva ogni card
 				});
 			});
-	</script>
+			
+			
+			
+			
+			 history.pushState(null, null, window.location.href);
+
+			// Intercettiamo l'evento popstate
+			window.addEventListener("popstate", function () {
+				// Reindirizziamo alla pagina desiderata
+				window.location.href = "${pageContext.request.contextPath}/home";
+			});
+
+		</script>
 </body>
 </html>
