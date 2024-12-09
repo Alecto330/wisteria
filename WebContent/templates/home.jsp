@@ -153,7 +153,7 @@
 						<div class="closed-header">
 							<i class="fas fa-lock lock-icon" title="Posizione Chiusa"></i>
 							<h5 class="card-title">${job.titolo}</h5>
-							<a href="${pageContext.request.contextPath}/home" target="_blank" class="utente-scelto-title">Vincitore: @${job.utenteScelto}</a>
+							<a href="${pageContext.request.contextPath}/visualizzacandidato?id=${job.utenteScelto}" target="_blank" class="utente-scelto-title">Vincitore: @${job.utenteScelto}</a>
 						</div>
 					</c:when>
 					<c:otherwise>
