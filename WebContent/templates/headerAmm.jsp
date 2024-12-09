@@ -29,8 +29,8 @@
             <div class="hamburger" id="hamburger"><div class="bmenu">&#9776;</div></div>
             <nav class="menu" id="menu">
                 <ul style="margin-top:1vw; height:87%; display: flex; flex-direction: column; justify-content: space-between;">
-                    <li><a href="${pageContext.request.contextPath}/home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/creaposizione"><i class="fas fa-plus"></i> Crea Posizione</a></li>
+                    <li onclick="window.location.href='${pageContext.request.contextPath}/home'"><a><i class="fas fa-home"></i> Home</a></li>
+                    <li onclick="window.location.href='${pageContext.request.contextPath}/creaposizione'"><a><i class="fas fa-plus"></i> Crea Posizione</a></li>
                     <c:if test="${not empty user}">
                     	<li style="margin-top: auto; border: none;">
                             <a class="logout-menu" href="${pageContext.request.contextPath}/logout">

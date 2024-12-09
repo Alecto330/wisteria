@@ -30,15 +30,19 @@
 
 			<nav class="menu" id="menu">
 				<ul style="margin-top:1vw; height:87%; display: flex; flex-direction: column;">
-					<li><a href="${pageContext.request.contextPath}/home"><i
-							class="fas fa-home"></i> Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/profilepage"><i
-							class="fas fa-user"></i> Profilo</a></li>
-					<li><a href="${pageContext.request.contextPath}/about"><i
-							class="fa-solid fa-question"></i> About</a></li>
-					<li><a href="${pageContext.request.contextPath}/servizi" class="services"><i
-							class="fas fa-tools"></i> Services</a></li>
-					<li><a onclick="scrollToBottom() " class="contact"><i
+					<li onclick="window.location.href='${pageContext.request.contextPath}/home'">
+						<a><i class="fas fa-home"></i> Home</a>
+					</li>
+					<li onclick="window.location.href='${pageContext.request.contextPath}/profilepage'">
+						<a><i class="fas fa-user"></i> Profilo</a>
+					</li>
+					<li onclick="window.location.href='${pageContext.request.contextPath}/about'">
+						<a><i class="fa-solid fa-question"></i> About</a>
+					</li>
+					<li onclick="window.location.href='${pageContext.request.contextPath}/servizi'">
+						<a><i class="fas fa-tools"></i> Services</a>
+					</li>
+					<li onclick="scrollToBottom()"><a><i
 							class="fas fa-envelope"></i> Contact</a></li>
 					<c:if test="${not empty user}">
 						<li style="margin-top: auto; border: none;"><a href="${pageContext.request.contextPath}/logout" style="color: red;"><i class="fas fa-right-from-bracket"></i> Logout</a></li>

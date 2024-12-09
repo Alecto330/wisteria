@@ -41,4 +41,9 @@ public class Admin extends User{
 		// TODO Auto-generated method stub
 		return true;
 	}
+	
+	@Override
+	public boolean visualizzaCandidato() {
+		return true;
+	}
 }
