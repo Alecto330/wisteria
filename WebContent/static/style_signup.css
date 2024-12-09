@@ -112,7 +112,6 @@ body {
 .finepagina {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   position: relative;
   padding: 15px;
 }
@@ -135,6 +134,10 @@ body {
   transform: translateY(-2px);
 }
 
+.casa:hover {
+  color: #4c2bb0;
+}
+
 .register-link {
   font-size: 1em;
   color: #6e41e2;
@@ -146,6 +149,7 @@ body {
   font-size: 1rem;
   text-decoration: none;
   padding-top: 7.5px;
+  margin: 0 auto;
 }
 
 .register-link:hover {

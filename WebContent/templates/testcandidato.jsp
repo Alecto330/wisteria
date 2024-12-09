@@ -22,6 +22,17 @@
 	href="${pageContext.request.contextPath}/static/style_testcandidato.css">
 </head>
 <body>
+
+	<div id="custom-alert-2" class="alert-box">
+		<div class="alert-content">
+			<h4 class="alert-title">Attenzione!</h4>
+			<p id="alert-message-2">Non tutte le domande hanno una risposta selezionata. Per favore, completa il quiz.</p>
+			<div class="alert-buttons">
+				<button class="btn btn-primary" style="color: white" onclick="hideAlert2()">Ok</button>
+			</div>
+		</div>
+	</div>
+
 	<div id="custom-alert" class="alert-box">
 				<span id="alert-message">Sei sicuro di abbandonare il quiz?</span><br>
 				<button class="btn btn-danger" onclick="confirmAction(true)">Conferma</button>
@@ -70,7 +81,7 @@
 	     const totalQuestions = document.querySelectorAll('.accordion-item').length;
 	    
         if (selectedButtons.length < totalQuestions) {
-            alert("Per favore, rispondi a tutte le domande prima di inviare.");
+            showAlert2();
             return; // Blocca l'invio
         }
 	    const params = new URLSearchParams(window.location.search);
@@ -224,6 +235,18 @@
         }
         hideAlert();
     }
+
+
+	function showAlert2() {
+		const alertBox = document.getElementById('custom-alert-2');
+		alertBox.classList.add('show'); // Mostra l'alert
+	}
+
+	function hideAlert2() {
+		const alertBox = document.getElementById('custom-alert-2');
+		alertBox.classList.remove('show'); // Nasconde l'alert
+	}
+
 	</script>
 
 

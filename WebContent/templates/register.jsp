@@ -13,10 +13,10 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
 	rel="stylesheet">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/static/style_signup.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/static/style.css">
 <link rel="icon" href="${pageContext.request.contextPath}/assets/favicon.ico" type="image/x-icon">
 </head>
 <body onload="checkError()">
@@ -28,7 +28,7 @@
 			</div>
 		<% } %>
 	<div class="login-container animate-on-scroll">
-		<h2>Registrati!</h2>
+		<h2>Benvenuto!</h2>
 
 		<form id="signupForm"
 			action="${pageContext.request.contextPath}/register" method="POST">
@@ -93,9 +93,6 @@
 
 		</form>
 		<div class="finepagina">
-			<a class="back-button" href="${pageContext.request.contextPath}/home">
-				<i class="fas fa-home"></i>
-			</a>
 			<a href="${pageContext.request.contextPath}/login" class="register-link">
 				Hai già un account? Accedi
 			</a>
