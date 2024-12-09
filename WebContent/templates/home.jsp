@@ -153,7 +153,12 @@
 						<div class="closed-header">
 							<i class="fas fa-lock lock-icon" title="Posizione Chiusa"></i>
 							<h5 class="card-title">${job.titolo}</h5>
-							<a href="${pageContext.request.contextPath}/visualizzacandidato?id=${job.utenteScelto}" target="_blank" class="utente-scelto-title">Vincitore: @${job.utenteScelto}</a>
+<div 
+    class="utente-scelto-title" 
+    onclick="viewWinner('${job.utenteScelto}')">
+    Vincitore: @${job.utenteScelto}
+</div>
+
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -287,6 +292,44 @@
 				observer.observe(card); // Osserva ogni card
 			});
 			});
+		
+		
+		function viewWinner(userId) {
+		    // Construct the URL with the provided context path and user ID
+
+		    const url = `${pageContext.request.contextPath}/visualizzacandidato?id=`+userId;
+		    
+		    fetch(url, {
+		        method: "GET",
+		        headers: {
+		            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+		        },
+		        credentials: "same-origin" // Ensures cookies are sent along with the request
+		    })
+		    .then(response => {
+		        if (response.redirected) {
+		            // Redirect to the new location if the response is redirected
+		            window.location.href = response.url;
+		            return;
+		        }
+		        return response.text();
+		    })
+		    .then(html => {
+		        if (html) {
+		            // Replace the current page content with the fetched HTML
+		            history.pushState(null, "", url);
+		            document.open();
+		            document.write(html);
+		            document.close();
+		        }
+		    })
+		    .catch(error => {
+		        // Handle errors gracefully
+		        console.error("Errore:", error);
+		        showAlert(`Si è verificato un errore durante il caricamento del vincitore: ${error.message}`);
+		    });
+		}
+
 
 	</script>
 

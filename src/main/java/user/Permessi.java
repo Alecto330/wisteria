@@ -17,5 +17,9 @@ public interface Permessi {
 	public default boolean eseguiTest() {
 		return false;
 	}
+	
+	public default boolean visualizzaCandidato() {
+		return false;
+	}
 
 }

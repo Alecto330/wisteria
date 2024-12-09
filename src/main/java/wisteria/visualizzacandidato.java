@@ -28,83 +28,83 @@ public class visualizzacandidato extends HttpServlet{
 	public visualizzacandidato() {
 
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id=request.getParameter("id");
-		//String posizioneId=request.getParameter("idPosizione");
 
-		if(id != null) {
-			CvDAO dao=new CvDAO();
-			CV cv=null;
-			try {
-				cv = dao.getCV(id);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
-			ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
-			
-			SoftSkillDAO skillDao=new SoftSkillDAO();
-			SoftSkill skill=skillDao.getSoftSkills(id);
+		HttpSession session = request.getSession();
+		User user=(User)session.getAttribute("user");
 
-			HttpSession session = request.getSession();
-			User user=(User)session.getAttribute("user");
+		if(user!=null && user.visualizzaCandidato()) {
 
-			String header="";
-			if(user==null) {
-				header="header.jsp";
-			}else {
-				header=user.getHeader();
-			}
+			if(id != null) {
+				CvDAO dao=new CvDAO();
+				CV cv=null;
+				try {
+					cv = dao.getCV(id);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
-			request.setAttribute("title", "Profilo Utente - "+id);//TODO
-			request.setAttribute("content", "visualizzacandidato.jsp");
-			request.setAttribute("headerPath", header);
-			
-			request.setAttribute("username", id);
-			request.setAttribute("nome", cv.getNome());
-			request.setAttribute("cognome", cv.getCognome());
-			request.setAttribute("email", cv.getEmail());
-			request.setAttribute("cf", cv.getCf());
-			request.setAttribute("nome", cv.getNome());
-			request.setAttribute("cognome", cv.getCognome());
-			request.setAttribute("dataDiNascita", cv.getDataDiNascita());
-			request.setAttribute("residenza", cv.getResidenza());
-			request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
-			if (cv.getCurriculum() != null) {
-				String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
-				request.setAttribute("pdfData", base64PDF);
+				EsperienzaDAO esperienzaDAO=new EsperienzaDAO();
+				ArrayList<Esperienza> esperienze=esperienzaDAO.getEsperienzeFromCV(cv.getCf());
+
+				SoftSkillDAO skillDao=new SoftSkillDAO();
+				SoftSkill skill=skillDao.getSoftSkills(id);
+
+
+				String header=user.getHeader();
+
+				request.setAttribute("title", "Profilo Utente - "+id);//TODO
+				request.setAttribute("content", "visualizzacandidato.jsp");
+				request.setAttribute("headerPath", header);
+
+				request.setAttribute("username", id);
+				request.setAttribute("nome", cv.getNome());
+				request.setAttribute("cognome", cv.getCognome());
+				request.setAttribute("email", cv.getEmail());
+				request.setAttribute("cf", cv.getCf());
+				request.setAttribute("nome", cv.getNome());
+				request.setAttribute("cognome", cv.getCognome());
+				request.setAttribute("dataDiNascita", cv.getDataDiNascita());
+				request.setAttribute("residenza", cv.getResidenza());
+				request.setAttribute("titoloDiStudio", cv.getTitoloDiStudio());
+				if (cv.getCurriculum() != null) {
+					String base64PDF = Base64.getEncoder().encodeToString(cv.getCurriculum());
+					request.setAttribute("pdfData", base64PDF);
+				}
+				if (cv.getFotoProfilo() != null) {
+					String base64Image = Base64.getEncoder().encodeToString(cv.getFotoProfilo());
+					request.setAttribute("fotoProfiloData", base64Image);
+				}
+				request.setAttribute("telefono", cv.getTelefono());
+				request.setAttribute("esperienze", esperienze);
+				request.setAttribute("skill", skill);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
+				dispatcher.forward(request, response);
 			}
-			if (cv.getFotoProfilo() != null) {
-				String base64Image = Base64.getEncoder().encodeToString(cv.getFotoProfilo());
-				request.setAttribute("fotoProfiloData", base64Image);
-			}
-			request.setAttribute("telefono", cv.getTelefono());
-			request.setAttribute("esperienze", esperienze);
-			request.setAttribute("skill", skill);
+		}else {
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("templates/base.jsp");
-			dispatcher.forward(request, response);
-		}		
+		}
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String username=request.getParameter("username");
 		String posizioneId=request.getParameter("idPosizione");
-		
+
 		PosizioneDAO posizioneDAO=new PosizioneDAO();
 		posizioneDAO.chiudiPosizione(Integer.parseInt(posizioneId), username);
-		
+
 		CandidaturaDAO candidaturaDAO=new CandidaturaDAO();
 		candidaturaDAO.deleteSiCandida(Integer.parseInt(posizioneId));
-		
+
 		response.sendRedirect("home");
-		
+
 	}
 
 
